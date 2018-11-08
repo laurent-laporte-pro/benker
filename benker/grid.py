@@ -19,15 +19,15 @@ Example of grid::
     >>> from benker.grid import Grid
 
     >>> grid = Grid()
-    >>> grid[1, 1] = Cell("A1:A2", height=2)
-    >>> grid[2, 1] = Cell(content="B1:C1", width=2)
-    >>> grid[2, 2] = Cell(content="B2")
+    >>> grid[1, 1] = Cell("red", height=2)
+    >>> grid[2, 1] = Cell(content="pink", width=2)
+    >>> grid[2, 2] = Cell(content="blue")
 
     >>> print(grid)
     +-----------+-----------------------+
-    |   A1:A2   |   B1:C1               |
+    |    red    |   pink                |
     |           +-----------+-----------+
-    |           |    B2     |           |
+    |           |   blue    |           |
     +-----------+-----------+-----------+
 
 You can retrieve the grid cells as follow:
@@ -35,11 +35,11 @@ You can retrieve the grid cells as follow:
 .. doctest:: grid_demo
 
     >>> grid[1, 1]
-    <Cell('A1:A2', styles={}, type='body', width=1, height=2)>
+    <Cell('red', styles={}, type='body', width=1, height=2)>
     >>> grid[2, 1]
-    <Cell('B1:C1', styles={}, type='body', width=2, height=1)>
+    <Cell('pink', styles={}, type='body', width=2, height=1)>
     >>> grid[2, 2]
-    <Cell('B2', styles={}, type='body', width=1, height=1)>
+    <Cell('blue', styles={}, type='body', width=1, height=1)>
     >>> grid[3, 3]
     Traceback (most recent call last):
         ...
@@ -49,27 +49,27 @@ A grid has a bounding box, useful to get the grid dimensions:
 
     >>> grid.bounding_box
     Box(min=Point(x=1, y=1), max=Point(x=3, y=2))
-    >>> grid.bounding_box.dimension
-    Point(x=3, y=2)
+    >>> grid.bounding_box.dim
+    Dimension(width=3, height=2)
 
 You can expand the cell size horizontally or vertically:
 
     >>> grid.expand((2, 2), width=1)
-    <Cell('B2', styles={}, type='body', width=2, height=1)>
+    <Cell('blue', styles={}, type='body', width=2, height=1)>
     >>> print(grid)
     +-----------+-----------------------+
-    |   A1:A2   |   B1:C1               |
+    |    red    |   pink                |
     |           +-----------------------+
-    |           |    B2                 |
+    |           |   blue                |
     +-----------+-----------------------+
 
 The content of the merged cells is merged too:
 
-    >>> grid.merge((2, 1), (3, 2))
-    <Cell('B1:C1B2', styles={}, type='body', width=2, height=2)>
+    >>> grid.merge((2, 1), (3, 2), content_appender=lambda a, b: "/".join([a, b]))
+    <Cell('pink/blue', styles={}, type='body', width=2, height=2)>
     >>> print(grid)
     +-----------+-----------------------+
-    |   A1:A2   |  B1:C1B2              |
+    |    red    | pink/blue             |
     |           |                       |
     |           |                       |
     +-----------+-----------------------+
@@ -79,6 +79,7 @@ import collections
 import operator
 
 from benker.box import Box
+from benker.dimension import Dimension
 from benker.drawing import draw
 from benker.point import Point
 
@@ -164,7 +165,7 @@ class Grid(collections.MutableMapping):
             # nothing to merge
             raise ValueError((start, end))
         first = merged_cells.pop(0)
-        new_cell = first.transform(target=new_box.min, dimension=new_box.dimension)
+        new_cell = first.transform(target=new_box.min, dim=new_box.dim)
         for cell in merged_cells:
             new_cell.content = content_appender(new_cell.content, cell.content)
             new_cell.styles.update(cell.styles)
@@ -178,5 +179,5 @@ class Grid(collections.MutableMapping):
         content_appender = content_appender or operator.__add__
         box = self[coord].box
         start = box.min
-        end = Point(box.max.x + width, box.max.y + height)
+        end = box.max + Dimension(width, height)
         return self.merge(start, end, content_appender=content_appender)

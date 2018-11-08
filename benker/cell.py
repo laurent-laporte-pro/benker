@@ -48,8 +48,8 @@ On initialization, the cell position is always (1, 1), a.k.a. the top-left.
     >>> c1 = Cell("c1")
     >>> c1.pos
     Point(x=1, y=1)
-    >>> c1.dimensions
-    Point(x=1, y=1)
+    >>> c1.dim
+    Dimension(width=1, height=1)
     >>> c1.box
     Box(min=Point(x=1, y=1), max=Point(x=1, y=1))
 
@@ -61,8 +61,8 @@ A cell can be moved to another position:
     >>> c2 = c1.move_to(Point(5, 3))
     >>> c2.pos
     Point(x=5, y=3)
-    >>> c2.dimensions
-    Point(x=3, y=2)
+    >>> c2.dim
+    Dimension(width=3, height=2)
     >>> c2.box
     Box(min=Point(x=5, y=3), max=Point(x=7, y=4))
 
@@ -131,8 +131,8 @@ class Cell(object):
         return self.box.height
 
     @property
-    def dimensions(self):
-        return self.box.dimension
+    def dim(self):
+        return self.box.dim
 
     @property
     def pos(self):
@@ -150,8 +150,8 @@ class Cell(object):
     def __contains__(self, other):
         return other in self.box
 
-    def transform(self, target=None, dimension=None):
-        box = self.box.transform(target=target, dimension=dimension)
+    def transform(self, target=None, dim=None):
+        box = self.box.transform(target=target, dim=dim)
         cell = Cell(self.content,
                     styles=self.styles,
                     type=self.type,
@@ -164,5 +164,5 @@ class Cell(object):
     def move_to(self, target):
         return self.transform(target=target)
 
-    def resize(self, dimension):
-        return self.transform(dimension=dimension)
+    def resize(self, dim):
+        return self.transform(dim=dim)

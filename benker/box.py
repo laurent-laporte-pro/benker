@@ -96,6 +96,7 @@ You determine two boxes intersect each other, or are disjoints:
 import collections
 import functools
 
+from benker.dimension import Dimension
 from benker.point import Point
 
 
@@ -125,8 +126,9 @@ class Box(collections.namedtuple('Box', ['min', 'max'])):
         :param args:
             Arguments could be:
 
-            - top-left and bottom-right points of the box: *min_pt*, *max_pt*;
-            - top-left point of the box: *min_pt*, *max_pt*,
+            - top-left and bottom-right points of the box: Point(*min_pt*, *max_pt*);
+            - top-left coordinates and box dimensions: Point(*min_pt*, *max_pt*), Dimension(*width*, *height*);
+            - top-left point of the box: Point(*min_pt*, *max_pt*),
               assuming box width is (1, 1),
             - coordinates of the box: *min_x*, *min_y*, *max_x*, *max_y*;
             - coordinates of the top-left point: *min_x*, *min_y*,
@@ -144,6 +146,9 @@ class Box(collections.namedtuple('Box', ['min', 'max'])):
         if types == (Point, Point):
             min_x, min_y = args[0]
             max_x, max_y = args[1]
+        elif types == (Point, Dimension):
+            min_x, min_y = args[0]
+            max_x, max_y = args[0] + args[1] - 1
         elif types == (Point,):
             min_x, min_y = args[0]
             max_x, max_y = min_x, min_y
@@ -180,19 +185,20 @@ class Box(collections.namedtuple('Box', ['min', 'max'])):
         return self.max.y - self.min.y + 1
 
     @property
-    def dimension(self):
-        return Point(self.width, self.height)
+    def dim(self):
+        return Dimension(self.width, self.height)
 
-    def transform(self, target=None, dimension=None):
-        target = target or self.min
-        dimension = dimension or self.dimension
-        return Box(target, Point(target.x + dimension.x - 1, target.y + dimension.y - 1))
+    def transform(self, target=None, dim=None):
+        min_pt = target or self.min
+        dim = dim or self.dim
+        max_pt = min_pt + dim - 1
+        return Box(min_pt, max_pt)
 
     def move_to(self, target):
         return self.transform(target=target)
 
-    def resize(self, dimension):
-        return self.transform(dimension=dimension)
+    def resize(self, dim):
+        return self.transform(dim=dim)
 
     def __contains__(self, other):
         if isinstance(other, tuple) and tuple(map(type, other)) == (int, int):
