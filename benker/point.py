@@ -7,6 +7,7 @@ Simple *Point* tuple with *x*, *y* coordinates.
 """
 import collections
 
+from benker.dimension import Dimension
 from benker.utils import int_to_alphabet
 
 
@@ -29,25 +30,27 @@ class Point(collections.namedtuple('Point', ['x', 'y'])):
     def __str__(self):
         return int_to_alphabet(self.x) + str(self.y)
 
+    def __add__(self, dim):
+        dim_type = type(dim)
+        if dim_type is Dimension:
+            return Point(self.x + dim.width, self.y + dim.height)
+        elif dim_type is tuple:
+            return Point(self.x + dim[0], self.y + dim[1])
+        elif dim_type is int:
+            return Point(self.x + dim, self.y + dim)
+        else:
+            raise TypeError(repr(dim_type))
+
+    def __sub__(self, dim):
+        dim_type = type(dim)
+        if dim_type is Dimension:
+            return Point(self.x - dim.width, self.y - dim.height)
+        elif dim_type is tuple:
+            return Point(self.x - dim[0], self.y - dim[1])
+        elif dim_type is int:
+            return Point(self.x - dim, self.y - dim)
+        else:
+            raise TypeError(repr(dim_type))
+
 
 PT_ORIGIN = Point(1, 1)
-
-
-class Dimension(collections.namedtuple('Dimension', ['width', 'height'])):
-    """
-    Dimension of a cell: *width* is the number of columns and *height* is the number of row.
-
-    Usage:
-
-    >>> from benker.point import Dimension
-
-    >>> dim = Dimension(2, 1)
-    >>> dim
-    Dimension(width=2, height=1)
-    >>> str(dim)
-    '(2 x 1)'
-    """
-    __slots__ = ()
-
-    def __str__(self):
-        return "({width} x {height})".format(width=self.width, height=self.height)

@@ -10,6 +10,7 @@ Benker's documentation |version|!
    :maxdepth: 2
    :caption: Contents:
 
+   tuto/index.rst
 
 
 Indices and tables
