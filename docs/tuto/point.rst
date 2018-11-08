@@ -46,7 +46,7 @@ It represents the width and the height of a cell in a grid.
 
     >>> dim = Dimension(4, 5)
 
-The representation of a dimension is "(*width*, *height*):
+The representation of a dimension is "(*width* x *height*):
 
     >>> print(dim)
     (4 x 5)
