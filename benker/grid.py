@@ -9,7 +9,7 @@ A grid of cells.
     :hide:
 
     >>> from benker.cell import Cell
-    >>> from benker.point import Point
+    >>> from benker.coord import Coord
     >>> from benker.box import Box
 
 Example of grid::
@@ -35,27 +35,27 @@ You can retrieve the grid cells as follow:
 .. doctest:: grid_demo
 
     >>> grid[1, 1]
-    <Cell('red', styles={}, type='body', width=1, height=2)>
+    <Cell('red', styles={}, type='body', x=1, y=1, width=1, height=2)>
     >>> grid[2, 1]
-    <Cell('pink', styles={}, type='body', width=2, height=1)>
+    <Cell('pink', styles={}, type='body', x=2, y=1, width=2, height=1)>
     >>> grid[2, 2]
-    <Cell('blue', styles={}, type='body', width=1, height=1)>
+    <Cell('blue', styles={}, type='body', x=2, y=2, width=1, height=1)>
     >>> grid[3, 3]
     Traceback (most recent call last):
         ...
-    KeyError: (3, 3)
+    KeyError: Coord(x=3, y=3)
 
-A grid has a bounding box, useful to get the grid dimensions:
+A grid has a bounding box, useful to get the grid sizes:
 
     >>> grid.bounding_box
-    Box(min=Point(x=1, y=1), max=Point(x=3, y=2))
-    >>> grid.bounding_box.dim
-    Dimension(width=3, height=2)
+    Box(min=Coord(x=1, y=1), max=Coord(x=3, y=2))
+    >>> grid.bounding_box.size
+    Size(width=3, height=2)
 
 You can expand the cell size horizontally or vertically:
 
     >>> grid.expand((2, 2), width=1)
-    <Cell('blue', styles={}, type='body', width=2, height=1)>
+    <Cell('blue', styles={}, type='body', x=2, y=2, width=2, height=1)>
     >>> print(grid)
     +-----------+-----------------------+
     |    red    |   pink                |
@@ -66,7 +66,7 @@ You can expand the cell size horizontally or vertically:
 The content of the merged cells is merged too:
 
     >>> grid.merge((2, 1), (3, 2), content_appender=lambda a, b: "/".join([a, b]))
-    <Cell('pink/blue', styles={}, type='body', width=2, height=2)>
+    <Cell('pink/blue', styles={}, type='body', x=2, y=1, width=2, height=2)>
     >>> print(grid)
     +-----------+-----------------------+
     |    red    | pink/blue             |
@@ -79,50 +79,48 @@ import collections
 import operator
 
 from benker.box import Box
-from benker.dimension import Dimension
+from benker.coord import Coord
 from benker.drawing import draw
-from benker.point import Point
+from benker.size import Size
 
 
-def _get_point(coord):
-    types = tuple(map(type, coord))
-    if types == (int, int):
-        min_x, min_y = coord
-    elif types == (Point,):
-        min_x, min_y = coord[0]
-    elif types == (Box,):
-        min_x, min_y = coord.min
-    else:
-        raise TypeError(repr(types))
-    return Point(min_x, min_y)
+def _get_coord(coord):
+    coord_type = type(coord)
+    if coord_type is Coord:
+        return coord
+    elif coord_type is tuple and tuple(map(type, coord)) == (int, int):
+        return Coord(*coord)
+    raise TypeError(repr(coord_type))
 
 
 class Grid(collections.MutableMapping):
     def __init__(self, cells=None):
+        # fixme: verigier les cells (disjointes)
         self._cells = [] if cells is None else sorted(cells)
 
     def __contains__(self, coord):
-        point = _get_point(coord)
-        return any(point in cell for cell in self._cells)
+        # fixme: algo fifferent is Box car tenir compose de box.min et box.max
+        coord = _get_coord(coord)
+        return any(coord in cell for cell in self._cells)
 
     def __getitem__(self, coord):
-        point = _get_point(coord)
+        coord = _get_coord(coord)
         for cell in self._cells:
-            if point in cell:
+            if coord in cell:
                 return cell
         raise KeyError(coord)
 
     def __delitem__(self, coord):
-        point = _get_point(coord)
+        coord = _get_coord(coord)
         for cell in self._cells[:]:
-            if point in cell:
+            if coord in cell:
                 self._cells.remove(cell)
                 return
         raise KeyError(coord)
 
     def __setitem__(self, coord, new_cell):
-        point = _get_point(coord)  # type: Point
-        new_cell = new_cell.move_to(point)
+        coord = _get_coord(coord)  # type: Coord
+        new_cell = new_cell.move_to(coord)
         for cell in self._cells[:]:
             if cell.box.intersect(new_cell.box):
                 raise KeyError(coord)
@@ -148,10 +146,10 @@ class Grid(collections.MutableMapping):
         raise ValueError("grid is empty")
 
     def merge(self, start, end, content_appender=None):
-        start_pt = _get_point(start)
-        end_pt = _get_point(end)
+        start_coord = _get_coord(start)
+        end_coord = _get_coord(end)
         content_appender = content_appender or operator.__add__
-        new_box = Box(start_pt, end_pt)
+        new_box = Box(start_coord, end_coord)
         merged_cells = []
         unchanged_cells = []
         for cell in self._cells:
@@ -165,7 +163,7 @@ class Grid(collections.MutableMapping):
             # nothing to merge
             raise ValueError((start, end))
         first = merged_cells.pop(0)
-        new_cell = first.transform(target=new_box.min, dim=new_box.dim)
+        new_cell = first.transform(coord=new_box.min, size=new_box.size)
         for cell in merged_cells:
             new_cell.content = content_appender(new_cell.content, cell.content)
             new_cell.styles.update(cell.styles)
@@ -179,5 +177,5 @@ class Grid(collections.MutableMapping):
         content_appender = content_appender or operator.__add__
         box = self[coord].box
         start = box.min
-        end = box.max + Dimension(width, height)
+        end = box.max + Size(width, height)
         return self.merge(start, end, content_appender=content_appender)

@@ -5,6 +5,7 @@ Utils
 
 Utility functions
 """
+# fixme: renommer le module "alphabet"
 
 try:
     from string import uppercase as ascii_uppercase

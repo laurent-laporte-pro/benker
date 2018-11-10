@@ -3,23 +3,23 @@ u"""
 Box
 ===
 
-A *Box* is a rectangular area defined by two *Points*:
+A *Box* is a rectangular area defined by two coordinates:
 
-- the top-left corner of the rectangle: the *min* point,
-- the bottom-right corner of the rectangle: the *max* point.
+- the top-left corner of the rectangle: the *min* coord,
+- the bottom-right corner of the rectangle: the *max* coord.
 
 .. doctest:: box_demo
     :hide:
 
     >>> from benker.box import Box
-    >>> from benker.point import Point
+    >>> from benker.coord import Coord
 
 To instantiate a :class:`~benker.box.Box`, you can do:
 
 .. doctest:: box_demo
 
-    >>> b1 = Box(Point(5, 6), Point(7, 8))
-    >>> b2 = Box(Point(5, 6))
+    >>> b1 = Box(Coord(5, 6), Coord(7, 8))
+    >>> b2 = Box(Coord(5, 6))
     >>> b3 = Box(1, 2, 2, 3)
     >>> b4 = Box(1, 2)
     >>> b5 = Box(b1)
@@ -36,26 +36,26 @@ To instantiate a :class:`~benker.box.Box`, you can do:
     A2
     E6:G8
 
-You can calculate the *width* and *eight* of boxes:
+You can calculate the *width* and *height* of boxes:
 
 .. doctest:: box_demo
 
-    >>> b1 = Box(Point(5, 6), Point(6, 8))
+    >>> b1 = Box(Coord(5, 6), Coord(6, 8))
     >>> b1.width, b1.height
     (2, 3)
 
-    >>> b2 = Box(Point(5, 6))
+    >>> b2 = Box(Coord(5, 6))
     >>> b2.width, b2.height
     (1, 1)
 
-You determine if a *Point* or a *Box* is included in a *Box*:
+You can determine if a *Coord* is included in a *Box*:
 
 .. doctest:: box_demo
 
-    >>> top_left = Point(5, 6)
-    >>> top_right = Point(6, 6)
-    >>> bottom_left = Point(5, 8)
-    >>> bottom_right = Point(6, 8)
+    >>> top_left = Coord(5, 6)
+    >>> top_right = Coord(6, 6)
+    >>> bottom_left = Coord(5, 8)
+    >>> bottom_right = Coord(6, 8)
 
     >>> b1 = Box(top_left, bottom_right)
 
@@ -68,19 +68,19 @@ You determine if a *Point* or a *Box* is included in a *Box*:
     >>> bottom_right in b1
     True
 
-    >>> Point(7, 6) in b1
+    >>> Coord(7, 6) in b1
     False
 
     >>> (5, 7) in b1
     True
 
-You determine two boxes intersect each other, or are disjoints:
+You can determine if two boxes intersect each other, or are disjoints:
 
 .. doctest:: box_demo
 
-    >>> b1 = Box(Point(5, 6), Point(6, 8))
-    >>> b2 = Box(Point(6, 6), Point(6, 7))
-    >>> b3 = Box(Point(7, 6), Point(7, 8))
+    >>> b1 = Box(Coord(5, 6), Coord(6, 8))
+    >>> b2 = Box(Coord(6, 6), Coord(6, 7))
+    >>> b3 = Box(Coord(7, 6), Coord(7, 8))
     >>> b2.intersect(b3)
     False
     >>> b1.isdisjoint(b2)
@@ -96,15 +96,17 @@ You determine two boxes intersect each other, or are disjoints:
 import collections
 import functools
 
-from benker.dimension import Dimension
-from benker.point import Point
+from benker.coord import Coord
+from benker.size import Size
 
 
 @functools.total_ordering
 class Box(collections.namedtuple('Box', ['min', 'max'])):
     """
-    A *Box* is a rectangular area defined by a *min* and
-    a *max* :class:`~benker.point.Point`.
+    A *Box* is a rectangular area defined by two coordinates:
+
+    - the top-left corner of the rectangle: the *min* coord,
+    - the bottom-right corner of the rectangle: the *max* coord.
 
     Usage:
 
@@ -112,10 +114,10 @@ class Box(collections.namedtuple('Box', ['min', 'max'])):
 
     >>> box = Box(1, 1, 5, 3)
     >>> box
-    Box(min=Point(x=1, y=1), max=Point(x=5, y=3))
+    Box(min=Coord(x=1, y=1), max=Coord(x=5, y=3))
 
-    :ivar Point min: top-left corner of the rectangle.
-    :ivar Point max: bottom-right corner of the rectangle.
+    :ivar Coord min: top-left corner of the rectangle.
+    :ivar Coord max: bottom-right corner of the rectangle.
     """
     __slots__ = ()
 
@@ -126,13 +128,13 @@ class Box(collections.namedtuple('Box', ['min', 'max'])):
         :param args:
             Arguments could be:
 
-            - top-left and bottom-right points of the box: Point(*min_pt*, *max_pt*);
-            - top-left coordinates and box dimensions: Point(*min_pt*, *max_pt*), Dimension(*width*, *height*);
-            - top-left point of the box: Point(*min_pt*, *max_pt*),
-              assuming box width is (1, 1),
+            - top-left and bottom-right coordinates of the box: Coord(*min_coord*, *max_coord*);
+            - top-left coordinates and box size: Coord(*min_coord*, *max_coord*), Size(*width*, *height*);
+            - top-left coordinates of the box: Coord(*min_coord*, *max_coord*),
+              assuming box size is (1, 1),
             - coordinates of the box: *min_x*, *min_y*, *max_x*, *max_y*;
-            - coordinates of the top-left point: *min_x*, *min_y*,
-              assuming box width is (1, 1);
+            - coordinates of the top-left coord: *min_x*, *min_y*,
+              assuming box size is (1, 1);
             - another box.
 
         :return: The new *Box*.
@@ -143,13 +145,13 @@ class Box(collections.namedtuple('Box', ['min', 'max'])):
         :raises ValueError:
         """
         types = tuple(map(type, args))
-        if types == (Point, Point):
+        if types == (Coord, Coord):
             min_x, min_y = args[0]
             max_x, max_y = args[1]
-        elif types == (Point, Dimension):
+        elif types == (Coord, Size):
             min_x, min_y = args[0]
             max_x, max_y = args[0] + args[1] - 1
-        elif types == (Point,):
+        elif types == (Coord,):
             min_x, min_y = args[0]
             max_x, max_y = min_x, min_y
         elif types == (int, int, int, int):
@@ -163,10 +165,10 @@ class Box(collections.namedtuple('Box', ['min', 'max'])):
         else:
             raise TypeError(repr(types))
         if 0 < min_x <= max_x and 0 < min_y <= max_y:
-            min_pt = Point(min_x, min_y)
-            max_pt = Point(max_x, max_y)
+            min_coord = Coord(min_x, min_y)
+            max_coord = Coord(max_x, max_y)
             # noinspection PyArgumentList
-            return super(Box, cls).__new__(cls, min_pt, max_pt)
+            return super(Box, cls).__new__(cls, min_coord, max_coord)
         raise ValueError(*args)
 
     def __str__(self):
@@ -185,39 +187,30 @@ class Box(collections.namedtuple('Box', ['min', 'max'])):
         return self.max.y - self.min.y + 1
 
     @property
-    def dim(self):
-        return Dimension(self.width, self.height)
+    def size(self):
+        return Size(self.width, self.height)
 
-    def transform(self, target=None, dim=None):
-        min_pt = target or self.min
-        dim = dim or self.dim
-        max_pt = min_pt + dim - 1
-        return Box(min_pt, max_pt)
+    def transform(self, coord=None, size=None):
+        min_coord = coord or self.min
+        size = size or self.size
+        max_coord = min_coord + size - 1
+        return Box(min_coord, max_coord)
 
-    def move_to(self, target):
-        return self.transform(target=target)
+    def move_to(self, coord):
+        return self.transform(coord=coord)
 
-    def resize(self, dim):
-        return self.transform(dim=dim)
+    def resize(self, size):
+        return self.transform(size=size)
 
-    def __contains__(self, other):
-        if isinstance(other, tuple) and tuple(map(type, other)) == (int, int):
-            return self.min.x <= other[0] <= self.max.x and self.min.y <= other[1] <= self.max.y
-        elif isinstance(other, Point):
-            # The ``None`` value means "anywhere"
-            if other.x is None and other.y is None:
-                return True
-            elif other.x is None:
-                return self.min.y <= other.y <= self.max.y
-            elif other.y is None:
-                return self.min.x <= other.x <= self.max.x
-            else:
-                return self.min.x <= other.x <= self.max.x and self.min.y <= other.y <= self.max.y
-        elif isinstance(other, Box):
-            return ((self.min.x <= other.min.x <= self.max.x and self.min.y <= other.min.y <= self.max.y) and
-                    (self.min.x <= other.max.x <= self.max.x and self.min.y <= other.max.y <= self.max.y))
-        else:
-            raise TypeError(repr(type(other)))
+    def __contains__(self, coord):
+        coord_type = type(coord)
+        if coord_type is Coord:
+            return self.min.x <= coord.x <= self.max.x and self.min.y <= coord.y <= self.max.y
+        elif coord_type is tuple and tuple(map(type, coord)) == (int, int):
+            return self.min.x <= coord[0] <= self.max.x and self.min.y <= coord[1] <= self.max.y
+        elif coord_type is Box:
+            return coord.min in self and coord.max in self
+        raise TypeError(repr(coord_type))
 
     def intersect(self, that):
         # type: (Box) -> bool
@@ -235,15 +228,15 @@ class Box(collections.namedtuple('Box', ['min', 'max'])):
         Usage:
 
         >>> from benker.box import Box
-        >>> from benker.point import Point
+        >>> from benker.coord import Coord
 
-        >>> b1 = Box(Point(3, 2), Point(6, 4))
-        >>> b2 = Box(Point(4, 3), Point(5, 7))
+        >>> b1 = Box(Coord(3, 2), Coord(6, 4))
+        >>> b2 = Box(Coord(4, 3), Coord(5, 7))
         >>> b1.union(b2)
-        Box(min=Point(x=3, y=2), max=Point(x=6, y=7))
+        Box(min=Coord(x=3, y=2), max=Coord(x=6, y=7))
 
         >>> b1 | b2
-        Box(min=Point(x=3, y=2), max=Point(x=6, y=7))
+        Box(min=Coord(x=3, y=2), max=Coord(x=6, y=7))
 
         :param others: collections of boxes
 
@@ -251,10 +244,10 @@ class Box(collections.namedtuple('Box', ['min', 'max'])):
         """
         boxes = (self,) + others
         min_list = tuple(box.min for box in boxes)
-        min_pt = Point(min(pt.x for pt in min_list), min(pt.y for pt in min_list))
+        min_coord = Coord(min(coord.x for coord in min_list), min(coord.y for coord in min_list))
         max_list = tuple(box.max for box in boxes)
-        max_pt = Point(max(pt.x for pt in max_list), max(pt.y for pt in max_list))
-        bounding_box = Box(min_pt, max_pt)
+        max_coord = Coord(max(coord.x for coord in max_list), max(coord.y for coord in max_list))
+        bounding_box = Box(min_coord, max_coord)
         assert all(box in bounding_box for box in boxes)
         return bounding_box
 
@@ -267,28 +260,32 @@ class Box(collections.namedtuple('Box', ['min', 'max'])):
         Usage:
 
         >>> from benker.box import Box
-        >>> from benker.point import Point
+        >>> from benker.coord import Coord
 
-        >>> b1 = Box(Point(3, 2), Point(6, 4))
-        >>> b2 = Box(Point(4, 3), Point(5, 7))
+        >>> b1 = Box(Coord(3, 2), Coord(6, 4))
+        >>> b2 = Box(Coord(4, 3), Coord(5, 7))
         >>> b1.intersection(b2)
-        Box(min=Point(x=4, y=3), max=Point(x=5, y=4))
+        Box(min=Coord(x=4, y=3), max=Coord(x=5, y=4))
 
         >>> b1 & b2
-        Box(min=Point(x=4, y=3), max=Point(x=5, y=4))
+        Box(min=Coord(x=4, y=3), max=Coord(x=5, y=4))
 
         :param others: collections of boxes
 
         :return: The inner box of all the boxes.
+
+        :raises ValueError: if the two boxes are disjoint.
         """
         boxes = (self,) + others
         min_list = tuple(box.min for box in boxes)
-        min_pt = Point(max(pt.x for pt in min_list), max(pt.y for pt in min_list))
+        min_coord = Coord(max(coord.x for coord in min_list), max(coord.y for coord in min_list))
         max_list = tuple(box.max for box in boxes)
-        max_pt = Point(min(pt.x for pt in max_list), min(pt.y for pt in max_list))
-        inner_box = Box(min_pt, max_pt)
-        assert all(inner_box in box for box in boxes)
-        return inner_box
+        max_coord = Coord(min(coord.x for coord in max_list), min(coord.y for coord in max_list))
+        try:
+            return Box(min_coord, max_coord)
+        except ValueError:
+            # the two boxes are disjoint
+            raise ValueError(boxes)
 
     __and__ = intersection
 
@@ -303,16 +300,16 @@ class Box(collections.namedtuple('Box', ['min', 'max'])):
 
         >>> from benker.box import Box
 
-        >>> b1 = Box(Point(3, 2), Point(6, 4))
+        >>> b1 = Box(Coord(3, 2), Coord(6, 4))
         >>> b1 < b1
         False
-        >>> b1 < Box(Point(3, 2), Point(6, 5))
+        >>> b1 < Box(Coord(3, 2), Coord(6, 5))
         True
-        >>> b1 < Box(Point(3, 2), Point(7, 4))
+        >>> b1 < Box(Coord(3, 2), Coord(7, 4))
         True
-        >>> b1 < Box(Point(4, 2), Point(6, 4))
+        >>> b1 < Box(Coord(4, 2), Coord(6, 4))
         True
-        >>> b1 < Box(Point(3, 3), Point(6, 4))
+        >>> b1 < Box(Coord(3, 3), Coord(6, 4))
         True
 
         :param other: other box
