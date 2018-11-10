@@ -8,7 +8,7 @@ Coordinates of a cell: tuple with *x*, *y* coordinates.
 import collections
 
 from benker.size import Size
-from benker.utils import int_to_alphabet
+from benker.alphabet import int_to_alphabet
 
 
 class Coord(collections.namedtuple('Coord', ['x', 'y'])):

@@ -1,9 +1,9 @@
 # coding: utf-8
 """
-Utils
-=====
+Alphabet
+========
 
-Utility functions
+Utility functions to convert integer into a base-26 "number", and vis versa.
 """
 # fixme: renommer le module "alphabet"
 
@@ -19,7 +19,7 @@ def int_to_alphabet(value, alphabet=ascii_uppercase):
 
     Usage:
 
-    >>> from benker.utils import int_to_alphabet
+    >>> from benker.alphabet import int_to_alphabet
 
     >>> int_to_alphabet(1)
     'A'
@@ -63,7 +63,7 @@ def alphabet_to_int(letters, alphabet=ascii_uppercase):
     """
     Convert a base-26 "number" using uppercase ASCII letters into an integer.
 
-    >>> from benker.utils import alphabet_to_int
+    >>> from benker.alphabet import alphabet_to_int
 
     >>> alphabet_to_int("A")
     1
