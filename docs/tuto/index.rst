@@ -7,3 +7,4 @@ Tutorials
    size.rst
    coord.rst
    box.rst
+   grid.rst

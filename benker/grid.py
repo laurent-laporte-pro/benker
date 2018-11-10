@@ -20,8 +20,8 @@ Example of grid::
 
     >>> grid = Grid()
     >>> grid[1, 1] = Cell("red", height=2)
-    >>> grid[2, 1] = Cell(content="pink", width=2)
-    >>> grid[2, 2] = Cell(content="blue")
+    >>> grid[2, 1] = Cell("pink", width=2)
+    >>> grid[2, 2] = Cell("blue")
 
     >>> print(grid)
     +-----------+-----------------------+
@@ -94,12 +94,31 @@ def _get_coord(coord):
 
 
 class Grid(collections.MutableMapping):
+    """
+    Collection of :class:`~benker.cell.Cell` objects ordered in a grid of rows and columns.
+    """
     def __init__(self, cells=None):
-        # fixme: verigier les cells (disjointes)
-        self._cells = [] if cells is None else sorted(cells)
+        """
+        Construct a grid from an iterable of cells.
+        All cells must be disjoints.
+
+        Cells are ordered according to the total ordering of the cell boxes.
+
+        :type  cells: typing.Iterable[benker.cell.Cell]
+        :param cells: Collection of cells.
+
+        :raises KeyError: if at least one cell intersect another one.
+        """
+        self._cells = []
+        cells = cells or []
+        for cell in cells:
+            self.__setitem__(cell.min, cell)
+
+    def __repr__(self):
+        cls = self.__class__.__name__
+        return "{cls}({cells!r})".format(cls=cls, cells=self._cells)
 
     def __contains__(self, coord):
-        # fixme: algo fifferent is Box car tenir compose de box.min et box.max
         coord = _get_coord(coord)
         return any(coord in cell for cell in self._cells)
 
