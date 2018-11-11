@@ -82,6 +82,8 @@ You can pretty print a grid:
     +-----------+-----------+-----------+
 
 
+.. _benker__grid__properties:
+
 Properties
 ----------
 
@@ -117,18 +119,24 @@ The bounding box of a grid is the bounding box of all cells:
         ValueError: grid is empty
 
 
+.. _benker__grid__operations:
+
 Operations
 ----------
+
+.. _benker__grid__contains:
 
 Contains
 ~~~~~~~~
 
 You can check if a point, defined by its coordinates (tuple (*x*, *y*) or
-:class:`~benker.coord.Coord` instance), is contained in a grid.
+:class:`~benker.coord.Coord` instance), is contained in a
+:class:`~benker.grid.Grid`.
 
-The rule is simple: a grid contains a point if it exists a cell of the grid
-which contains that point. In other words, a point may be contained in the
-bounding box of a grid but not in any cell if there are some gaps in the grid.
+The rule is simple: a grid contains a point if it exists a
+:class:`~benker.cell.Cell` of the grid which contains that point. In other
+words, a point may be contained in the bounding box of a grid but not in any
+cell if there are some gaps in the grid.
 
 .. doctest:: grid
 
@@ -208,6 +216,8 @@ You can delete a cell at a given location:
     |           |   blue    |   gray    |
     +-----------+-----------+-----------+
 
+
+.. _benker__grid__merging:
 
 Merging/expanding
 ~~~~~~~~~~~~~~~~~

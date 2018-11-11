@@ -84,19 +84,11 @@ from benker.drawing import draw
 from benker.size import Size
 
 
-def _get_coord(coord):
-    coord_type = type(coord)
-    if coord_type is Coord:
-        return coord
-    elif coord_type is tuple and tuple(map(type, coord)) == (int, int):
-        return Coord(*coord)
-    raise TypeError(repr(coord_type))
-
-
 class Grid(collections.MutableMapping):
     """
     Collection of :class:`~benker.cell.Cell` objects ordered in a grid of rows and columns.
     """
+
     def __init__(self, cells=None):
         """
         Construct a grid from an iterable of cells.
@@ -119,18 +111,18 @@ class Grid(collections.MutableMapping):
         return "{cls}({cells!r})".format(cls=cls, cells=self._cells)
 
     def __contains__(self, coord):
-        coord = _get_coord(coord)
+        coord = Coord.from_value(coord)
         return any(coord in cell for cell in self._cells)
 
     def __getitem__(self, coord):
-        coord = _get_coord(coord)
+        coord = Coord.from_value(coord)
         for cell in self._cells:
             if coord in cell:
                 return cell
         raise KeyError(coord)
 
     def __delitem__(self, coord):
-        coord = _get_coord(coord)
+        coord = Coord.from_value(coord)
         for cell in self._cells[:]:
             if coord in cell:
                 self._cells.remove(cell)
@@ -138,7 +130,7 @@ class Grid(collections.MutableMapping):
         raise KeyError(coord)
 
     def __setitem__(self, coord, new_cell):
-        coord = _get_coord(coord)  # type: Coord
+        coord = Coord.from_value(coord)  # type: Coord
         new_cell = new_cell.move_to(coord)
         for cell in self._cells[:]:
             if cell.box.intersect(new_cell.box):
@@ -165,8 +157,8 @@ class Grid(collections.MutableMapping):
         raise ValueError("grid is empty")
 
     def merge(self, start, end, content_appender=None):
-        start_coord = _get_coord(start)
-        end_coord = _get_coord(end)
+        start_coord = Coord.from_value(start)
+        end_coord = Coord.from_value(end)
         content_appender = content_appender or operator.__add__
         new_box = Box(start_coord, end_coord)
         merged_cells = []

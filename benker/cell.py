@@ -144,6 +144,9 @@ class Cell(object):
     def height(self):
         return self.box.height
 
+    def __contains__(self, other):
+        return other in self.box
+
     # total ordering based on Box ordering
 
     def __lt__(self, other):
@@ -152,9 +155,6 @@ class Cell(object):
         elif isinstance(other, Box):
             return self.box < other
         return NotImplemented
-
-    def __contains__(self, other):
-        return other in self.box
 
     def transform(self, coord=None, size=None):
         box = self.box.transform(coord=coord, size=size)

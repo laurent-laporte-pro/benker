@@ -3,6 +3,8 @@
 Box
 ===
 
+.. _benker__box__description:
+
 Description
 -----------
 
@@ -54,8 +56,8 @@ rows are represented by numbers.
     >>> print(Box(Coord(2, 5), Size(3, 2)))
     B5:D6
 
-.. _benker__box__properties:
 
+.. _benker__box__properties:
 
 Properties
 ----------
@@ -95,8 +97,12 @@ You can use the following properties to extract information from a *box*:
         AttributeError: can't set attribute
 
 
+.. _benker__box__operations:
+
 Operations
 ----------
+
+.. _benker__box__contains:
 
 Contains
 ~~~~~~~~
@@ -157,6 +163,8 @@ You can check if a :class:`~benker.box.Box` is contained in another box:
     False
 
 
+.. _benker__box__intersection:
+
 Intersection and Union
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -214,6 +222,8 @@ You can use the "|" operator to do that:
     >>> b1 | b2
     Box(min=Coord(x=1, y=1), max=Coord(x=4, y=4))
 
+
+.. _benker__box__total_ordering:
 
 Total ordering
 --------------

@@ -191,8 +191,8 @@ class Box(collections.namedtuple('Box', ['min', 'max'])):
         return Size(self.width, self.height)
 
     def transform(self, coord=None, size=None):
-        min_coord = coord or self.min
-        size = size or self.size
+        min_coord = self.min if coord is None else Coord.from_value(coord)
+        size = self.size if size is None else Size.from_value(size)
         max_coord = min_coord + size - 1
         return Box(min_coord, max_coord)
 

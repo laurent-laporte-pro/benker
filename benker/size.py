@@ -61,3 +61,19 @@ class Size(collections.namedtuple('Size', ['width', 'height'])):
 
     def __pos__(self):
         return Size(self.width, self.height)
+
+    @classmethod
+    def from_value(cls, value):
+        """
+        Convert a value of type :class:`tuple` to a :class:`~benker.size.Size` object.
+
+        :param value: tuple of two integers or *Size* object.
+
+        :return: Newly created object.
+        """
+        value_type = type(value)
+        if value_type is cls:
+            return value
+        elif value_type is tuple and tuple(map(type, value)) == (int, int):
+            return cls(*value)
+        raise TypeError(repr(value_type))
