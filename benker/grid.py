@@ -151,6 +151,7 @@ class Grid(collections.MutableMapping):
 
     @property
     def bounding_box(self):
+        """ Bounding box of the grid. """
         if len(self):
             boxes = [cell.box for cell in self._cells]
             bounding_box = boxes[0].union(*boxes[1:])
