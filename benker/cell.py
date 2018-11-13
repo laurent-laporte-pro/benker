@@ -135,6 +135,7 @@ class Cell(Styled):
             dropping the second one. In other words, the resulting cell type is
             the type of the most top-left cell type of the merged cells.
     """
+    __slots__ = ('content', 'type', '_box')
 
     def __init__(self, content, styles=None, type="body", x=1, y=1, width=1, height=1):
         super(Cell, self).__init__(styles=styles)

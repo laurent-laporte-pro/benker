@@ -88,6 +88,7 @@ class Grid(collections.MutableMapping):
     """
     Collection of :class:`~benker.cell.Cell` objects ordered in a grid of rows and columns.
     """
+    __slots__ = ('_cells',)
 
     def __init__(self, cells=None):
         """
