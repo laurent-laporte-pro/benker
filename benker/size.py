@@ -3,12 +3,16 @@
 Cell size
 =========
 
-Size of a cell: *width* is the number of columns and *height* is the number of row.
+A :class:`~benker.size.Size` object is used to represent the *width* and *height* of a :class:`~benker.cell.Cell`.
+The *width* is the number of spanned columns and the *height* is the number of spanned rows.
+The default cell size is (1, 1).
+
+This module defines the :class:`~benker.size.Size` tuple and give some classic use cases.
 """
 import collections
 
 
-class Size(collections.namedtuple('Size', ['width', 'height'])):
+class Size(collections.namedtuple('SizeTuple', ['width', 'height'])):
     """
     Size of a cell: *width* is the number of columns and *height* is the number of row.
 
@@ -19,8 +23,37 @@ class Size(collections.namedtuple('Size', ['width', 'height'])):
     >>> size = Size(2, 1)
     >>> size
     Size(width=2, height=1)
+    >>> size.width
+    2
+    >>> size.height
+    1
     >>> str(size)
     '(2 x 1)'
+
+    You can use the "+" or "-" operators to increase or decrease the size:
+
+    >>> Size(2, 1) + Size(3, 3)
+    Size(width=5, height=4)
+    >>> Size(5, 4) - Size(3, 3)
+    Size(width=2, height=1)
+
+    You can expand the *width* and *height* to a given factor using the "*" operator:
+
+    >>> Size(2, 1) * 2
+    Size(width=4, height=2)
+
+    You can have negative or positive sizes using the unary operators "-" and "+":
+
+    >>> +Size(3, 2)
+    Size(width=3, height=2)
+    >>> -Size(3, 2)
+    Size(width=-3, height=-2)
+
+    .. note::
+
+       A :class:`~benker.cell.Cell` object cannot have a negative or nul sizes,
+       but you can need this values for calculation, for instance when you want to
+       reduce the cell size.
     """
     __slots__ = ()
 
@@ -65,11 +98,14 @@ class Size(collections.namedtuple('Size', ['width', 'height'])):
     @classmethod
     def from_value(cls, value):
         """
-        Convert a value of type :class:`tuple` to a :class:`~benker.size.Size` object.
+        Convert a value of type :class:`tuple` to a :class:`~benker.size.Size` tuple.
 
-        :param value: tuple of two integers or *Size* object.
+        :param value: tuple of two integers or :class:`~benker.size.Size` tuple.
 
         :return: Newly created object.
+
+        :raises TypeError:
+            if the value is not a tuple of integers nor a :class:`~benker.size.Size` tuple.
         """
         value_type = type(value)
         if value_type is cls:

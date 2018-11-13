@@ -7,10 +7,16 @@ A :class:`~benker.cell.Cell` object stores the *content* of a :class:`~benker.gr
 
 A cell can have *styles*, a dictionary of key-value properties attached to the cell.
 
-The cell *type* is "body" by default, but can also be "header", "footer" or whatever…
+A cell has a *type* to distinguish between header, body and footer cells.
+The default type is "body", but you can also use "header", "footer" or whatever…
 
-The cell *width* and *height* is (1, 1) by default, but you can increase them
-to represent horizontal or vertical spanning. The sizes cannot be null.
+A cell has top-left coordinates: *x* and *y*. The default coordinates is (1, 1):
+this is the top-left coordinate of the cell box.
+The coordinates *x* and *y* cannot be null: grid coordinates are 1-indexed.
+
+A cell has a size: *width* and *height*. The default size is (1, 1), you can
+increase them to represent horizontal or vertical spanning.
+The *width* and the *height* cannot be null.
 
 .. doctest:: cell_demo
     :hide:
@@ -21,7 +27,7 @@ to represent horizontal or vertical spanning. The sizes cannot be null.
 
 To instantiate a :class:`~benker.cell.Cell`, you can do:
 
-.. doctest:: box_demo
+.. doctest:: cell_demo
 
     >>> c1 = Cell("c1")
     >>> c2 = Cell("c2", styles={'color': 'red'})
@@ -31,7 +37,7 @@ To instantiate a :class:`~benker.cell.Cell`, you can do:
 
 The string representation of a cell is the string representation of it's content:
 
-.. doctest:: box_demo
+.. doctest:: cell_demo
 
     >>> for cell in c1, c2, c3, c4, c5:
     ...     print(cell)
@@ -43,7 +49,7 @@ The string representation of a cell is the string representation of it's content
 
 On initialization, the cell min position is always (1, 1), a.k.a. the top-left.
 
-.. doctest:: box_demo
+.. doctest:: cell_demo
 
     >>> c1 = Cell("c1")
     >>> c1.min
@@ -55,7 +61,7 @@ On initialization, the cell min position is always (1, 1), a.k.a. the top-left.
 
 A cell can be moved to another position:
 
-.. doctest:: box_demo
+.. doctest:: cell_demo
 
     >>> c1 = Cell("c1", width=3, height=2)
     >>> c2 = c1.move_to(Coord(5, 3))
@@ -68,7 +74,7 @@ A cell can be moved to another position:
 
 You can check if a coord is inside the box:
 
-.. doctest:: box_demo
+.. doctest:: cell_demo
 
     >>> c1 = Cell("c1", width=3, height=2)
     >>> c2 = c1.move_to(Coord(5, 3))
@@ -88,7 +94,45 @@ from benker.box import Box
 @functools.total_ordering
 class Cell(object):
     """
-    A cell is a box with a *content*.
+    Cell of a grid.
+
+    :ivar content: user-defined cell content. It can be of any type: ``None``,
+        :class:`str`, :class:`int`, :class:`float`, a container (:class:`list`),
+        a XML element, etc. The same content can be shared by several cells, it's
+        your own responsibility to handle the copy (or deep copy) of the *content*
+        reference when needed.
+
+        .. note::
+
+            In a :class:`~benker.grid.Grid`, the :ref:`merging <benker__grid__merging>`
+            of two cell contents is done with the "+" operator (:func:`~operator.__add__`).
+            You can override this by using a *content_appender*, a two-arguments
+            function which will perform the concatenation of the two contents.
+
+    :type styles: dict[str, str]
+    :ivar styles: user-defined cell styles: a dictionary of key-value pairs.
+        This values are useful to store some HTML-like styles (border-style,
+        border-width, border-color, vertical-align, text-align, etc.).
+        Of course, we are not tied to the HTML-like styles, you can use your own
+        styles list.
+
+        .. note::
+
+            The style dictionary is always copied: in other words, key-value pairs
+            are copied but a shallow copy is done for the values (in general, it
+            is not a problem if you use non-mutable values like :class:`str`).
+
+    :type type: str
+    :ivar type: cell type: a way to distinguish the body cells, from the header and the footer.
+        The default value is "body", but you can use "header", "footer" or whatever
+        is suitable for your needs.
+
+        .. note::
+
+            In a :class:`~benker.grid.Grid`, the :ref:`merging <benker__grid__merging>`
+            of two cell types is done by keeping the first cell type and
+            dropping the second one. In other words, the resulting cell type is
+            the type of the most top-left cell type of the merged cells.
     """
 
     def __init__(self, content, styles=None, type="body", x=1, y=1, width=1, height=1):

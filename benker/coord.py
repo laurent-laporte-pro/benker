@@ -1,9 +1,13 @@
 # coding: utf-8
 """
-Cell coord
-========
+Cell Coordinates
+================
 
-Coordinates of a cell: tuple with *x*, *y* coordinates.
+A :class:`~benker.coord.Coord` object is used to represent the *x* and *y* positions of a :class:`~benker.cell.Cell`.
+The *x* is the left position (column number) and the *y* is the top position (row number).
+The default cell coordinates is (1, 1).
+
+This module defines the :class:`~benker.coord.Coord` tuple and give some classic use cases.
 """
 import collections
 
@@ -11,7 +15,7 @@ from benker.alphabet import int_to_alphabet
 from benker.size import Size
 
 
-class Coord(collections.namedtuple('Coord', ['x', 'y'])):
+class Coord(collections.namedtuple('CoordTuple', ['x', 'y'])):
     """
     Coordinates of a cell in a grid: *x* is the left column, *y* if the top row.
 
@@ -22,8 +26,28 @@ class Coord(collections.namedtuple('Coord', ['x', 'y'])):
     >>> coord = Coord(5, 3)
     >>> coord
     Coord(x=5, y=3)
+    >>> coord.x
+    5
+    >>> coord.y
+    3
     >>> str(coord)
     'E3'
+
+    You can use the "+" or "-" operators to move the coordinates:
+
+    >>> Coord(2, 1) + Size(3, 3)
+    Coord(x=5, y=4)
+    >>> Coord(5, 4) - Size(3, 3)
+    Coord(x=2, y=1)
+
+    .. important::
+
+       You cannot add or subtract two coordinates, only a coordinate and a size.
+
+       >>> Coord(2, 1) + Coord(3, 3)
+       Traceback (most recent call last):
+           ...
+       TypeError: <class 'benker.coord.Coord'>
     """
     __slots__ = ()
 
@@ -55,11 +79,14 @@ class Coord(collections.namedtuple('Coord', ['x', 'y'])):
     @classmethod
     def from_value(cls, value):
         """
-        Convert a value of type :class:`tuple` to a :class:`~benker.coord.Coord` object.
+        Convert a value of type :class:`tuple` to a :class:`~benker.coord.Coord` tuple.
 
-        :param value: tuple of two integers or *Coord* object.
+        :param value: tuple of two integers or :class:`~benker.coord.Coord` tuple.
 
         :return: Newly created object.
+
+        :raises TypeError:
+            if the value is not a tuple of integers nor a :class:`~benker.coord.Coord` tuple.
         """
         value_type = type(value)
         if value_type is cls:

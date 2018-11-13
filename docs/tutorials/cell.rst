@@ -17,7 +17,7 @@ A cell has top-left coordinates: *x* and *y*. The default coordinates is (1, 1):
 this is the top-left coordinate of the cell box.
 The coordinates *x* and *y* cannot be null: grid coordinates are 1-indexed.
 
-A call has a size: *width* and *height*. The default size is (1, 1), you can
+A cell has a size: *width* and *height*. The default size is (1, 1), you can
 increase them to represent horizontal or vertical spanning.
 The *width* and the *height* cannot be null.
 

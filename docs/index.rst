@@ -3,15 +3,15 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Benker's documentation |version|!
-=================================
+Benker's documentation |version|
+================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   tuto/index.rst
-
+   tutorials/index.rst
+   api/benker.rst
 
 Indices and tables
 ==================

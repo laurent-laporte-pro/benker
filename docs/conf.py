@@ -29,7 +29,6 @@ version = '0.1'
 # The full version, including alpha/beta/rc tags
 release = '0.1.0'
 
-
 # -- General configuration ---------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -73,7 +72,6 @@ exclude_patterns = []
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
-
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -91,6 +89,11 @@ html_theme = 'alabaster'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+html_favicon = "_static/benker-icon.png"
+html_logo = "_static/benker-logo-sidebar.png"
+html_title = "Benker Documentation ({})".format(version)
+html_show_sourcelink = False
+html_domain_indices = False
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -107,7 +110,6 @@ html_static_path = ['_static']
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'BenkerDoc'
-
 
 # -- Options for LaTeX output ------------------------------------------------
 
@@ -137,7 +139,6 @@ latex_documents = [
      'Laurent LAPORTE', 'manual'),
 ]
 
-
 # -- Options for manual page output ------------------------------------------
 
 # One entry per manual page. List of tuples
@@ -146,7 +147,6 @@ man_pages = [
     (master_doc, 'benker', 'Benker Documentation',
      [author], 1)
 ]
-
 
 # -- Options for Texinfo output ----------------------------------------------
 
@@ -158,7 +158,6 @@ texinfo_documents = [
      author, 'Benker', 'Organize your data in a spatial grid system for CALS, HTML, Open XML tables conversion.',
      'Miscellaneous'),
 ]
-
 
 # -- Options for Epub output -------------------------------------------------
 
@@ -179,7 +178,6 @@ epub_copyright = 'Laurent LAPORTE'
 
 # A list of files that should not be packed into the epub file.
 epub_exclude_files = ['search.html']
-
 
 # -- Extension configuration -------------------------------------------------
 

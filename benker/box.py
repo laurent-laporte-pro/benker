@@ -101,7 +101,7 @@ from benker.size import Size
 
 
 @functools.total_ordering
-class Box(collections.namedtuple('Box', ['min', 'max'])):
+class Box(collections.namedtuple('BoxTuple', ['min', 'max'])):
     """
     A *Box* is a rectangular area defined by two coordinates:
 
