@@ -30,6 +30,14 @@ benker.box module
     :undoc-members:
     :show-inheritance:
 
+benker.styled module
+--------------------
+
+.. automodule:: benker.styled
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 benker.cell module
 ------------------
 

@@ -7,5 +7,6 @@ Tutorials
    size.rst
    coord.rst
    box.rst
+   styled.rst
    cell.rst
    grid.rst

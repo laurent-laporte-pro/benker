@@ -89,10 +89,11 @@ You can check if a coord is inside the box:
 import functools
 
 from benker.box import Box
+from benker.styled import Styled
 
 
 @functools.total_ordering
-class Cell(object):
+class Cell(Styled):
     """
     Cell of a grid.
 
@@ -114,7 +115,7 @@ class Cell(object):
         This values are useful to store some HTML-like styles (border-style,
         border-width, border-color, vertical-align, text-align, etc.).
         Of course, we are not tied to the HTML-like styles, you can use your own
-        styles list.
+        list of styles.
 
         .. note::
 
@@ -136,8 +137,8 @@ class Cell(object):
     """
 
     def __init__(self, content, styles=None, type="body", x=1, y=1, width=1, height=1):
+        super(Cell, self).__init__(styles=styles)
         self.content = content
-        self.styles = styles
         self.type = type
         self._box = Box(x, y, x + width - 1, y + height - 1)
 
@@ -156,36 +157,33 @@ class Cell(object):
                 .format(cls=cls, self=self))
 
     @property
-    def styles(self):
-        return self._styles
-
-    @styles.setter
-    def styles(self, styles):
-        # each cell owns it's own copy of the styles
-        self._styles = {} if styles is None else styles.copy()
-
-    @property
     def box(self):
+        """ Bounding box of the cell. """
         return self._box
 
     @property
     def min(self):
+        """ Minimum coordinates of the cell -- top-left coordinates. """
         return self.box.min
 
     @property
     def max(self):
+        """ Maximum coordinates of the cell -- bottom-right coordinates. """
         return self.box.max
 
     @property
     def size(self):
+        """ Size of the cell -- (*with*, *height*). """
         return self.box.size
 
     @property
     def width(self):
+        """ Width of the cell -- columns spanning. """
         return self.box.width
 
     @property
     def height(self):
+        """ Height of the cell -- rows spanning. """
         return self.box.height
 
     def __contains__(self, other):
@@ -201,6 +199,18 @@ class Cell(object):
         return NotImplemented
 
     def transform(self, coord=None, size=None):
+        """
+        Transform the bounding box of the cell by making a move and a resize.
+
+        :type  coord: tuple[int, int] or benker.coord.Coord
+        :param coord: new top-left coordinates of the cell, by default it is unchanged.
+
+        :type  size: tuple[int, int] or benker.size.Size
+        :param size: new size of the cell, by default it is unchanged.
+
+        :rtype: benker.cell.Cell
+        :return: a copy of this cell after transformation.
+        """
         box = self.box.transform(coord=coord, size=size)
         cell = Cell(self.content,
                     styles=self.styles,
@@ -212,7 +222,29 @@ class Cell(object):
         return cell
 
     def move_to(self, coord):
+        """
+        Move the cell to the given coordinates.
+
+        See: :meth:`~benker.cell.Cell.transform`.
+
+        :type  coord: tuple[int, int] or benker.coord.Coord
+        :param coord: new top-left coordinates of the cell, by default it is unchanged.
+
+        :rtype: benker.cell.Cell
+        :return: a copy of this cell after transformation.
+        """
         return self.transform(coord=coord)
 
     def resize(self, size):
+        """
+        Resize the cell to the given size.
+
+        See: :meth:`~benker.cell.Cell.transform`.
+
+        :type  size: tuple[int, int] or benker.size.Size
+        :param size: new size of the cell, by default it is unchanged.
+
+        :rtype: benker.cell.Cell
+        :return: a copy of this cell after transformation.
+        """
         return self.transform(size=size)
