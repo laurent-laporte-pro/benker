@@ -34,7 +34,7 @@ class Styled(object):
         """
         Construct a styled object from a dictionary of styles.
 
-        :type  styles: dict[str, str]
+        :type  styles: typing.Dict[str, str]
         :param styles:
             Dictionary of key-value pairs, where *keys* are the style names.
         """

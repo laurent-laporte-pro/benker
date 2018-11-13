@@ -76,6 +76,7 @@ The content of the merged cells is merged too:
 """
 import bisect
 import collections
+import itertools
 import operator
 
 from benker.box import Box
@@ -192,3 +193,9 @@ class Grid(collections.MutableMapping):
         start = box.min
         end = box.max + Size(width, height)
         return self.merge(start, end, content_appender=content_appender)
+
+    def iter_rows(self):
+        """ Iterate the cells grouped by rows. """
+        cells = self._cells
+        for group, cells in itertools.groupby(cells, key=lambda c: c.min.y):
+            yield tuple(cells)

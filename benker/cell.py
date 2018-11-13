@@ -110,7 +110,7 @@ class Cell(Styled):
             You can override this by using a *content_appender*, a two-arguments
             function which will perform the concatenation of the two contents.
 
-    :type styles: dict[str, str]
+    :type styles: typing.Dict[str, str]
     :ivar styles: user-defined cell styles: a dictionary of key-value pairs.
         This values are useful to store some HTML-like styles (border-style,
         border-width, border-color, vertical-align, text-align, etc.).

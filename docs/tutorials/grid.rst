@@ -287,3 +287,48 @@ Similar to the merging, you can expand the size of a cell;
     |           |           +-----------+
     |           |           |           |
     +-----------+-----------+-----------+
+
+
+.. _benker__grid__iterators:
+
+Iterators
+~~~~~~~~~
+
+You can iterate the cells of a grid:
+
+.. doctest:: grid
+
+    >>> grid = Grid()
+    >>> grid[1, 1] = Cell("red", height=2)
+    >>> grid[2, 1] = Cell("hot", width=2)
+    >>> grid[2, 2] = Cell("chili")
+    >>> grid[3, 2] = Cell("peppers")
+    >>> grid[1, 3] = Cell("Californication", width=3)
+
+    >>> print(grid)
+    +-----------+-----------------------+
+    |    red    |    hot                |
+    |           +-----------+-----------+
+    |           |   chili   |  peppers  |
+    +-----------------------------------+
+    |             Californi             |
+    +-----------------------------------+
+
+    >>> for cell in grid:
+    ...     print(cell)
+    red
+    hot
+    chili
+    peppers
+    Californication
+
+You can iterate over the grid rows with the method
+:meth:`~benker.grid.Grid.iter_rows`. Each row is a :class:`tuple` of cells:
+
+.. doctest:: grid
+
+    >>> for row in grid.iter_rows():
+    ...     print(" / ".join(cell.content for cell in row))
+    red / hot
+    chili / peppers
+    Californication
