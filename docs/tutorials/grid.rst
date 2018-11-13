@@ -200,9 +200,9 @@ You can get a cell at a given location:
 .. doctest:: grid
 
     >>> grid[1, 1]
-    <Cell('red', styles={}, type='body', x=1, y=1, width=1, height=2)>
+    <Cell('red', styles={}, cell_group='body', x=1, y=1, width=1, height=2)>
     >>> grid[3, 1]
-    <Cell('pink', styles={}, type='body', x=2, y=1, width=2, height=1)>
+    <Cell('pink', styles={}, cell_group='body', x=2, y=1, width=2, height=1)>
 
 You can delete a cell at a given location:
 
@@ -243,7 +243,7 @@ to use to merge several cell contents.
     +-----------+-----------+-----------+
 
     >>> grid.merge((2, 1), (3, 1), content_appender=lambda a, b: "/".join([a, b]))
-    <Cell('pink/blue', styles={}, type='body', x=2, y=1, width=2, height=1)>
+    <Cell('pink/blue', styles={}, cell_group='body', x=2, y=1, width=2, height=1)>
     >>> print(grid)
     +-----------+-----------------------+
     |    red    | pink/blue             |
@@ -280,7 +280,7 @@ Similar to the merging, you can expand the size of a cell;
     +-----------+-----------+-----------+
 
     >>> grid.expand((2, 1), height=1)
-    <Cell('pink', styles={}, type='body', x=2, y=1, width=1, height=2)>
+    <Cell('pink', styles={}, cell_group='body', x=2, y=1, width=1, height=2)>
     >>> print(grid)
     +-----------+-----------+-----------+
     |    red    |   pink    |   blue    |

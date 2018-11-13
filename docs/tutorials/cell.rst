@@ -29,7 +29,7 @@ To instantiate a :class:`~benker.cell.Cell`, you can do:
 
     >>> c1 = Cell("c1")
     >>> c2 = Cell("c2", styles={'color': 'red'})
-    >>> c3 = Cell("c3", x=2, y=3, type="footer")
+    >>> c3 = Cell("c3", x=2, y=3, cell_group="footer")
     >>> c4 = Cell("c4", width=2)
     >>> c5 = Cell("c5", height=2)
 
@@ -94,8 +94,8 @@ Using the cell attributes:
     >>> paragraphs = ["Hello", "How are you?"]
     >>> css = {'text-align': 'justify', 'vertical-align': 'top'}
 
-    >>> c1 = Cell(paragraphs, styles=css, type="normal")
-    >>> c2 = Cell(paragraphs, styles=css, type="normal")
+    >>> c1 = Cell(paragraphs, styles=css, cell_group="normal")
+    >>> c2 = Cell(paragraphs, styles=css, cell_group="normal")
 
     # this will mutate the referenced *paragraphs* list:
     >>> c1.content.append("I am well.")
@@ -222,16 +222,16 @@ It is possible to change the cell position and size by using two kind of transfo
 
     >>> c1 = Cell("A")
     >>> c1
-    <Cell('A', styles={}, type='body', x=1, y=1, width=1, height=1)>
+    <Cell('A', styles={}, cell_group='body', x=1, y=1, width=1, height=1)>
 
     >>> c1.move_to(Coord(2, 3))
-    <Cell('A', styles={}, type='body', x=2, y=3, width=1, height=1)>
+    <Cell('A', styles={}, cell_group='body', x=2, y=3, width=1, height=1)>
 
     >>> c1.resize(Size(3, 4))
-    <Cell('A', styles={}, type='body', x=1, y=1, width=3, height=4)>
+    <Cell('A', styles={}, cell_group='body', x=1, y=1, width=3, height=4)>
 
     >>> c1.transform(Coord(2, 3), Size(3, 4))
-    <Cell('A', styles={}, type='body', x=2, y=3, width=3, height=4)>
+    <Cell('A', styles={}, cell_group='body', x=2, y=3, width=3, height=4)>
 
 The transformation functions don't change the current cell but produce
 a new one with new coordinates/size.

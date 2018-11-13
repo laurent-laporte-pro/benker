@@ -35,11 +35,11 @@ You can retrieve the grid cells as follow:
 .. doctest:: grid_demo
 
     >>> grid[1, 1]
-    <Cell('red', styles={}, type='body', x=1, y=1, width=1, height=2)>
+    <Cell('red', styles={}, cell_group='body', x=1, y=1, width=1, height=2)>
     >>> grid[2, 1]
-    <Cell('pink', styles={}, type='body', x=2, y=1, width=2, height=1)>
+    <Cell('pink', styles={}, cell_group='body', x=2, y=1, width=2, height=1)>
     >>> grid[2, 2]
-    <Cell('blue', styles={}, type='body', x=2, y=2, width=1, height=1)>
+    <Cell('blue', styles={}, cell_group='body', x=2, y=2, width=1, height=1)>
     >>> grid[3, 3]
     Traceback (most recent call last):
         ...
@@ -55,7 +55,7 @@ A grid has a bounding box, useful to get the grid sizes:
 You can expand the cell size horizontally or vertically:
 
     >>> grid.expand((2, 2), width=1)
-    <Cell('blue', styles={}, type='body', x=2, y=2, width=2, height=1)>
+    <Cell('blue', styles={}, cell_group='body', x=2, y=2, width=2, height=1)>
     >>> print(grid)
     +-----------+-----------------------+
     |    red    |   pink                |
@@ -66,7 +66,7 @@ You can expand the cell size horizontally or vertically:
 The content of the merged cells is merged too:
 
     >>> grid.merge((2, 1), (3, 2), content_appender=lambda a, b: "/".join([a, b]))
-    <Cell('pink/blue', styles={}, type='body', x=2, y=1, width=2, height=2)>
+    <Cell('pink/blue', styles={}, cell_group='body', x=2, y=1, width=2, height=2)>
     >>> print(grid)
     +-----------+-----------------------+
     |    red    | pink/blue             |
