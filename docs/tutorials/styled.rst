@@ -16,7 +16,7 @@ It is mainly used for :class:`~benker.table.Table`, :class:`~benker.row.Row`,
 
     >>> from benker.styled import Styled
 
-    >>> styled = Styled({'text-align': 'justify'})
+    >>> styled = Styled({'text-align': 'justify'}, "body")
 
 The representation of a styled is the representation of its dictionary of styles:
 
@@ -49,9 +49,9 @@ Example of *styles* initialisation and shallow copy:
 
     >>> css =  { 'border-style': 'solid', 'border-width': '5px'}
 
-    >>> one = Styled(css)
+    >>> one = Styled(css, "body")
     >>> one.styles['border-width'] = '2px 10px 4px 20px'
-    >>> two = Styled(one.styles)
+    >>> two = Styled(one.styles, "body")
     >>> two.styles['border-width'] = 'medium'
 
     >>> css

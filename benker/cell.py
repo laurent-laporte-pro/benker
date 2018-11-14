@@ -135,12 +135,11 @@ class Cell(Styled):
             dropping the second one. In other words, the resulting cell group is
             the group of the most top-left cell group of the merged cells.
     """
-    __slots__ = ('content', 'cell_group', '_box')
+    __slots__ = ('content', '_box')
 
     def __init__(self, content, styles=None, cell_group="body", x=1, y=1, width=1, height=1):
-        super(Cell, self).__init__(styles=styles)
+        super(Cell, self).__init__(styles, cell_group)
         self.content = content
-        self.cell_group = cell_group
         self._box = Box(x, y, x + width - 1, y + height - 1)
 
     def __str__(self):
