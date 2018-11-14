@@ -107,16 +107,15 @@ The bounding box of a grid is the bounding box of all cells:
 
 .. important::
 
-    The bounding box is not defined for an empty grid,
-    un exception is raised in that specific case.
+    The bounding box is not defined for an empty grid, so ``None`` is returned
+    in that case (this behavior is preferable to raising an exception,
+    in order to simplify interactive debugging).
 
     .. doctest:: grid
 
         >>> grid = Grid()
-        >>> grid.bounding_box
-        Traceback (most recent call last):
-            ...
-        ValueError: grid is empty
+        >>> grid.bounding_box is None
+        True
 
 
 .. _benker__grid__operations:

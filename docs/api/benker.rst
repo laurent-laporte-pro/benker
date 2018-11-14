@@ -54,6 +54,14 @@ benker.grid module
     :undoc-members:
     :show-inheritance:
 
+benker.table module
+-------------------
+
+.. automodule:: benker.table
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Utility modules
 ===============

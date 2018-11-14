@@ -3,7 +3,7 @@
 Styled object
 =============
 
-A :class:`benker.styled.Styled` object contains a dictionary of styles.
+A :class:`~benker.styled.Styled` object contains a dictionary of styles.
 
 It is mainly used for :class:`~benker.table.Table`, :class:`~benker.row.Row`,
 :class:`~benker.col.Col`, and :class:`~benker.cell.Cell`.

@@ -152,12 +152,12 @@ class Grid(collections.MutableMapping):
 
     @property
     def bounding_box(self):
-        """ Bounding box of the grid. """
+        """ Bounding box of the grid (``None`` if the grid is empty). """
         if len(self):
             boxes = [cell.box for cell in self._cells]
             bounding_box = boxes[0].union(*boxes[1:])
             return bounding_box
-        raise ValueError("grid is empty")
+        return None
 
     def merge(self, start, end, content_appender=None):
         start_coord = Coord.from_value(start)

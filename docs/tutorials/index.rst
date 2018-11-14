@@ -10,3 +10,4 @@ Tutorials
    styled.rst
    cell.rst
    grid.rst
+   table.rst
