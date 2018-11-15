@@ -5,6 +5,7 @@ Table
 
 Generic table structure which simplify the conversion from docx table format to CALS or HTML tables.
 """
+import collections
 import re
 
 from benker.cell import Cell
@@ -13,17 +14,19 @@ from benker.grid import Grid
 from benker.styled import Styled
 
 
+# noinspection PyUnresolvedReferences
 class TableViewList(object):
     """
     This class defined a (simplified) list of views.
 
-    Simple usage:
+    Short demonstration:
 
     .. doctest:: table_demo
 
         >>> from benker.cell import Cell
         >>> from benker.table import Table
         >>> from benker.table import ColView
+        >>> from benker.table import RowView
         >>> from benker.table import TableViewList
 
         >>> red = Cell('red', x=1, y=1, height=2)
@@ -40,11 +43,12 @@ class TableViewList(object):
         >>> cols = TableViewList(table, ColView)
         >>> len(cols)
         3
+        >>> rows = TableViewList(table, RowView)
+        >>> len(rows)
+        2
 
         >>> for pos, col in enumerate(cols, 1):
-        ...     print("col #{}: [".format(pos), end="")
-        ...     print(", ".join(cell.content for cell in col.owned_cells), end="")
-        ...     print("]")
+        ...     print("col #{pos}: {col}".format(pos=pos, col=str(col)))
         col #1: [red]
         col #2: [pink, blue]
         col #3: []
@@ -72,21 +76,62 @@ class TableViewList(object):
         self.table = table
         self.view_cls = view_cls
         self.views = []
-        bounding_box = self.table.bounding_box
-        if bounding_box:
-            if self.view_cls == RowView:
-                self._fit_to_size(bounding_box.height)
-            elif self.view_cls == ColView:
-                self._fit_to_size(bounding_box.width)
-            else:
-                raise TypeError(repr(self.view_cls))
+        self.refresh_all()
 
-    def _fit_to_size(self, size):
-        for index in range(len(self.views), size):
-            self.views.append(self.view_cls(self.table, index + 1, cell_group=self.table.cell_group))
+    def adopt_cell(self, cell):
+        """
+        Adopt a new cell in the views.
+
+        :type  cell: benker.cell.Cell
+        :param cell: New cell to adopt
+        """
+        views = self.views
+        box = cell.box
+        if self.view_cls is RowView:
+            self._fit_to_size(box.max.y, truncate=False)
+            for pos in range(box.min.y, box.max.y + 1):
+                views[pos - 1].adopt_cell(cell)
+        elif self.view_cls is ColView:
+            self._fit_to_size(box.max.x, truncate=False)
+            for pos in range(box.min.x, box.max.x + 1):
+                views[pos - 1].adopt_cell(cell)
+        else:
+            raise TypeError(repr(self.view_cls))
+
+    def refresh_all(self):
+        """
+        Cleanup and refresh all the views, taking into account the cells
+        which are in the table grid.
+        """
+        views = self.views
+        bounding_box = self.table.bounding_box
+        if bounding_box is None:
+            views[:] = []
+            return
+
+        if self.view_cls is RowView:
+            self._fit_to_size(bounding_box.max.y)
+        elif self.view_cls is ColView:
+            self._fit_to_size(bounding_box.max.x)
+        else:
+            raise TypeError(repr(self.view_cls))
+
+        for view in views:
+            view.owned_cells[:] = []
+            view.caught_cells[:] = []
+
+        for cell in self.table:
+            self.adopt_cell(cell)
+
+    def _fit_to_size(self, size, truncate=True):
+        views = self.views
+        if truncate:
+            del views[size:]
+        for index in range(len(views), size):
+            views.append(self.view_cls(self.table, index + 1, cell_group=self.table.cell_group))
 
     def __getitem__(self, pos):
-        self._fit_to_size(pos)
+        self._fit_to_size(pos, truncate=False)
         return self.views[pos - 1]
 
     def __len__(self):
@@ -94,6 +139,12 @@ class TableViewList(object):
 
     def __iter__(self):
         return iter(self.views)
+
+
+def _camel_to_snake(camel_name):
+    s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', camel_name)
+    snake_name = re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+    return snake_name
 
 
 class ViewsProperty(object):
@@ -114,9 +165,7 @@ class ViewsProperty(object):
         # CamelCase to snake_case:
         cls_module = self.view_cls.__module__
         cls_name = self.view_cls.__name__
-        s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', cls_name)
-        name = re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
-        self.attr_name = "_{}".format(name)
+        self.attr_name = "_{}".format(_camel_to_snake(cls_name))
         self.__doc__ = "List of views of type :class:`~{0}.{1}`".format(cls_module, cls_name)
 
     def __get__(self, table, owner):
@@ -158,8 +207,12 @@ class TableView(Styled):
         super(TableView, self).__init__(styles, cell_group)
         self._table = table
         self._pos = pos
-        self._owned_cells = [cell for cell in table.iter_cells() if self.can_own(cell)]
-        self._caught_cells = [cell for cell in table.iter_cells() if self.can_catch(cell)]
+        self._owned_cells = []
+        self._caught_cells = []
+
+    def __str__(self):
+        items = ", ".join(str(cell) for cell in self._owned_cells)
+        return "[{0}]".format(items)
 
     @property
     def table(self):
@@ -196,7 +249,7 @@ class TableView(Styled):
         """
         raise NotImplementedError
 
-    def on_insert_cell(self, cell):
+    def adopt_cell(self, cell):
         """
         Event handler called by the system when
         a cell is about to be inserted in the table.
@@ -262,7 +315,7 @@ class RowView(TableView):
             x = 1
         cell = Cell(content, styles=styles, cell_group=self.cell_group,
                     x=x, y=y, width=width, height=height)
-        self._table.on_insert_cell(cell)
+        self._table[cell.min] = cell
 
 
 class ColView(TableView):
@@ -279,7 +332,6 @@ class ColView(TableView):
     @property
     def col_pos(self):
         """ Column position in the table (1-based). """
-        # type: () -> int
         return self._pos
 
     def insert_cell(self, content, styles=None, width=1, height=1):
@@ -321,15 +373,66 @@ class ColView(TableView):
             y = 1
         cell = Cell(content, styles=styles, cell_group=self.cell_group,
                     x=x, y=y, width=width, height=height)
-        self._table.on_insert_cell(cell)
+        self._table[cell.min] = cell
 
 
-class Table(Styled):
+class Table(Styled, collections.MutableMapping):
     """
     Table data structure used to simplify conversion to CALS or HTML.
 
-    :type  cells: typing.Iterable[benker.cell.Cell]
-    :param cells: Collection of cells.
+    Short demonstration:
+
+    .. doctest:: table_demo
+
+        >>> from benker.cell import Cell
+        >>> from benker.table import Table
+
+        >>> table = Table(styles={'frame': 'all'})
+
+        >>> table[(1, 1)] = Cell("one")
+        >>> table.rows[1].insert_cell("two")
+
+        >>> table[(2, 1)]
+        <Cell('two', styles={}, cell_group='body', x=2, y=1, width=1, height=1)>
+
+        >>> table.cols[1].insert_cell("alpha")
+        >>> table.cols[2].insert_cell("beta")
+        >>> (1, 2) in table
+        True
+
+        >>> del table[(1, 2)]
+        >>> (1, 2) in table
+        False
+
+        >>> len(table)
+        3
+
+        >>> for cell in table:
+        ...     print(cell)
+        one
+        two
+        beta
+
+        >>> for row in table.rows:
+        ...     print(row)
+        [one, two]
+        [beta]
+
+        >>> table.merge((1, 2), (2, 2))
+        >>> print(table)
+        +-----------+-----------+
+        |    one    |    two    |
+        +-----------------------+
+        |   beta                |
+        +-----------------------+
+
+        >>> table.expand((1, 1), width=3)
+        >>> print(table)
+        +-----------------------------------------------+
+        |              onetwo                           |
+        +-----------------------+-----------+-----------+
+        |   beta                |           |           |
+        +-----------------------+-----------+-----------+
 
     :type styles: typing.Dict[str, str]
     :ivar styles:
@@ -365,6 +468,20 @@ class Table(Styled):
     cols = ViewsProperty(ColView)
 
     def __init__(self, cells=None, styles=None, cell_group="body"):
+        """
+        Construct a table object from a collection of cells and a dictionary of styles.
+
+        :type  cells: typing.Iterable[benker.cell.Cell]
+        :param cells: Collection of cells.
+
+        :type  styles: typing.Dict[str, str]
+        :param styles:
+            Dictionary of key-value pairs, where *keys* are the style names.
+
+        :type cell_group: str
+        :ivar cell_group:
+            Cell group: a way to distinguish the body cells, from the header and the footer.
+        """
         super(Table, self).__init__(styles, cell_group)
         self._grid = Grid(cells)
 
@@ -376,24 +493,43 @@ class Table(Styled):
         """ Bounding box of the table (``None`` if the table is empty). """
         return self._grid.bounding_box
 
-    def iter_cells(self):
+    def _refresh_views(self, cell=None):
+        """
+        Refresh all the rows and column views.
+        """
+        if cell:
+            self.rows.adopt_cell(cell)
+            self.cols.adopt_cell(cell)
+        else:
+            self.rows.refresh_all()
+            self.cols.refresh_all()
+
+    def __contains__(self, coord):
+        return coord in self._grid
+
+    def __setitem__(self, coord, cell):
+        self._grid[coord] = cell
+        # get the cell with its new coordinates:
+        cell = self._grid[coord]
+        self._refresh_views(cell)
+
+    def __delitem__(self, coord):
+        del self._grid[coord]
+        self._refresh_views()
+
+    def __getitem__(self, coord):
+        return self._grid[coord]
+
+    def __len__(self):
+        return len(self._grid)
+
+    def __iter__(self):
         return iter(self._grid)
 
-    def iter_rows(self):
-        return iter(self.rows)
+    def merge(self, start, end, content_appender=None):
+        self._grid.merge(start, end, content_appender=content_appender)
+        self._refresh_views()
 
-    def iter_cols(self):
-        return iter(self.cols)
-
-    def on_insert_cell(self, cell):
-        """
-        Event handler called by the system when
-        a cell is about to be inserted in the table.
-
-        Dispatch the event to all the rows and columns.
-        """
-        self._grid[cell.min] = cell
-        for row in self.rows:
-            row.on_insert_cell(cell)
-        for col in self.cols:
-            col.on_insert_cell(cell)
+    def expand(self, coord, width=0, height=0, content_appender=None):
+        self._grid.expand(coord, width=width, height=height, content_appender=content_appender)
+        self._refresh_views()

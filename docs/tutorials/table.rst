@@ -58,7 +58,7 @@ You can use the following properties to extract information from a *table*:
 
 The bounding box of a table is the bounding box of all cells in the grid:
 
-.. doctest:: grid
+.. doctest:: table
 
     >>> red = Cell('red', x=1, y=1, height=2)
     >>> pink = Cell('pink', x=2, y=1, width=2)
@@ -130,3 +130,53 @@ You can insert a row to a table. This row is then used to insert cells.
     +-----------+-----------+-----------|           |
     | Jean-Bapt | Delambre  | 1749-1822 |           |
     +-----------+-----------+-----------+-----------+
+
+
+.. _benker__table__merging:
+
+Cells Merging
+~~~~~~~~~~~~~
+
+You can merge cells by giving the coordinates of the cells to merge
+or by extending the size of a given cell.
+
+.. doctest:: table
+
+    >>> table = Table()
+    >>> letters = "abcdEFGHijklMNOP"
+    >>> for index, letter in enumerate(letters):
+    ...     table[(1 + index % 4, 1 + index // 4)] = Cell(letter)
+    >>> print(table)
+    +-----------+-----------+-----------+-----------+
+    |     a     |     b     |     c     |     d     |
+    +-----------+-----------+-----------+-----------+
+    |     E     |     F     |     G     |     H     |
+    +-----------+-----------+-----------+-----------+
+    |     i     |     j     |     k     |     l     |
+    +-----------+-----------+-----------+-----------+
+    |     M     |     N     |     O     |     P     |
+    +-----------+-----------+-----------+-----------+
+
+    >>> table.merge((2, 2), (3, 3))
+    >>> print(table)
+    +-----------+-----------+-----------+-----------+
+    |     a     |     b     |     c     |     d     |
+    +-----------+-----------------------+-----------+
+    |     E     |   FGjk                |     H     |
+    +-----------|                       +-----------+
+    |     i     |                       |     l     |
+    +-----------+-----------+-----------+-----------+
+    |     M     |     N     |     O     |     P     |
+    +-----------+-----------+-----------+-----------+
+
+    >>> table.expand((2, 3), height=1)
+    >>> print(table)
+    +-----------+-----------+-----------+-----------+
+    |     a     |     b     |     c     |     d     |
+    +-----------+-----------------------+-----------+
+    |     E     |                       |     H     |
+    +-----------|                       +-----------+
+    |     i     |  FGjkNO               |     l     |
+    +-----------|                       +-----------+
+    |     M     |                       |     P     |
+    +-----------+-----------------------+-----------+
