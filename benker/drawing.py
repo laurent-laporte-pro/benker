@@ -123,4 +123,6 @@ def iter_lines(grid, tiles=None):
 
 
 def draw(grid, tiles=None):
-    return "\n".join(iter_lines(grid, tiles))
+    if grid:
+        return "\n".join(iter_lines(grid, tiles))
+    return ""
