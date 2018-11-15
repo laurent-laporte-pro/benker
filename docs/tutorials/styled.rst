@@ -6,10 +6,10 @@ Styled
 Description
 -----------
 
-A :class:`benker.styled.Styled` object contains a dictionary of styles.
+A :class:`~benker.styled.Styled` object contains a dictionary of styles.
 
-It is mainly used for :class:`~benker.table.Table`, :class:`~benker.row.Row`,
-:class:`~benker.col.Col`, and :class:`~benker.cell.Cell`.
+It is mainly used for :class:`~benker.table.Table`, :class:`~benker.table.RowView`,
+:class:`~benker.table.ColView`, and :class:`~benker.cell.Cell`.
 
 
 .. doctest:: styled
@@ -29,7 +29,7 @@ The representation of a styled is the representation of its dictionary of styles
 Attributes
 ----------
 
-A :class:`benker.styled.Styled` object has the following attribute:
+A :class:`~benker.styled.Styled` object has the following attribute:
 
 -   *styles* is the user-defined styles: a dictionary of key-value pairs.
     This values are useful to store some HTML-like styles (border-style,
@@ -42,6 +42,19 @@ A :class:`benker.styled.Styled` object has the following attribute:
         The style dictionary is always copied: in other words, key-value pairs
         are copied but a shallow copy is done for the values (in general, it
         is not a problem if you use non-mutable values like :class:`str`).
+
+-   *cell_group*: a way to distinguish the body cells,
+    from the header and the footer. The default value is "body", but you can
+    use "header", "footer" or whatever is suitable for your needs.
+    This kind of information is in general not stored in the styles,
+    even if it is similar.
+
+    .. note::
+
+        In a :class:`~benker.grid.Grid`, the :ref:`merging <benker__grid__merging>`
+        of two cell groups is done by keeping the first cell group and
+        dropping the second one. In other words, the resulting cell group is
+        the group of the most top-left cell group of the merged cells.
 
 Example of *styles* initialisation and shallow copy:
 

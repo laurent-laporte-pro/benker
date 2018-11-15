@@ -36,7 +36,7 @@ Cells are ordered according to the total ordering of the cell boxes:
     pink
     blue
 
-.. important::
+.. warning::
 
     If at least one cell intersect another one, an exception is raised:
 
@@ -182,7 +182,7 @@ The coordinates are the top-left coordinates of the cells.
     |           |   blue    |   gray    |
     +-----------+-----------+-----------+
 
-.. important::
+.. warning::
 
     Unlike a :class:`~dict`, you cannot set a cell to a given location
     if a cell already exist in that location, an exception is raised in that case.
@@ -250,7 +250,7 @@ to use to merge several cell contents.
     |           |           |           |
     +-----------+-----------+-----------+
 
-.. important::
+.. warning::
 
     All cells in the bounding box of the merging must be inside of the bounding box.
     In other words, the bounding box of the merging must not intersect any cell

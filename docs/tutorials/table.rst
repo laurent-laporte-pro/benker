@@ -36,7 +36,7 @@ Make sure all cells are disjoints.
     >>> Table([red, pink, blue])
     <Table({}, 'body')>
 
-.. important::
+.. warning::
 
     Make sure all cells are disjoints:
 

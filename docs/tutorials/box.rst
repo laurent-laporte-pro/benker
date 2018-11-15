@@ -85,7 +85,7 @@ You can use the following properties to extract information from a *box*:
     >>> b1.size
     Size(width=3, height=2)
 
-.. important::
+.. warning::
 
     All properties are non-mutable:
 
@@ -134,7 +134,7 @@ You can check if a point, defined by its coordinates (tuple (*x*, *y*) or
     >>> (5, 7) in b1
     True
 
-.. important::
+.. warning::
 
     Even if a :class:`~benker.size.Size` object is a subtype of :class:`tuple`,
     such an object cannot be "contained" in a :class:`~benker.box.Box`.
@@ -200,7 +200,7 @@ You can use the "&" operator to do that:
     >>> b1 & b2
     Box(min=Coord(x=2, y=2), max=Coord(x=3, y=3))
 
-.. important::
+.. warning::
 
     If the two boxes are disjoint, there is no intersection:
 

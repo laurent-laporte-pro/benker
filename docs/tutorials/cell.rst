@@ -134,7 +134,7 @@ You can use the following properties to extract information from a *cell*:
     >>> c1.size
     Size(width=3, height=2)
 
-.. important::
+.. warning::
 
     All properties are non-mutable:
 

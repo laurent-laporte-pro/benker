@@ -15,15 +15,6 @@ It represents the top-left origin of a cell in a grid.
 
     >>> coord = Coord(4, 5)
 
-The origin of the grid is the coord (1, 1).
-
-.. doctest:: coord
-
-    >>> from benker.coord import PT_ORIGIN
-
-    >>> PT_ORIGIN
-    Coord(x=1, y=1)
-
 We use the Excel convention to represent a *Coord*:
 columns are represented by letters,
 rows are represented by numbers.
@@ -97,6 +88,6 @@ Again, you cannot add a size and a coord:
         ...
     TypeError: <class 'benker.coord.Coord'>
 
-.. important::
+.. warning::
 
     This constraint must be respected in order to help diagnosing conceptual errors.
