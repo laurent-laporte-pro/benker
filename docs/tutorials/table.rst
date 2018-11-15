@@ -33,8 +33,16 @@ Make sure all cells are disjoints.
     >>> pink = Cell('pink', x=2, y=1, width=2)
     >>> blue = Cell('blue', x=2, y=2)
 
-    >>> Table([red, pink, blue])
-    <Table({}, 'body')>
+    >>> table = Table([red, pink, blue], cell_group='header')
+    >>> table
+    <Table({}, 'header')>
+
+    >>> print(table)
+    +-----------+-----------------------+
+    |    red    |   pink                |
+    |           +-----------+-----------+
+    |           |   blue    |           |
+    +-----------+-----------+-----------+
 
 .. warning::
 
