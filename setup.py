@@ -22,7 +22,7 @@ setup(
     author="Laurent LAPORTE",
     author_email="laurent.laporte.pro@gmail.com",
 
-    description="Organize your data in a spatial grid system for CALS, HTML, Open XML tables conversion",
+    description="Organize your data in a spatial grid system for CALS, HTML, Office Open XML tables conversion",
     long_description=read("README.rst"),
 
     packages=find_packages(exclude=('tests',)),

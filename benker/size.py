@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-Cell size
+Cell Size
 =========
 
 A :class:`~benker.size.Size` object is used to represent the *width* and *height* of a :class:`~benker.cell.Cell`.

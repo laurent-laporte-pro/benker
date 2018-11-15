@@ -9,7 +9,7 @@ Benker
    :target: https://travis-ci.org/laurent-laporte-pro/benker
    :alt: Latest Travis CI build status
 
-Organize your data in a spatial grid system for CALS, HTML, Open XML tables conversion
+Organize your data in a spatial grid system for CALS, HTML, Office Open XML tables conversion
 
 Usage
 -----

@@ -5,8 +5,8 @@ Styled object
 
 A :class:`~benker.styled.Styled` object contains a dictionary of styles.
 
-It is mainly used for :class:`~benker.table.Table`, :class:`~benker.row.Row`,
-:class:`~benker.col.Col`, and :class:`~benker.cell.Cell`.
+It is mainly used for :class:`~benker.table.Table`, :class:`~benker.table.RowView`,
+:class:`~benker.table.ColView`, and :class:`~benker.cell.Cell`.
 
 """
 import pprint
@@ -56,7 +56,10 @@ class Styled(object):
         :ivar cell_group:
             Cell group: a way to distinguish the body cells, from the header and the footer.
         """
+        #: Dictionary of key-value pairs, where *keys* are the style names.
         self.styles = styles
+
+        #: Cell group: a way to distinguish the body cells, from the header and the footer.
         self.cell_group = cell_group
 
     def __str__(self):

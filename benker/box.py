@@ -110,11 +110,13 @@ class Box(collections.namedtuple('BoxTuple', ['min', 'max'])):
 
     Usage:
 
-    >>> from benker.box import Box
+    .. doctest:: box_demo
 
-    >>> box = Box(1, 1, 5, 3)
-    >>> box
-    Box(min=Coord(x=1, y=1), max=Coord(x=5, y=3))
+        >>> from benker.box import Box
+
+        >>> box = Box(1, 1, 5, 3)
+        >>> box
+        Box(min=Coord(x=1, y=1), max=Coord(x=5, y=3))
 
     :ivar Coord min: top-left corner of the rectangle.
     :ivar Coord max: bottom-right corner of the rectangle.
@@ -227,16 +229,18 @@ class Box(collections.namedtuple('BoxTuple', ['min', 'max'])):
 
         Usage:
 
-        >>> from benker.box import Box
-        >>> from benker.coord import Coord
+        .. doctest:: box_demo
 
-        >>> b1 = Box(Coord(3, 2), Coord(6, 4))
-        >>> b2 = Box(Coord(4, 3), Coord(5, 7))
-        >>> b1.union(b2)
-        Box(min=Coord(x=3, y=2), max=Coord(x=6, y=7))
+            >>> from benker.box import Box
+            >>> from benker.coord import Coord
 
-        >>> b1 | b2
-        Box(min=Coord(x=3, y=2), max=Coord(x=6, y=7))
+            >>> b1 = Box(Coord(3, 2), Coord(6, 4))
+            >>> b2 = Box(Coord(4, 3), Coord(5, 7))
+            >>> b1.union(b2)
+            Box(min=Coord(x=3, y=2), max=Coord(x=6, y=7))
+
+            >>> b1 | b2
+            Box(min=Coord(x=3, y=2), max=Coord(x=6, y=7))
 
         :param others: collections of boxes
 
@@ -259,16 +263,18 @@ class Box(collections.namedtuple('BoxTuple', ['min', 'max'])):
 
         Usage:
 
-        >>> from benker.box import Box
-        >>> from benker.coord import Coord
+        .. doctest:: box_demo
 
-        >>> b1 = Box(Coord(3, 2), Coord(6, 4))
-        >>> b2 = Box(Coord(4, 3), Coord(5, 7))
-        >>> b1.intersection(b2)
-        Box(min=Coord(x=4, y=3), max=Coord(x=5, y=4))
+            >>> from benker.box import Box
+            >>> from benker.coord import Coord
 
-        >>> b1 & b2
-        Box(min=Coord(x=4, y=3), max=Coord(x=5, y=4))
+            >>> b1 = Box(Coord(3, 2), Coord(6, 4))
+            >>> b2 = Box(Coord(4, 3), Coord(5, 7))
+            >>> b1.intersection(b2)
+            Box(min=Coord(x=4, y=3), max=Coord(x=5, y=4))
+
+            >>> b1 & b2
+            Box(min=Coord(x=4, y=3), max=Coord(x=5, y=4))
 
         :param others: collections of boxes
 
@@ -298,19 +304,21 @@ class Box(collections.namedtuple('BoxTuple', ['min', 'max'])):
 
         Usage::
 
-        >>> from benker.box import Box
+        .. doctest:: box_demo
 
-        >>> b1 = Box(Coord(3, 2), Coord(6, 4))
-        >>> b1 < b1
-        False
-        >>> b1 < Box(Coord(3, 2), Coord(6, 5))
-        True
-        >>> b1 < Box(Coord(3, 2), Coord(7, 4))
-        True
-        >>> b1 < Box(Coord(4, 2), Coord(6, 4))
-        True
-        >>> b1 < Box(Coord(3, 3), Coord(6, 4))
-        True
+            >>> from benker.box import Box
+
+            >>> b1 = Box(Coord(3, 2), Coord(6, 4))
+            >>> b1 < b1
+            False
+            >>> b1 < Box(Coord(3, 2), Coord(6, 5))
+            True
+            >>> b1 < Box(Coord(3, 2), Coord(7, 4))
+            True
+            >>> b1 < Box(Coord(4, 2), Coord(6, 4))
+            True
+            >>> b1 < Box(Coord(3, 3), Coord(6, 4))
+            True
 
         :param other: other box
 

@@ -5,18 +5,12 @@ Grid
 
 A grid of cells.
 
-.. doctest:: grid_demo
-    :hide:
-
-    >>> from benker.cell import Cell
-    >>> from benker.coord import Coord
-    >>> from benker.box import Box
-
 Example of grid::
 
 .. doctest:: grid_demo
 
     >>> from benker.grid import Grid
+    >>> from benker.cell import Cell
 
     >>> grid = Grid()
     >>> grid[1, 1] = Cell("red", height=2)
@@ -34,6 +28,14 @@ You can retrieve the grid cells as follow:
 
 .. doctest:: grid_demo
 
+    >>> from benker.grid import Grid
+    >>> from benker.cell import Cell
+
+    >>> grid = Grid()
+    >>> grid[1, 1] = Cell("red", height=2)
+    >>> grid[2, 1] = Cell("pink", width=2)
+    >>> grid[2, 2] = Cell("blue")
+
     >>> grid[1, 1]
     <Cell('red', styles={}, cell_group='body', x=1, y=1, width=1, height=2)>
     >>> grid[2, 1]
@@ -47,12 +49,32 @@ You can retrieve the grid cells as follow:
 
 A grid has a bounding box, useful to get the grid sizes:
 
+.. doctest:: grid_demo
+
+    >>> from benker.grid import Grid
+    >>> from benker.cell import Cell
+
+    >>> grid = Grid()
+    >>> grid[1, 1] = Cell("red", height=2)
+    >>> grid[2, 1] = Cell("pink", width=2)
+    >>> grid[2, 2] = Cell("blue")
+
     >>> grid.bounding_box
     Box(min=Coord(x=1, y=1), max=Coord(x=3, y=2))
     >>> grid.bounding_box.size
     Size(width=3, height=2)
 
 You can expand the cell size horizontally or vertically:
+
+.. doctest:: grid_demo
+
+    >>> from benker.grid import Grid
+    >>> from benker.cell import Cell
+
+    >>> grid = Grid()
+    >>> grid[1, 1] = Cell("red", height=2)
+    >>> grid[2, 1] = Cell("pink", width=2)
+    >>> grid[2, 2] = Cell("blue")
 
     >>> grid.expand((2, 2), width=1)
     <Cell('blue', styles={}, cell_group='body', x=2, y=2, width=2, height=1)>
@@ -64,6 +86,16 @@ You can expand the cell size horizontally or vertically:
     +-----------+-----------------------+
 
 The content of the merged cells is merged too:
+
+.. doctest:: grid_demo
+
+    >>> from benker.grid import Grid
+    >>> from benker.cell import Cell
+
+    >>> grid = Grid()
+    >>> grid[1, 1] = Cell("red", height=2)
+    >>> grid[2, 1] = Cell("pink", width=2)
+    >>> grid[2, 2] = Cell("blue", width=2)
 
     >>> grid.merge((2, 1), (3, 2), content_appender=lambda a, b: "/".join([a, b]))
     <Cell('pink/blue', styles={}, cell_group='body', x=2, y=1, width=2, height=2)>
@@ -160,6 +192,39 @@ class Grid(collections.MutableMapping):
         return None
 
     def merge(self, start, end, content_appender=None):
+        """
+        Merge a group of cells contained in a bounding box,
+        using the *content_appender* to append cell contents.
+
+        The coordinates *start* and *end* delimit a group of cells to merge.
+
+        .. warning::
+
+           All the cells of the group must be included in the group bounding box,
+           no intersection is allowed. If not, :class:`ValueError` is raised.
+
+        See also the method :meth:`~benker.grid.Grid#expand`
+        to expand (or shrink) the width and/or height of a cell.
+
+        :type  start: Coord or tuple[int, int]
+        :param start:
+            Top-left coordinates of the group of cells to merge.
+
+        :type  start: Coord or tuple[int, int]
+        :param end:
+            Bottom-right coordinates of the group of cells to merge (inclusive).
+
+        :param content_appender:
+            Function to use to append the cell contents.
+            The function must have the following signature: ``f(a, b) -> c``,
+            where *a*, *b* anc *c* must be of the same type than the cell content.
+            If not provided, the default function is :func:`operator.__add__`.
+
+        :return: The merged cell.
+
+        :raises ValueError:
+            If the group of cells is empty or if cells cannot be merged.
+        """
         start_coord = Coord.from_value(start)
         end_coord = Coord.from_value(end)
         content_appender = content_appender or operator.__add__
@@ -188,6 +253,33 @@ class Grid(collections.MutableMapping):
         return new_cell
 
     def expand(self, coord, width=0, height=0, content_appender=None):
+        """
+        Expand (or shrink) the *width* and/or *height* of a cell,
+        using the *content_appender* to append cell contents.
+
+        See also the method :meth:`~benker.grid.Grid.merge`
+        to merge a group of cells contained in a bounding box.
+
+        :param coord:
+            Coordinates of the cell to expand (or shrink).
+
+        :param width:
+            Number of columns to add to the cell width.
+
+        :param height:
+            Number of rows to add to the cell height.
+
+        :param content_appender:
+            Function to use to append the cell contents.
+            The function must have the following signature: ``f(a, b) -> c``,
+            where *a*, *b* anc *c* must be of the same type than the cell content.
+            If not provided, the default function is :func:`operator.__add__`.
+
+        :return: The merged cell.
+
+        :raises ValueError:
+            If the group of cells is empty or if cells cannot be merged.
+        """
         content_appender = content_appender or operator.__add__
         box = self[coord].box
         start = box.min

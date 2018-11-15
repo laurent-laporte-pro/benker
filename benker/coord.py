@@ -21,33 +21,43 @@ class Coord(collections.namedtuple('CoordTuple', ['x', 'y'])):
 
     Usage:
 
-    >>> from benker.coord import Coord
+    .. doctest:: coord_demo
 
-    >>> coord = Coord(5, 3)
-    >>> coord
-    Coord(x=5, y=3)
-    >>> coord.x
-    5
-    >>> coord.y
-    3
-    >>> str(coord)
-    'E3'
+        >>> from benker.coord import Coord
+
+        >>> coord = Coord(5, 3)
+        >>> coord
+        Coord(x=5, y=3)
+        >>> coord.x
+        5
+        >>> coord.y
+        3
+        >>> str(coord)
+        'E3'
 
     You can use the "+" or "-" operators to move the coordinates:
 
-    >>> Coord(2, 1) + Size(3, 3)
-    Coord(x=5, y=4)
-    >>> Coord(5, 4) - Size(3, 3)
-    Coord(x=2, y=1)
+    .. doctest:: coord_demo
 
-    .. important::
+        >>> from benker.size import Size
 
-       You cannot add or subtract two coordinates, only a coordinate and a size.
+        >>> Coord(2, 1) + Size(3, 3)
+        Coord(x=5, y=4)
+        >>> Coord(5, 4) - Size(3, 3)
+        Coord(x=2, y=1)
 
-       >>> Coord(2, 1) + Coord(3, 3)
-       Traceback (most recent call last):
-           ...
-       TypeError: <class 'benker.coord.Coord'>
+    .. warning::
+
+        You cannot add or subtract two coordinates, only a coordinate and a size.
+
+        .. doctest:: coord_demo
+
+            >>> from benker.coord import Coord
+
+            >>> Coord(2, 1) + Coord(3, 3)
+            Traceback (most recent call last):
+                ...
+            TypeError: <class 'benker.coord.Coord'>
     """
     __slots__ = ()
 
@@ -94,6 +104,3 @@ class Coord(collections.namedtuple('CoordTuple', ['x', 'y'])):
         elif value_type is tuple and tuple(map(type, value)) == (int, int):
             return cls(*value)
         raise TypeError(repr(value_type))
-
-
-PT_ORIGIN = Coord(1, 1)
