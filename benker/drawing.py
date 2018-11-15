@@ -7,6 +7,12 @@ Utility functions used to draw a :class:`~benker.grid.Grid`.
 """
 from benker.box import Box
 
+#: Default tiles used to draw a :class:`~benker.grid.Grid`.
+#:
+#: Keys are tuples (*left*, *top*, *right*, *bottom*) : which represent the
+#: presence (if ``True``) or absence (if ``False``) : of the border.
+#: Values are the string representation of the tiles,
+#: "XXXXXXXXX" will be replaced by the cell content.
 TILES = {
     (True, True, True, True): """\
 +-----------+
@@ -123,6 +129,17 @@ def iter_lines(grid, tiles=None):
 
 
 def draw(grid, tiles=None):
+    """
+    Draw a grid using a collection of tiles.
+
+    :type  grid: benker.grid.Grid
+    :param grid: Grid to draw.
+
+    :param tiles:
+        Collection of tiles, use :data:`~benker.drawing.TILES` if not provided.
+
+    :return: String representation of the grid.
+    """
     if grid:
         return "\n".join(iter_lines(grid, tiles))
     return ""
