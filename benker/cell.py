@@ -7,8 +7,8 @@ A :class:`~benker.cell.Cell` object stores the *content* of a :class:`~benker.gr
 
 A cell can have *styles*, a dictionary of key-value properties attached to the cell.
 
-A cell has a *cell_group* to distinguish between header, body and footer cells.
-The default *cell_group* is "body", but you can also use "header", "footer" or whatever…
+A cell has a *nature* to distinguish between header, body and footer cells.
+The default *nature* is "body", but you can also use "header", "footer" or whatever…
 
 A cell has top-left coordinates: *x* and *y*. The default coordinates is (1, 1):
 this is the top-left coordinate of the cell box.
@@ -31,7 +31,7 @@ To instantiate a :class:`~benker.cell.Cell`, you can do:
 
     >>> c1 = Cell("c1")
     >>> c2 = Cell("c2", styles={'color': 'red'})
-    >>> c3 = Cell("c3", cell_group="footer")
+    >>> c3 = Cell("c3", nature="footer")
     >>> c4 = Cell("c4", width=2)
     >>> c5 = Cell("c5", height=2)
 
@@ -123,22 +123,22 @@ class Cell(Styled):
             are copied but a shallow copy is done for the values (in general, it
             is not a problem if you use non-mutable values like :class:`str`).
 
-    :type cell_group: str
-    :ivar cell_group: cell group: a way to distinguish the body cells, from the header and the footer.
+    :type nature: str
+    :ivar nature: nature: a way to distinguish the body cells, from the header and the footer.
         The default value is "body", but you can use "header", "footer" or whatever
         is suitable for your needs.
 
         .. note::
 
             In a :class:`~benker.grid.Grid`, the :ref:`merging <benker__grid__merging>`
-            of two cell groups is done by keeping the first cell group and
-            dropping the second one. In other words, the resulting cell group is
-            the group of the most top-left cell group of the merged cells.
+            of two natures is done by keeping the first nature and
+            dropping the second one. In other words, the resulting nature is
+            the group of the most top-left nature of the merged cells.
     """
     __slots__ = ('content', '_box')
 
-    def __init__(self, content, styles=None, cell_group="body", x=1, y=1, width=1, height=1):
-        super(Cell, self).__init__(styles, cell_group)
+    def __init__(self, content, styles=None, nature="body", x=1, y=1, width=1, height=1):
+        super(Cell, self).__init__(styles, nature)
         self.content = content
         self._box = Box(x, y, x + width - 1, y + height - 1)
 
@@ -149,7 +149,7 @@ class Cell(Styled):
         cls = self.__class__.__name__
         return ("<{cls}({self.content!r}, "
                 "styles={self.styles!r}, "
-                "cell_group={self.cell_group!r}, "
+                "nature={self.nature!r}, "
                 "x={self.min.x!r}, "
                 "y={self.min.y!r}, "
                 "width={self.width!r}, "
@@ -214,7 +214,7 @@ class Cell(Styled):
         box = self.box.transform(coord=coord, size=size)
         cell = Cell(self.content,
                     styles=self.styles,
-                    cell_group=self.cell_group,
+                    nature=self.nature,
                     x=box.min.x,
                     y=box.min.y,
                     width=box.width,

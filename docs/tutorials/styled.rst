@@ -43,7 +43,7 @@ A :class:`~benker.styled.Styled` object has the following attribute:
         are copied but a shallow copy is done for the values (in general, it
         is not a problem if you use non-mutable values like :class:`str`).
 
--   *cell_group*: a way to distinguish the body cells,
+-   *nature*: a way to distinguish the body cells,
     from the header and the footer. The default value is "body", but you can
     use "header", "footer" or whatever is suitable for your needs.
     This kind of information is in general not stored in the styles,
@@ -52,9 +52,9 @@ A :class:`~benker.styled.Styled` object has the following attribute:
     .. note::
 
         In a :class:`~benker.grid.Grid`, the :ref:`merging <benker__grid__merging>`
-        of two cell groups is done by keeping the first cell group and
-        dropping the second one. In other words, the resulting cell group is
-        the group of the most top-left cell group of the merged cells.
+        of two natures is done by keeping the first nature and
+        dropping the second one. In other words, the resulting nature is
+        the group of the most top-left nature of the merged cells.
 
 Example of *styles* initialisation and shallow copy:
 

@@ -128,7 +128,7 @@ class TableViewList(object):
         if truncate:
             del views[size:]
         for index in range(len(views), size):
-            views.append(self.view_cls(self.table, index + 1, cell_group=self.table.cell_group))
+            views.append(self.view_cls(self.table, index + 1, nature=self.table.nature))
 
     def __getitem__(self, pos):
         self._fit_to_size(pos, truncate=False)
@@ -185,7 +185,7 @@ class TableView(Styled):
     """
     __slots__ = ('_table', '_pos', '_owned_cells', '_caught_cells')
 
-    def __init__(self, table, pos, styles=None, cell_group="body"):
+    def __init__(self, table, pos, styles=None, nature="body"):
         """
         Initialize a row/column view.
 
@@ -199,12 +199,12 @@ class TableView(Styled):
         :param styles:
             Dictionary of key-value pairs, where *keys* are the style names.
 
-        :param str cell_group:
-            Cell group: a way to distinguish the body cells, from the header and the footer.
+        :param str nature:
+            Cell *nature* used to distinguish the body cells, from the header and the footer.
             The default value is "body", but you can use "header", "footer" or whatever
             is suitable for your needs.
         """
-        super(TableView, self).__init__(styles, cell_group)
+        super(TableView, self).__init__(styles, nature)
         self._table = table
         self._pos = pos
         self._owned_cells = []
@@ -313,7 +313,7 @@ class RowView(TableView):
                 x = bounding_box.max.x + 1
         else:
             x = 1
-        cell = Cell(content, styles=styles, cell_group=self.cell_group,
+        cell = Cell(content, styles=styles, nature=self.nature,
                     x=x, y=y, width=width, height=height)
         self._table[cell.min] = cell
 
@@ -371,7 +371,7 @@ class ColView(TableView):
                 y = bounding_box.max.y + 1
         else:
             y = 1
-        cell = Cell(content, styles=styles, cell_group=self.cell_group,
+        cell = Cell(content, styles=styles, nature=self.nature,
                     x=x, y=y, width=width, height=height)
         self._table[cell.min] = cell
 
@@ -393,7 +393,7 @@ class Table(Styled, collections.MutableMapping):
         >>> table.rows[1].insert_cell("two")
 
         >>> table[(2, 1)]
-        <Cell('two', styles={}, cell_group='body', x=2, y=1, width=1, height=1)>
+        <Cell('two', styles={}, nature='body', x=2, y=1, width=1, height=1)>
 
         >>> table.cols[1].insert_cell("alpha")
         >>> table.cols[2].insert_cell("beta")
@@ -448,9 +448,9 @@ class Table(Styled, collections.MutableMapping):
             are copied but a shallow copy is done for the values (in general, it
             is not a problem if you use non-mutable values like :class:`str`).
 
-    :type cell_group: str
-    :ivar cell_group:
-        A table can have a cell group: a way to distinguish the body cells,
+    :type nature: str
+    :ivar nature:
+        A table can have a nature: a way to distinguish the body cells,
         from the header and the footer. The default value is "body", but you can
         use "header", "footer" or whatever is suitable for your needs.
         This kind of information is in general not stored in the styles,
@@ -459,15 +459,15 @@ class Table(Styled, collections.MutableMapping):
         .. note::
 
             In a :class:`~benker.grid.Grid`, the :ref:`merging <benker__grid__merging>`
-            of two cell groups is done by keeping the first cell group and
-            dropping the second one. In other words, the resulting cell group is
-            the group of the most top-left cell group of the merged cells.
+            of two natures is done by keeping the first nature and
+            dropping the second one. In other words, the resulting nature is
+            the group of the most top-left nature of the merged cells.
     """
 
     rows = ViewsProperty(RowView)
     cols = ViewsProperty(ColView)
 
-    def __init__(self, cells=None, styles=None, cell_group="body"):
+    def __init__(self, cells=None, styles=None, nature="body"):
         """
         Construct a table object from a collection of cells and a dictionary of styles.
 
@@ -478,11 +478,11 @@ class Table(Styled, collections.MutableMapping):
         :param styles:
             Dictionary of key-value pairs, where *keys* are the style names.
 
-        :type cell_group: str
-        :ivar cell_group:
-            Cell group: a way to distinguish the body cells, from the header and the footer.
+        :type nature: str
+        :ivar nature:
+            Cell *nature* used to distinguish the body cells, from the header and the footer.
         """
-        super(Table, self).__init__(styles, cell_group)
+        super(Table, self).__init__(styles, nature)
         self._grid = Grid(cells)
 
     def __str__(self):

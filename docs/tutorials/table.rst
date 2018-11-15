@@ -12,8 +12,8 @@ A :class:`~benker.table.Table` is a data structure used to represent
 Office Open XML tables, CALS tables or HTML tables.
 
 A :class:`~benker.table.Table` is a :class:`~benker.styled.Styled` object,
-so you can attach a dictionary of styles and a cell group ("body" by default).
-The cell group is used to give a default value to the the row/column views.
+so you can attach a dictionary of styles and a nature ("body" by default).
+The nature is used to give a default value to the the row/column views.
 
 .. doctest:: table
 
@@ -33,7 +33,7 @@ Make sure all cells are disjoints.
     >>> pink = Cell('pink', x=2, y=1, width=2)
     >>> blue = Cell('blue', x=2, y=2)
 
-    >>> table = Table([red, pink, blue], cell_group='header')
+    >>> table = Table([red, pink, blue], nature='header')
     >>> table
     <Table({}, 'header')>
 
@@ -106,7 +106,7 @@ You can insert a row to a table. This row is then used to insert cells.
     >>> table = Table()
 
     >>> row = table.rows[1]
-    >>> row.cell_group = "header"
+    >>> row.nature = "header"
     >>> row.insert_cell("Astronomer", width=2)
     >>> row.insert_cell("Year")
     >>> row.insert_cell("Country")
