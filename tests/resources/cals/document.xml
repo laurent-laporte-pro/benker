@@ -18,22 +18,14 @@
             <w:tcW w:w="3020" w:type="dxa"/>
             <w:vMerge w:val="restart"/>
           </w:tcPr>
-          <w:p w:rsidR="004A4C52" w:rsidRDefault="004A4C52">
-            <w:r>
-              <w:t>A1:A2</w:t>
-            </w:r>
-          </w:p>
+          <w:p w:rsidR="004A4C52" w:rsidRDefault="004A4C52"><w:r><w:t>A1:A2</w:t></w:r></w:p>
         </w:tc>
         <w:tc>
           <w:tcPr>
             <w:tcW w:w="6042" w:type="dxa"/>
             <w:gridSpan w:val="2"/>
           </w:tcPr>
-          <w:p w:rsidR="004A4C52" w:rsidRDefault="004A4C52">
-            <w:r>
-              <w:t>B1:C1</w:t>
-            </w:r>
-          </w:p>
+          <w:p w:rsidR="004A4C52" w:rsidRDefault="004A4C52"><w:r><w:t>B1:C1</w:t></w:r></w:p>
         </w:tc>
       </w:tr>
       <w:tr w:rsidR="004A4C52" w:rsidTr="004A4C52">
@@ -48,11 +40,7 @@
           <w:tcPr>
             <w:tcW w:w="3021" w:type="dxa"/>
           </w:tcPr>
-          <w:p w:rsidR="004A4C52" w:rsidRDefault="004A4C52">
-            <w:r>
-              <w:t>B2</w:t>
-            </w:r>
-          </w:p>
+          <w:p w:rsidR="004A4C52" w:rsidRDefault="004A4C52"><w:r><w:t>B2</w:t></w:r></w:p>
         </w:tc>
         <w:tc>
           <w:tcPr>
