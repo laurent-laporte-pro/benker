@@ -1,0 +1,15 @@
+# coding: utf-8
+import pytest
+
+# noinspection PyUnresolvedReferences
+import py.path  # type hints
+
+from benker.cals import convert_to_cals
+from tests.resources import RESOURCES_DIR
+
+
+def test_convert_to_cals(tmpdir):
+    # type: (py.path.local) -> None
+    src_xml = RESOURCES_DIR.join("cals/document.xml")  # type: py.path.local
+    dst_xml = tmpdir.join(src_xml.basename)
+    convert_to_cals(str(src_xml), str(dst_xml))
