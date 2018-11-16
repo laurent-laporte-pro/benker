@@ -25,3 +25,4 @@ API
 
    benker.alphabet.rst
    benker.drawing.rst
+   benker.units.rst
