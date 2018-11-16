@@ -1,0 +1,76 @@
+<expected  xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <table colsep="1" frame="all" rowsep="1" tabstyle="Grilledutableau">
+    <tgroup cols="3">
+      <colspec colname="c1" colwidth="53.45pt"/>
+      <colspec colname="c2" colwidth="120.40pt"/>
+      <colspec colname="c3" colwidth="52.70pt"/>
+      <tbody>
+        <row>
+          <entry>
+            <w:p/>
+          </entry>
+          <entry>
+            <w:p/>
+          </entry>
+          <entry>
+            <w:p/>
+          </entry>
+        </row>
+        <row>
+          <entry>
+            <w:p/>
+          </entry>
+          <entry>
+            <w:p/>
+            <table colsep="1" frame="all" rowsep="1" tabstyle="Grilledutableau">
+              <tgroup cols="3">
+                <colspec colname="c1" colwidth="35.35pt"/>
+                <colspec colname="c2" colwidth="34.35pt"/>
+                <colspec colname="c3" colwidth="39.40pt"/>
+                <tbody>
+                  <row>
+                    <entry>
+                      <w:p/>
+                    </entry>
+                    <entry>
+                      <w:p/>
+                    </entry>
+                    <entry>
+                      <w:p/>
+                    </entry>
+                  </row>
+                  <row>
+                    <entry>
+                      <w:p/>
+                    </entry>
+                    <entry>
+                      <w:p/>
+                    </entry>
+                    <entry>
+                      <w:p/>
+                    </entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+            <w:p/>
+          </entry>
+          <entry>
+            <w:p/>
+          </entry>
+        </row>
+        <row>
+          <entry>
+            <w:p/>
+          </entry>
+          <entry>
+            <w:p/>
+          </entry>
+          <entry>
+            <w:p/>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+</expected>
