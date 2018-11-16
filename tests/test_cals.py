@@ -1,5 +1,4 @@
 # coding: utf-8
-import pytest
 
 # noinspection PyUnresolvedReferences
 import py.path  # type hints

@@ -3,19 +3,24 @@
 CALS Tables converter
 =====================
 
-This module can convert the Open XML tables into CALS tables,
-by keeping the other XML elements unchanged in order to allow further XLST transformations.
+This module can convert the Office Open XML (OOXML) tables into CALS tables,
+by keeping the other XML elements unchanged in order to allow further XSLT transformations.
 
-The CALS DTD is available online in the OASIS web site:
-`CALS Table Model Document Type Definition <https://www.oasis-open.org/specs/a502.htm>`_.
+Specifications and examples:
 
-An example of CALS table is available in Wikipedia:
-`CALS Table Model <https://en.wikipedia.org/wiki/CALS_Table_Model>`_
+- The documentation about OOXML Table is available online at
+  `Word Processing - Table Grid/Column Definition <http://officeopenxml.com/WPtableGrid.php>`_.
 
-Open XML format
----------------
+- The CALS DTD is available online in the OASIS web site:
+  `CALS Table Model Document Type Definition <https://www.oasis-open.org/specs/a502.htm>`_.
 
-In Open XML document, tables are represented by ``w:tbl`` elements:
+- An example of CALS table is available in Wikipedia:
+  `CALS Table Model <https://en.wikipedia.org/wiki/CALS_Table_Model>`_
+
+Office Open XML format
+----------------------
+
+In Office Open XML document, tables are represented by ``w:tbl`` elements:
 
 - The ``w:tbl`` element specifies a Table object.
   The details of the object consists of rows and cells and is structured much like an HTML table.
@@ -31,14 +36,14 @@ Conversion
 
 The CALS converter must convert according to the following table:
 
-===============  =================  ===============
-   **Element**       **Open XML**       **CALS**
-===============  =================  ===============
-Table             | <w:tbl>          | <table>
-Table Grid        | <w:gridCol>      | <colspec>
-Row               | <w:tr>           | <row>
-Column            | <w:tc>           | <entry>
-===============  =================  ===============
+===============  ===================  ===============
+  **Element**    **Office Open XML**       **CALS**
+===============  ===================  ===============
+Table             | <w:tbl>            | <table>
+Table Grid        | <w:gridCol>        | <colspec>
+Row               | <w:tr>             | <row>
+Column            | <w:tc>             | <entry>
+===============  ===================  ===============
 
 -  **frame** attribute values are ``top``, ``bottom``, ``topbot``, ``sides``, ``all`` and ``none``.
    To get this attribute value, *<w:tblBorders>* holds the sides of the frames. When the elements
@@ -169,7 +174,7 @@ from lxml import etree
 from benker.table import RowView
 from benker.table import Table
 
-#: Namespace map used for xpath evaluation in Open XML documents
+#: Namespace map used for xpath evaluation in Office Open XML documents
 NS = {'w': "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
 
 
@@ -277,10 +282,10 @@ def get_table_borders(w_styles, style_id):
 
 def convert_tbl(w_tbl, w_styles=None):
     """
-    Convert a Open XML ``<w:tbl>`` into ``<table>``
+    Convert a Office Open XML ``<w:tbl>`` into CALS ``<table>``
 
     :type  w_tbl: etree._Element
-    :param w_tbl: Open XML element.
+    :param w_tbl: Office Open XML element.
 
     :type  w_styles: etree._Element
     :param w_styles:
@@ -335,77 +340,70 @@ def convert_tbl(w_tbl, w_styles=None):
     curr_row = None
     for action, elem in context:
         elem_tag = elem.tag
-        if action == 'start':
-            if elem_tag == w('tblGrid'):
-                col_pos = 0
 
-            elif elem_tag == w('gridCol'):
-                col_pos += 1
+        if elem_tag == w('tbl') and elem is not w_tbl:
+            # This <tbl> element is inside the table.
+            # It will be handled separately in another call to convert_tbl()
+            context.skip_subtree()
 
-                # w:w => width of the column in twentieths of a point.
-                width = float(elem.attrib[w('w')]) / 20  # pt
-                styles = {
-                    u"colname": "c{0}".format(col_pos),
-                    u"colwidth": "{0:0.2f}pt".format(width)}
-                col = table.cols[col_pos]
-                col.styles.update(styles)
+        elif elem_tag == w('tblGrid'):
+            col_pos = 0
 
-            elif elem_tag == w('tr'):
-                col_pos = 0
-                row_num += 1
+        elif elem_tag == w('gridCol'):
+            col_pos += 1
 
-                # w:tblHeader => the current row should be repeated at the top
-                # of each new page on which the table is displayed.
-                # This is a simple boolean property, so you can specify a val attribute of true or false.
-                tbl_header = value_of(elem, "w:trPr/w:tblHeader")
-                if tbl_header is not None:
-                    tbl_header = value_of(elem, "w:trPr/w:tblHeader/@w:val", default=u"true")
-                nature = {u"true": "head", u"false": "body", None: "body"}[tbl_header]
-                curr_row = table.rows[row_num]
-                curr_row.nature = nature = nature
+            # w:w => width of the column in twentieths of a point.
+            width = float(elem.attrib[w('w')]) / 20  # pt
+            styles = {
+                u"colname": "c{0}".format(col_pos),
+                u"colwidth": "{0:0.2f}pt".format(width)}
+            col = table.cols[col_pos]
+            col.styles.update(styles)
 
-            elif elem_tag == w('tc'):
-                col_pos += 1
+        elif elem_tag == w('tr'):
+            col_pos = 0
+            row_num += 1
 
-                # w:gridSpan => number of logical columns across which the cell spans
-                width = int(value_of(elem, "w:tcPr/w:gridSpan/@w:val", default=u"1"))
+            # w:tblHeader => the current row should be repeated at the top
+            # of each new page on which the table is displayed.
+            # This is a simple boolean property, so you can specify a val attribute of true or false.
+            tbl_header = value_of(elem, "w:trPr/w:tblHeader")
+            if tbl_header is not None:
+                tbl_header = value_of(elem, "w:trPr/w:tblHeader/@w:val", default=u"true")
+            nature = {u"true": "head", u"false": "body", None: "body"}[tbl_header]
+            curr_row = table.rows[row_num]
+            curr_row.nature = nature = nature
 
-                # w:vMerge => specifies that the cell is part of a vertically merged set of cells.
-                w_v_merge = value_of(elem, "w:tcPr/w:vMerge")
-                if w_v_merge is not None:
-                    w_v_merge = value_of(elem, "w:tcPr/w:vMerge/@w:val", default=u"continue")
-                if w_v_merge is None:
-                    # no merge
-                    height = 1
-                elif w_v_merge == u"continue":
-                    # the current cell continues a previously existing merge group
-                    table.expand((col_pos, curr_row.row_pos - 1), height=1)
-                    height = None
-                elif w_v_merge == u"restart":
-                    # the current cell starts a new merge group
-                    height = 1
-                else:
-                    raise NotImplementedError(w_v_merge)
+        elif elem_tag == w('tc'):
+            col_pos += 1
 
-                if height:
-                    content = elem.xpath('w:p | w:tbl', namespaces=NS)
-                    curr_row.insert_cell(content, width=width, height=height)
+            # w:gridSpan => number of logical columns across which the cell spans
+            width = int(value_of(elem, "w:tcPr/w:gridSpan/@w:val", default=u"1"))
 
-        else:
-            raise NotImplementedError(action)
+            # w:vMerge => specifies that the cell is part of a vertically merged set of cells.
+            w_v_merge = value_of(elem, "w:tcPr/w:vMerge")
+            if w_v_merge is not None:
+                w_v_merge = value_of(elem, "w:tcPr/w:vMerge/@w:val", default=u"continue")
+            if w_v_merge is None:
+                # no merge
+                height = 1
+            elif w_v_merge == u"continue":
+                # the current cell continues a previously existing merge group
+                table.expand((col_pos, curr_row.row_pos - 1), height=1)
+                height = None
+            elif w_v_merge == u"restart":
+                # the current cell starts a new merge group
+                height = 1
+            else:
+                raise NotImplementedError(w_v_merge)
+
+            if height:
+                content = elem.xpath('w:p | w:tbl', namespaces=NS)
+                curr_row.insert_cell(content, width=width, height=height)
 
     table_elem = export_table_to_cals(table)
 
     return table_elem
-
-
-_GROUP_TAGS = {"head": u"thead", "body": u"tbody", "foot": u"tfoot"}
-
-
-def _head_foot_body(item):
-    key = item[0]
-    value = {"head": 0, "foot": 1, "body": 2}[key]
-    return value
 
 
 def export_table_to_cals(table):
@@ -413,15 +411,17 @@ def export_table_to_cals(table):
     groups = [(k, list(g)) for k, g in itertools.groupby(table.rows, key=lambda r: r.nature)]
 
     # -- sort the groups in the order: head => foot => body
-    groups = sorted(groups, key=_head_foot_body)
+    groups = sorted(groups, key=lambda item: {"head": 0, "foot": 1, "body": 2}[item[0]])
 
     # -- convert to cals
     table_elem = etree.Element(u"table", attrib=table.styles)
     group_elem = etree.SubElement(table_elem, u"tgroup", attrib={u'cols': str(len(table.cols))})
     for col in table.cols:
         etree.SubElement(group_elem, u"colspec", attrib=col.styles)
+
+    group_tags = {"head": u"thead", "body": u"tbody", "foot": u"tfoot"}
     for nature, row_list in groups:
-        nature_tag = _GROUP_TAGS[nature]
+        nature_tag = group_tags[nature]
         nature_elem = etree.SubElement(group_elem, nature_tag)
         for row in row_list:  # type: RowView
             row_elem = etree.SubElement(nature_elem, u"row", attrib=row.styles)
@@ -434,16 +434,17 @@ def export_table_to_cals(table):
                     cell_styles[u"morerows"] = str(cell.height - 1)
                 entry_elem = etree.SubElement(row_elem, u"entry", attrib=cell_styles)
                 entry_elem.extend(cell.content)
+
     return table_elem
 
 
 def convert_to_cals(src_path, dst_path, styles_path=None, encoding='utf-8'):
     """
-    Parse a XML file and convert Open XML tables into CALS tables
+    Parse a XML file and convert Office Open XML tables into CALS tables
 
     :param str src_path: source path of the XML file to read.
     :param str dst_path: destination path of the XML file.
-    :param str styles_path: path of the Open XML styles (root element should be ``w:styles>``).
+    :param str styles_path: path of the Office Open XML styles (root element should be ``w:styles>``).
     :param str encoding: target encoding to use for XML writing.
     """
     tree = etree.parse(src_path)
