@@ -17,7 +17,7 @@ API
    benker.cell.rst
    benker.grid.rst
    benker.table.rst
-   benker.cals.rst
+   benker.ooxml2cals.rst
 
 .. toctree::
    :maxdepth: 2
