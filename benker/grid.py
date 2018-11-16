@@ -107,9 +107,13 @@ The content of the merged cells is merged too:
     +-----------+-----------------------+
 """
 import bisect
-import collections
 import itertools
 import operator
+
+try:
+    from collections.abc import MutableMapping
+except ImportError:
+    from collections import MutableMapping
 
 from benker.box import Box
 from benker.coord import Coord
@@ -117,7 +121,7 @@ from benker.drawing import draw
 from benker.size import Size
 
 
-class Grid(collections.MutableMapping):
+class Grid(MutableMapping):
     """
     Collection of :class:`~benker.cell.Cell` objects ordered in a grid of rows and columns.
     """

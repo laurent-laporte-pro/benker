@@ -5,8 +5,12 @@ Table
 
 Generic table structure which simplify the conversion from docx table format to CALS or HTML tables.
 """
-import collections
 import re
+
+try:
+    from collections.abc import MutableMapping
+except ImportError:
+    from collections import MutableMapping
 
 from benker.cell import Cell
 from benker.coord import Coord
@@ -376,7 +380,7 @@ class ColView(TableView):
         self._table[cell.min] = cell
 
 
-class Table(Styled, collections.MutableMapping):
+class Table(Styled, MutableMapping):
     """
     Table data structure used to simplify conversion to CALS or HTML.
 
