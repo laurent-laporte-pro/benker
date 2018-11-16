@@ -4,10 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+lxml = "*"
+benker = {editable = true, path = "."}
 
 [dev-packages]
 sphinx = "*"
 tox = "*"
+pytest = "*"
+pytest-cov = "*"
+py = "*"
+isort = "*"
+check-manifest = "*"
 
 [requires]
 python_version = "3.7"
