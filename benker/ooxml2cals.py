@@ -213,21 +213,30 @@ class CalsTable(Table):
         return table_elem
 
 
-def convert_to_cals(src_path, dst_path, styles_path=None, encoding='utf-8'):
+def convert_to_cals(src_path, dst_path, styles_path=None, **options):
     """
     Parse a XML file and convert Office Open XML tables into CALS tables
 
     :param str src_path: source path of the XML file to read.
     :param str dst_path: destination path of the XML file.
     :param str styles_path: path of the Office Open XML styles (root element should be ``w:styles>``).
-    :param str encoding: target encoding to use for XML writing.
+
+    :type  options: str
+    :param options: Conversion options. Possible options are:
+
+        -   ``encoding``:
+            Target encoding to use for XML writing, default='utf-8'.
+
+        -   ``width_unit``:
+            Unit to use for column widths.
+            Possible values are: 'cm', 'dm', 'ft', 'in', 'm', 'mm', 'pc', 'pt', 'px'.
     """
     tree = etree.parse(src_path)
 
     w_styles = etree.parse(styles_path) if styles_path else None
     w_styles = w_styles or value_of(tree, ".//w:styles")
 
-    converter = OoxmlParser(CalsTable, w_styles)
+    converter = OoxmlParser(CalsTable, w_styles, **options)
 
     for w_tbl in tree.xpath("//w:tbl", namespaces=NS):
         table = converter.parse(w_tbl)
@@ -238,4 +247,5 @@ def convert_to_cals(src_path, dst_path, styles_path=None, encoding='utf-8'):
         table_elem.tail = w_tbl.tail
         parent.remove(w_tbl)
 
+    encoding = options.get('encoding', 'utf-8')
     tree.write(dst_path, encoding=encoding, pretty_print=False)

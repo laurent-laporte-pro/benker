@@ -58,6 +58,6 @@ def test_convert_to_cals(input_name, expected_name, tmpdir):
     # type: (str, str, py.path.local) -> None
     src_xml = RESOURCES_DIR.join(input_name)  # type: py.path.local
     dst_xml = tmpdir.join(src_xml.basename)
-    convert_to_cals(str(src_xml), str(dst_xml))
+    convert_to_cals(str(src_xml), str(dst_xml), width_unit='pt')
     expected_xml = RESOURCES_DIR.join(expected_name)  # type: py.path.local
     CalsComparator().compare_files(str(dst_xml), str(expected_xml))

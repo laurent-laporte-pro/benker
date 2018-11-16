@@ -7,6 +7,8 @@ import functools
 
 from lxml import etree
 
+from benker import units
+
 #: Namespace map used for xpath evaluation in Office Open XML documents
 NS = {'w': "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
 
@@ -142,7 +144,7 @@ class OoxmlParser(object):
             self.row_pos += 1
             self.row = None
 
-    def __init__(self, table_cls, w_styles=None):
+    def __init__(self, table_cls, w_styles=None, width_unit='mm', **options):
         """
         Construct a converter
 
@@ -155,10 +157,18 @@ class OoxmlParser(object):
         :param w_styles:
             ``<w:styles>`` element containing the document styles.
             If missing, this element will be searched from the root element ``<pkg:package>``.
+
+        :param str width_unit:
+            Unit to use for column widths.
+            Possible values are: 'cm', 'dm', 'ft', 'in', 'm', 'mm', 'pc', 'pt', 'px'.
+
+        :param str options: Extra conversion options.
         """
         self.create_table = table_cls
         self._state = self._State()
         self.w_styles = w_styles
+        self.width_unit = width_unit
+        self.options = options
 
     def parse(self, w_tbl):
         """
@@ -255,10 +265,11 @@ class OoxmlParser(object):
         """
         # w:w => width of the column in twentieths of a point.
         width = float(w_grid_col.attrib[w('w')]) / 20  # pt
+        width = units.convert_value(width, 'pt', self.width_unit)
         state = self._state
         styles = {
             u"colname": "c{0}".format(state.col_pos),
-            u"colwidth": "{0:0.2f}pt".format(width)}
+            u"colwidth": "{width:0.2f}{unit}".format(width=width, unit=self.width_unit)}
         state.col = state.table.cols[state.col_pos]
         state.col.styles.update(styles)
 
