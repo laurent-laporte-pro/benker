@@ -244,13 +244,25 @@ class OoxmlParser(object):
         attrs['colsep'] = tbl_borders.colsep
         attrs['rowsep'] = tbl_borders.rowsep
 
-        # -- orient: Orientation of the entire <table>: "port" (default) or "land"
-        # todo: 'orient' attribute
+        # -- Sections: http://officeopenxml.com/WPsection.php
 
-        # -- pgwide: Table width = 100% (if orient="port").
-        # todo: 'pgwide' attribute
-        # see: http://officeopenxml.com/WPtableLayout.php
-        # see: http://officeopenxml.com/WPtableWidth.php
+        # A section's properties are stored in a sectPr element.
+        # For all sections except the last section, the sectPr element is stored as
+        # a child element of the last paragraph in the section. For the last section,
+        # the sectPr is stored as a child element of the body element.
+
+        w_sect_pr = value_of(w_tbl, 'following::w:p/w:pPr/w:sectPr | following::w:sectPr')
+
+        # -- orient: Orientation of the entire <table>: "port" (default) or "land"
+        orient = value_of(w_sect_pr, 'w:pgSz/@w:orient')
+        if orient:
+            # orient -- Possible values are "landscape" and "portrait".
+            attrs['orient'] = {"landscape": "land", "portrait": "port"}[orient]
+
+        if orient in {None, "portrait"}:
+            # -- pgwide: Table width = 100% (if orient="port").
+            cols = value_of(w_sect_pr, 'w:cols/@w:num', "1")
+            attrs['pgwide'] = "1" if cols == "1" else "0"
 
         self._state.table = self.create_table(styles=attrs)
 

@@ -1,5 +1,5 @@
 <expected  xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
-  <table colsep="0" frame="none" rowsep="0" tabstyle="Grilledutableau">
+  <table pgwide="1" colsep="0" frame="none" rowsep="0" tabstyle="Grilledutableau">
     <tgroup cols="3">
       <colspec colname="c1" colwidth="151.00pt"/>
       <colspec colname="c2" colwidth="151.05pt"/>

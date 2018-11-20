@@ -53,6 +53,7 @@ class CalsComparator(object):
                          [
                              ("cals/simple_merge.xml", "cals/simple_merge.expected.xml"),
                              ("cals/table_in_table.xml", "cals/table_in_table.expected.xml"),
+                             ("cals/Lorem Ipsum.xml", "cals/Lorem Ipsum.expected.xml"),
                          ])
 def test_convert_to_cals(input_name, expected_name, tmpdir):
     # type: (str, str, py.path.local) -> None
