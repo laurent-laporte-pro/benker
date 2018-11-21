@@ -1,0 +1,187 @@
+<expected xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <table colsep="1" frame="all" pgwide="1" rowsep="1" tabstyle="Grilledutableau">
+    <tgroup cols="3">
+      <colspec colname="c1" colwidth="151.00pt"/>
+      <colspec colname="c2" colwidth="151.05pt"/>
+      <colspec colname="c3" colwidth="151.05pt"/>
+      <tbody>
+        <row>
+          <entry morerows="1">
+            <w:p w:rsidR="00F10B0E" w:rsidRDefault="00F10B0E" w:rsidP="00F10B0E">
+              <w:r>
+                <w:t>A1</w:t>
+              </w:r>
+            </w:p>
+            <w:p w:rsidR="00F10B0E" w:rsidRDefault="00F10B0E" w:rsidP="00F10B0E">
+              <w:r>
+                <w:t>A2</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00F10B0E" w:rsidRDefault="00F10B0E" w:rsidP="00F10B0E">
+              <w:r>
+                <w:t>B1</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00F10B0E" w:rsidRDefault="00F10B0E" w:rsidP="00F10B0E">
+              <w:r>
+                <w:t>C1</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+        </row>
+        <row>
+          <entry>
+            <w:p w:rsidR="00F10B0E" w:rsidRDefault="00F10B0E" w:rsidP="00F10B0E">
+              <w:r>
+                <w:t>B2</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00F10B0E" w:rsidRDefault="00F10B0E" w:rsidP="00F10B0E">
+              <w:r>
+                <w:t>C2</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+        </row>
+        <row>
+          <entry morerows="1">
+            <w:p w:rsidR="00F10B0E" w:rsidRDefault="00F10B0E" w:rsidP="00F10B0E">
+              <w:r>
+                <w:t>A5</w:t>
+              </w:r>
+            </w:p>
+            <w:p w:rsidR="00F10B0E" w:rsidRDefault="00F10B0E" w:rsidP="00F10B0E">
+              <w:r>
+                <w:t>A6</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00F10B0E" w:rsidRDefault="00F10B0E" w:rsidP="00F10B0E">
+              <w:r>
+                <w:t>B5</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00F10B0E" w:rsidRDefault="00F10B0E" w:rsidP="00F10B0E">
+              <w:r>
+                <w:t>C5</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+        </row>
+        <row>
+          <entry>
+            <w:p w:rsidR="00F10B0E" w:rsidRDefault="00F10B0E" w:rsidP="00F10B0E">
+              <w:r>
+                <w:t>B6</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00F10B0E" w:rsidRDefault="00F10B0E" w:rsidP="00F10B0E">
+              <w:r>
+                <w:t>C6</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+        </row>
+        <row>
+          <entry morerows="1">
+            <w:p w:rsidR="00697A18" w:rsidRDefault="00697A18" w:rsidP="00F10B0E">
+              <w:pPr>
+                <w:rPr>
+                  <w:ins w:id="1" w:author="Laurent Laporte" w:date="2018-11-21T18:08:00Z"/>
+                </w:rPr>
+              </w:pPr>
+              <w:ins w:id="2" w:author="Laurent Laporte" w:date="2018-11-21T18:08:00Z">
+                <w:r>
+                  <w:t>A7</w:t>
+                </w:r>
+              </w:ins>
+            </w:p>
+            <w:p w:rsidR="00697A18" w:rsidRDefault="00697A18" w:rsidP="00F10B0E">
+              <w:pPr>
+                <w:rPr>
+                  <w:ins w:id="3" w:author="Laurent Laporte" w:date="2018-11-21T18:08:00Z"/>
+                </w:rPr>
+              </w:pPr>
+              <w:ins w:id="4" w:author="Laurent Laporte" w:date="2018-11-21T18:09:00Z">
+                <w:r>
+                  <w:t>A8</w:t>
+                </w:r>
+              </w:ins>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00697A18" w:rsidRDefault="00697A18" w:rsidP="00F10B0E">
+              <w:pPr>
+                <w:rPr>
+                  <w:ins w:id="5" w:author="Laurent Laporte" w:date="2018-11-21T18:08:00Z"/>
+                </w:rPr>
+              </w:pPr>
+              <w:ins w:id="6" w:author="Laurent Laporte" w:date="2018-11-21T18:08:00Z">
+                <w:r>
+                  <w:t>B7</w:t>
+                </w:r>
+                <w:bookmarkStart w:id="7" w:name="_GoBack"/>
+                <w:bookmarkEnd w:id="7"/>
+              </w:ins>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00697A18" w:rsidRDefault="00697A18" w:rsidP="00F10B0E">
+              <w:pPr>
+                <w:rPr>
+                  <w:ins w:id="8" w:author="Laurent Laporte" w:date="2018-11-21T18:08:00Z"/>
+                </w:rPr>
+              </w:pPr>
+              <w:ins w:id="9" w:author="Laurent Laporte" w:date="2018-11-21T18:09:00Z">
+                <w:r>
+                  <w:t>C7</w:t>
+                </w:r>
+              </w:ins>
+            </w:p>
+          </entry>
+        </row>
+        <row>
+          <entry>
+            <w:p w:rsidR="00697A18" w:rsidRDefault="00697A18" w:rsidP="00F10B0E">
+              <w:pPr>
+                <w:rPr>
+                  <w:ins w:id="12" w:author="Laurent Laporte" w:date="2018-11-21T18:09:00Z"/>
+                </w:rPr>
+              </w:pPr>
+              <w:ins w:id="13" w:author="Laurent Laporte" w:date="2018-11-21T18:09:00Z">
+                <w:r>
+                  <w:t>B8</w:t>
+                </w:r>
+              </w:ins>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00697A18" w:rsidRDefault="00697A18" w:rsidP="00F10B0E">
+              <w:pPr>
+                <w:rPr>
+                  <w:ins w:id="14" w:author="Laurent Laporte" w:date="2018-11-21T18:09:00Z"/>
+                </w:rPr>
+              </w:pPr>
+              <w:ins w:id="15" w:author="Laurent Laporte" w:date="2018-11-21T18:09:00Z">
+                <w:r>
+                  <w:t>C8</w:t>
+                </w:r>
+              </w:ins>
+            </w:p>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+</expected>

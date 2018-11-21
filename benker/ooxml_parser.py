@@ -305,6 +305,18 @@ class OoxmlParser(object):
         state.row = state.table.rows[state.row_pos]
         state.row.nature = nature
 
+        # todo: revision marks: A row can be marked as "inserted".
+        #
+        # Example:
+        #
+        #   <w:trPr>
+        #   <w:ins w:id="0" w:author="Laurent Laporte" w:date="2018-11-21T18:08:00Z"/>
+        #   </w:trPr>
+        #
+        # We can use processing instructions for that
+
+        # todo: calculate the ``@valign`` attribute.
+
     def parse_tc(self, w_tc):
         """
         Parse a ``<w:tc>`` element.
@@ -338,3 +350,7 @@ class OoxmlParser(object):
         if height:
             content = w_tc.xpath('w:p | w:tbl', namespaces=NS)
             state.row.insert_cell(content, width=width, height=height)
+
+        # todo: calculate the ``@align`` attribute.
+        # todo: calculate the ``@valign`` attribute.
+        # todo: calculate the ``@rotate`` attribute.
