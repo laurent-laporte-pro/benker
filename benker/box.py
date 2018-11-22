@@ -99,9 +99,11 @@ import functools
 from benker.coord import Coord
 from benker.size import Size
 
+BoxTuple = collections.namedtuple('BoxTuple', ['min', 'max'])
+
 
 @functools.total_ordering
-class Box(collections.namedtuple('BoxTuple', ['min', 'max'])):
+class Box(BoxTuple):
     """
     A *Box* is a rectangular area defined by two coordinates:
 
@@ -118,8 +120,6 @@ class Box(collections.namedtuple('BoxTuple', ['min', 'max'])):
         >>> box
         Box(min=Coord(x=1, y=1), max=Coord(x=5, y=3))
 
-    :ivar Coord min: top-left corner of the rectangle.
-    :ivar Coord max: bottom-right corner of the rectangle.
     """
     __slots__ = ()
 

@@ -14,8 +14,10 @@ import collections
 from benker.alphabet import int_to_alphabet
 from benker.size import Size
 
+CoordTuple = collections.namedtuple('CoordTuple', ['x', 'y'])
 
-class Coord(collections.namedtuple('CoordTuple', ['x', 'y'])):
+
+class Coord(CoordTuple):
     """
     Coordinates of a cell in a grid: *x* is the left column, *y* if the top row.
 

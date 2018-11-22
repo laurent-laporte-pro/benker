@@ -207,7 +207,7 @@ class Grid(MutableMapping):
            All the cells of the group must be included in the group bounding box,
            no intersection is allowed. If not, :class:`ValueError` is raised.
 
-        See also the method :meth:`~benker.grid.Grid#expand`
+        See also the method :meth:`~benker.grid.Grid.expand`
         to expand (or shrink) the width and/or height of a cell.
 
         :type  start: Coord or tuple[int, int]

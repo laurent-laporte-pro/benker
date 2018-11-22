@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-Office Open XML to CALS tables parser
+Office Open XML to CALS tables parsers
 =====================================
 """
 import functools
@@ -117,7 +117,7 @@ def get_table_borders(w_styles, style_id):
 
 class OoxmlParser(object):
     """
-    Office Open XML to CALS tables parser.
+    Office Open XML to CALS tables parsers.
     """
 
     class _State(object):

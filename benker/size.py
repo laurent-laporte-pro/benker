@@ -11,8 +11,10 @@ This module defines the :class:`~benker.size.Size` tuple and give some classic u
 """
 import collections
 
+SizeTuple = collections.namedtuple('SizeTuple', ['width', 'height'])
 
-class Size(collections.namedtuple('SizeTuple', ['width', 'height'])):
+
+class Size(SizeTuple):
     """
     Size of a cell: *width* is the number of columns and *height* is the number of row.
 

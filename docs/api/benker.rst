@@ -1,3 +1,13 @@
+.. This documentation can be updated with the following command:
+   sphinx-apidoc -o docs/api/ . "setup.py" "test_*.py" --separate --no-toc --no-headings --module-first
+
+.. To check the documentation links:
+   sphinx-build -n docs/ dist/docs/
+
+.. To generate the documentation:
+   sphinx-build docs/ dist/docs/
+
+
 API
 ===
 
@@ -7,22 +17,23 @@ API
     :show-inheritance:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Core modules:
 
-   benker.size.rst
-   benker.coord.rst
-   benker.box.rst
-   benker.styled.rst
-   benker.cell.rst
-   benker.grid.rst
-   benker.table.rst
-   benker.ooxml2cals.rst
+   benker.size
+   benker.coord
+   benker.box
+   benker.styled
+   benker.cell
+   benker.grid
+   benker.table
+   benker.parsers
+   benker.builders
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Utilities:
 
-   benker.alphabet.rst
-   benker.drawing.rst
-   benker.units.rst
+   benker.alphabet
+   benker.drawing
+   benker.units
