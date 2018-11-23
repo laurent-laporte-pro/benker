@@ -29,6 +29,7 @@ API
    benker.table
    benker.parsers
    benker.builders
+   benker.converters
 
 .. toctree::
    :maxdepth: 1

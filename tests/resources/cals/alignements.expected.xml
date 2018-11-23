@@ -1,0 +1,132 @@
+<expected xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <table colsep="1" frame="all" pgwide="1" rowsep="1" tabstyle="Grilledutableau">
+    <tgroup cols="4">
+      <colspec colname="c1" colwidth="113.80pt"/>
+      <colspec colname="c2" colwidth="113.80pt"/>
+      <colspec colname="c3" colwidth="113.55pt"/>
+      <colspec colname="c4" colwidth="111.95pt"/>
+      <tbody>
+        <row>
+          <entry>
+            <w:p>
+              <w:pPr/>
+              <w:r>
+                <w:t>Top-left</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p>
+              <w:pPr>
+                <w:jc w:val="center"/>
+              </w:pPr>
+              <w:r>
+                <w:t>Top-center</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p>
+              <w:pPr>
+                <w:jc w:val="right"/>
+              </w:pPr>
+              <w:r>
+                <w:t>Top-right</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p>
+              <w:pPr>
+                <w:jc w:val="both"/>
+              </w:pPr>
+              <w:r>
+                <w:t>Top-justify</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+        </row>
+        <row>
+          <entry>
+            <w:p>
+              <w:pPr/>
+              <w:r>
+                <w:t>Middle-left</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p>
+              <w:pPr>
+                <w:jc w:val="center"/>
+              </w:pPr>
+              <w:r>
+                <w:t>Middle-center</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p>
+              <w:pPr>
+                <w:jc w:val="right"/>
+              </w:pPr>
+              <w:r>
+                <w:t>Middle-right</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p>
+              <w:pPr>
+                <w:jc w:val="both"/>
+              </w:pPr>
+              <w:r>
+                <w:t>Middle-justify</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+        </row>
+        <row>
+          <entry>
+            <w:p>
+              <w:pPr/>
+              <w:r>
+                <w:t>Bottom-left</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p>
+              <w:pPr>
+                <w:jc w:val="center"/>
+              </w:pPr>
+              <w:r>
+                <w:t>Bottom-center</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p>
+              <w:pPr>
+                <w:jc w:val="right"/>
+              </w:pPr>
+              <w:r>
+                <w:t>Bottom-right</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p>
+              <w:pPr>
+                <w:jc w:val="both"/>
+              </w:pPr>
+              <w:r>
+                <w:t>Bottom-justify</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+</expected>

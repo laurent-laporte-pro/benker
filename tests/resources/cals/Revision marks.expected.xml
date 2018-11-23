@@ -93,6 +93,7 @@
             </w:p>
           </entry>
         </row>
+        <?change-start change-id="ct0" creator="Laurent Laporte" date="2018-11-21T18:08:00Z" type="row:insertion"?>
         <row>
           <entry morerows="1">
             <w:p w:rsidR="00697A18" w:rsidRDefault="00697A18" w:rsidP="00F10B0E">
@@ -151,6 +152,7 @@
             </w:p>
           </entry>
         </row>
+        <?change-end change-id="ct0" type="row:insertion"?><?change-start change-id="ct10" creator="Laurent Laporte" date="2018-11-21T18:09:00Z" type="row:insertion"?>
         <row>
           <entry>
             <w:p w:rsidR="00697A18" w:rsidRDefault="00697A18" w:rsidP="00F10B0E">
@@ -181,6 +183,7 @@
             </w:p>
           </entry>
         </row>
+        <?change-end change-id="ct10" type="row:insertion"?>
       </tbody>
     </tgroup>
   </table>
