@@ -9,29 +9,34 @@ ElementType = etree._Element
 
 
 class CalsComparator(object):
-    def compare_files(self, src_path, dst_file):
+    def compare_files(self, src_path, exp_file):
         src_tree = etree.parse(src_path)  # type: ElementTreeType
-        dst_tree = etree.parse(dst_file)
+        exp_tree = etree.parse(exp_file)
         # The number of <table> must be the same
         src_tables = src_tree.xpath("//table")
-        dst_tables = dst_tree.xpath("//table")
-        self._compare_children(src_tables, dst_tables)
+        exp_tables = exp_tree.xpath("//table")
+        self._compare_children(src_tables, exp_tables)
 
-    def _compare_children(self, dst_children, src_children):
-        assert len(src_children) == len(dst_children)
-        for src_table, dst_table in zip(src_children, dst_children):
+    def _compare_children(self, exp_children, src_children):
+        assert len(src_children) == len(exp_children)
+        for src_table, exp_table in zip(src_children, exp_children):
             method_name = "compare_{tag}".format(tag=src_table.tag)
             if hasattr(self, method_name):
                 compare_method = getattr(self, method_name)
-                compare_method(src_table, dst_table)
+                compare_method(src_table, exp_table)
 
-    def _compare_elements(self, src_tree, dst_tree):
+    def _compare_elements(self, src_tree, exp_tree):
         # type: (ElementType, ElementType) -> None
-        assert src_tree.tag == dst_tree.tag
-        assert src_tree.attrib == dst_tree.attrib, str((src_tree.attrib, dst_tree.attrib))
+        assert src_tree.tag == exp_tree.tag
+        src_keys = sorted(src_tree.attrib.keys())
+        exp_keys = sorted(exp_tree.attrib.keys())
+        assert src_keys == exp_keys, "src: {0!r}, exp: {1!r}".format(src_keys, exp_keys)
+        src_attrs = sorted(src_tree.attrib.items())
+        exp_attrs = sorted(exp_tree.attrib.items())
+        assert src_attrs == exp_attrs, "src: {0!r}, exp: {1!r}".format(src_attrs, exp_attrs)
         src_children = list(src_tree)
-        dst_children = list(dst_tree)
-        self._compare_children(dst_children, src_children)
+        exp_children = list(exp_tree)
+        self._compare_children(exp_children, src_children)
 
     compare_table = _compare_elements
     compare_tgroup = _compare_elements
