@@ -34,6 +34,10 @@ class Styled(object):
     This kind of information is in general not stored in the styles,
     even if it is similar.
 
+    Tables can also have a *nature*, similar to HTML ``@class`` attribute,
+    you can use it do identify the styles to apply to your table.
+    For tables, the default value is ``None``.
+
     .. note::
 
         In a :class:`~benker.grid.Grid`, the :ref:`merging <benker__grid__merging>`
@@ -55,6 +59,8 @@ class Styled(object):
         :type nature: str
         :ivar nature:
             Cell *nature* used to distinguish the body cells, from the header and the footer.
+
+            Table *nature* used to store a value similar to HTML ``@class`` attribute.
         """
         #: Dictionary of key-value pairs, where *keys* are the style names.
         self.styles = styles

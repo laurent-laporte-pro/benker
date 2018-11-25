@@ -132,7 +132,7 @@ class TableViewList(object):
         if truncate:
             del views[size:]
         for index in range(len(views), size):
-            views.append(self.view_cls(self.table, index + 1, nature=self.table.nature))
+            views.append(self.view_cls(self.table, index + 1))
 
     def __getitem__(self, pos):
         self._fit_to_size(pos, truncate=False)
@@ -280,7 +280,7 @@ class RowView(TableView):
         """ Row position in the table (1-based). """
         return self._pos
 
-    def insert_cell(self, content, styles=None, width=1, height=1):
+    def insert_cell(self, content, styles=None, nature='body', width=1, height=1):
         """
         Insert a new cell in the row at the next free position, or at the end.
 
@@ -298,6 +298,11 @@ class RowView(TableView):
             border-width, border-color, vertical-align, text-align, etc.).
             Of course, we are not tied to the HTML-like styles, you can use your own
             list of styles.
+
+        :type nature: str
+        :ivar nature: nature: a way to distinguish the body cells, from the header and the footer.
+            The default value is "body", but you can use "header", "footer" or whatever
+            is suitable for your needs.
 
         :param int width:
             Width of the cell (columns spanning), default to 1.
@@ -317,7 +322,7 @@ class RowView(TableView):
                 x = bounding_box.max.x + 1
         else:
             x = 1
-        cell = Cell(content, styles=styles, nature=self.nature,
+        cell = Cell(content, styles=styles, nature=nature,
                     x=x, y=y, width=width, height=height)
         self._table[cell.min] = cell
 
@@ -338,7 +343,7 @@ class ColView(TableView):
         """ Column position in the table (1-based). """
         return self._pos
 
-    def insert_cell(self, content, styles=None, width=1, height=1):
+    def insert_cell(self, content, styles=None, nature=None, width=1, height=1):
         """
         Insert a new cell in the column at the next free position, or at the end.
 
@@ -356,6 +361,11 @@ class ColView(TableView):
             border-width, border-color, vertical-align, text-align, etc.).
             Of course, we are not tied to the HTML-like styles, you can use your own
             list of styles.
+
+        :type nature: str
+        :ivar nature: nature: a way to distinguish the body cells, from the header and the footer.
+            The default value is "body", but you can use "header", "footer" or whatever
+            is suitable for your needs.
 
         :param int width:
             Width of the cell (columns spanning), default to 1.
@@ -375,7 +385,7 @@ class ColView(TableView):
                 y = bounding_box.max.y + 1
         else:
             y = 1
-        cell = Cell(content, styles=styles, nature=self.nature,
+        cell = Cell(content, styles=styles, nature=nature,
                     x=x, y=y, width=width, height=height)
         self._table[cell.min] = cell
 
@@ -471,7 +481,7 @@ class Table(Styled, MutableMapping):
     rows = ViewsProperty(RowView)
     cols = ViewsProperty(ColView)
 
-    def __init__(self, cells=None, styles=None, nature="body"):
+    def __init__(self, cells=None, styles=None, nature=None):
         """
         Construct a table object from a collection of cells and a dictionary of styles.
 
@@ -484,7 +494,9 @@ class Table(Styled, MutableMapping):
 
         :type nature: str
         :ivar nature:
-            Cell *nature* used to distinguish the body cells, from the header and the footer.
+            User-defined string value.
+            Table *nature* is similar to HTML ``@class`` attribute,
+            you can use it do identify the styles to apply to your table.
         """
         super(Table, self).__init__(styles, nature)
         self._grid = Grid(cells)

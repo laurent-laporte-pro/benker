@@ -49,6 +49,10 @@ A :class:`~benker.styled.Styled` object has the following attribute:
     This kind of information is in general not stored in the styles,
     even if it is similar.
 
+    Tables can also have a *nature*, similar to HTML ``@class`` attribute,
+    you can use it do identify the styles to apply to your table.
+    For tables, the default value is ``None``.
+
     .. note::
 
         In a :class:`~benker.grid.Grid`, the :ref:`merging <benker__grid__merging>`

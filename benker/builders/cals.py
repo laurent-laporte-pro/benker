@@ -25,8 +25,9 @@ from benker.units import convert_value
 
 
 def _get_border_style(styles, style):
+    parts = styles.get(style, "")
+    parts = parts.split(" ") if parts else []
     value = 'none'
-    parts = styles.get(style, "").split(" ")
     for part in parts:
         if not part.endswith("pt") and part != "auto" and not part.startswith("#"):
             value = part
@@ -107,18 +108,16 @@ class CalsBuilder(BaseBuilder):
 
     def build_table(self, table):
         table_styles = table.styles
-        attrs = {
-            'frame': _get_frame_attr(table_styles),
-        }
+        attrs = {'frame': _get_frame_attr(table_styles),}
         if not self.table_in_tgroup:
             attrs['colsep'] = _get_colsep_attr(table_styles)
             attrs['rowsep'] = _get_rowsep_attr(table_styles)
-            if 'x-class' in table_styles:
-                attrs['tabstyle'] = table_styles['x-class']
-        if 'x-orient' in table_styles:
-            attrs['orient'] = {"landscape": "land", "portrait": "port"}[table_styles['x-orient']]
-        if 'x-cols' in table_styles:
-            attrs['pgwide'] = "1" if table_styles['x-cols'] == "1" else "0"
+            if table.nature is not None:
+                attrs['tabstyle'] = table.nature
+        if 'x-sect-orient' in table_styles:
+            attrs['orient'] = {"landscape": "land", "portrait": "port"}[table_styles['x-sect-orient']]
+        if 'x-sect-cols' in table_styles:
+            attrs['pgwide'] = "1" if table_styles['x-sect-cols'] == "1" else "0"
         table_elem = etree.Element(u"table", attrib=attrs)
         self.build_tgroup(table_elem, table)
         return table_elem
@@ -129,8 +128,8 @@ class CalsBuilder(BaseBuilder):
         if self.table_in_tgroup:
             attrs['colsep'] = _get_colsep_attr(table_styles)
             attrs['rowsep'] = _get_rowsep_attr(table_styles)
-            if 'x-class' in table_styles:
-                attrs['tgroupstyle '] = table_styles['x-class']
+            if table.nature is not None:
+                attrs['tgroupstyle '] = table.nature
         group_elem = etree.SubElement(table_elem, u"tgroup", attrib=attrs)
         for col in table.cols:
             self.build_colspec(group_elem, col)

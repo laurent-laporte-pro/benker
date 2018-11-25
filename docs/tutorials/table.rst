@@ -20,7 +20,7 @@ The nature is used to give a default value to the the row/column views.
     >>> from benker.table import Table
 
     >>> Table(styles={'frame': 'all'})
-    <Table({'frame': 'all'}, 'body')>
+    <Table({'frame': 'all'}, None)>
 
 A table can be initialize with a collection of cells.
 Make sure all cells are disjoints.

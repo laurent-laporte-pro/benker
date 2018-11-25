@@ -392,6 +392,8 @@ class OoxmlParser(BaseParser):
         real_table_borders = style_borders.copy()
         real_table_borders.update({key: value for key, value in table_borders.items() if value is not None})
 
+        attrs = real_table_borders.copy()
+
         # -- Sections: http://officeopenxml.com/WPsection.php
 
         # A section's properties are stored in a sectPr element.
@@ -401,25 +403,25 @@ class OoxmlParser(BaseParser):
 
         w_sect_pr = value_of(w_tbl, 'following::w:p/w:pPr/w:sectPr | following::w:sectPr')
 
-        attrs = real_table_borders.copy()
+        # - ``x-sect-orient``: Section orientation
+        #   Possible values are "landscape" and "portrait".
+        sect_orient = value_of(w_sect_pr, 'w:pgSz/@w:orient')
+        if sect_orient:
+            attrs['x-sect-orient'] = sect_orient
+
+        # - w:cols -- Specifies the set of columns for the section.
+        # - ``x-sect-cols``: Section column number
+        #   Default value is "1" -- useful for @pgwide
+        sect_cols = value_of(w_sect_pr, 'w:cols/@w:num')
+        if sect_cols is None:
+            sect_cols = w_sect_pr.xpath('count(w:cols/w:col)', namespaces=NS)  # type: float
+            sect_cols = str(int(sect_cols)) if sect_cols else "1"
+        attrs['x-sect-cols'] = sect_cols
 
         # - The HTML ``class`` attribute is not a regular style.
-        #   We use ``x-class`` instead.
-        if style_id:
-            attrs['x-class'] = style_id
+        #   We use the table ``nature``instead.
 
-        # -- orient: Orientation of the entire <table>: "port" (default) or "land"
-        orient = value_of(w_sect_pr, 'w:pgSz/@w:orient')
-        if orient:
-            # orient -- Possible values are "landscape" and "portrait".
-            attrs['x-orient'] = orient
-
-        if orient in {None, "portrait"}:
-            # -- pgwide: Table width = 100% (if orient="portrait").
-            cols = value_of(w_sect_pr, 'w:cols/@w:num', default="1")
-            attrs['x-cols'] = cols
-
-        self._state.table = Table(styles=attrs)
+        self._state.table = Table(styles=attrs, nature=style_id)
 
     def parse_grid_col(self, w_grid_col):
         """
