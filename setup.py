@@ -31,7 +31,7 @@ def read(filename):
 
 setup(
     name="Benker",
-    version="0.1.0",
+    version='0.1.0',
 
     author="Laurent LAPORTE",
     author_email="laurent.laporte.pro@gmail.com",
