@@ -217,4 +217,5 @@ class CalsBuilder(BaseBuilder):
         if cell.height > 1:
             cell_styles[u"morerows"] = str(cell.height - 1)
         entry_elem = etree.SubElement(row_elem, u"entry", attrib=cell_styles)
-        entry_elem.extend(cell.content)
+        if cell.content is not None:
+            entry_elem.extend(cell.content)

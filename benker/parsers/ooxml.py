@@ -335,41 +335,48 @@ class OoxmlParser(BaseParser):
         :rtype: etree.Element
         :return: CALS element.
         """
-        self._state.reset()
+        state = self._state
+        state.reset()
 
         elements = {w(name) for name in {'tbl', 'tblGrid', 'gridCol', 'tr', 'tc'}}
         context = etree.iterwalk(w_tbl, events=('start', 'end'), tag=elements)
 
         for action, elem in context:
             elem_tag = elem.tag
-            if elem_tag == w('tbl'):
-                if elem is w_tbl:
-                    self.parse_tbl(elem)
+            if action == 'start':
+                if elem_tag == w('tbl'):
+                    if elem is w_tbl:
+                        self.parse_tbl(elem)
+                    else:
+                        # This <tbl> element is inside the table.
+                        # It will be handled separately in another call to convert_tbl()
+                        context.skip_subtree()
+
+                elif elem_tag == w('tblGrid'):
+                    # this element has no specific data
+                    pass
+
+                elif elem_tag == w('gridCol'):
+                    state.next_col()
+                    self.parse_grid_col(elem)
+
+                elif elem_tag == w('tr'):
+                    state.next_row()
+                    self.parse_tr(elem)
+
+                elif elem_tag == w('tc'):
+                    state.next_col()
+                    self.parse_tc(elem)
+
                 else:
-                    # This <tbl> element is inside the table.
-                    # It will be handled separately in another call to convert_tbl()
-                    context.skip_subtree()
-
-            elif elem_tag == w('tblGrid'):
-                # this element has no specific data
-                pass
-
-            elif elem_tag == w('gridCol'):
-                self._state.next_col()
-                self.parse_grid_col(elem)
-
-            elif elem_tag == w('tr'):
-                self._state.next_row()
-                self.parse_tr(elem)
-
-            elif elem_tag == w('tc'):
-                self._state.next_col()
-                self.parse_tc(elem)
-
+                    raise NotImplementedError(elem_tag)
             else:
-                raise NotImplementedError(elem_tag)
+                if elem_tag == w('tr'):
+                    # add missing entries
+                    for _ in range(state.col_pos, len(state.table.cols)):
+                        state.row.insert_cell(None)
 
-        return self._state.table
+        return state.table
 
     def parse_tbl(self, w_tbl):
         """
@@ -518,8 +525,12 @@ class OoxmlParser(BaseParser):
         :param w_tc: Table element.
         """
         state = self._state
+
         # w:gridSpan => number of logical columns across which the cell spans
         width = int(value_of(w_tc, "w:tcPr/w:gridSpan/@w:val", default=u"1"))
+
+        # take the colspan into account:
+        state.col_pos += width - 1
 
         # w:vMerge => specifies that the cell is part of a vertically merged set of cells.
         w_v_merge = value_of(w_tc, "w:tcPr/w:vMerge")
