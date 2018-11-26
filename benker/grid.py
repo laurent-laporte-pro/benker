@@ -248,7 +248,12 @@ class Grid(MutableMapping):
         first = merged_cells.pop(0)
         new_cell = first.transform(coord=new_box.min, size=new_box.size)
         for cell in merged_cells:
-            new_cell.content = content_appender(new_cell.content, cell.content)
+            if new_cell.content is None:
+                new_cell.content = cell.content
+            elif cell.content is None:
+                pass  # no change
+            else:
+                new_cell.content = content_appender(new_cell.content, cell.content)
             new_cell.styles.update(cell.styles)
         self._cells = unchanged_cells
         boxes = [cell.box for cell in self._cells]

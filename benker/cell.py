@@ -143,7 +143,7 @@ class Cell(Styled):
         self._box = Box(x, y, x + width - 1, y + height - 1)
 
     def __str__(self):
-        return str(self.content)
+        return u"" if self.content is None else str(self.content)
 
     def __repr__(self):
         cls = self.__class__.__name__
