@@ -146,12 +146,12 @@ class CalsBuilder(BaseBuilder):
     # noinspection PyMethodMayBeStatic
     def build_colspec(self, group_elem, col):
         """
-        
-        :param group_elem: 
-        
+        Build the ``<colspec>`` element.
+
+        :param group_elem: Parent element: ``<tgroup>``.
+
         :type  col: benker.table.ColView
-        :param col: 
-        :return: 
+        :param col: Columns
         """
         col_styles = col.styles
         attrs = {u'colname': u"c{0}".format(col.col_pos)}
