@@ -1,0 +1,121 @@
+<expected xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <table frame="all" pgwide="1">
+    <tgroup cols="7" colsep="1" rowsep="1" tgroupstyle="Grilledutableau">
+      <colspec colname="c1" colwidth="9.91mm"/>
+      <colspec colname="c2" colwidth="5.89mm"/>
+      <colspec colname="c3" colwidth="7.09mm"/>
+      <colspec colname="c4" colwidth="11.57mm"/>
+      <colspec colname="c5" colwidth="5.79mm"/>
+      <colspec colname="c6" colwidth="5.79mm"/>
+      <colspec colname="c7" colwidth="7.76mm"/>
+      <tbody>
+        <row>
+          <entry morerows="1">
+            <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
+              <w:r>
+                <w:t>A</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry nameend="c3" namest="c2">
+            <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
+              <w:r>
+                <w:t>B</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+        </row>
+        <row>
+          <entry>
+            <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
+              <w:r>
+                <w:t>C</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry nameend="c4" namest="c3">
+            <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
+              <w:r>
+                <w:t>D</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+        </row>
+        <row>
+          <entry nameend="c3" namest="c1">
+            <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
+              <w:r>
+                <w:t>1</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
+              <w:r>
+                <w:t>2</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
+              <w:r>
+                <w:t>3</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
+              <w:r>
+                <w:t>4</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
+              <w:r>
+                <w:t>5</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+        </row>
+        <row>
+          <entry nameend="c3" namest="c1">
+            <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
+              <w:r>
+                <w:t>6</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
+              <w:r>
+                <w:t>7</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
+              <w:r>
+                <w:t>8</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
+              <w:r>
+                <w:t>9</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry>
+            <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
+              <w:r>
+                <w:t>10</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+</expected>
