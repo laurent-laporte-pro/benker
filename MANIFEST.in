@@ -1,0 +1,16 @@
+graft about
+graft benker
+graft docs
+graft tests
+
+include .bumpversion.cfg
+include .coveragerc
+include .editorconfig
+
+include README.rst
+include LICENSE
+include Pipfile
+include Pipfile.lock
+include tox.ini
+
+global-exclude *.py[cod] __pycache__ *.so *.dylib .DS_Store

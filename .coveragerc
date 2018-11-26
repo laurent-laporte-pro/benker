@@ -1,0 +1,16 @@
+[paths]
+source =
+   src/giotto_service
+   */site-packages/giotto_service
+
+[run]
+branch = True
+source =
+    giotto_service
+    tests
+parallel = true
+
+[report]
+show_missing = true
+precision = 2
+omit = *tests*
