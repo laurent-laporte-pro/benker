@@ -87,8 +87,9 @@ class CalsBuilder(BaseBuilder):
             - ``False`` to put the properties in the ``<table>`` element,
             - ``True`` to put the properties in the ``<tgroup>`` element.
 
-        :type  options: str
-        :param options: Extra conversion options.
+        :param str options: Extra conversion options.
+            See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
+            to have a list of all possible options.
         """
         self.width_unit = width_unit
         self.table_in_tgroup = table_in_tgroup
@@ -129,7 +130,7 @@ class CalsBuilder(BaseBuilder):
             attrs['colsep'] = _get_colsep_attr(table_styles)
             attrs['rowsep'] = _get_rowsep_attr(table_styles)
             if table.nature is not None:
-                attrs['tgroupstyle '] = table.nature
+                attrs['tgroupstyle'] = table.nature
         group_elem = etree.SubElement(table_elem, u"tgroup", attrib=attrs)
         for col in table.cols:
             self.build_colspec(group_elem, col)
@@ -153,13 +154,12 @@ class CalsBuilder(BaseBuilder):
         :return: 
         """
         col_styles = col.styles
-        width = col_styles['width']
-        width, unit = re.findall(r"([+-]?(?:[0-9]*[.])?[0-9]+)(\w+)", width)[0]
-        value = convert_value(float(width), unit, self.width_unit)
-        attrs = {
-            u'colname': u"c{0}".format(col.col_pos),
-            u'colwidth': u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
-        }
+        attrs = {u'colname': u"c{0}".format(col.col_pos),}
+        if 'width' in col_styles:
+            width = col_styles['width']
+            width, unit = re.findall(r"([+-]?(?:[0-9]*[.])?[0-9]+)(\w+)", width)[0]
+            value = convert_value(float(width), unit, self.width_unit)
+            attrs['colwidth'] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
         etree.SubElement(group_elem, u"colspec", attrib=attrs)
 
     def build_tbody(self, group_elem, row_list, nature_tag):

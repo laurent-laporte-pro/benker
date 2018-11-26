@@ -290,7 +290,7 @@ class OoxmlParser(BaseParser):
             self.row_pos += 1
             self.row = None
 
-    def __init__(self, builder, width_unit='mm', **options):
+    def __init__(self, builder, styles_path=None, **options):
         """
         Construct a parser
 
@@ -298,20 +298,22 @@ class OoxmlParser(BaseParser):
         :param builder:
             Builder used by this parser to instantiate :class:`~benker.table.Table` objects.
 
-        :param str width_unit:
-            Unit to use for column widths.
-            Possible values are: 'cm', 'dm', 'ft', 'in', 'm', 'mm', 'pc', 'pt', 'px'.
+        :param str styles_path:
+            Path to the stylesheet to use to resole table styles.
+            In an uncompressed ``.docx`` tree structure, the stylesheet path
+            is ``word/styles.xml``.
 
         :param str options: Extra conversion options.
+            See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
+            to have a list of all possible options.
         """
         self._state = self._State()
         self._w_styles = None
-        self.width_unit = width_unit
+        self.styles_path = styles_path
         super(OoxmlParser, self).__init__(builder, **options)
 
     def transform_tables(self, tree):
-        styles_path = self.options.get("styles_path")
-        self._w_styles = etree.parse(styles_path) if styles_path else None
+        self._w_styles = etree.parse(self.styles_path) if self.styles_path else None
         self._w_styles = self._w_styles or value_of(tree, ".//w:styles")
 
         for w_tbl in tree.xpath("//w:tbl", namespaces=NS):
@@ -336,7 +338,7 @@ class OoxmlParser(BaseParser):
         self._state.reset()
 
         elements = {w(name) for name in {'tbl', 'tblGrid', 'gridCol', 'tr', 'tc'}}
-        context = etree.iterwalk(w_tbl, events=('start',), tag=elements)
+        context = etree.iterwalk(w_tbl, events=('start', 'end'), tag=elements)
 
         for action, elem in context:
             elem_tag = elem.tag

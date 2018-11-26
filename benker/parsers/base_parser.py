@@ -13,7 +13,7 @@ class BaseParser(object):
     Abstract base class of the parsers classes.
     """
 
-    def __init__(self, builder, **options):
+    def __init__(self, builder, encoding="utf-8", **options):
         """
         Construct a base builder.
 
@@ -21,16 +21,21 @@ class BaseParser(object):
         :param builder:
             Builder used by this parser to instantiate :class:`~benker.table.Table` objects.
 
+        :param str encoding:
+            XML encoding of the destination file (default: "utf-8").
+
         :param str options: Extra conversion options.
+            See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
+            to have a list of all possible options.
         """
         self.builder = builder
+        self.encoding = encoding
         self.options = options
 
     def parse_file(self, src_xml, dst_xml):
         tree = etree.parse(src_xml)
         self.transform_tables(tree)
-        encoding = self.options.get('encoding', 'utf-8')
-        tree.write(dst_xml, encoding=encoding, pretty_print=False)
+        tree.write(dst_xml, encoding=self.encoding, pretty_print=False)
 
     def transform_tables(self, tree):
         raise NotImplementedError

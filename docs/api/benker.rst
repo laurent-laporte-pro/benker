@@ -27,8 +27,23 @@ API
    benker.cell
    benker.grid
    benker.table
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Parsers:
+
    benker.parsers
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Builders:
+
    benker.builders
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Converters:
+
    benker.converters
 
 .. toctree::
