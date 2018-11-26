@@ -24,10 +24,10 @@ project = 'Benker'
 copyright = '2018, Laurent LAPORTE'
 author = 'Laurent LAPORTE'
 
-# The short X.Y version
-version = '0.1'
 # The full version, including alpha/beta/rc tags
 release = '0.1.0'
+# The short X.Y version
+version = '.'.join(release.split('.')[:2])
 
 # -- General configuration ---------------------------------------------------
 
