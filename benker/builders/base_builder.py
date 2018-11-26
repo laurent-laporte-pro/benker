@@ -5,7 +5,6 @@ Base Builder
 
 Base class of Builders.
 """
-from benker.table import Table
 
 
 class BaseBuilder(object):

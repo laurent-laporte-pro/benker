@@ -109,7 +109,7 @@ class CalsBuilder(BaseBuilder):
 
     def build_table(self, table):
         table_styles = table.styles
-        attrs = {'frame': _get_frame_attr(table_styles),}
+        attrs = {'frame': _get_frame_attr(table_styles), }
         if not self.table_in_tgroup:
             attrs['colsep'] = _get_colsep_attr(table_styles)
             attrs['rowsep'] = _get_rowsep_attr(table_styles)
@@ -154,7 +154,7 @@ class CalsBuilder(BaseBuilder):
         :return: 
         """
         col_styles = col.styles
-        attrs = {u'colname': u"c{0}".format(col.col_pos),}
+        attrs = {u'colname': u"c{0}".format(col.col_pos)}
         if 'width' in col_styles:
             width = col_styles['width']
             width, unit = re.findall(r"([+-]?(?:[0-9]*[.])?[0-9]+)(\w+)", width)[0]

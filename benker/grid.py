@@ -177,7 +177,7 @@ class Grid(MutableMapping):
         index = bisect.bisect_left(boxes, Box(new_cell.box.min))
         self._cells.insert(index, new_cell)
 
-    def __len__(self) -> int:
+    def __len__(self):
         return len(self._cells)
 
     def __iter__(self):
