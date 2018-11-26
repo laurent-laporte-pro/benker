@@ -14,7 +14,7 @@ def test_convert_ooxml2cals__demo(tmpdir):
 
     # - Unzip the ``.docx``
     src_zip = RESOURCES_DIR.join("cals/demo.docx")  # type: py.path.local
-    with zipfile.ZipFile(src_zip) as zf:
+    with zipfile.ZipFile(str(src_zip)) as zf:
         zf.extractall(str(tmpdir))
 
     # - Source and destination paths
@@ -38,7 +38,6 @@ def test_convert_ooxml2cals__demo(tmpdir):
 
 @pytest.mark.parametrize('input_name, expected_name',
                          [
-                             ("cals/demo/word/document.xml", "cals/demo.expected.xml"),
                              ("cals/alignements.xml", "cals/alignements.expected.xml"),
                              ("cals/simple_merge.xml", "cals/simple_merge.expected.xml"),
                              ("cals/table_in_table.xml", "cals/table_in_table.expected.xml"),
