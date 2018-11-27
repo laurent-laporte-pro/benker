@@ -40,9 +40,9 @@ def _get_frame_attr(styles):
         value = _get_border_style(styles, style)
         frame_styles[style] = value != "none"
     top = frame_styles['border-top']
-    bottom = frame_styles['border-top']
-    left = frame_styles['border-top']
-    right = frame_styles['border-top']
+    bottom = frame_styles['border-bottom']
+    left = frame_styles['border-left']
+    right = frame_styles['border-right']
     return {
         (True, True, True, True): u"all",
         (True, True, False, False): u"topbot",
