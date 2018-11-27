@@ -12,5 +12,6 @@ include LICENSE
 include Pipfile
 include Pipfile.lock
 include tox.ini
+include *.yml
 
 global-exclude *.py[cod] __pycache__ *.so *.dylib .DS_Store
