@@ -2,9 +2,6 @@
 """
 Office Open XML to CALS converter
 =================================
-
-:Created on: 2018-11-22
-:Author: Laurent LAPORTE <llaporte@jouve.com>
 """
 from benker.builders.cals import CalsBuilder
 from benker.converters.base_converter import BaseConverter
