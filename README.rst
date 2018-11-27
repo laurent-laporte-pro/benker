@@ -2,7 +2,7 @@ Benker
 ======
 
 .. image:: https://img.shields.io/pypi/v/Benker.svg
-    :target: https://pypi.python.org/pypi/Benker
+    :target: https://pypi.org/project/Benker/
     :alt: Latest PyPI version
 
 .. image:: https://travis-ci.org/laurent-laporte-pro/benker.png
