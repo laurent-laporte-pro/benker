@@ -1,12 +1,12 @@
 [paths]
 source =
-   src/giotto_service
-   */site-packages/giotto_service
+   benker
+   */site-packages/benker
 
 [run]
 branch = True
 source =
-    giotto_service
+    benker
     tests
 parallel = true
 
