@@ -10,6 +10,7 @@ Benker's documentation |version|
    :maxdepth: 2
    :caption: Contents:
 
+   readme.rst
    tutorials/index.rst
    api/benker.rst
 
