@@ -16,7 +16,6 @@ Specifications and examples:
 
 """
 import itertools
-import re
 
 from lxml import etree
 
@@ -157,8 +156,7 @@ class CalsBuilder(BaseBuilder):
         attrs = {u'colname': u"c{0}".format(col.col_pos)}
         if 'width' in col_styles:
             width = col_styles['width']
-            width, unit = re.findall(r"([+-]?(?:[0-9]*[.])?[0-9]+)(\w+)", width)[0]
-            value = convert_value(float(width), unit, self.width_unit)
+            value = convert_value(width, unit_out=self.width_unit)
             attrs['colwidth'] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
         etree.SubElement(group_elem, u"colspec", attrib=attrs)
 
