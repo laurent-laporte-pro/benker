@@ -1,6 +1,11 @@
 Benker
 ======
 
+.. _virtualenv: https://virtualenv.pypa.io/en/latest/
+.. _lxml: https://lxml.de/
+.. _CALS: https://en.wikipedia.org/wiki/CALS_Table_Model
+.. _MIT: https://opensource.org/licenses/mit-license.php
+
 .. image:: https://img.shields.io/pypi/v/Benker.svg
     :target: https://pypi.org/project/Benker/
     :alt: Latest PyPI version
@@ -22,19 +27,82 @@ Organize your data in a spatial grid system for CALS, HTML, Office Open XML tabl
 Usage
 -----
 
+To convert the tables of a ``.docx`` document to CALS_ format, you can process as follow:
+
+::
+
+    import os
+    import zipfile
+
+    from benker.converters.ooxml2cals import convert_ooxml2cals
+
+    # - Unzip the ``.docx`` in a temporary directory
+    src_zip = "/path/to/demo.docx"
+    tmp_dir = "/path/to/tmp/dir/"
+    with zipfile.ZipFile(src_zip) as zf:
+        zf.extractall(tmp_dir)
+
+    # - Source paths
+    src_xml = os.path.join(tmp_dir, "word/document.xml")
+    styles_xml = os.path.join(tmp_dir, "word/styles.xml")
+
+    # - Destination path
+    dst_xml = "/path/to/demo.xml"
+
+    # - Create some options and convert tables
+    options = {
+        'encoding': 'utf-8',
+        'styles_path': str(styles_xml),
+        'width_unit': "mm",
+        'table_in_tgroup': True,
+    }
+    convert_ooxml2cals(src_xml, dst_xml, **options)
+
 Installation
 ------------
+
+To install this library, you can create and activate a virtualenv_, and run:
+
+::
+
+    pip install benker
 
 Requirements
 ^^^^^^^^^^^^
 
-Compatibility
--------------
+- This library uses lxml_ library and is tested with the versions 3.x and 4.x.
+
+Usage in you library/application
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can use this library in you own library/application.
+
+To do so, add this library in your ``setup.py`` in your project requirements:
+
+::
+
+    setup(
+        name="YourApp",
+        install_requires=['benker'],
+        ...
+    )
+
+To install the dependencies, activate your virtualenv_ and run:
+
+::
+
+    pip install -e .
+
+And enjoy!
 
 Licence
 -------
 
+This library is distributed according to the MIT_ licence.
+
+Users have legal right to download, modify, or distribute the library.
+
 Authors
 -------
 
-`Benker` was written by `Laurent LAPORTE <laurent.laporte.pro@gmail.com>`_.
+``Benker`` was written by `Laurent LAPORTE <laurent.laporte.pro@gmail.com>`_.
