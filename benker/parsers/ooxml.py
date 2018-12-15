@@ -16,9 +16,10 @@ from lxml import etree
 
 from benker.parsers.base_parser import BaseParser
 from benker.parsers.base_parser import value_of as base_value_of
-#: Namespace map used for xpath evaluation in Office Open XML documents
+from benker.parsers.lxml_iterwalk import iterwalk
 from benker.table import Table
 
+#: Namespace map used for xpath evaluation in Office Open XML documents
 NS = {'w': "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
 
 
@@ -339,18 +340,24 @@ class OoxmlParser(BaseParser):
         state.reset()
 
         elements = {w(name) for name in {'tbl', 'tblGrid', 'gridCol', 'tr', 'tc'}}
-        context = etree.iterwalk(w_tbl, events=('start', 'end'), tag=elements)
+        context = iterwalk(w_tbl, events=('start', 'end'), tag=elements)
 
+        depth = 0
         for action, elem in context:
             elem_tag = elem.tag
+            if elem_tag == w('tbl'):
+                if action == 'start':
+                    depth += 1
+                else:
+                    depth -= 1
+            if depth > 1:
+                # .. note:: context.skip_subtree() is not available for all version of lxml
+                # This <tbl> element is inside the table.
+                # It will be handled separately in another call to convert_tbl()
+                continue
             if action == 'start':
                 if elem_tag == w('tbl'):
-                    if elem is w_tbl:
-                        self.parse_tbl(elem)
-                    else:
-                        # This <tbl> element is inside the table.
-                        # It will be handled separately in another call to convert_tbl()
-                        context.skip_subtree()
+                    self.parse_tbl(elem)
 
                 elif elem_tag == w('tblGrid'):
                     # this element has no specific data
