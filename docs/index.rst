@@ -11,6 +11,7 @@ Benker's documentation |version|
    :caption: Contents:
 
    readme.rst
+   changelog.rst
    tutorials/index.rst
    api/benker.rst
 
