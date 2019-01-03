@@ -72,10 +72,10 @@ Requirements
 
 - This library uses lxml_ library and is tested with the versions 3.x and 4.x.
 
-Usage in you library/application
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Usage in your library/application
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can use this library in you own library/application.
+You can use this library in your own library/application.
 
 To do so, add this library in your ``setup.py`` in your project requirements:
 
