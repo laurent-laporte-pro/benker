@@ -29,7 +29,7 @@ Usage
 
 To convert the tables of a ``.docx`` document to CALS_ format, you can process as follow:
 
-::
+.. code-block:: python
 
     import os
     import zipfile
@@ -63,7 +63,7 @@ Installation
 
 To install this library, you can create and activate a virtualenv_, and run:
 
-::
+.. code-block:: bash
 
     pip install benker
 
@@ -79,7 +79,7 @@ You can use this library in your own library/application.
 
 To do so, add this library in your ``setup.py`` in your project requirements:
 
-::
+.. code-block:: python
 
     setup(
         name="YourApp",
@@ -89,7 +89,7 @@ To do so, add this library in your ``setup.py`` in your project requirements:
 
 To install the dependencies, activate your virtualenv_ and run:
 
-::
+.. code-block:: bash
 
     pip install -e .
 
