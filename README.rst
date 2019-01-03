@@ -70,7 +70,7 @@ To install this library, you can create and activate a virtualenv_, and run:
 Requirements
 ^^^^^^^^^^^^
 
-- This library uses lxml_ library and is tested with the versions 3.x and 4.x.
+This library uses lxml_ library and is tested with the versions 3.x (for Python < 3.7), and 4.x.
 
 Usage in your library/application
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
