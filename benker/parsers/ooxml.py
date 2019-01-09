@@ -557,9 +557,23 @@ class OoxmlParser(BaseParser):
             raise NotImplementedError(w_v_merge)
 
         if height:
-            content = w_tc.xpath('w:p | w:tbl', namespaces=NS)
-            state.row.insert_cell(content, width=width, height=height)
+            styles = {}
 
-        # todo: calculate the ``@align`` attribute.
-        # todo: calculate the ``@valign`` attribute.
-        # todo: calculate the ``@rotate`` attribute.
+            # w:vAlign => Specifies the vertical alignment for text between the top and bottom margins of the cell.
+            #
+            # Possible values are:
+            # - bottom - Specifies that the text should be vertically aligned to the bottom margin.
+            # - center - Specifies that the text should be vertically aligned to the center of the cell.
+            # - top - Specifies that the text should be vertically aligned to the top margin.
+            w_v_align = value_of(w_tc, "w:tcPr/w:vAlign")
+            if w_v_align is not None:
+                w_v_align = value_of(w_tc, "w:tcPr/w:vAlign/@w:val", default=u"top")
+                # CSS/Properties/vertical-align
+                v_align = {"top": "top", "center": "middle", "bottom": "bottom"}[w_v_align]
+                styles["valign"] = v_align
+
+            # todo: calculate the ``@align`` attribute.
+            # todo: calculate the ``@rotate`` attribute.
+
+            content = w_tc.xpath('w:p | w:tbl', namespaces=NS)
+            state.row.insert_cell(content, width=width, height=height, styles=styles)
