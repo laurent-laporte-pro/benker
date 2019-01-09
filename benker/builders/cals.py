@@ -177,7 +177,7 @@ class CalsBuilder(BaseBuilder):
         attrs = {}
         if 'valign' in row_styles:
             attrs['valign'] = {'top': 'top',
-                               'middle': 'middle',
+                               'center': 'middle',
                                'bottom': 'bottom',
                                'baseline': 'bottom'}[row_styles['valign']]
 
@@ -211,11 +211,16 @@ class CalsBuilder(BaseBuilder):
     # noinspection PyMethodMayBeStatic
     def build_cell(self, row_elem, cell):
         cell_styles = cell.styles
+        attrs = {}
+        if 'valign' in cell_styles:
+            # same values as CSS/Properties/vertical-align
+            attrs['valign'] = cell_styles['valign']
         if cell.width > 1:
-            cell_styles[u"namest"] = "c{0}".format(cell.box.min.x)
-            cell_styles[u"nameend"] = "c{0}".format(cell.box.max.x)
+            attrs[u"namest"] = "c{0}".format(cell.box.min.x)
+            attrs[u"nameend"] = "c{0}".format(cell.box.max.x)
         if cell.height > 1:
-            cell_styles[u"morerows"] = str(cell.height - 1)
-        entry_elem = etree.SubElement(row_elem, u"entry", attrib=cell_styles)
+            attrs[u"morerows"] = str(cell.height - 1)
+
+        entry_elem = etree.SubElement(row_elem, u"entry", attrib=attrs)
         if cell.content is not None:
             entry_elem.extend(cell.content)
