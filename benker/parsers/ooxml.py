@@ -10,6 +10,7 @@ Specifications:
 - The documentation about OOXML Table is available online at
   `Word Processing - Table Grid/Column Definition <http://officeopenxml.com/WPtableGrid.php>`_.
 """
+import collections
 import functools
 
 from lxml import etree
@@ -559,6 +560,8 @@ class OoxmlParser(BaseParser):
         if height:
             styles = {}
 
+            # -- Vertical alignment
+            #
             # w:vAlign => Specifies the vertical alignment for text between the top and bottom margins of the cell.
             #
             # Possible values are:
@@ -572,7 +575,28 @@ class OoxmlParser(BaseParser):
                 v_align = {"top": "top", "center": "middle", "bottom": "bottom"}[w_v_align]
                 styles["valign"] = v_align
 
-            # todo: calculate the ``@align`` attribute.
+            # -- Horizontal alignment
+            #
+            # Horizontal alignment is done at paragraph level, inside the cell.
+            # We can calculate the cell alignment base on the paragraph properties,
+            # for instance ``<w:p><w:pPr><w:jc w:val="right"/>``,
+            # see: http://officeopenxml.com/WPalignment.php
+            #
+            # We use the most common alignment for cell alignment.
+            w_p_list = w_tc.xpath("w:p", namespaces=NS)
+            w_jc_counter = collections.Counter(value_of(w_p, "w:pPr/w:jc/@w:val") for w_p in w_p_list)
+            w_jc = w_jc_counter.most_common(1)[0][0]  # type: str or None
+            if w_jc is not None:
+                # CSS/Properties/text-align
+                align = {"start": "left",
+                         "end": "right",
+                         "left": "left",
+                         "right": "right",
+                         "center": "center",
+                         "both": "justify",
+                         "distribute": "justify"}[w_jc]
+                styles["align"] = align
+
             # todo: calculate the ``@rotate`` attribute.
 
             content = w_tc.xpath('w:p | w:tbl', namespaces=NS)

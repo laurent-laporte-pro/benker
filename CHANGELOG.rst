@@ -20,6 +20,8 @@ Added
 
   - Parse cell ``w:tcPr/w:vAlign`` values.
 
+  - Parse paragraph alignment to calculate cell horizontal alignment.
+
 * Change in the builder :class:`benker.builders.cals.CalsBuilder`:
 
   - Generate ``entry/@valign`` attributes.
