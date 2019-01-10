@@ -39,6 +39,7 @@ def test_convert_ooxml2cals__demo(tmpdir):
 @pytest.mark.parametrize('input_name, expected_name',
                          [
                              ("cals/alignements.xml", "cals/alignements.expected.xml"),
+                             ("cals/alignements2.xml", "cals/alignements2.expected.xml"),
                              ("cals/simple_merge.xml", "cals/simple_merge.expected.xml"),
                              ("cals/table_in_table.xml", "cals/table_in_table.expected.xml"),
                              ("cals/Lorem Ipsum.xml", "cals/Lorem Ipsum.expected.xml"),
@@ -50,4 +51,5 @@ def test_convert_ooxml2cals(input_name, expected_name, tmpdir):
     dst_xml = tmpdir.join(src_xml.basename)
     convert_ooxml2cals(str(src_xml), str(dst_xml), width_unit='pt')
     expected_xml = RESOURCES_DIR.join(expected_name)  # type: py.path.local
+    # shutil.copy(str(dst_xml), str(expected_xml))
     CalsComparator().compare_files(str(dst_xml), str(expected_xml))

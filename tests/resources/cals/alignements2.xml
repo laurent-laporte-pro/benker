@@ -1,0 +1,642 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<w:document xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+            xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml"
+            mc:Ignorable="w14 w15 wp14">
+    <w:body>
+        <w:tbl>
+            <w:tblPr>
+                <w:tblStyle w:val="TableGridLight"/>
+                <w:tblW w:w="0" w:type="auto"/>
+                <w:tblInd w:w="0" w:type="dxa"/>
+                <w:tblLayout w:type="fixed"/>
+                <w:tblLook w:val="06A0" w:firstRow="1" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" w:noHBand="1"
+                           w:noVBand="1"/>
+                <w:tblCaption w:val="Alignement Table"/>
+                <w:tblDescription
+                    w:val="horizontal-align: left|center|right|justify&#xA;vertical-align: top|middle|bottom"/>
+            </w:tblPr>
+            <w:tblGrid>
+                <w:gridCol w:w="450"/>
+                <w:gridCol w:w="3000"/>
+                <w:gridCol w:w="2940"/>
+                <w:gridCol w:w="2970"/>
+            </w:tblGrid>
+            <w:tr>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="450" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="top"/>
+                    </w:tcPr>
+                    <w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>1</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>2</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>3</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:cnfStyle w:val="001000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="1" w:lastColumn="0"
+                                    w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0"
+                                    w:firstRowFirstColumn="0" w:firstRowLastColumn="0" w:lastRowFirstColumn="0"
+                                    w:lastRowLastColumn="0"/>
+                        <w:tcW w:w="3000" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="top"/>
+                    </w:tcPr>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="left"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Left-Top</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="left"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Left-Top</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                                    w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0"
+                                    w:firstRowFirstColumn="0" w:firstRowLastColumn="0" w:lastRowFirstColumn="0"
+                                    w:lastRowLastColumn="0"/>
+                        <w:tcW w:w="2940" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="left"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Left-Middle</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="left"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Left-Middle</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                                    w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0"
+                                    w:firstRowFirstColumn="0" w:firstRowLastColumn="0" w:lastRowFirstColumn="0"
+                                    w:lastRowLastColumn="0"/>
+                        <w:tcW w:w="2970" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="bottom"/>
+                    </w:tcPr>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="left"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Left-Bottom</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="left"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Left-Bottom</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <w:tr>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="450" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="top"/>
+                    </w:tcPr>
+                    <w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>1</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>2</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>3</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:cnfStyle w:val="001000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="1" w:lastColumn="0"
+                                    w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0"
+                                    w:firstRowFirstColumn="0" w:firstRowLastColumn="0" w:lastRowFirstColumn="0"
+                                    w:lastRowLastColumn="0"/>
+                        <w:tcW w:w="3000" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="top"/>
+                    </w:tcPr>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Center-Top</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Center-Top</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                                    w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0"
+                                    w:firstRowFirstColumn="0" w:firstRowLastColumn="0" w:lastRowFirstColumn="0"
+                                    w:lastRowLastColumn="0"/>
+                        <w:tcW w:w="2940" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Center-Middle</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Center-Middle</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                                    w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0"
+                                    w:firstRowFirstColumn="0" w:firstRowLastColumn="0" w:lastRowFirstColumn="0"
+                                    w:lastRowLastColumn="0"/>
+                        <w:tcW w:w="2970" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="bottom"/>
+                    </w:tcPr>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Center-Bottom</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Center-Bottom</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <w:tr>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="450" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="top"/>
+                    </w:tcPr>
+                    <w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>1</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>2</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>3</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:cnfStyle w:val="001000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="1" w:lastColumn="0"
+                                    w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0"
+                                    w:firstRowFirstColumn="0" w:firstRowLastColumn="0" w:lastRowFirstColumn="0"
+                                    w:lastRowLastColumn="0"/>
+                        <w:tcW w:w="3000" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="top"/>
+                    </w:tcPr>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="right"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Right-Top</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="right"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Right-Top</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                                    w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0"
+                                    w:firstRowFirstColumn="0" w:firstRowLastColumn="0" w:lastRowFirstColumn="0"
+                                    w:lastRowLastColumn="0"/>
+                        <w:tcW w:w="2940" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="right"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Right-Middle</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="right"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Right-Middle</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                                    w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0"
+                                    w:firstRowFirstColumn="0" w:firstRowLastColumn="0" w:lastRowFirstColumn="0"
+                                    w:lastRowLastColumn="0"/>
+                        <w:tcW w:w="2970" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="bottom"/>
+                    </w:tcPr>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="right"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Right-Bottom</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="right"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Right-Bottom</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <w:tr>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="450" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="top"/>
+                    </w:tcPr>
+                    <w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>1</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>2</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>3</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:cnfStyle w:val="001000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="1" w:lastColumn="0"
+                                    w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0"
+                                    w:firstRowFirstColumn="0" w:firstRowLastColumn="0" w:lastRowFirstColumn="0"
+                                    w:lastRowLastColumn="0"/>
+                        <w:tcW w:w="3000" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="top"/>
+                    </w:tcPr>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="both"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Justify-Top</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="both"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Justify-Top</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                                    w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0"
+                                    w:firstRowFirstColumn="0" w:firstRowLastColumn="0" w:lastRowFirstColumn="0"
+                                    w:lastRowLastColumn="0"/>
+                        <w:tcW w:w="2940" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="both"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Justify-Middle</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="both"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Justify-Middle</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                                    w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0"
+                                    w:firstRowFirstColumn="0" w:firstRowLastColumn="0" w:lastRowFirstColumn="0"
+                                    w:lastRowLastColumn="0"/>
+                        <w:tcW w:w="2970" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="bottom"/>
+                    </w:tcPr>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="both"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Justify-Bottom</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="both"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Justify-Bottom</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <w:tr>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="450" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="top"/>
+                    </w:tcPr>
+                    <w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>1</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>2</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="center"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>3</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="3000" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="top"/>
+                    </w:tcPr>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="distribute"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Distributed-Top</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="distribute"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Distributed-Top</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="2940" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="distribute"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Distributed-Middle</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="distribute"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Distributed-Middle</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="2970" w:type="dxa"/>
+                        <w:tcMar/>
+                        <w:vAlign w:val="bottom"/>
+                    </w:tcPr>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="distribute"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Distributed-Bottom</w:t>
+                        </w:r>
+                    </w:p>
+                    <w:p w14:noSpellErr="1">
+                        <w:pPr>
+                            <w:pStyle w:val="Normal"/>
+                            <w:jc w:val="distribute"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Distributed-Bottom</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+        </w:tbl>
+        <w:p>
+            <w:pPr>
+                <w:pStyle w:val="Normal"/>
+            </w:pPr>
+        </w:p>
+        <w:sectPr>
+            <w:pgSz w:w="12240" w:h="15840" w:orient="portrait"/>
+            <w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440" w:header="720" w:footer="720"
+                     w:gutter="0"/>
+            <w:cols w:space="720"/>
+            <w:docGrid w:linePitch="360"/>
+        </w:sectPr>
+    </w:body>
+</w:document>
