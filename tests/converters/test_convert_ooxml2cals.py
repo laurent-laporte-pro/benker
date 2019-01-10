@@ -3,10 +3,10 @@ import zipfile
 
 import py.path  # type hints
 import pytest
-
-from benker.converters.ooxml2cals import convert_ooxml2cals
 from tests.converters.cals_comparator import CalsComparator
 from tests.resources import RESOURCES_DIR
+
+from benker.converters.ooxml2cals import convert_ooxml2cals
 
 
 def test_convert_ooxml2cals__demo(tmpdir):
