@@ -38,7 +38,7 @@ setup(
 
     description="Organize your data in a spatial grid system for CALS, HTML, Office Open XML tables conversion",
     long_description=read("README.rst"),
-    long_description_content_type='text/rst',
+    long_description_content_type='text/x-rst',
 
     packages=find_packages(exclude=('tests',)),
     include_package_data=True,
