@@ -215,6 +215,9 @@ class CalsBuilder(BaseBuilder):
         if 'valign' in cell_styles:
             # same values as CSS/Properties/vertical-align
             attrs['valign'] = cell_styles['valign']
+        if 'align' in cell_styles:
+            # same values as CSS/Properties/text-align
+            attrs['align'] = cell_styles['align']
         if cell.width > 1:
             attrs[u"namest"] = "c{0}".format(cell.box.min.x)
             attrs[u"nameend"] = "c{0}".format(cell.box.max.x)

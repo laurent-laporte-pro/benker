@@ -15,7 +15,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry valign="top">
+          <entry align="center" valign="top">
             <w:p>
               <w:pPr>
                 <w:jc w:val="center"/>
@@ -25,7 +25,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry valign="top">
+          <entry align="right" valign="top">
             <w:p>
               <w:pPr>
                 <w:jc w:val="right"/>
@@ -35,7 +35,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry valign="top">
+          <entry align="justify" valign="top">
             <w:p>
               <w:pPr>
                 <w:jc w:val="both"/>
@@ -55,7 +55,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry valign="middle">
+          <entry align="center" valign="middle">
             <w:p>
               <w:pPr>
                 <w:jc w:val="center"/>
@@ -65,7 +65,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry valign="middle">
+          <entry align="right" valign="middle">
             <w:p>
               <w:pPr>
                 <w:jc w:val="right"/>
@@ -75,7 +75,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry valign="middle">
+          <entry align="justify" valign="middle">
             <w:p>
               <w:pPr>
                 <w:jc w:val="both"/>
@@ -95,7 +95,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry valign="bottom">
+          <entry align="center" valign="bottom">
             <w:p>
               <w:pPr>
                 <w:jc w:val="center"/>
@@ -105,7 +105,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry valign="bottom">
+          <entry align="right" valign="bottom">
             <w:p>
               <w:pPr>
                 <w:jc w:val="right"/>
@@ -115,7 +115,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry valign="bottom">
+          <entry align="justify" valign="bottom">
             <w:p>
               <w:pPr>
                 <w:jc w:val="both"/>

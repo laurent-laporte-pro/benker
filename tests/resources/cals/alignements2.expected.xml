@@ -12,7 +12,7 @@
                 <colspec colname="c4" colwidth="148.50pt"/>
                 <tbody>
                     <row>
-                        <entry valign="top">
+                        <entry align="center" valign="top">
                             <w:p>
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -41,7 +41,7 @@
                                 </w:r>
                             </w:p>
                         </entry>
-                        <entry valign="top">
+                        <entry align="left" valign="top">
                             <w:p w14:noSpellErr="1">
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -61,7 +61,7 @@
                                 </w:r>
                             </w:p>
                         </entry>
-                        <entry valign="middle">
+                        <entry align="left" valign="middle">
                             <w:p w14:noSpellErr="1">
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -81,7 +81,7 @@
                                 </w:r>
                             </w:p>
                         </entry>
-                        <entry valign="bottom">
+                        <entry align="left" valign="bottom">
                             <w:p w14:noSpellErr="1">
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -103,7 +103,7 @@
                         </entry>
                     </row>
                     <row>
-                        <entry valign="top">
+                        <entry align="center" valign="top">
                             <w:p>
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -132,7 +132,7 @@
                                 </w:r>
                             </w:p>
                         </entry>
-                        <entry valign="top">
+                        <entry align="center" valign="top">
                             <w:p w14:noSpellErr="1">
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -152,7 +152,7 @@
                                 </w:r>
                             </w:p>
                         </entry>
-                        <entry valign="middle">
+                        <entry align="center" valign="middle">
                             <w:p w14:noSpellErr="1">
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -172,7 +172,7 @@
                                 </w:r>
                             </w:p>
                         </entry>
-                        <entry valign="bottom">
+                        <entry align="center" valign="bottom">
                             <w:p w14:noSpellErr="1">
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -194,7 +194,7 @@
                         </entry>
                     </row>
                     <row>
-                        <entry valign="top">
+                        <entry align="center" valign="top">
                             <w:p>
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -223,7 +223,7 @@
                                 </w:r>
                             </w:p>
                         </entry>
-                        <entry valign="top">
+                        <entry align="right" valign="top">
                             <w:p w14:noSpellErr="1">
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -243,7 +243,7 @@
                                 </w:r>
                             </w:p>
                         </entry>
-                        <entry valign="middle">
+                        <entry align="right" valign="middle">
                             <w:p w14:noSpellErr="1">
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -263,7 +263,7 @@
                                 </w:r>
                             </w:p>
                         </entry>
-                        <entry valign="bottom">
+                        <entry align="right" valign="bottom">
                             <w:p w14:noSpellErr="1">
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -285,7 +285,7 @@
                         </entry>
                     </row>
                     <row>
-                        <entry valign="top">
+                        <entry align="center" valign="top">
                             <w:p>
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -314,7 +314,7 @@
                                 </w:r>
                             </w:p>
                         </entry>
-                        <entry valign="top">
+                        <entry align="justify" valign="top">
                             <w:p w14:noSpellErr="1">
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -334,7 +334,7 @@
                                 </w:r>
                             </w:p>
                         </entry>
-                        <entry valign="middle">
+                        <entry align="justify" valign="middle">
                             <w:p w14:noSpellErr="1">
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -354,7 +354,7 @@
                                 </w:r>
                             </w:p>
                         </entry>
-                        <entry valign="bottom">
+                        <entry align="justify" valign="bottom">
                             <w:p w14:noSpellErr="1">
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -376,7 +376,7 @@
                         </entry>
                     </row>
                     <row>
-                        <entry valign="top">
+                        <entry align="center" valign="top">
                             <w:p>
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -405,7 +405,7 @@
                                 </w:r>
                             </w:p>
                         </entry>
-                        <entry valign="top">
+                        <entry align="justify" valign="top">
                             <w:p w14:noSpellErr="1">
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -425,7 +425,7 @@
                                 </w:r>
                             </w:p>
                         </entry>
-                        <entry valign="middle">
+                        <entry align="justify" valign="middle">
                             <w:p w14:noSpellErr="1">
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>
@@ -445,7 +445,7 @@
                                 </w:r>
                             </w:p>
                         </entry>
-                        <entry valign="bottom">
+                        <entry align="justify" valign="bottom">
                             <w:p w14:noSpellErr="1">
                                 <w:pPr>
                                     <w:pStyle w:val="Normal"/>

@@ -9,7 +9,7 @@
           <entry>
             <w:p/>
           </entry>
-          <entry namest="c2" nameend="c3">
+          <entry align="center" namest="c2" nameend="c3">
             <w:p/>
           </entry>
         </row>
@@ -17,21 +17,10 @@
           <entry>
             <w:p/>
           </entry>
-          <entry>
+          <entry align="right">
             <w:p/>
           </entry>
-          <entry>
-            <w:p/>
-          </entry>
-        </row>
-        <row>
-          <entry>
-            <w:p/>
-          </entry>
-          <entry>
-            <w:p/>
-          </entry>
-          <entry>
+          <entry align="right">
             <w:p/>
           </entry>
         </row>
@@ -39,21 +28,10 @@
           <entry>
             <w:p/>
           </entry>
-          <entry>
+          <entry align="right">
             <w:p/>
           </entry>
-          <entry>
-            <w:p/>
-          </entry>
-        </row>
-        <row>
-          <entry>
-            <w:p/>
-          </entry>
-          <entry>
-            <w:p/>
-          </entry>
-          <entry>
+          <entry align="right">
             <w:p/>
           </entry>
         </row>
@@ -61,21 +39,10 @@
           <entry>
             <w:p/>
           </entry>
-          <entry>
+          <entry align="right">
             <w:p/>
           </entry>
-          <entry>
-            <w:p/>
-          </entry>
-        </row>
-        <row>
-          <entry>
-            <w:p/>
-          </entry>
-          <entry>
-            <w:p/>
-          </entry>
-          <entry>
+          <entry align="right">
             <w:p/>
           </entry>
         </row>
@@ -83,10 +50,10 @@
           <entry>
             <w:p/>
           </entry>
-          <entry>
+          <entry align="right">
             <w:p/>
           </entry>
-          <entry>
+          <entry align="right">
             <w:p/>
           </entry>
         </row>
@@ -94,10 +61,43 @@
           <entry>
             <w:p/>
           </entry>
+          <entry align="right">
+            <w:p/>
+          </entry>
+          <entry align="right">
+            <w:p/>
+          </entry>
+        </row>
+        <row>
           <entry>
             <w:p/>
           </entry>
+          <entry align="right">
+            <w:p/>
+          </entry>
+          <entry align="right">
+            <w:p/>
+          </entry>
+        </row>
+        <row>
           <entry>
+            <w:p/>
+          </entry>
+          <entry align="right">
+            <w:p/>
+          </entry>
+          <entry align="right">
+            <w:p/>
+          </entry>
+        </row>
+        <row>
+          <entry>
+            <w:p/>
+          </entry>
+          <entry align="right">
+            <w:p/>
+          </entry>
+          <entry align="right">
             <w:p/>
           </entry>
         </row>
