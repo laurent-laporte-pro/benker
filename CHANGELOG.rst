@@ -22,11 +22,15 @@ Added
 
   - Parse paragraph alignments to calculate cell horizontal alignments.
 
+  - Parse cell ``w:tcPr/w:tcBorders`` values to extract border styles.
+
 * Change in the builder :class:`benker.builders.cals.CalsBuilder`:
 
   - Generate ``entry/@valign`` attributes.
 
   - Generate ``entry/@align`` attributes.
+
+  - Generate ``entry/@colsep`` and ``entry/@rowsep`` attributes.
 
 
 v0.2.2 (2018-12-15)

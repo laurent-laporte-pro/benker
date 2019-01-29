@@ -597,6 +597,11 @@ class OoxmlParser(BaseParser):
                          "distribute": "justify"}[w_jc]
                 styles["align"] = align
 
+            # -- Borders
+            w_tc_borders = value_of(w_tc, 'w:tcPr/w:tcBorders')
+            cell_borders = _get_table_borders(w_tc_borders)
+            styles.update(cell_borders)
+
             # todo: calculate the ``@rotate`` attribute.
 
             content = w_tc.xpath('w:p | w:tbl', namespaces=NS)

@@ -38,6 +38,7 @@ def test_convert_ooxml2cals__demo(tmpdir):
 
 @pytest.mark.parametrize('input_name, expected_name',
                          [
+                             ("cals/misc_tables.xml", "cals/misc_tables.expected.xml"),
                              ("cals/alignements.xml", "cals/alignements.expected.xml"),
                              ("cals/alignements2.xml", "cals/alignements2.expected.xml"),
                              ("cals/simple_merge.xml", "cals/simple_merge.expected.xml"),

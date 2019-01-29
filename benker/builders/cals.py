@@ -52,13 +52,13 @@ def _get_frame_attr(styles):
     }.get((top, bottom, left, right), u"none")
 
 
-def _get_colsep_attr(styles):
-    value = _get_border_style(styles, "x-cell-border-right")
+def _get_colsep_attr(styles, style="x-cell-border-right"):
+    value = _get_border_style(styles, style)
     return "0" if value is "none" else "1"
 
 
-def _get_rowsep_attr(styles):
-    value = _get_border_style(styles, "x-cell-border-bottom")
+def _get_rowsep_attr(styles, style="x-cell-border-bottom"):
+    value = _get_border_style(styles, style)
     return "0" if value is "none" else "1"
 
 
@@ -91,6 +91,10 @@ class CalsBuilder(BaseBuilder):
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
         """
+        # Internal state of the table used during building
+        self._table_colsep = u"1"
+        self._table_rowsep = u"1"
+        # options
         self.width_unit = width_unit
         self.table_in_tgroup = table_in_tgroup
         super(CalsBuilder, self).__init__(**options)
@@ -108,11 +112,42 @@ class CalsBuilder(BaseBuilder):
         return table_elem
 
     def build_table(self, table):
+        """
+        Build the CALS ``<table>`` element.
+
+        CALS attributes:
+
+        -   ``@colsep`` is built from the "x-cell-border-right" style.
+            Default value is "1" (displayed), so, it is better to always define it.
+
+        -   ``@rowsep`` is built from the "x-cell-border-bottom" style.
+            Default value is "1" (displayed), so, it is better to always define it.
+
+        -   ``@tabstyle`` is built from the table nature.
+
+        -   ``@orient`` is built from the "x-sect-orient" style (orientation of the current section).
+            Possible values are "port" (portrait, the default) or "land" (landscape).
+
+        -   ``@pgwide`` is built from the "x-sect-cols" style (column number of the current section).
+            Default value is "0" (width of the current column).
+
+        .. note::
+
+           ``@colsep``, ``@rowsep`` and ``@tabstyle`` attributes are generated only
+           if the *table_in_tgroup* options is ``False``.
+
+        :type  table: benker.table.Table
+        :param table: Table
+
+        :return: The newly-created ``<table>`` element.
+        """
+        self._table_colsep = u"1"
+        self._table_rowsep = u"1"
         table_styles = table.styles
         attrs = {'frame': _get_frame_attr(table_styles), }
         if not self.table_in_tgroup:
-            attrs['colsep'] = _get_colsep_attr(table_styles)
-            attrs['rowsep'] = _get_rowsep_attr(table_styles)
+            self._table_colsep = attrs['colsep'] = _get_colsep_attr(table_styles)
+            self._table_rowsep = attrs['rowsep'] = _get_rowsep_attr(table_styles)
             if table.nature is not None:
                 attrs['tabstyle'] = table.nature
         if 'x-sect-orient' in table_styles:
@@ -124,11 +159,39 @@ class CalsBuilder(BaseBuilder):
         return table_elem
 
     def build_tgroup(self, table_elem, table):
+        """
+        Build the CALS ``<tgroup>`` element.
+
+        CALS attributes:
+
+        -   ``@cols`` is the total number of columns.
+
+        -   ``@colsep`` is built from the "x-cell-border-right" style.
+            Default value is "1" (displayed), so, it is better to always define it.
+
+        -   ``@rowsep`` is built from the "x-cell-border-bottom" style.
+            Default value is "1" (displayed), so, it is better to always define it.
+
+        -   ``@tgroupstyle`` is built from the table nature.
+
+        .. note::
+
+           ``@colsep``, ``@rowsep`` and ``@tgroupstyle`` attributes are generated only
+           if the *table_in_tgroup* options is ``True``.
+
+        :type  table_elem: etree.Element
+        :param table_elem: Parent element: ``<table>``.
+
+        :type  table: benker.table.Table
+        :param table: Table
+
+        :return: The newly-created ``<tgroup>`` element.
+        """
         table_styles = table.styles
         attrs = {u'cols': str(len(table.cols))}
         if self.table_in_tgroup:
-            attrs['colsep'] = _get_colsep_attr(table_styles)
-            attrs['rowsep'] = _get_rowsep_attr(table_styles)
+            self._table_colsep = attrs['colsep'] = _get_colsep_attr(table_styles)
+            self._table_rowsep = attrs['rowsep'] = _get_rowsep_attr(table_styles)
             if table.nature is not None:
                 attrs['tgroupstyle'] = table.nature
         group_elem = etree.SubElement(table_elem, u"tgroup", attrib=attrs)
@@ -146,8 +209,22 @@ class CalsBuilder(BaseBuilder):
     # noinspection PyMethodMayBeStatic
     def build_colspec(self, group_elem, col):
         """
-        Build the ``<colspec>`` element.
+        Build the CALS ``<colspec>`` element.
 
+        CALS attributes:
+
+        -   ``@colname`` is the column name. Its format is "c{col_pos}".
+
+        -   ``@colwidth`` width of the column (with its unit).
+            The unit is defined by the *width_unit* options.
+
+        .. note::
+
+           The ``@colnum`` attribute (number of column) is not generated
+           because this value is usually implied, and can be deduce
+           from the ``@colname`` attribute.
+
+        :type  group_elem: etree.Element
         :param group_elem: Parent element: ``<tgroup>``.
 
         :type  col: benker.table.ColView
@@ -163,11 +240,44 @@ class CalsBuilder(BaseBuilder):
         etree.SubElement(group_elem, u"colspec", attrib=attrs)
 
     def build_tbody(self, group_elem, row_list, nature_tag):
+        """
+        Build the CALS ``<tbody>``, `<thead>``, or `<tfoot>`` element.
+
+        :type  group_elem: etree.Element
+        :param group_elem: Parent element: ``<tgroup>``.
+
+        :param row_list: List of rows
+
+        :param nature_tag: name of the tag: 'tbody', 'thead' or 'tfoot'.
+        """
         nature_elem = etree.SubElement(group_elem, nature_tag)
         for row in row_list:
             self.build_row(nature_elem, row)
 
     def build_row(self, tbody_elem, row):
+        """
+        Build the CALS ``<row>`` element.
+
+        CALS attributes:
+
+        -   ``@valign`` is built from the "valign" style.
+            Values can be "top", "middle", "bottom" (note: "baseline" is not supported).
+            Default value is "bottom".
+
+        .. note::
+
+           A row can be marked as inserted if "x-ins" is defined in the row styles.
+           Revision marks are inserted before and after a ``<row>``
+           using a couple of processing-instructions.
+           We use the ``<?change-start?>`` PI to mark the start of the inserted row,
+           and the ``<?change-end?>`` PI to mark the end.
+
+        :type  tbody_elem: etree.Element
+        :param tbody_elem: Parent element: ``<tbody>``, `<thead>``, or `<tfoot>``.
+
+        :type  row: benker.table.RowView
+        :param row: The row.
+        """
         # Possible attrs:
         # - Row height: min-height' or 'height'
         # - Insertion revision mark: 'x-ins', 'x-ins-id', 'x-ins-author', 'x-ins-date'
@@ -176,8 +286,9 @@ class CalsBuilder(BaseBuilder):
         row_styles = row.styles
         attrs = {}
         if 'valign' in row_styles:
+            # same values as CSS/Properties/vertical-align
             attrs['valign'] = {'top': 'top',
-                               'center': 'middle',
+                               'middle': 'middle',
                                'bottom': 'bottom',
                                'baseline': 'bottom'}[row_styles['valign']]
 
@@ -191,8 +302,7 @@ class CalsBuilder(BaseBuilder):
                 rev_attrs['creator'] = row_styles['x-ins-author']
             if 'x-ins-date' in row_styles:
                 rev_attrs['date'] = row_styles['x-ins-date']
-            rev_name = "change-start"
-            rev_pi = revision_mark(rev_name, rev_attrs)
+            rev_pi = revision_mark("change-start", rev_attrs)
             tbody_elem.append(rev_pi)
 
         row_elem = etree.SubElement(tbody_elem, u"row", attrib=attrs)
@@ -210,14 +320,58 @@ class CalsBuilder(BaseBuilder):
 
     # noinspection PyMethodMayBeStatic
     def build_cell(self, row_elem, cell):
+        """
+        Build the CALS ``<entry>`` element.
+
+        CALS attributes:
+
+        -   ``@colsep`` is built from the "border-right" style.
+            Default value is "1" (displayed), so, it is better to always define it.
+            This value is only set if different from the table ``@colsep`` value.
+
+        -   ``@rowsep`` is built from the "border-bottom" style.
+            Default value is "1" (displayed), so, it is better to always define it.
+            This value is only set if different from the table ``@rowsep`` value.
+
+        -   ``@valign`` is built from the "valign" style.
+            Values can be "top", "middle", "bottom" (note: "baseline" is not supported).
+            Default value is "bottom".
+
+        -   ``@align`` is built from the "align" style.
+            Values can be "left", "center", "right", or "justify".
+            Default value is "left".
+            note: paragraphs alignment should be preferred to cells alignment.
+
+        -   ``@namest``/``@nameend`` are set when the cell is spanned horizontally.
+
+        -   ``@morerows`` is set when the cell is spanned vertically.
+
+        :type  row_elem: etree.Element
+        :param row_elem: Parent element: ``<row>``.
+
+        :type  cell: benker.table.Cell
+        :param cell: The cell.
+        """
         cell_styles = cell.styles
         attrs = {}
+        cell_colsep = _get_colsep_attr(cell_styles, "border-right")
+        if cell_colsep != self._table_colsep:
+            attrs['colsep'] = cell_colsep
+        cell_rowsep = _get_rowsep_attr(cell_styles, "border-bottom")
+        if cell_rowsep != self._table_rowsep:
+            attrs['rowsep'] = cell_rowsep
         if 'valign' in cell_styles:
             # same values as CSS/Properties/vertical-align
-            attrs['valign'] = cell_styles['valign']
+            attrs['valign'] = {'top': 'top',
+                               'middle': 'middle',
+                               'bottom': 'bottom',
+                               'baseline': 'bottom'}[cell_styles['valign']]
         if 'align' in cell_styles:
             # same values as CSS/Properties/text-align
-            attrs['align'] = cell_styles['align']
+            attrs['align'] = {'left': 'left',
+                              'center': 'center',
+                              'right': 'right',
+                              'justify': 'justify'}[cell_styles['align']]
         if cell.width > 1:
             attrs[u"namest"] = "c{0}".format(cell.box.min.x)
             attrs[u"nameend"] = "c{0}".format(cell.box.max.x)
