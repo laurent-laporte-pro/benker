@@ -32,6 +32,13 @@ Added
 
   - Generate ``entry/@colsep`` and ``entry/@rowsep`` attributes.
 
+Changed
+-------
+
+* Change in the parser :class:`~benker.parsers.ooxml.OoxmlParser`:
+
+  - Add more supported `border styles <http://www.datypic.com/sc/ooxml/t-w_ST_Border.html>`_
+
 
 v0.2.2 (2018-12-15)
 ===================

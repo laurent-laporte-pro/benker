@@ -31,88 +31,581 @@ def ns_name(ns, name):
 w = functools.partial(ns_name, NS['w'])
 value_of = functools.partial(base_value_of, namespaces=NS)
 
+#: See w:ST_Border: http://www.datypic.com/sc/ooxml/t-w_ST_Border.html
+#: See CSS styles: https://www.w3.org/wiki/CSS/Properties/border-top-style
 _BORDER_STYLE_MAPPING = {
-
-    # a single line
-    'single': 'solid',
-
-    # a line with a series of alternating thin and thick strokes
-    'dashDotStroked': 'w-dash-dot-stroked',
-
-    # a dashed line
-    'dashed': 'dashed',
-
-    # a dashed line with small gaps
-    'dashSmallGap': 'w-dash-small-gap',
-
-    # a line with alternating dots and dashes
-    'dotDash': 'w-dot-dash',
-
-    # a line with a repeating dot - dot - dash sequence
-    'dotDotDash': 'w-dot-dot-dash',
-
-    # a dotted line
-    'dotted': 'dotted',
-
-    # a double line
-    'double': 'double',
-
-    # a double wavy line
-    'doubleWave': 'w-double-Wave',
-
-    # an inset set of lines
-    'inset': 'inset',
-
-    # no border
+    # No Border
     'nil': 'none',
 
-    # no border
+    # No Border
     'none': 'none',
 
-    # an outset set of lines
-    'outset': 'outset',
+    # Single Line Border
+    'single': 'solid',
 
-    # a single line
+    # Single Line Border
     'thick': 'w-thick',
 
-    # a thick line contained within a thin line with a large-sized intermediate gap
-    'thickThinLargeGap': 'w-thick-thin-large-gap',
+    # Double Line Border
+    'double': 'double',
 
-    # a thick line contained within a thin line with a medium-sized intermediate gap
-    'thickThinMediumGap': 'w-thick-thin-medium-gap',
+    # Dotted Line Border
+    'dotted': 'dotted',
 
-    # a thick line contained within a thin line with a small intermediate gap
-    'thickThinSmallGap': 'w-thick-thin-small-gap',
+    # Dashed Line Border
+    'dashed': 'dashed',
 
-    # a thin line contained within a thick line with a large-sized intermediate gap
-    'thinThickLargeGap': 'w-thin-thick-large-gap',
+    # Dot Dash Line Border
+    'dotDash': 'w-dot-dash',
 
-    # a thick line contained within a thin line with a medium-sized intermediate gap
-    'thinThickMediumGap': 'w-thin-thick-medium-gap',
+    # Dot Dot Dash Line Border
+    'dotDotDash': 'w-dot-dot-dash',
 
-    # a thick line contained within a thin line with a small intermediate gap
-    'thinThickSmallGap': 'w-thin-thick-small-gap',
-
-    # a thin-thick-thin line with a large gap
-    'thinThickThinLargeGap': 'w-thin-thick-thin-large-gap',
-
-    # a thin-thick-thin line with a medium gap
-    'thinThickThinMediumGap': 'w-thin-thick-thin-medium-gap',
-
-    # a thin-thick-thin line with a small gap
-    'thinThickThinSmallGap': 'w-thin-thick-thin-small-gap',
-
-    # a three-staged gradient line, getting darker towards the paragraph
-    'threeDEmboss': 'w-three-d-emboss',
-
-    # a three-staged gradient like, getting darker away from the paragraph
-    'threeDEngrave': 'w-three-d-engrave',
-
-    # a triple line
+    # Triple Line Border
     'triple': 'w-triple',
 
-    # a wavy line
+    # Thin, Thick Line Border
+    'thinThickSmallGap': 'w-thin-thick-small-gap',
+
+    # Thick, Thin Line Border
+    'thickThinSmallGap': 'w-thick-thin-small-gap',
+
+    # Thin, Thick, Thin Line Border
+    'thinThickThinSmallGap': 'w-thin-thick-thin-small-gap',
+
+    # Thin, Thick Line Border
+    'thinThickMediumGap': 'w-thin-thick-medium-gap',
+
+    # Thick, Thin Line Border
+    'thickThinMediumGap': 'w-thick-thin-medium-gap',
+
+    # Thin, Thick, Thin Line Border
+    'thinThickThinMediumGap': 'w-thin-thick-thin-medium-gap',
+
+    # Thin, Thick Line Border
+    'thinThickLargeGap': 'w-thin-thick-large-gap',
+
+    # Thick, Thin Line Border
+    'thickThinLargeGap': 'w-thick-thin-large-gap',
+
+    # Thin, Thick, Thin Line Border
+    'thinThickThinLargeGap': 'w-thin-thick-thin-large-gap',
+
+    # Wavy Line Border
     'wave': 'w-wave',
+
+    # Double Wave Line Border
+    'doubleWave': 'w-double-wave',
+
+    # Dashed Line Border
+    'dashSmallGap': 'w-dash-small-gap',
+
+    # Dash Dot Strokes Line Border
+    'dashDotStroked': 'w-dash-dot-stroked',
+
+    # 3D Embossed Line Border
+    'threeDEmboss': 'w-three-d-emboss',
+
+    # 3D Engraved Line Border
+    'threeDEngrave': 'w-three-d-engrave',
+
+    # Outset Line Border
+    'outset': 'outset',
+
+    # Inset Line Border
+    'inset': 'inset',
+
+    # Apples Art Border
+    'apples': 'w-apples',
+
+    # Arched Scallops Art Border
+    'archedScallops': 'w-arched-scallops',
+
+    # Baby Pacifier Art Border
+    'babyPacifier': 'w-baby-pacifier',
+
+    # Baby Rattle Art Border
+    'babyRattle': 'w-baby-rattle',
+
+    # Three Color Balloons Art Border
+    'balloons3Colors': 'w-balloons3-colors',
+
+    # Hot Air Balloons Art Border
+    'balloonsHotAir': 'w-balloons-hot-air',
+
+    # Black Dash Art Border
+    'basicBlackDashes': 'w-basic-black-dashes',
+
+    # Black Dot Art Border
+    'basicBlackDots': 'w-basic-black-dots',
+
+    # Black Square Art Border
+    'basicBlackSquares': 'w-basic-black-squares',
+
+    # Thin Line Art Border
+    'basicThinLines': 'w-basic-thin-lines',
+
+    # White Dash Art Border
+    'basicWhiteDashes': 'w-basic-white-dashes',
+
+    # White Dot Art Border
+    'basicWhiteDots': 'w-basic-white-dots',
+
+    # White Square Art Border
+    'basicWhiteSquares': 'w-basic-white-squares',
+
+    # Wide Inline Art Border
+    'basicWideInline': 'w-basic-wide-inline',
+
+    # Wide Midline Art Border
+    'basicWideMidline': 'w-basic-wide-midline',
+
+    # Wide Outline Art Border
+    'basicWideOutline': 'w-basic-wide-outline',
+
+    # Bats Art Border
+    'bats': 'w-bats',
+
+    # Birds Art Border
+    'birds': 'w-birds',
+
+    # Birds Flying Art Border
+    'birdsFlight': 'w-birds-flight',
+
+    # Cabin Art Border
+    'cabins': 'w-cabins',
+
+    # Cake Art Border
+    'cakeSlice': 'w-cake-slice',
+
+    # Candy Corn Art Border
+    'candyCorn': 'w-candy-corn',
+
+    # Knot Work Art Border
+    'celticKnotwork': 'w-celtic-knotwork',
+
+    # Certificate Banner Art Border
+    'certificateBanner': 'w-certificate-banner',
+
+    # Chain Link Art Border
+    'chainLink': 'w-chain-link',
+
+    # Champagne Bottle Art Border
+    'champagneBottle': 'w-champagne-bottle',
+
+    # Black and White Bar Art Border
+    'checkedBarBlack': 'w-checked-bar-black',
+
+    # Color Checked Bar Art Border
+    'checkedBarColor': 'w-checked-bar-color',
+
+    # Checkerboard Art Border
+    'checkered': 'w-checkered',
+
+    # Christmas Tree Art Border
+    'christmasTree': 'w-christmas-tree',
+
+    # Circles And Lines Art Border
+    'circlesLines': 'w-circles-lines',
+
+    # Circles and Rectangles Art Border
+    'circlesRectangles': 'w-circles-rectangles',
+
+    # Wave Art Border
+    'classicalWave': 'w-classical-wave',
+
+    # Clocks Art Border
+    'clocks': 'w-clocks',
+
+    # Compass Art Border
+    'compass': 'w-compass',
+
+    # Confetti Art Border
+    'confetti': 'w-confetti',
+
+    # Confetti Art Border
+    'confettiGrays': 'w-confetti-grays',
+
+    # Confetti Art Border
+    'confettiOutline': 'w-confetti-outline',
+
+    # Confetti Streamers Art Border
+    'confettiStreamers': 'w-confetti-streamers',
+
+    # Confetti Art Border
+    'confettiWhite': 'w-confetti-white',
+
+    # Corner Triangle Art Border
+    'cornerTriangles': 'w-corner-triangles',
+
+    # Dashed Line Art Border
+    'couponCutoutDashes': 'w-coupon-cutout-dashes',
+
+    # Dotted Line Art Border
+    'couponCutoutDots': 'w-coupon-cutout-dots',
+
+    # Maze Art Border
+    'crazyMaze': 'w-crazy-maze',
+
+    # Butterfly Art Border
+    'creaturesButterfly': 'w-creatures-butterfly',
+
+    # Fish Art Border
+    'creaturesFish': 'w-creatures-fish',
+
+    # Insects Art Border
+    'creaturesInsects': 'w-creatures-insects',
+
+    # Ladybug Art Border
+    'creaturesLadyBug': 'w-creatures-lady-bug',
+
+    # Cross-stitch Art Border
+    'crossStitch': 'w-cross-stitch',
+
+    # Cupid Art Border
+    'cup': 'w-cup',
+
+    # Archway Art Border
+    'decoArch': 'w-deco-arch',
+
+    # Color Archway Art Border
+    'decoArchColor': 'w-deco-arch-color',
+
+    # Blocks Art Border
+    'decoBlocks': 'w-deco-blocks',
+
+    # Gray Diamond Art Border
+    'diamondsGray': 'w-diamonds-gray',
+
+    # Double D Art Border
+    'doubleD': 'w-double-d',
+
+    # Diamond Art Border
+    'doubleDiamonds': 'w-double-diamonds',
+
+    # Earth Art Border
+    'earth1': 'w-earth1',
+
+    # Earth Art Border
+    'earth2': 'w-earth2',
+
+    # Shadowed Square Art Border
+    'eclipsingSquares1': 'w-eclipsing-squares1',
+
+    # Shadowed Square Art Border
+    'eclipsingSquares2': 'w-eclipsing-squares2',
+
+    # Painted Egg Art Border
+    'eggsBlack': 'w-eggs-black',
+
+    # Fans Art Border
+    'fans': 'w-fans',
+
+    # Film Reel Art Border
+    'film': 'w-film',
+
+    # Firecracker Art Border
+    'firecrackers': 'w-firecrackers',
+
+    # Flowers Art Border
+    'flowersBlockPrint': 'w-flowers-block-print',
+
+    # Daisy Art Border
+    'flowersDaisies': 'w-flowers-daisies',
+
+    # Flowers Art Border
+    'flowersModern1': 'w-flowers-modern1',
+
+    # Flowers Art Border
+    'flowersModern2': 'w-flowers-modern2',
+
+    # Pansy Art Border
+    'flowersPansy': 'w-flowers-pansy',
+
+    # Red Rose Art Border
+    'flowersRedRose': 'w-flowers-red-rose',
+
+    # Roses Art Border
+    'flowersRoses': 'w-flowers-roses',
+
+    # Flowers in a Teacup Art Border
+    'flowersTeacup': 'w-flowers-teacup',
+
+    # Small Flower Art Border
+    'flowersTiny': 'w-flowers-tiny',
+
+    # Gems Art Border
+    'gems': 'w-gems',
+
+    # Gingerbread Man Art Border
+    'gingerbreadMan': 'w-gingerbread-man',
+
+    # Triangle Gradient Art Border
+    'gradient': 'w-gradient',
+
+    # Handmade Art Border
+    'handmade1': 'w-handmade1',
+
+    # Handmade Art Border
+    'handmade2': 'w-handmade2',
+
+    # Heart-Shaped Balloon Art Border
+    'heartBalloon': 'w-heart-balloon',
+
+    # Gray Heart Art Border
+    'heartGray': 'w-heart-gray',
+
+    # Hearts Art Border
+    'hearts': 'w-hearts',
+
+    # Pattern Art Border
+    'heebieJeebies': 'w-heebie-jeebies',
+
+    # Holly Art Border
+    'holly': 'w-holly',
+
+    # House Art Border
+    'houseFunky': 'w-house-funky',
+
+    # Circular Art Border
+    'hypnotic': 'w-hypnotic',
+
+    # Ice Cream Cone Art Border
+    'iceCreamCones': 'w-ice-cream-cones',
+
+    # Light Bulb Art Border
+    'lightBulb': 'w-light-bulb',
+
+    # Lightning Art Border
+    'lightning1': 'w-lightning1',
+
+    # Lightning Art Border
+    'lightning2': 'w-lightning2',
+
+    # Map Pins Art Border
+    'mapPins': 'w-map-pins',
+
+    # Maple Leaf Art Border
+    'mapleLeaf': 'w-maple-leaf',
+
+    # Muffin Art Border
+    'mapleMuffins': 'w-maple-muffins',
+
+    # Marquee Art Border
+    'marquee': 'w-marquee',
+
+    # Marquee Art Border
+    'marqueeToothed': 'w-marquee-toothed',
+
+    # Moon Art Border
+    'moons': 'w-moons',
+
+    # Mosaic Art Border
+    'mosaic': 'w-mosaic',
+
+    # Musical Note Art Border
+    'musicNotes': 'w-music-notes',
+
+    # Patterned Art Border
+    'northwest': 'w-northwest',
+
+    # Oval Art Border
+    'ovals': 'w-ovals',
+
+    # Package Art Border
+    'packages': 'w-packages',
+
+    # Black Palm Tree Art Border
+    'palmsBlack': 'w-palms-black',
+
+    # Color Palm Tree Art Border
+    'palmsColor': 'w-palms-color',
+
+    # Paper Clip Art Border
+    'paperClips': 'w-paper-clips',
+
+    # Papyrus Art Border
+    'papyrus': 'w-papyrus',
+
+    # Party Favor Art Border
+    'partyFavor': 'w-party-favor',
+
+    # Party Glass Art Border
+    'partyGlass': 'w-party-glass',
+
+    # Pencils Art Border
+    'pencils': 'w-pencils',
+
+    # Character Art Border
+    'people': 'w-people',
+
+    # Waving Character Border
+    'peopleWaving': 'w-people-waving',
+
+    # Character With Hat Art Border
+    'peopleHats': 'w-people-hats',
+
+    # Poinsettia Art Border
+    'poinsettias': 'w-poinsettias',
+
+    # Postage Stamp Art Border
+    'postageStamp': 'w-postage-stamp',
+
+    # Pumpkin Art Border
+    'pumpkin1': 'w-pumpkin1',
+
+    # Push Pin Art Border
+    'pushPinNote2': 'w-push-pin-note2',
+
+    # Push Pin Art Border
+    'pushPinNote1': 'w-push-pin-note1',
+
+    # Pyramid Art Border
+    'pyramids': 'w-pyramids',
+
+    # Pyramid Art Border
+    'pyramidsAbove': 'w-pyramids-above',
+
+    # Quadrants Art Border
+    'quadrants': 'w-quadrants',
+
+    # Rings Art Border
+    'rings': 'w-rings',
+
+    # Safari Art Border
+    'safari': 'w-safari',
+
+    # Saw tooth Art Border
+    'sawtooth': 'w-sawtooth',
+
+    # Gray Saw tooth Art Border
+    'sawtoothGray': 'w-sawtooth-gray',
+
+    # Scared Cat Art Border
+    'scaredCat': 'w-scared-cat',
+
+    # Umbrella Art Border
+    'seattle': 'w-seattle',
+
+    # Shadowed Squares Art Border
+    'shadowedSquares': 'w-shadowed-squares',
+
+    # Shark Tooth Art Border
+    'sharksTeeth': 'w-sharks-teeth',
+
+    # Bird Tracks Art Border
+    'shorebirdTracks': 'w-shorebird-tracks',
+
+    # Rocket Art Border
+    'skyrocket': 'w-skyrocket',
+
+    # Snowflake Art Border
+    'snowflakeFancy': 'w-snowflake-fancy',
+
+    # Snowflake Art Border
+    'snowflakes': 'w-snowflakes',
+
+    # Sombrero Art Border
+    'sombrero': 'w-sombrero',
+
+    # Southwest-themed Art Border
+    'southwest': 'w-southwest',
+
+    # Stars Art Border
+    'stars': 'w-stars',
+
+    # Stars On Top Art Border
+    'starsTop': 'w-stars-top',
+
+    # 3-D Stars Art Border
+    'stars3d': 'w-stars3d',
+
+    # Stars Art Border
+    'starsBlack': 'w-stars-black',
+
+    # Stars With Shadows Art Border
+    'starsShadowed': 'w-stars-shadowed',
+
+    # Sun Art Border
+    'sun': 'w-sun',
+
+    # Whirligig Art Border
+    'swirligig': 'w-swirligig',
+
+    # Torn Paper Art Border
+    'tornPaper': 'w-torn-paper',
+
+    # Black Torn Paper Art Border
+    'tornPaperBlack': 'w-torn-paper-black',
+
+    # Tree Art Border
+    'trees': 'w-trees',
+
+    # Triangle Art Border
+    'triangleParty': 'w-triangle-party',
+
+    # Triangles Art Border
+    'triangles': 'w-triangles',
+
+    # Tribal Art Border One
+    'tribal1': 'w-tribal1',
+
+    # Tribal Art Border Two
+    'tribal2': 'w-tribal2',
+
+    # Tribal Art Border Three
+    'tribal3': 'w-tribal3',
+
+    # Tribal Art Border Four
+    'tribal4': 'w-tribal4',
+
+    # Tribal Art Border Five
+    'tribal5': 'w-tribal5',
+
+    # Tribal Art Border Six
+    'tribal6': 'w-tribal6',
+
+    # Twisted Lines Art Border
+    'twistedLines1': 'w-twisted-lines1',
+
+    # Twisted Lines Art Border
+    'twistedLines2': 'w-twisted-lines2',
+
+    # Vine Art Border
+    'vine': 'w-vine',
+
+    # Wavy Line Art Border
+    'waveline': 'w-waveline',
+
+    # Weaving Angles Art Border
+    'weavingAngles': 'w-weaving-angles',
+
+    # Weaving Braid Art Border
+    'weavingBraid': 'w-weaving-braid',
+
+    # Weaving Ribbon Art Border
+    'weavingRibbon': 'w-weaving-ribbon',
+
+    # Weaving Strips Art Border
+    'weavingStrips': 'w-weaving-strips',
+
+    # White Flowers Art Border
+    'whiteFlowers': 'w-white-flowers',
+
+    # Woodwork Art Border
+    'woodwork': 'w-woodwork',
+
+    # Crisscross Art Border
+    'xIllusions': 'w-x-illusions',
+
+    # Triangle Art Border
+    'zanyTriangles': 'w-zany-triangles',
+
+    # Zigzag Art Border
+    'zigZag': 'w-zig-zag',
+
+    # Zigzag stitch
+    'zigZagStitch': 'w-zig-zag-stitch',
 }
 
 
@@ -198,6 +691,16 @@ def _get_table_borders(w_tbl_borders):
     :rtype: benker.parsers.ooxml.OoxmlBorder
     :return: New instance.
     """
+    # todo: Table Cell Top Right to Bottom Left Diagonal Border
+    #  http://www.datypic.com/sc/ooxml/e-w_tr2bl-1.html
+    #  xpath='w:tcPr/w:tcBorders/w:tr2bl'
+    #  ex.: <w:tr2bl w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+
+    # todo: Table Cell Top Left to Bottom Right Diagonal Border
+    #  http://www.datypic.com/sc/ooxml/e-w_tl2br-1.html
+    #  xpath='w:tcPr/w:tcBorders/w:tl2br'
+    #  ex.: <w:tl2br w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+
     if w_tbl_borders is None:
         return {}
     # style_xpath_mapping -- order is important
