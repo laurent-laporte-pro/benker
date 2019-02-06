@@ -13,7 +13,7 @@ def test_convert_ooxml2cals__demo(tmpdir):
     # type: (py.path.local) -> None
 
     # - Unzip the ``.docx``
-    src_zip = RESOURCES_DIR.join("cals/demo.docx")  # type: py.path.local
+    src_zip = RESOURCES_DIR.join("ooxml/demo.docx")  # type: py.path.local
     with zipfile.ZipFile(str(src_zip)) as zf:
         zf.extractall(str(tmpdir))
 
@@ -32,19 +32,19 @@ def test_convert_ooxml2cals__demo(tmpdir):
     convert_ooxml2cals(str(src_xml), str(dst_xml), **options)
 
     # - Compare with expected
-    expected_xml = RESOURCES_DIR.join("cals/demo.expected.xml")  # type: py.path.local
+    expected_xml = RESOURCES_DIR.join("ooxml2cals/demo.xml")  # type: py.path.local
     CalsComparator().compare_files(str(dst_xml), str(expected_xml))
 
 
 @pytest.mark.parametrize('input_name, expected_name',
                          [
-                             ("cals/misc_tables.xml", "cals/misc_tables.expected.xml"),
-                             ("cals/alignements.xml", "cals/alignements.expected.xml"),
-                             ("cals/alignements2.xml", "cals/alignements2.expected.xml"),
-                             ("cals/simple_merge.xml", "cals/simple_merge.expected.xml"),
-                             ("cals/table_in_table.xml", "cals/table_in_table.expected.xml"),
-                             ("cals/Lorem Ipsum.xml", "cals/Lorem Ipsum.expected.xml"),
-                             ('cals/Revision marks.xml', 'cals/Revision marks.expected.xml'),
+                             ("ooxml/misc_tables.xml", "ooxml2cals/misc_tables.xml"),
+                             ("ooxml/alignements.xml", "ooxml2cals/alignements.xml"),
+                             ("ooxml/alignements2.xml", "ooxml2cals/alignements2.xml"),
+                             ("ooxml/simple_merge.xml", "ooxml2cals/simple_merge.xml"),
+                             ("ooxml/table_in_table.xml", "ooxml2cals/table_in_table.xml"),
+                             ("ooxml/Lorem Ipsum.xml", "ooxml2cals/Lorem Ipsum.xml"),
+                             ("ooxml/Revision marks.xml", "ooxml2cals/Revision marks.xml"),
                          ])
 def test_convert_ooxml2cals(input_name, expected_name, tmpdir):
     # type: (str, str, py.path.local) -> None
