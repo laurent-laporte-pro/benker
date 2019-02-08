@@ -27,7 +27,7 @@ from benker.units import convert_value
 def _get_border_style(styles, style):
     parts = styles.get(style, "")
     parts = parts.split(" ") if parts else []
-    value = 'none'
+    value = None
     for part in parts:
         if not part.endswith("pt") and part != "auto" and not part.startswith("#"):
             value = part
@@ -37,8 +37,8 @@ def _get_border_style(styles, style):
 def _get_frame_attr(styles):
     frame_styles = {'border-top': False, 'border-right': False, 'border-bottom': False, 'border-left': False}
     for style in frame_styles:
-        value = _get_border_style(styles, style)
-        frame_styles[style] = value != "none"
+        value = _get_border_style(styles, style) or u"none"
+        frame_styles[style] = value != u"none"
     top = frame_styles['border-top']
     bottom = frame_styles['border-bottom']
     left = frame_styles['border-left']
@@ -54,12 +54,12 @@ def _get_frame_attr(styles):
 
 def _get_colsep_attr(styles, style="x-cell-border-right"):
     value = _get_border_style(styles, style)
-    return "0" if value is "none" else "1"
+    return None if value is None else "0" if value == "none" else "1"
 
 
 def _get_rowsep_attr(styles, style="x-cell-border-bottom"):
     value = _get_border_style(styles, style)
-    return "0" if value is "none" else "1"
+    return None if value is None else "0" if value == "none" else "1"
 
 
 def revision_mark(name, attrs):
@@ -146,8 +146,8 @@ class CalsBuilder(BaseBuilder):
         table_styles = table.styles
         attrs = {'frame': _get_frame_attr(table_styles), }
         if not self.table_in_tgroup:
-            self._table_colsep = attrs['colsep'] = _get_colsep_attr(table_styles)
-            self._table_rowsep = attrs['rowsep'] = _get_rowsep_attr(table_styles)
+            self._table_colsep = attrs['colsep'] = _get_colsep_attr(table_styles) or "0"
+            self._table_rowsep = attrs['rowsep'] = _get_rowsep_attr(table_styles) or "0"
             if table.nature is not None:
                 attrs['tabstyle'] = table.nature
         if 'x-sect-orient' in table_styles:
@@ -190,8 +190,8 @@ class CalsBuilder(BaseBuilder):
         table_styles = table.styles
         attrs = {u'cols': str(len(table.cols))}
         if self.table_in_tgroup:
-            self._table_colsep = attrs['colsep'] = _get_colsep_attr(table_styles)
-            self._table_rowsep = attrs['rowsep'] = _get_rowsep_attr(table_styles)
+            self._table_colsep = attrs['colsep'] = _get_colsep_attr(table_styles) or "0"
+            self._table_rowsep = attrs['rowsep'] = _get_rowsep_attr(table_styles) or "0"
             if table.nature is not None:
                 attrs['tgroupstyle'] = table.nature
         group_elem = etree.SubElement(table_elem, u"tgroup", attrib=attrs)
@@ -355,26 +355,28 @@ class CalsBuilder(BaseBuilder):
         cell_styles = cell.styles
         attrs = {}
         cell_colsep = _get_colsep_attr(cell_styles, "border-right")
-        if cell_colsep != self._table_colsep:
+        if cell_colsep and cell_colsep != self._table_colsep:
             attrs['colsep'] = cell_colsep
         cell_rowsep = _get_rowsep_attr(cell_styles, "border-bottom")
-        if cell_rowsep != self._table_rowsep:
+        if cell_rowsep and cell_rowsep != self._table_rowsep:
             attrs['rowsep'] = cell_rowsep
-        if 'valign' in cell_styles:
+        if 'vertical-align' in cell_styles:
             # same values as CSS/Properties/vertical-align
-            attrs['valign'] = {'top': 'top',
-                               'middle': 'middle',
-                               'bottom': 'bottom',
-                               'baseline': 'bottom'}[cell_styles['valign']]
+            # 'w-both' is an extension of OoxmlParser
+            attrs['valign'] = {'top': u'top',
+                               'middle': u'middle',
+                               'bottom': u'bottom',
+                               'baseline': u'bottom',
+                               'w-both': u'bottom'}[cell_styles['vertical-align']]
         if 'align' in cell_styles:
             # same values as CSS/Properties/text-align
-            attrs['align'] = {'left': 'left',
-                              'center': 'center',
-                              'right': 'right',
-                              'justify': 'justify'}[cell_styles['align']]
+            attrs['align'] = {'left': u'left',
+                              'center': u'center',
+                              'right': u'right',
+                              'justify': u'justify'}[cell_styles['align']]
         if cell.width > 1:
-            attrs[u"namest"] = "c{0}".format(cell.box.min.x)
-            attrs[u"nameend"] = "c{0}".format(cell.box.max.x)
+            attrs[u"namest"] = u"c{0}".format(cell.box.min.x)
+            attrs[u"nameend"] = u"c{0}".format(cell.box.max.x)
         if cell.height > 1:
             attrs[u"morerows"] = str(cell.height - 1)
 

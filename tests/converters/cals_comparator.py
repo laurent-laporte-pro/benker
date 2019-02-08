@@ -48,8 +48,8 @@ class CalsComparator(object):
             print("expected: " + etree.tounicode(exp_proto, with_tail=False), file=sys.stderr)
             raise
         else:
-            src_children = list(src_tree)
-            exp_children = list(exp_tree)
+            src_children = list(src_tree.iterchildren('*'))
+            exp_children = list(exp_tree.iterchildren('*'))
             self._compare_children(exp_children, src_children)
 
     compare_table = _compare_elements
