@@ -691,12 +691,12 @@ def _get_table_borders(w_tbl_borders):
     :rtype: benker.parsers.ooxml.OoxmlBorder
     :return: New instance.
     """
-    # todo: Table Cell Top Right to Bottom Left Diagonal Border
+    # Table Cell Top Right to Bottom Left Diagonal Border
     #  http://www.datypic.com/sc/ooxml/e-w_tr2bl-1.html
     #  xpath='w:tcPr/w:tcBorders/w:tr2bl'
     #  ex.: <w:tr2bl w:val="single" w:sz="4" w:space="0" w:color="auto"/>
 
-    # todo: Table Cell Top Left to Bottom Right Diagonal Border
+    # Table Cell Top Left to Bottom Right Diagonal Border
     #  http://www.datypic.com/sc/ooxml/e-w_tl2br-1.html
     #  xpath='w:tcPr/w:tcBorders/w:tl2br'
     #  ex.: <w:tl2br w:val="single" w:sz="4" w:space="0" w:color="auto"/>
@@ -709,6 +709,8 @@ def _get_table_borders(w_tbl_borders):
         ('border-right', "w:end/@w:{attr} | w:right/@w:{attr}"),
         ('border-bottom', "w:bottom/@w:{attr}"),
         ('border-left', "w:start/@w:{attr} | w:left/@w:{attr}"),
+        ('x-border-tr2bl', "w:tr2bl/@w:{attr}"),
+        ('x-border-tl2br', "w:tl2br/@w:{attr}"),
     ]
     properties = _get_border_properties(w_tbl_borders, style_xpath_mapping)
     styles = _border_properties_to_styles(properties)
@@ -1024,7 +1026,7 @@ class OoxmlParser(BaseParser):
                 if value:
                     state.row.styles[style] = value
 
-        # note: ``valign`` attribute is not available for a row => see w:tcPr instead
+        # note: ``vertical-align`` attribute is not available for a row => see w:tcPr instead
 
     def parse_tc(self, w_tc):
         """
@@ -1075,8 +1077,9 @@ class OoxmlParser(BaseParser):
             if w_v_align is not None:
                 w_v_align = value_of(w_tc, "w:tcPr/w:vAlign/@w:val", default=u"top")
                 # CSS/Properties/vertical-align
-                v_align = {"top": "top", "center": "middle", "bottom": "bottom"}[w_v_align]
-                styles["valign"] = v_align
+                # valid values: http://www.datypic.com/sc/ooxml/t-w_ST_VerticalJc.html
+                v_align = {"top": "top", "center": "middle", "bottom": "bottom", "both": "w-both"}[w_v_align]
+                styles["vertical-align"] = v_align
 
             # -- Horizontal alignment
             #
@@ -1091,13 +1094,19 @@ class OoxmlParser(BaseParser):
             w_jc = w_jc_counter.most_common(1)[0][0]  # type: str or None
             if w_jc is not None:
                 # CSS/Properties/text-align
+                # valid values: http://www.datypic.com/sc/ooxml/t-w_ST_Jc.html
                 align = {"start": "left",
                          "end": "right",
                          "left": "left",
                          "right": "right",
                          "center": "center",
                          "both": "justify",
-                         "distribute": "justify"}[w_jc]
+                         "distribute": "justify",
+                         # "mediumKashida": None,
+                         # "numTab": None,
+                         # "lowKashida": None,
+                         # "thaiDistribute": None
+                         }[w_jc]
                 styles["align"] = align
 
             # -- Borders
