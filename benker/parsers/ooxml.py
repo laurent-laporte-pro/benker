@@ -957,7 +957,7 @@ class OoxmlParser(BaseParser):
         # w:w => width of the column in twentieths of a point.
         width = float(w_grid_col.attrib[w('w')]) / 20  # pt
         state = self._state
-        styles = {u"width": "{0:0.2f}pt".format(width)}
+        styles = {u"width": u"{0:0.2f}pt".format(width)}
         state.col = state.table.cols[state.col_pos]
         state.col.styles.update(styles)
 
@@ -982,7 +982,7 @@ class OoxmlParser(BaseParser):
         w_tbl_header = value_of(w_tr, "w:trPr/w:tblHeader")
         if w_tbl_header is not None:
             w_tbl_header = value_of(w_tr, "w:trPr/w:tblHeader/@w:val", default=u"true")
-        nature = {u"true": "head", u"false": "body", None: "body"}[w_tbl_header]
+        nature = {"true": u"head", "false": u"body", None: u"body"}[w_tbl_header]
         state = self._state
         state.row = state.table.rows[state.row_pos]
         state.row.nature = nature
@@ -1000,7 +1000,7 @@ class OoxmlParser(BaseParser):
             # - atLeast (height should be at least the value specified),
             # - exact (height should be exactly the value specified), or
             # - auto (height is determined based on the height of the contents, so the value is ignored).
-            style = {'atLeast': 'min-height', 'exact': 'height', 'auto': None}[h_rule]
+            style = {'atLeast': u'min-height', 'exact': u'height', 'auto': None}[h_rule]
             if style:
                 val = value_of(w_tr, "w:trPr/w:tblHeader/@w:val", default="0")
                 # Specifies the row's height, in twentieths of a point.
@@ -1078,7 +1078,10 @@ class OoxmlParser(BaseParser):
                 w_v_align = value_of(w_tc, "w:tcPr/w:vAlign/@w:val", default=u"top")
                 # CSS/Properties/vertical-align
                 # valid values: http://www.datypic.com/sc/ooxml/t-w_ST_VerticalJc.html
-                v_align = {"top": "top", "center": "middle", "bottom": "bottom", "both": "w-both"}[w_v_align]
+                v_align = {"top": u"top",
+                           "center": u"middle",
+                           "bottom": u"bottom",
+                           "both": u"w-both"}[w_v_align]
                 styles["vertical-align"] = v_align
 
             # -- Horizontal alignment
@@ -1095,13 +1098,13 @@ class OoxmlParser(BaseParser):
             if w_jc is not None:
                 # CSS/Properties/text-align
                 # valid values: http://www.datypic.com/sc/ooxml/t-w_ST_Jc.html
-                align = {"start": "left",
-                         "end": "right",
-                         "left": "left",
-                         "right": "right",
-                         "center": "center",
-                         "both": "justify",
-                         "distribute": "justify",
+                align = {"start": u"left",
+                         "end": u"right",
+                         "left": u"left",
+                         "right": u"right",
+                         "center": u"center",
+                         "both": u"justify",
+                         "distribute": u"justify",
                          # "mediumKashida": None,
                          # "numTab": None,
                          # "lowKashida": None,
