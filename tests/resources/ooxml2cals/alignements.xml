@@ -7,7 +7,7 @@
       <colspec colname="c4" colwidth="111.95pt"/>
       <tbody>
         <row>
-          <entry valign="top" colsep="0" rowsep="0">
+          <entry valign="top">
             <w:p>
               <w:pPr/>
               <w:r>
@@ -15,7 +15,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry align="center" valign="top" colsep="0" rowsep="0">
+          <entry align="center" valign="top">
             <w:p>
               <w:pPr>
                 <w:jc w:val="center"/>
@@ -25,7 +25,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry align="right" valign="top" colsep="0" rowsep="0">
+          <entry align="right" valign="top">
             <w:p>
               <w:pPr>
                 <w:jc w:val="right"/>
@@ -35,7 +35,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry align="justify" valign="top" colsep="0" rowsep="0">
+          <entry align="justify" valign="top">
             <w:p>
               <w:pPr>
                 <w:jc w:val="both"/>
@@ -47,7 +47,7 @@
           </entry>
         </row>
         <row>
-          <entry valign="middle" colsep="0" rowsep="0">
+          <entry valign="middle">
             <w:p>
               <w:pPr/>
               <w:r>
@@ -55,7 +55,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry align="center" valign="middle" colsep="0" rowsep="0">
+          <entry align="center" valign="middle">
             <w:p>
               <w:pPr>
                 <w:jc w:val="center"/>
@@ -65,7 +65,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry align="right" valign="middle" colsep="0" rowsep="0">
+          <entry align="right" valign="middle">
             <w:p>
               <w:pPr>
                 <w:jc w:val="right"/>
@@ -75,7 +75,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry align="justify" valign="middle" colsep="0" rowsep="0">
+          <entry align="justify" valign="middle">
             <w:p>
               <w:pPr>
                 <w:jc w:val="both"/>
@@ -87,7 +87,7 @@
           </entry>
         </row>
         <row>
-          <entry valign="bottom" colsep="0" rowsep="0">
+          <entry valign="bottom">
             <w:p>
               <w:pPr/>
               <w:r>
@@ -95,7 +95,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry align="center" valign="bottom" colsep="0" rowsep="0">
+          <entry align="center" valign="bottom">
             <w:p>
               <w:pPr>
                 <w:jc w:val="center"/>
@@ -105,7 +105,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry align="right" valign="bottom" colsep="0" rowsep="0">
+          <entry align="right" valign="bottom">
             <w:p>
               <w:pPr>
                 <w:jc w:val="right"/>
@@ -115,7 +115,7 @@
               </w:r>
             </w:p>
           </entry>
-          <entry align="justify" valign="bottom" colsep="0" rowsep="0">
+          <entry align="justify" valign="bottom">
             <w:p>
               <w:pPr>
                 <w:jc w:val="both"/>

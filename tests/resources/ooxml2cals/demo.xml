@@ -10,74 +10,74 @@
       <colspec colname="c7" colwidth="7.76mm"/>
       <tbody>
         <row>
-          <entry morerows="1" rowsep="0" colsep="0">
+          <entry morerows="1">
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
               <w:r>
                 <w:t>A</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry rowsep="0" colsep="0" nameend="c3" namest="c2">
+          <entry nameend="c3" namest="c2">
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
               <w:r>
                 <w:t>B</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry rowsep="0" colsep="0"/>
-          <entry rowsep="0" colsep="0"/>
-          <entry rowsep="0" colsep="0"/>
-          <entry rowsep="0" colsep="0"/>
+          <entry/>
+          <entry/>
+          <entry/>
+          <entry/>
         </row>
         <row>
-          <entry rowsep="0" colsep="0">
+          <entry>
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
               <w:r>
                 <w:t>C</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry rowsep="0" colsep="0" nameend="c4" namest="c3">
+          <entry nameend="c4" namest="c3">
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
               <w:r>
                 <w:t>D</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry rowsep="0" colsep="0"/>
-          <entry rowsep="0" colsep="0"/>
-          <entry rowsep="0" colsep="0"/>
+          <entry/>
+          <entry/>
+          <entry/>
         </row>
         <row>
-          <entry rowsep="0" nameend="c3" namest="c1">
+          <entry nameend="c3" namest="c1" rowsep="0">
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
               <w:r>
                 <w:t>1</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry rowsep="0" colsep="0">
+          <entry rowsep="0">
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
               <w:r>
                 <w:t>2</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry rowsep="0" colsep="0">
+          <entry rowsep="0">
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
               <w:r>
                 <w:t>3</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry rowsep="0" colsep="0">
+          <entry rowsep="0">
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
               <w:r>
                 <w:t>4</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry rowsep="0" colsep="0">
+          <entry rowsep="0">
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
               <w:r>
                 <w:t>5</w:t>
@@ -86,35 +86,35 @@
           </entry>
         </row>
         <row>
-          <entry rowsep="0" nameend="c3" namest="c1">
+          <entry nameend="c3" namest="c1">
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
               <w:r>
                 <w:t>6</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry rowsep="0" colsep="0">
+          <entry>
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
               <w:r>
                 <w:t>7</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry rowsep="0" colsep="0">
+          <entry>
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
               <w:r>
                 <w:t>8</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry rowsep="0" colsep="0">
+          <entry>
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
               <w:r>
                 <w:t>9</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry rowsep="0" colsep="0">
+          <entry>
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
               <w:r>
                 <w:t>10</w:t>

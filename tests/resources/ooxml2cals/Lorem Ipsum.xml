@@ -12,42 +12,42 @@
         </row>
         <row>
           <entry><w:p>12.x</w:p></entry>
-          <entry align="right"><w:p>66.3%</w:p></entry>
+          <entry align="right" colsep="0"><w:p>66.3%</w:p></entry>
           <entry align="right"><w:p/></entry>
         </row>
         <row>
           <entry><w:p>11.x</w:p></entry>
-          <entry align="right"><w:p>23.5%</w:p></entry>
+          <entry align="right" colsep="0"><w:p>23.5%</w:p></entry>
           <entry align="right"><w:p/></entry>
         </row>
         <row>
           <entry><w:p>10.x</w:p></entry>
-          <entry align="right"><w:p>4.8%</w:p></entry>
+          <entry align="right" colsep="0"><w:p>4.8%</w:p></entry>
           <entry align="right"><w:p/></entry>
         </row>
         <row>
           <entry><w:p>9.x</w:p></entry>
-          <entry align="right"><w:p>4.5%</w:p></entry>
+          <entry align="right" colsep="0"><w:p>4.5%</w:p></entry>
           <entry align="right"><w:p/></entry>
         </row>
         <row>
           <entry><w:p>8.x</w:p></entry>
-          <entry align="right"><w:p>0.1%</w:p></entry>
+          <entry align="right" colsep="0"><w:p>0.1%</w:p></entry>
           <entry align="right"><w:p/></entry>
         </row>
         <row>
           <entry><w:p>7.x</w:p></entry>
-          <entry align="right"><w:p>0.2%</w:p></entry>
+          <entry align="right" colsep="0"><w:p>0.2%</w:p></entry>
           <entry align="right"><w:p/></entry>
         </row>
         <row>
           <entry><w:p>6.x</w:p></entry>
-          <entry align="right"><w:p>0.4%</w:p></entry>
+          <entry align="right" colsep="0"><w:p>0.4%</w:p></entry>
           <entry align="right"><w:p/></entry>
         </row>
         <row>
           <entry><w:p>5.x</w:p></entry>
-          <entry align="right"><w:p>0.2%</w:p></entry>
+          <entry align="right" colsep="0"><w:p>0.2%</w:p></entry>
           <entry align="right"><w:p/></entry>
         </row>
       </tbody>

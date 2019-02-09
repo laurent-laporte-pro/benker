@@ -92,6 +92,7 @@ class CalsBuilder(BaseBuilder):
             to have a list of all possible options.
         """
         # Internal state of the table used during building
+        self._table = None
         self._table_colsep = u"1"
         self._table_rowsep = u"1"
         # options
@@ -141,6 +142,7 @@ class CalsBuilder(BaseBuilder):
 
         :return: The newly-created ``<table>`` element.
         """
+        self._table = table
         self._table_colsep = u"1"
         self._table_rowsep = u"1"
         table_styles = table.styles
@@ -354,12 +356,16 @@ class CalsBuilder(BaseBuilder):
         """
         cell_styles = cell.styles
         attrs = {}
-        cell_colsep = _get_colsep_attr(cell_styles, "border-right")
-        if cell_colsep and cell_colsep != self._table_colsep:
-            attrs['colsep'] = cell_colsep
-        cell_rowsep = _get_rowsep_attr(cell_styles, "border-bottom")
-        if cell_rowsep and cell_rowsep != self._table_rowsep:
-            attrs['rowsep'] = cell_rowsep
+        if cell.box.max.x != self._table.bounding_box.max.x:
+            # generate @colsep if the cell isn't in the last column
+            cell_colsep = _get_colsep_attr(cell_styles, "border-right")
+            if cell_colsep and cell_colsep != self._table_colsep:
+                attrs['colsep'] = cell_colsep
+        if cell.box.max.y != self._table.bounding_box.max.y:
+            # generate @rowsep if the cell isn't in the last row
+            cell_rowsep = _get_rowsep_attr(cell_styles, "border-bottom")
+            if cell_rowsep and cell_rowsep != self._table_rowsep:
+                attrs['rowsep'] = cell_rowsep
         if 'vertical-align' in cell_styles:
             # same values as CSS/Properties/vertical-align
             # 'w-both' is an extension of OoxmlParser

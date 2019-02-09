@@ -4,6 +4,7 @@ from lxml import etree
 
 from benker.builders.cals import CalsBuilder
 from benker.cell import Cell
+from benker.table import Table
 
 TEST_DATA__WITH_SEP = [
 
@@ -55,10 +56,14 @@ def test_build_cell__with_sep(cell_styles, expected):
 
     # -- setup a minimal cell
     p_elem = etree.XML("<p>text</p>")
-    cell = Cell([p_elem], styles=cell_styles)
+    cell_x1_y1 = Cell([p_elem], x=1, y=1, styles=cell_styles)
+    cell_x2_y1 = Cell([p_elem], x=2, y=1, styles=cell_styles)
+    cell_x1_y2 = Cell([p_elem], x=1, y=2, styles=cell_styles)
+    cell_x2_y2 = Cell([p_elem], x=2, y=2, styles=cell_styles)
+    builder._table = Table([cell_x1_y1, cell_x2_y1, cell_x1_y2, cell_x2_y2])
 
     # -- build the cell
-    builder.build_cell(row_elem, cell)
+    builder.build_cell(row_elem, cell_x1_y1)
 
     # -- check the '<entry>' attributes
     entry_elem = row_elem[0]  # type: etree._Element
@@ -120,10 +125,14 @@ def test_build_cell__without_sep(cell_styles, expected):
 
     # -- setup a minimal cell
     p_elem = etree.XML("<p>text</p>")
-    cell = Cell([p_elem], styles=cell_styles)
+    cell_x1_y1 = Cell([p_elem], x=1, y=1, styles=cell_styles)
+    cell_x2_y1 = Cell([p_elem], x=2, y=1, styles=cell_styles)
+    cell_x1_y2 = Cell([p_elem], x=1, y=2, styles=cell_styles)
+    cell_x2_y2 = Cell([p_elem], x=2, y=2, styles=cell_styles)
+    builder._table = Table([cell_x1_y1, cell_x2_y1, cell_x1_y2, cell_x2_y2])
 
     # -- build the cell
-    builder.build_cell(row_elem, cell)
+    builder.build_cell(row_elem, cell_x1_y1)
 
     # -- check the '<entry>' attributes
     entry_elem = row_elem[0]  # type: etree._Element
@@ -165,7 +174,8 @@ def test_build_cell__align(cell_styles, expected):
 
     # -- setup a minimal cell
     p_elem = etree.XML("<p>text</p>")
-    cell = Cell([p_elem], styles=cell_styles)
+    cell = Cell([p_elem], x=1, y=1, styles=cell_styles)
+    builder._table = Table([cell])
 
     # -- build the cell
     builder.build_cell(row_elem, cell)
