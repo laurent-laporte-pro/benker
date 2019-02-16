@@ -18,7 +18,7 @@ TEST_DATA__WITH_SEP = [
          'border-right': 'dotted 2.0pt #FF0000',
          'border-bottom': 'dashed 3.0pt #00FF00',
          'border-left': 'outset 4.0pt #0000FF'},
-        {},
+        {'colsep': '1', 'rowsep': '1'},
         id="style_border-all"),
 
     pytest.param(
@@ -28,12 +28,12 @@ TEST_DATA__WITH_SEP = [
 
     pytest.param(
         {'border-right': 'double 1.0pt #FFFFFF'},
-        {},
+        {'colsep': '1'},
         id="style_border-right"),
 
     pytest.param(
         {'border-bottom': 'double 1.0pt #FFFFFF'},
-        {},
+        {'rowsep': '1'},
         id="style_border-bottom"),
 
     pytest.param(

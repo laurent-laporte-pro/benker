@@ -93,8 +93,8 @@ class CalsBuilder(BaseBuilder):
         """
         # Internal state of the table used during building
         self._table = None
-        self._table_colsep = u"1"
-        self._table_rowsep = u"1"
+        self._table_colsep = u"0"
+        self._table_rowsep = u"0"
         # options
         self.width_unit = width_unit
         self.table_in_tgroup = table_in_tgroup
@@ -119,10 +119,10 @@ class CalsBuilder(BaseBuilder):
         CALS attributes:
 
         -   ``@colsep`` is built from the "x-cell-border-right" style.
-            Default value is "1" (displayed), so, it is better to always define it.
+            Default value is "0" (not displayed).
 
         -   ``@rowsep`` is built from the "x-cell-border-bottom" style.
-            Default value is "1" (displayed), so, it is better to always define it.
+            Default value is "0" (not displayed).
 
         -   ``@tabstyle`` is built from the table nature.
 
@@ -137,14 +137,23 @@ class CalsBuilder(BaseBuilder):
            ``@colsep``, ``@rowsep`` and ``@tabstyle`` attributes are generated only
            if the *table_in_tgroup* options is ``False``.
 
+        .. attention::
+
+           According to the `CALS specification <https://www.oasis-open.org/specs/tm9502.html#c37ab3>`_,
+           the default value for ``@colsep`` and ``@rowsep`` should be "1".
+           But, having this value as a default is really problematic for conversions:
+           most of nowadays formats, like Office Open XML and CSS, consider that the default
+           value is "no border" (a.k.a: ``border: none``).
+           So, setting "0" as a default value is a better choice.
+
         :type  table: benker.table.Table
         :param table: Table
 
         :return: The newly-created ``<table>`` element.
         """
         self._table = table
-        self._table_colsep = u"1"
-        self._table_rowsep = u"1"
+        self._table_colsep = u"0"
+        self._table_rowsep = u"0"
         table_styles = table.styles
         attrs = {'frame': _get_frame_attr(table_styles), }
         if not self.table_in_tgroup:
@@ -169,10 +178,10 @@ class CalsBuilder(BaseBuilder):
         -   ``@cols`` is the total number of columns.
 
         -   ``@colsep`` is built from the "x-cell-border-right" style.
-            Default value is "1" (displayed), so, it is better to always define it.
+            Default value is "0" (not displayed).
 
         -   ``@rowsep`` is built from the "x-cell-border-bottom" style.
-            Default value is "1" (displayed), so, it is better to always define it.
+            Default value is "0" (not displayed).
 
         -   ``@tgroupstyle`` is built from the table nature.
 
