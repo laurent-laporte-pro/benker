@@ -162,7 +162,7 @@ cell if there are some gaps in the grid.
 Set, Get, Delete cells
 ~~~~~~~~~~~~~~~~~~~~~~
 
-A grid is a :class:`~collections.MutableMapping`, it works like a dictionary
+A grid is a :class:`~collections.abc.MutableMapping`, it works like a dictionary
 of cells. Keys of the dictionary are coordinates (tuple (*x*, *y*)
 or :class:`~benker.coord.Coord` instance).
 The coordinates are the top-left coordinates of the cells.

@@ -360,7 +360,7 @@ class CalsBuilder(BaseBuilder):
         :type  row_elem: etree.Element
         :param row_elem: Parent element: ``<row>``.
 
-        :type  cell: benker.table.Cell
+        :type  cell: benker.cell.Cell
         :param cell: The cell.
         """
         cell_styles = cell.styles

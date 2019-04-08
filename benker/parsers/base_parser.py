@@ -49,7 +49,7 @@ def value_of(element, xpath, namespaces=None, default=None):
     :param element: Root element used to evaluate the xpath expression.
 
     :param str xpath: xpath expression.
-        This expression will be evaluated using the :data:`NS` namespace.
+        This expression will be evaluated using the *namespaces* namespaces.
 
     :type  namespaces: dict[str, str]
     :param namespaces:

@@ -75,9 +75,9 @@ Fixed
 
 * Fix and improve configuration for Tox.
 
-* Fix docstring in :mod:`~benker.ooxml2cals`.
+* Fix docstring in :mod:`~benker.converters.ooxml2cals`.
 
-* Fix calculation of the ``@frame`` attribute in the function :func:`benker.builders.cals._get_frame_attr`.
+* Fix calculation of the ``@frame`` attribute in the method :meth:`benker.builders.cals.CalsBuilder.build_table`.
 
 Other
 -----
