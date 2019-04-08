@@ -18,7 +18,8 @@ tests_require = [
     'py',
     'isort',
     'check-manifest',
-    'Sphinx'
+    'Sphinx',
+    'xmldiff'
 ]
 
 extras_require = {"dev": tests_require}
