@@ -58,6 +58,8 @@ class BaseConverter(object):
                 -   ``True`` to insert the attributes ``@colsep``, ``@rowsep``,
                     and ``@tgroupstyle`` in the ``<tgroup>`` element.
 
+            **Formex4 builder options:** *(none)*
+
         """
         builder = self.builder_cls(**options)
         parser = self.parser_cls(builder, **options)
