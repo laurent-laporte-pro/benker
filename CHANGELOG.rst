@@ -16,6 +16,12 @@ Feature release
 Added
 -----
 
+* New converter: :func:`~benker.converters.ooxml2formex4.convert_ooxml2formex4`:
+  Convert Office Open XML (OOXML) tables to Formex4 tables.
+
+* New builder: :class:`~benker.builders.formex4.Formex4Builder`:
+  Formex4 builder used to convert tables into ``TBL`` elements.
+
 * Change in the parser :class:`~benker.parsers.ooxml.OoxmlParser`:
 
   - The section width and height are now stored in the 'x-sect-size' table style (units in 'pt').
