@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<expected xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <TBL COLS="3" NO.SEQ="0001">
+    <CORPUS>
+      <ROW>
+        <CELL COL="1">
+          <w:p w:rsidR="00756971" w:rsidRDefault="00756971">
+            <w:r>
+              <w:t>A</w:t>
+            </w:r>
+          </w:p>
+        </CELL>
+        <CELL COL="2">
+          <w:p w:rsidR="00756971" w:rsidRDefault="00756971">
+            <w:r>
+              <w:t>B</w:t>
+            </w:r>
+          </w:p>
+        </CELL>
+        <CELL COL="3">
+          <w:p w:rsidR="00756971" w:rsidRDefault="00756971">
+            <w:r>
+              <w:t>C</w:t>
+            </w:r>
+          </w:p>
+        </CELL>
+      </ROW>
+      <ROW>
+        <CELL COL="1">
+          <w:p w:rsidR="00756971" w:rsidRDefault="00756971">
+            <w:r>
+              <w:t>D</w:t>
+            </w:r>
+          </w:p>
+        </CELL>
+        <CELL COL="2">
+          <w:p w:rsidR="00756971" w:rsidRDefault="00756971">
+            <w:r>
+              <w:t>E1</w:t>
+            </w:r>
+          </w:p>
+          <TBL COLS="3" NO.SEQ="0001.0001">
+            <CORPUS>
+              <ROW>
+                <CELL COL="1">
+                  <w:p w:rsidR="00756971" w:rsidRPr="00756971" w:rsidRDefault="00756971">
+                    <w:pPr>
+                      <w:rPr>
+                        <w:lang w:val="en-US"/>
+                      </w:rPr>
+                    </w:pPr>
+                    <w:r w:rsidRPr="00756971">
+                      <w:rPr>
+                        <w:lang w:val="en-US"/>
+                      </w:rPr>
+                      <w:t>One</w:t>
+                    </w:r>
+                  </w:p>
+                </CELL>
+                <CELL COL="2">
+                  <w:p w:rsidR="00756971" w:rsidRPr="00756971" w:rsidRDefault="00756971">
+                    <w:pPr>
+                      <w:rPr>
+                        <w:lang w:val="en-US"/>
+                      </w:rPr>
+                    </w:pPr>
+                    <w:r w:rsidRPr="00756971">
+                      <w:rPr>
+                        <w:lang w:val="en-US"/>
+                      </w:rPr>
+                      <w:t>Two</w:t>
+                    </w:r>
+                  </w:p>
+                </CELL>
+                <CELL COL="3">
+                  <w:p w:rsidR="00756971" w:rsidRPr="00756971" w:rsidRDefault="00756971">
+                    <w:pPr>
+                      <w:rPr>
+                        <w:lang w:val="en-US"/>
+                      </w:rPr>
+                    </w:pPr>
+                    <w:r w:rsidRPr="00756971">
+                      <w:rPr>
+                        <w:lang w:val="en-US"/>
+                      </w:rPr>
+                      <w:t>Three</w:t>
+                    </w:r>
+                  </w:p>
+                </CELL>
+              </ROW>
+              <ROW>
+                <CELL COL="1">
+                  <w:p w:rsidR="00756971" w:rsidRPr="00756971" w:rsidRDefault="00756971">
+                    <w:pPr>
+                      <w:rPr>
+                        <w:lang w:val="en-US"/>
+                      </w:rPr>
+                    </w:pPr>
+                    <w:r w:rsidRPr="00756971">
+                      <w:rPr>
+                        <w:lang w:val="en-US"/>
+                      </w:rPr>
+                      <w:t>Four</w:t>
+                    </w:r>
+                  </w:p>
+                </CELL>
+                <CELL COL="2">
+                  <w:p w:rsidR="00756971" w:rsidRPr="00756971" w:rsidRDefault="00756971">
+                    <w:pPr>
+                      <w:rPr>
+                        <w:lang w:val="en-US"/>
+                      </w:rPr>
+                    </w:pPr>
+                    <w:r w:rsidRPr="00756971">
+                      <w:rPr>
+                        <w:lang w:val="en-US"/>
+                      </w:rPr>
+                      <w:t>Five</w:t>
+                    </w:r>
+                  </w:p>
+                </CELL>
+                <CELL COL="3">
+                  <w:p w:rsidR="00756971" w:rsidRPr="00756971" w:rsidRDefault="00756971">
+                    <w:pPr>
+                      <w:rPr>
+                        <w:lang w:val="en-US"/>
+                      </w:rPr>
+                    </w:pPr>
+                    <w:r w:rsidRPr="00756971">
+                      <w:rPr>
+                        <w:lang w:val="en-US"/>
+                      </w:rPr>
+                      <w:t>Six</w:t>
+                    </w:r>
+                  </w:p>
+                </CELL>
+              </ROW>
+            </CORPUS>
+          </TBL>
+          <w:p w:rsidR="00756971" w:rsidRPr="00756971" w:rsidRDefault="00756971">
+            <w:pPr>
+              <w:rPr>
+                <w:lang w:val="en-US"/>
+              </w:rPr>
+            </w:pPr>
+            <w:r w:rsidRPr="00756971">
+              <w:rPr>
+                <w:lang w:val="en-US"/>
+              </w:rPr>
+              <w:t>E2</w:t>
+            </w:r>
+          </w:p>
+        </CELL>
+        <CELL COL="3">
+          <w:p w:rsidR="00756971" w:rsidRDefault="00756971">
+            <w:r>
+              <w:t>F</w:t>
+            </w:r>
+          </w:p>
+        </CELL>
+      </ROW>
+      <ROW>
+        <CELL COL="1">
+          <w:p w:rsidR="00756971" w:rsidRDefault="00756971">
+            <w:r>
+              <w:t>G</w:t>
+            </w:r>
+          </w:p>
+        </CELL>
+        <CELL COL="2">
+          <w:p w:rsidR="00756971" w:rsidRDefault="00756971">
+            <w:r>
+              <w:t>H</w:t>
+            </w:r>
+          </w:p>
+        </CELL>
+        <CELL COL="3">
+          <w:p w:rsidR="00756971" w:rsidRDefault="00756971">
+            <w:r>
+              <w:t>I</w:t>
+            </w:r>
+          </w:p>
+        </CELL>
+      </ROW>
+    </CORPUS>
+  </TBL>
+</expected>

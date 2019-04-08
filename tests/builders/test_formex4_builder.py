@@ -149,3 +149,13 @@ def test_build_tbl__no_seq():
     table2_elem = builder.build_tbl(table2)
     assert table1_elem.attrib['NO.SEQ'] == u"0001"
     assert table2_elem.attrib['NO.SEQ'] == u"0002"
+
+
+def test_build_tbl__empty_cell():
+    builder = Formex4Builder()
+    table1 = Table()
+    table1.rows[1].insert_cell(u"")
+    table1_elem = builder.build_tbl(table1)
+    cell_elem = table1_elem.xpath('//CELL')[0]
+    assert len(cell_elem) == 1
+    assert cell_elem[0].tag == 'IE'

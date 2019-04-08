@@ -27,6 +27,7 @@ Specifications and examples:
 from lxml import etree
 
 from benker.builders.base_builder import BaseBuilder
+from benker.parsers.lxml_iterwalk import iterwalk
 
 
 def revision_mark(name, attrs):
@@ -257,10 +258,41 @@ class Formex4Builder(BaseBuilder):
             attrs[u"COLSPAN"] = str(cell.width)
         if cell.height > 1:
             attrs[u"ROWSPAN"] = str(cell.height)
-        entry_elem = etree.SubElement(row_elem, u"CELL", attrib=attrs)
+        cell_elem = etree.SubElement(row_elem, u"CELL", attrib=attrs)
         if cell.content is not None:
             if isinstance(cell.content, type(u"")):
                 # mainly useful for unit test
-                entry_elem.text = cell.content
+                cell_elem.text = cell.content
             else:
-                entry_elem.extend(cell.content)
+                cell_elem.extend(cell.content)
+        if len(cell_elem) == 0 and not cell_elem.text:
+            # The IE element is used to explicitly indicate
+            # that specific structures have an empty content.
+            etree.SubElement(cell_elem, 'IE')
+
+    def finalize_tree(self, tree):
+        """
+        Finalize the resulting tree structure:
+        calculate the ``@NO.SEQ`` values: sequence number of each table.
+
+        :type  tree: etree._ElementTree
+        :param tree: The resulting tree.
+        """
+        root = tree.getroot()
+        context = iterwalk(root, events=('start',), tag=('TBL',))
+
+        stack = []
+        for action, elem in context:  # type: str, etree._Element
+            elem_tag = elem.tag
+            if elem_tag == 'TBL':
+                elem_level = int(elem.xpath("count(ancestor-or-self::TBL)"))
+                curr_level = len(stack)
+                if curr_level < elem_level:
+                    stack.extend([0] * (elem_level - curr_level))
+                else:
+                    stack[:] = stack[:elem_level]
+                stack[elem_level - 1] += 1
+                no_seq = u'.'.join(u"{:04d}".format(value) for value in stack)
+                elem.attrib['NO.SEQ'] = no_seq
+            else:
+                raise NotImplementedError(elem_tag)

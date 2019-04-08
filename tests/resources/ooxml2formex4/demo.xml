@@ -1,0 +1,77 @@
+<expected xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+    <TBL COLS="7" NO.SEQ="0001">
+        <CORPUS>
+            <ROW>
+                <CELL COL="1" ROWSPAN="2">
+                    <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"><w:r><w:t>A</w:t></w:r></w:p>
+                </CELL>
+                <CELL COL="2" COLSPAN="2">
+                    <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"><w:r><w:t>B</w:t></w:r></w:p>
+                </CELL>
+                <CELL COL="4">
+                    <IE/>
+                </CELL>
+                <CELL COL="5">
+                    <IE/>
+                </CELL>
+                <CELL COL="6">
+                    <IE/>
+                </CELL>
+                <CELL COL="7">
+                    <IE/>
+                </CELL>
+            </ROW>
+            <ROW>
+                <CELL COL="2">
+                    <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"><w:r><w:t>C</w:t></w:r></w:p>
+                </CELL>
+                <CELL COL="3" COLSPAN="2">
+                    <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"><w:r><w:t>D</w:t></w:r></w:p>
+                </CELL>
+                <CELL COL="5">
+                    <IE/>
+                </CELL>
+                <CELL COL="6">
+                    <IE/>
+                </CELL>
+                <CELL COL="7">
+                    <IE/>
+                </CELL>
+            </ROW>
+            <ROW>
+                <CELL COL="1" COLSPAN="3">
+                    <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"><w:r><w:t>1</w:t></w:r></w:p>
+                </CELL>
+                <CELL COL="4">
+                    <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"><w:r><w:t>2</w:t></w:r></w:p>
+                </CELL>
+                <CELL COL="5">
+                    <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"><w:r><w:t>3</w:t></w:r></w:p>
+                </CELL>
+                <CELL COL="6">
+                    <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"><w:r><w:t>4</w:t></w:r></w:p>
+                </CELL>
+                <CELL COL="7">
+                    <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"><w:r><w:t>5</w:t></w:r></w:p>
+                </CELL>
+            </ROW>
+            <ROW>
+                <CELL COL="1" COLSPAN="3">
+                    <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"><w:r><w:t>6</w:t></w:r></w:p>
+                </CELL>
+                <CELL COL="4">
+                    <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"><w:r><w:t>7</w:t></w:r></w:p>
+                </CELL>
+                <CELL COL="5">
+                    <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"><w:r><w:t>8</w:t></w:r></w:p>
+                </CELL>
+                <CELL COL="6">
+                    <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"><w:r><w:t>9</w:t></w:r></w:p>
+                </CELL>
+                <CELL COL="7">
+                    <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"><w:r><w:t>10</w:t></w:r></w:p>
+                </CELL>
+            </ROW>
+        </CORPUS>
+    </TBL>
+</expected>

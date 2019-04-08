@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<expected xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <TBL COLS="3" NO.SEQ="0001">
+    <CORPUS>
+      <ROW>
+        <CELL COL="1" ROWSPAN="2">
+          <w:p w:rsidR="004A4C52" w:rsidRDefault="004A4C52">
+            <w:r>
+              <w:t>A1:A2</w:t>
+            </w:r>
+          </w:p>
+        </CELL>
+        <CELL COL="2" COLSPAN="2">
+          <w:p w:rsidR="004A4C52" w:rsidRDefault="004A4C52">
+            <w:r>
+              <w:t>B1:C1</w:t>
+            </w:r>
+          </w:p>
+        </CELL>
+      </ROW>
+      <ROW>
+        <CELL COL="2">
+          <w:p w:rsidR="004A4C52" w:rsidRDefault="004A4C52">
+            <w:r>
+              <w:t>B2</w:t>
+            </w:r>
+          </w:p>
+        </CELL>
+        <CELL COL="3">
+          <w:p w:rsidR="004A4C52" w:rsidRDefault="004A4C52"/>
+        </CELL>
+      </ROW>
+    </CORPUS>
+  </TBL>
+</expected>
