@@ -11,9 +11,10 @@ Benker's documentation |version|
    :caption: Contents:
 
    readme.rst
-   changelog.rst
+   usage.rst
    tutorials/index.rst
    api/benker.rst
+   changelog.rst
 
 Indices and tables
 ==================
