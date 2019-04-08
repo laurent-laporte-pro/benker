@@ -947,7 +947,7 @@ class OoxmlParser(BaseParser):
         sect_cols = value_of(w_sect_pr, 'w:cols/@w:num')
         if sect_cols is None:
             sect_cols = w_sect_pr.xpath('count(w:cols/w:col)', namespaces=NS)  # type: float
-            sect_cols = str(int(sect_cols)) if sect_cols else "1"
+            sect_cols = str(int(sect_cols)) if sect_cols else "1"  # type: str
         attrs['x-sect-cols'] = sect_cols
 
         # - The HTML ``class`` attribute is not a regular style.
