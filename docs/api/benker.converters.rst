@@ -9,4 +9,4 @@
 
    benker.converters.base_converter
    benker.converters.ooxml2cals
-
+   benker.converters.ooxml2formex4

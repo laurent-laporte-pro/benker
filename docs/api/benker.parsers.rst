@@ -10,3 +10,8 @@
    benker.parsers.base_parser
    benker.parsers.ooxml
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Parser utilities
+
+   benker.parsers.lxml_iterwalk
