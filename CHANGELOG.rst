@@ -26,6 +26,10 @@ Added
 
   - The section width and height are now stored in the 'x-sect-size' table style (units in 'pt').
 
+* Change in the builder :class:`~benker.builders.base_builder.BaseBuilder`:
+  Add the method :meth:`~benker.builders.base_builder.BaseBuilder.finalize_tree`:
+  Give the opportunity to finalize the resulting tree structure.
+
 
 v0.3.0 (2019-02-16)
 ===================

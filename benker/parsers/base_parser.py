@@ -35,6 +35,7 @@ class BaseParser(object):
     def parse_file(self, src_xml, dst_xml):
         tree = etree.parse(src_xml)
         self.transform_tables(tree)
+        self.builder.finalize_tree(tree)
         tree.write(dst_xml, encoding=self.encoding, pretty_print=False)
 
     def transform_tables(self, tree):
