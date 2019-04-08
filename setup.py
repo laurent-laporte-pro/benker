@@ -39,7 +39,7 @@ setup(
     author="Laurent LAPORTE",
     author_email="laurent.laporte.pro@gmail.com",
 
-    description="Organize your data in a spatial grid system for CALS, HTML, Office Open XML tables conversion",
+    description="Organize your data in a spatial grid system for CALS, HTML, Formex4, Office Open XML tables conversion",
     long_description=read("README.rst"),
     long_description_content_type='text/x-rst',
 
@@ -51,7 +51,7 @@ setup(
     url="https://github.com/laurent-laporte-pro/benker",
     license='MIT',
     platforms=['posix', 'nt'],
-    keywords='Office, Word, Excel, PowerPoint, docx, xlsx, pptx, CALS, HTML, table, converter, conversion',
+    keywords='Office, Word, Excel, PowerPoint, docx, xlsx, pptx, CALS, HTML, Formex, table, converter, conversion',
 
     install_requires=install_requires,
     extras_require=extras_require,

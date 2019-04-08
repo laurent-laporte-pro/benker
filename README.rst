@@ -22,10 +22,10 @@ Benker
    :target: https://raw.githubusercontent.com/laurent-laporte-pro/benker/master/LICENSE
    :alt: GitHub license
 
-Organize your data in a spatial grid system for CALS, HTML, Office Open XML tables conversion
+Organize your data in a spatial grid system for CALS, HTML, Formex4, Office Open XML tables conversion
 
-Usage
------
+Overview
+--------
 
 To convert the tables of a ``.docx`` document to CALS_ format, you can process as follow:
 
