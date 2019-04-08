@@ -899,6 +899,9 @@ class OoxmlParser(BaseParser):
 
         :type  w_tbl: etree._Element
         :param w_tbl: Table element.
+
+        .. versionchanged:: 0.4.0
+           The section width and height are now stored in the 'x-sect-size' table style (units in 'pt').
         """
         style_id = value_of(w_tbl, "w:tblPr/w:tblStyle/@w:val")
 
@@ -930,6 +933,13 @@ class OoxmlParser(BaseParser):
         sect_orient = value_of(w_sect_pr, 'w:pgSz/@w:orient')
         if sect_orient:
             attrs['x-sect-orient'] = sect_orient
+
+        # - ``x-sect-size``: Section size (width and height)
+        sect_w = value_of(w_sect_pr, 'w:pgSz/@w:w')
+        sect_h = value_of(w_sect_pr, 'w:pgSz/@w:h')
+        if sect_w and sect_h:
+            # convert twentieths of a point to 'pt'
+            attrs['x-sect-size'] = float(sect_w) / 20, float(sect_h) / 20
 
         # - w:cols -- Specifies the set of columns for the section.
         # - ``x-sect-cols``: Section column number
