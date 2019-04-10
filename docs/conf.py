@@ -162,7 +162,8 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'Benker', 'Benker Documentation',
-     author, 'Benker', 'Organize your data in a spatial grid system for CALS, HTML, Formex4, Office Open XML tables conversion.',
+     author, 'Benker',
+     'Organize your data in a spatial grid system for CALS, HTML, Formex4, Office Open XML tables conversion.',
      'Miscellaneous'),
 ]
 
@@ -192,3 +193,7 @@ epub_exclude_files = ['search.html']
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
+
+
+def setup(app):
+    app.add_stylesheet('_static/custom.css')

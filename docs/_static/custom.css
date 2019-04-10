@@ -1,0 +1,9 @@
+/* Custom CSS */
+
+table.border-none, table.border-none td {
+    border: none;
+    box-shadow: none;
+}
+table.vertical-align-top td {
+    vertical-align: top;
+}
