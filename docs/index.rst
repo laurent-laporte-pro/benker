@@ -84,12 +84,66 @@ The decoupling between parsing, building and final serialization allows a simpli
 This decoupling also allows to multiply the combinations: it is easy to change a builder to another one,
 and to develop its own parser…
 
+The advantage of this approach is that we avoid having a specific document conversion for each format pair (input, output).
+Instead, you can build a converter by choosing a parser and a builder, as you assemble the pieces of a puzzle.
+
+.. image:: /_static/converter-puzzle.png
+   :align: center
+   :scale: 40 %
+   :alt: Converter = Parser + Builder
+
+The following table show you the available converters which groups parser and builders by pairs.
+
+.. list-table:: **Available converters**
+   :align: center
+   :widths: 25 25 25 25 25
+   :class: text-align-center vertical-align-middle
+
+   * - ╲
+     - .. image:: /_static/puzzle-ooxml-builder-40.png
+          :scale: 60%
+     - .. image:: /_static/puzzle-html-builder-40.png
+          :scale: 60%
+     - .. image:: /_static/puzzle-cals-builder-40.png
+          :scale: 60%
+     - .. image:: /_static/puzzle-formex4-builder-40.png
+          :scale: 60%
+
+   * - .. image:: /_static/puzzle-ooxml-parser-40.png
+          :scale: 60%
+     - –
+     - *(unavailable)*
+     - :func:`~benker.converters.ooxml2cals.convert_ooxml2cals`
+     - :func:`~benker.converters.ooxml2formex4.convert_ooxml2formex4`
+
+   * - .. image:: /_static/puzzle-html-parser-40.png
+          :scale: 60%
+     - *(unavailable)*
+     - –
+     - *(unavailable)*
+     - *(unavailable)*
+
+   * - .. image:: /_static/puzzle-cals-parser-40.png
+          :scale: 60%
+     - *(unavailable)*
+     - *(unavailable)*
+     - –
+     - *(unavailable)*
+
+   * - .. image:: /_static/puzzle-formex4-parser-40.png
+          :scale: 60%
+     - *(unavailable)*
+     - *(unavailable)*
+     - *(unavailable)*
+     - –
+
+
+You can create your own converter by inheriting the available base classes:
+
 .. image:: /_static/general-class-diagram.png
    :align: center
    :scale: 60 %
    :alt: General class diagram (BaseConverter, BaseParser and BaseBuilder)
-
-You can create your own converter by inheriting the available base classes:
 
 *   :class:`~benker.converters.base_converter.BaseConverter`:
     inherit this class to create your own converter.
@@ -111,26 +165,8 @@ You can create your own converter by inheriting the available base classes:
     You can also implement the method :meth:`~benker.builders.base_builder.BaseBuilder.finalize_tree`
     to do any post-processing to the resulting XML tree.
 
-.. list-table:: **Available converters**
-   :header-rows: 1
-   :widths: 16 28 28 28
+.. hint:: Contribution is welcome!
 
-   * - ╲
-     - **OOXML**
-     - **CALS**
-     - **Formex4**
-   * - **OOXML**
-     - –
-     - :func:`~benker.converters.ooxml2cals.convert_ooxml2cals`
-     - :func:`~benker.converters.ooxml2formex4.convert_ooxml2formex4`
-   * - **CALS**
-     -
-     - –
-     -
-   * - **Formex4**
-     -
-     -
-     - –
 
 Usage
 -----
