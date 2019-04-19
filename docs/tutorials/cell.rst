@@ -104,8 +104,8 @@ Using the cell attributes:
 
     # this will change only the cell styles:
     >>> c1.styles['vertical-align'] = 'middle'
-    >>> c2.styles
-    {'text-align': 'justify', 'vertical-align': 'top'}
+    >>> c2.styles == {'text-align': 'justify', 'vertical-align': 'top'}
+    True
 
 
 Properties
