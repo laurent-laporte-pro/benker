@@ -188,3 +188,99 @@ or by extending the size of a given cell.
     +-----------|                       +-----------+
     |     M     |                       |     P     |
     +-----------+-----------------------+-----------+
+
+Owned and caught cells
+~~~~~~~~~~~~~~~~~~~~~~
+
+When a cell is merged into a row group, it is always bound to the top row of this group (the first row).
+In that case, we say that the first row **owns** the cell and the other rows **catch** the cell.
+
+.. doctest:: table
+
+    >>> table = Table()
+
+    >>> row = table.rows[1]
+    >>> row.insert_cell("merged", height=2)
+    >>> row.insert_cell("A")
+
+    >>> row = table.rows[2]
+    >>> row.insert_cell("B")
+
+    >>> row = table.rows[3]
+    >>> row.insert_cell("C")
+    >>> row.insert_cell("D")
+    >>> print(table)
+    +-----------+-----------+
+    |  merged   |     A     |
+    |           +-----------+
+    |           |     B     |
+    +-----------+-----------+
+    |     C     |     D     |
+    +-----------+-----------+
+
+Here are the **owned_cells** of this table:
+
+.. doctest:: table
+
+    >>> for pos, row in enumerate(table.rows, 1):
+    ...     cells = ", ".join("{}".format(cell) for cell in row.owned_cells)
+    ...     print("row #{pos}: {cells}".format(pos=pos, cells=cells))
+    row #1: merged, A
+    row #2: B
+    row #3: C, D
+
+Here are the **caught_cells** of this table:
+
+.. doctest:: table
+
+    >>> for pos, row in enumerate(table.rows, 1):
+    ...     cells = ", ".join("{}".format(cell) for cell in row.caught_cells)
+    ...     print("row #{pos}: {cells}".format(pos=pos, cells=cells))
+    row #1: merged, A
+    row #2: merged, B
+    row #3: C, D
+
+The same applies to columns: if a cell is merged into several columns then it belongs
+to the first column (left) of the merged column group.
+
+.. doctest:: table
+
+    >>> table = Table()
+
+    >>> row = table.rows[1]
+    >>> row.insert_cell("merged", width=2)
+    >>> row.insert_cell("A")
+
+    >>> row = table.rows[2]
+    >>> row.insert_cell("B")
+    >>> row.insert_cell("C")
+    >>> row.insert_cell("D")
+    >>> print(table)
+    +-----------------------+-----------+
+    |  merged               |     A     |
+    +-----------+-----------+-----------+
+    |     B     |     C     |     D     |
+    +-----------+-----------+-----------+
+
+Here are the **owned_cells** of this table:
+
+.. doctest:: table
+
+    >>> for pos, col in enumerate(table.cols, 1):
+    ...     cells = ", ".join("{}".format(cell) for cell in col.owned_cells)
+    ...     print("col #{pos}: {cells}".format(pos=pos, cells=cells))
+    col #1: merged, merged, B
+    col #2: C
+    col #3: A, D
+
+Here are the **caught_cells** of this table:
+
+.. doctest:: table
+
+    >>> for pos, col in enumerate(table.cols, 1):
+    ...     cells = ", ".join("{}".format(cell) for cell in col.caught_cells)
+    ...     print("col #{pos}: {cells}".format(pos=pos, cells=cells))
+    col #1: merged, merged, B
+    col #2: merged, merged, C
+    col #3: A, D
+
