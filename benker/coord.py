@@ -66,6 +66,9 @@ class Coord(CoordTuple):
     def __str__(self):
         return int_to_alphabet(self.x) + str(self.y)
 
+    def __repr__(self):
+        return super(Coord, self).__repr__().replace('CoordTuple', 'Coord')
+
     def __add__(self, size):
         size_type = type(size)
         if size_type is Size:

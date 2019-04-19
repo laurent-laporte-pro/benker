@@ -178,6 +178,9 @@ class Box(BoxTuple):
             return str(self.min)
         return str(self.min) + ':' + str(self.max)
 
+    def __repr__(self):
+        return super(Box, self).__repr__().replace('BoxTuple', 'Box')
+
     @property
     def width(self):
         # type: () -> int

@@ -62,6 +62,9 @@ class Size(SizeTuple):
     def __str__(self):
         return "({width} x {height})".format(width=self.width, height=self.height)
 
+    def __repr__(self):
+        return super(Size, self).__repr__().replace('SizeTuple', 'Size')
+
     def __add__(self, size):
         size_type = type(size)
         if size_type is Size:
