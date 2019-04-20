@@ -136,9 +136,57 @@ class Formex4Builder(BaseBuilder):
         """
         # table_styles = table.styles
         attrs = {}  # no attribute
+        rows = list(table.rows)
+
+        # Does the first row/cell contains a centered title?
+        first_cell = table[(1, 1)]
+        align = first_cell.styles.get('align')
+        if first_cell.width == table.bounding_box.width and align == "center":
+            # yes, we can generate the title
+            self.build_title(tbl_elem, rows.pop(0))
+
         corpus_elem = etree.SubElement(tbl_elem, u"CORPUS", attrib=attrs)
-        for row in table.rows:
+        for row in rows:
             self.build_row(corpus_elem, row)
+
+    def build_title(self, tbl_elem, row):
+        """
+        Build the table title using the ``<TITLE>`` element.
+
+        For instance:
+
+        .. code-block:: xml
+
+           <TITLE>
+             <TI>
+               <P>Table IV</P>
+             </TI>
+           </TITLE>
+
+        :type  tbl_elem: etree.Element
+        :param tbl_elem: Parent element: ``<TBL>``.
+
+        :type  row: benker.table.RowView
+        :param row: The row which contains the title.
+        """
+        title_elem = etree.SubElement(tbl_elem, u"TITLE")
+        for cell in row.owned_cells:
+            if cell.content:
+                if isinstance(cell.content, type(u"")):
+                    # mainly useful for unit test
+                    ti_elem = etree.SubElement(title_elem, u"TI")
+                    p_elem = etree.SubElement(ti_elem, u"P")
+                    p_elem.text = cell.content
+                else:
+                    paragraphs = list(cell.content)
+                    ti_elem = etree.SubElement(title_elem, u"TI")
+                    ti_elem.append(paragraphs[0])
+                    sti_elem = etree.SubElement(title_elem, u"STI")
+                    sti_elem.extend(paragraphs[1:])
+            else:
+                # assert cell.content in {None, "", []}
+                ti_elem = etree.SubElement(title_elem, u"TI")
+                etree.SubElement(ti_elem, u"IE")
 
     def build_row(self, corpus_elem, row):
         """
@@ -259,16 +307,16 @@ class Formex4Builder(BaseBuilder):
         if cell.height > 1:
             attrs[u"ROWSPAN"] = str(cell.height)
         cell_elem = etree.SubElement(row_elem, u"CELL", attrib=attrs)
-        if cell.content is not None:
+        if cell.content:
             if isinstance(cell.content, type(u"")):
                 # mainly useful for unit test
                 cell_elem.text = cell.content
             else:
                 cell_elem.extend(cell.content)
-        if len(cell_elem) == 0 and not cell_elem.text:
+        else:
             # The IE element is used to explicitly indicate
             # that specific structures have an empty content.
-            etree.SubElement(cell_elem, 'IE')
+            etree.SubElement(cell_elem, u"IE")
 
     def finalize_tree(self, tree):
         """

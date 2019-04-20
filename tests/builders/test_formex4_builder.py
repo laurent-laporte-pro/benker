@@ -6,10 +6,15 @@ import sys
 import pytest
 import xmldiff.main
 from lxml import etree
+from lxml.builder import E
 
 from benker.builders.formex4 import Formex4Builder
 from benker.cell import Cell
 from benker.table import Table
+
+TBL = E.TBL
+ROW = E.ROW
+P = E.P
 
 
 @pytest.mark.parametrize('kwargs, expected', [
@@ -23,13 +28,13 @@ from benker.table import Table
 def test_build_cell__body(kwargs, expected):
     builder = Formex4Builder()
 
-    p_elem = etree.XML("<P>text</P>")
+    p_elem = P(u"text")
     cell_x1_y1 = Cell([p_elem], x=1, y=1, **kwargs)
     table = Table([cell_x1_y1])
     builder._table = table
 
     # -- build the cell
-    row_elem = etree.XML("<ROW/>")
+    row_elem = ROW()
     row_y1 = next(iter(table.rows))
     builder.build_cell(row_elem, cell_x1_y1, row_y1)
 
@@ -48,13 +53,13 @@ def test_build_cell__body(kwargs, expected):
 def test_build_cell__head(kwargs, expected):
     builder = Formex4Builder()
 
-    p_elem = etree.XML("<P>text</P>")
+    p_elem = P(u"text")
     cell_x1_y1 = Cell([p_elem], x=1, y=1, **kwargs)
     table = Table([cell_x1_y1])
     builder._table = table
 
     # -- build the cell
-    row_elem = etree.XML("<ROW/>")
+    row_elem = ROW()
     row_y1 = next(iter(table.rows))
     row_y1.nature = "head"
     builder.build_cell(row_elem, cell_x1_y1, row_y1)
@@ -66,21 +71,100 @@ def test_build_cell__head(kwargs, expected):
     assert entry_elem[0] == p_elem
 
 
+def test_build_title():
+    table = Table()
+    table.rows[1].insert_cell(u"Title", styles={"align": "center"})
+
+    builder = Formex4Builder()
+    tbl_elem = TBL()
+    builder.build_title(tbl_elem, table.rows[0])
+
+    # -- check the '<TITLE>' attributes
+    title_elem = tbl_elem[0]  # type: etree._Element
+    xml_parser = etree.XMLParser(remove_blank_text=True)
+    expected = etree.XML(u"""\
+    <TITLE>
+      <TI>
+        <P>Title</P>
+      </TI>
+    </TITLE>""", parser=xml_parser)
+
+    diff_list = xmldiff.main.diff_trees(title_elem, expected)
+    if diff_list:
+        print(etree.tounicode(title_elem, pretty_print=True, with_tail=False), file=sys.stderr)
+        assert diff_list == []
+
+
+def test_build_title__empty():
+    table = Table()
+    table.rows[1].insert_cell(None, styles={"align": "center"})
+
+    builder = Formex4Builder()
+    tbl_elem = TBL()
+    builder.build_title(tbl_elem, table.rows[0])
+
+    # -- check the '<TITLE>' attributes
+    title_elem = tbl_elem[0]  # type: etree._Element
+    xml_parser = etree.XMLParser(remove_blank_text=True)
+    expected = etree.XML(u"""\
+    <TITLE>
+      <TI>
+        <IE/>
+      </TI>
+    </TITLE>""", parser=xml_parser)
+
+    diff_list = xmldiff.main.diff_trees(title_elem, expected)
+    if diff_list:
+        print(etree.tounicode(title_elem, pretty_print=True, with_tail=False), file=sys.stderr)
+        assert diff_list == []
+
+
+def test_build_title__subtitle():
+    table = Table()
+    content = [P(u"TITLE"),
+               P(u"Subtitle 1"),
+               P(u"Subtitle 2")]
+    table.rows[1].insert_cell(content, styles={"align": "center"})
+
+    builder = Formex4Builder()
+    tbl_elem = TBL()
+    builder.build_title(tbl_elem, table.rows[0])
+
+    # -- check the '<TITLE>' attributes
+    title_elem = tbl_elem[0]  # type: etree._Element
+    xml_parser = etree.XMLParser(remove_blank_text=True)
+    expected = etree.XML(u"""\
+    <TITLE>
+      <TI>
+        <P>TITLE</P>
+      </TI>
+      <STI>
+        <P>Subtitle 1</P>
+        <P>Subtitle 2</P>
+      </STI>
+    </TITLE>""", parser=xml_parser)
+
+    diff_list = xmldiff.main.diff_trees(title_elem, expected)
+    if diff_list:
+        print(etree.tounicode(title_elem, pretty_print=True, with_tail=False), file=sys.stderr)
+        assert diff_list == []
+
+
 def test_build_tbl():
     # see: formex-4/samples/jo-compl-2002C_061/C_2002061EN.01000403.xml
 
     table = Table()
     table.rows[1].nature = "head"
-    table.rows[1].insert_cell(u"Expert group", nature="head")
-    table.rows[1].insert_cell(u"First name and surname of the expert", nature="head")
-    table.rows[2].insert_cell(u"Control of infectious diseases")
-    table.rows[2].insert_cell(u"Michael Angelo BORG")
-    table.rows[3].insert_cell(u"Information society", height=3)
-    table.rows[3].insert_cell(u"Tony HEY")
-    table.rows[4].insert_cell(u"José L. ENCARNAÇÃO")
-    table.rows[5].insert_cell(u"Berit SVENDSEN")
-    table.rows[6].insert_cell(u"Controlled thermonuclear fusion")
-    table.rows[6].insert_cell(u"Pekka PIRILÄ")
+    table.rows[1].insert_cell([P(u"Expert group")], nature="head")
+    table.rows[1].insert_cell([P(u"First name and surname of the expert")], nature="head")
+    table.rows[2].insert_cell([P(u"Control of infectious diseases")])
+    table.rows[2].insert_cell([P(u"Michael Angelo BORG")])
+    table.rows[3].insert_cell([P(u"Information society")], height=3)
+    table.rows[3].insert_cell([P(u"Tony HEY")])
+    table.rows[4].insert_cell([P(u"José L. ENCARNAÇÃO")])
+    table.rows[5].insert_cell([P(u"Berit SVENDSEN")])
+    table.rows[6].insert_cell([P(u"Controlled thermonuclear fusion")])
+    table.rows[6].insert_cell([P(u"Pekka PIRILÄ")])
 
     builder = Formex4Builder()
     table_elem = builder.build_tbl(table)
@@ -89,36 +173,138 @@ def test_build_tbl():
 
     expected = etree.XML(u"""\
     <TBL COLS="2" NO.SEQ="0001">
-        <CORPUS>
-            <ROW TYPE="HEADER">
-                <CELL COL="1">Expert group</CELL>
-                <CELL COL="2">First name and surname of the expert</CELL>
-            </ROW>
-            <ROW>
-                <CELL COL="1">Control of infectious diseases</CELL>
-                <CELL COL="2">Michael Angelo BORG</CELL>
-            </ROW>
-            <ROW>
-                <CELL COL="1" ROWSPAN="3">Information society</CELL>
-                <CELL COL="2">Tony HEY</CELL>
-            </ROW>
-            <ROW>
-                <CELL COL="2">José L. ENCARNAÇÃO</CELL>
-            </ROW>
-            <ROW>
-                <CELL COL="2">Berit SVENDSEN</CELL>
-            </ROW>
-            <ROW>
-                <CELL COL="1">Controlled thermonuclear fusion</CELL>
-                <CELL COL="2">Pekka PIRILÄ</CELL>
-            </ROW>
-        </CORPUS>
+      <CORPUS>
+        <ROW TYPE="HEADER">
+          <CELL COL="1">
+            <P>Expert group</P>
+          </CELL>
+          <CELL COL="2">
+            <P>First name and surname of the expert</P>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <P>Control of infectious diseases</P>
+          </CELL>
+          <CELL COL="2">
+            <P>Michael Angelo BORG</P>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1" ROWSPAN="3">
+            <P>Information society</P>
+          </CELL>
+          <CELL COL="2">
+            <P>Tony HEY</P>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="2">
+            <P>José L. ENCARNAÇÃO</P>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="2">
+            <P>Berit SVENDSEN</P>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <P>Controlled thermonuclear fusion</P>
+          </CELL>
+          <CELL COL="2">
+            <P>Pekka PIRILÄ</P>
+          </CELL>
+        </ROW>
+      </CORPUS>
     </TBL>""", parser=xml_parser)
+
+    for elem in table_elem.xpath("//*"):
+        elem.text = elem.text or None
+    for elem in expected.xpath("//*"):
+        elem.text = elem.text or None
 
     diff_list = xmldiff.main.diff_trees(table_elem, expected)
     if diff_list:
         print(etree.tounicode(table_elem, pretty_print=True, with_tail=False), file=sys.stderr)
-        assert 0
+        assert diff_list == []
+
+
+def test_build_tbl__with_title():
+    # see: formex-4/samples/jo-compl-2002C_280/C_2002280EN.01000101.xml
+
+    table = Table()
+    table.rows[1].insert_cell([P(u"1 euro =")], width=3, styles={"align": "center"})
+    table.rows[2].nature = "head"
+    table.rows[2].insert_cell([P()], nature="head")
+    table.rows[2].insert_cell([P(u"Currency")], nature="head")
+    table.rows[2].insert_cell([P(u"Exchange rate")], nature="head")
+    table.rows[3].insert_cell([P(u"USD")])
+    table.rows[3].insert_cell([P(u"US dollar")])
+    table.rows[3].insert_cell([P(u"1,0029")])
+    table.rows[4].insert_cell([P(u"JPY")])
+    table.rows[4].insert_cell([P(u"Japanese yen")])
+    table.rows[4].insert_cell([P(u"121,05")])
+
+    builder = Formex4Builder()
+    table_elem = builder.build_tbl(table)
+
+    xml_parser = etree.XMLParser(remove_blank_text=True)
+
+    expected = etree.XML(u"""\
+    <TBL COLS="3" NO.SEQ="0001">
+      <TITLE>
+        <TI>
+          <P>1 euro =</P>
+        </TI>
+        <STI/>
+      </TITLE>
+      <CORPUS>
+        <ROW TYPE="HEADER">
+          <CELL COL="1">
+            <P/>
+          </CELL>
+          <CELL COL="2">
+            <P>Currency</P>
+          </CELL>
+          <CELL COL="3">
+            <P>Exchange rate</P>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <P>USD</P>
+          </CELL>
+          <CELL COL="2">
+            <P>US dollar</P>
+          </CELL>
+          <CELL COL="3">
+            <P>1,0029</P>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <P>JPY</P>
+          </CELL>
+          <CELL COL="2">
+            <P>Japanese yen</P>
+          </CELL>
+          <CELL COL="3">
+            <P>121,05</P>
+          </CELL>
+        </ROW>
+      </CORPUS>
+    </TBL>""", parser=xml_parser)
+
+    for elem in table_elem.xpath("//*"):
+        elem.text = elem.text or None
+    for elem in expected.xpath("//*"):
+        elem.text = elem.text or None
+
+    diff_list = xmldiff.main.diff_trees(table_elem, expected)
+    if diff_list:
+        print(etree.tounicode(table_elem, pretty_print=True, with_tail=False), file=sys.stderr)
+        assert diff_list == []
 
 
 @pytest.mark.parametrize('orient, size, expected', [
