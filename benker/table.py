@@ -506,7 +506,12 @@ class Table(Styled, MutableMapping):
 
     @property
     def bounding_box(self):
-        """ Bounding box of the table (``None`` if the table is empty). """
+        """
+        Bounding box of the table (``None`` if the table is empty).
+
+        :rtype: benker.box.Box
+        :return: The bounding box.
+        """
         return self._grid.bounding_box
 
     def _refresh_views(self, cell=None):
@@ -521,19 +526,52 @@ class Table(Styled, MutableMapping):
             self.cols.refresh_all()
 
     def __contains__(self, coord):
+        """
+        Check if the table contains a cell (a owned cell) at the given coordinates.
+
+        :type  coord: Coord or tuple(int, int)
+        :param coord: Coordinates in the tables (1-indexed).
+
+        :return: ``True`` if the table contains a cell at the given
+            coordinates, else ``False``.
+        """
         return coord in self._grid
 
     def __setitem__(self, coord, cell):
+        """
+        Insert a cell in the table at the given coordinates.
+
+        :type  coord: Coord or tuple(int, int)
+        :param coord: Coordinates in the tables (1-indexed).
+
+        :type  cell: benker.cell.Cell
+        :param cell: Cell to insert.
+        """
         self._grid[coord] = cell
         # get the cell with its new coordinates:
         cell = self._grid[coord]
         self._refresh_views(cell)
 
     def __delitem__(self, coord):
+        """
+        Delete a cell from the table at the given coordinates.
+
+        :type  coord: Coord or tuple(int, int)
+        :param coord: Coordinates in the tables (1-indexed).
+        """
         del self._grid[coord]
         self._refresh_views()
 
     def __getitem__(self, coord):
+        """
+        Get a cell at the given coordinates.
+
+        :type  coord: Coord or tuple(int, int)
+        :param coord: Coordinates in the tables (1-indexed).
+
+        :rtype: benker.cell.Cell
+        :return: The cell.
+        """
         return self._grid[coord]
 
     def __len__(self):
