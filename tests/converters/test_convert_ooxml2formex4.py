@@ -1,5 +1,4 @@
 # coding: utf-8
-import io
 import zipfile
 
 import py.path  # type hints
@@ -8,6 +7,7 @@ import xmldiff.main
 from lxml import etree
 
 from benker.converters.ooxml2formex4 import convert_ooxml2formex4
+
 from tests.resources import RESOURCES_DIR
 
 

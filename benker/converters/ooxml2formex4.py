@@ -38,4 +38,3 @@ def convert_ooxml2formex4(src_xml, dst_xml, **options):
     """
     converter = Ooxml2Formex4Converter()
     converter.convert_file(src_xml, dst_xml, **options)
-
