@@ -52,7 +52,7 @@ To convert the tables of a ``.docx`` document to CALS_ format, you can process a
     # - Create some options and convert tables
     options = {
         'encoding': 'utf-8',
-        'styles_path': str(styles_xml),
+        'styles_path': styles_xml,
         'width_unit': "mm",
         'table_in_tgroup': True,
     }

@@ -196,7 +196,7 @@ For example, to convert the tables of a ``.docx`` document to Formex4 format, yo
     # - Create some options and convert tables
     options = {
         'encoding': 'utf-8',
-        'styles_path': str(styles_xml),
+        'styles_path': styles_xml,
     }
     convert_ooxml2formex4(src_xml, dst_xml, **options)
 
