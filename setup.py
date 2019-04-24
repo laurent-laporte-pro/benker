@@ -1,3 +1,4 @@
+import collections
 import io
 import os
 import re
@@ -49,6 +50,12 @@ setup(
     zip_safe=True,
 
     url="https://github.com/laurent-laporte-pro/benker",
+    project_urls=collections.OrderedDict((
+        ('Documentation', 'https://benker.readthedocs.io'),
+        ('Source Code', 'https://github.com/laurent-laporte-pro/benker'),
+        ('Issue tracker', 'https://github.com/laurent-laporte-pro/benker/issues'),
+    )),
+
     license='MIT',
     platforms=['posix', 'nt'],
     keywords='Office, Word, Excel, PowerPoint, docx, xlsx, pptx, CALS, HTML, Formex, table, converter, conversion',
