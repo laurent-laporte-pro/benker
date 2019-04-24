@@ -262,7 +262,7 @@ def test_build_tbl__with_title():
       <CORPUS>
         <ROW TYPE="HEADER">
           <CELL COL="1">
-            <P/>
+            <IE/>
           </CELL>
           <CELL COL="2">
             <P>Currency</P>

@@ -29,6 +29,8 @@ from lxml import etree
 from benker.builders.base_builder import BaseBuilder
 from benker.parsers.lxml_iterwalk import iterwalk
 
+text_type = type(u"")
+
 
 def revision_mark(name, attrs):
     target = etree.tounicode(etree.Element(name, attrib=attrs))
@@ -171,7 +173,8 @@ class Formex4Builder(BaseBuilder):
         """
         title_elem = etree.SubElement(tbl_elem, u"TITLE")
         for cell in row.owned_cells:
-            if cell.content:
+            text = text_type(cell)
+            if text:
                 if isinstance(cell.content, type(u"")):
                     # mainly useful for unit test
                     ti_elem = etree.SubElement(title_elem, u"TI")
@@ -307,7 +310,8 @@ class Formex4Builder(BaseBuilder):
         if cell.height > 1:
             attrs[u"ROWSPAN"] = str(cell.height)
         cell_elem = etree.SubElement(row_elem, u"CELL", attrib=attrs)
-        if cell.content:
+        text = text_type(cell)
+        if text:
             if isinstance(cell.content, type(u"")):
                 # mainly useful for unit test
                 cell_elem.text = cell.content

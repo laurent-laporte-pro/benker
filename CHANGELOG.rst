@@ -19,6 +19,9 @@ Fixed
 * Change in the :class:`~benker.parsers.ooxml.OoxmlParser`:
   fix the 'x-sect-cols' value extraction when the ``w:sectPr`` is missing (use "1" by default).
 
+* Fix the Formex4 builder :class:`~benker.builders.formex4.Formex4Builder`:
+  Generate a ``<IE/>`` element if the cell content (the string representation) is empty.
+
 
 v0.4.0 (2019-04-23)
 ===================

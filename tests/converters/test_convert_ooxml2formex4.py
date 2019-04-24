@@ -49,6 +49,7 @@ def test_convert_ooxml2formex4__demo(tmpdir):
                              ("ooxml/simple_merge.xml", "ooxml2formex4/simple_merge.xml"),
                              ("ooxml/table_in_table.xml", "ooxml2formex4/table_in_table.xml"),
                              ("ooxml/Revision marks.xml", "ooxml2formex4/Revision marks.xml"),
+                             ("ooxml/empty_cells.xml", "ooxml2formex4/empty_cells.xml"),
                          ])
 def test_convert_ooxml2formex4(input_name, expected_name, tmpdir):
     # type: (str, str, py.path.local) -> None
