@@ -87,9 +87,16 @@ You can check if a coord is inside the box:
 
 """
 import functools
+import sys
 
 from benker.box import Box
 from benker.styled import Styled
+
+PY2 = sys.version_info[0] == 2
+
+text_type = type(u"")
+binary_type = type(b"")
+string_types = text_type, binary_type
 
 
 @functools.total_ordering
@@ -143,7 +150,59 @@ class Cell(Styled):
         self._box = Box(x, y, x + width - 1, y + height - 1)
 
     def __str__(self):
-        return u"" if self.content is None else str(self.content)
+        """
+        Try hard to extract a good string representation of the cell.
+
+        :return: the cell text:
+
+            - if the content is ``None``: returns "",
+            - if the content is a string: return the string unchanged,
+            - if the content is a number: return the string representation of the number,
+            - if the content is a list of strings, return the concatenated strings (``None`` is ignored),
+            - if the content is a list of XML nodes, return the concatenated strings of the elements
+              (the processing-instruction and the comments are ignored),
+            - else: return a concatenation of the string representation of the content items.
+
+        .. versionchanged:: 0.4.1
+           Improve the string representation of a cell in order to extract the cell text
+           even if it contains a list of strings or XML nodes.
+        """
+        content = self.content
+        if content is None:
+            return u""
+        if isinstance(content, text_type):
+            return content
+        if isinstance(content, binary_type):
+            return content.decode('utf-8')  # PY2
+        if isinstance(content, (bool, int, float)):
+            return text_type(content)
+
+        # We don't want to import lxml here, so we introspect the content.
+        text = u""
+        for node in content:
+            if node is None:
+                pass
+            elif isinstance(node, text_type):
+                text += node
+            elif isinstance(node, binary_type):
+                text += node.decode('utf-8')  # PY2
+            elif hasattr(node, 'tag'):
+                tag = node.tag
+                if isinstance(tag, string_types):
+                    # etree._Element
+                    text += node.xpath('string()')
+                else:
+                    # ignore: etree._ProcessingInstruction or etree._Comment
+                    pass
+            else:
+                text += text_type(node)
+        return text
+
+    if PY2:
+        __unicode__ = __str__
+
+        def __str__(self):
+            return self.__unicode__().encode('ascii', errors='backslashreplace')
 
     def __repr__(self):
         cls = self.__class__.__name__

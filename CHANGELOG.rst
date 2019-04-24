@@ -13,6 +13,12 @@ v0.4.1 (unreleased)
 
 Bug fix release
 
+Fixed
+-----
+
+* Change in the :class:`~benker.parsers.ooxml.OoxmlParser`:
+  fix the 'x-sect-cols' value extraction when the ``w:sectPr`` is missing (use "1" by default).
+
 
 v0.4.0 (2019-04-23)
 ===================
