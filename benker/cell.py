@@ -87,16 +87,84 @@ You can check if a coord is inside the box:
 
 """
 import functools
+import numbers
 import sys
 
 from benker.box import Box
 from benker.styled import Styled
+
+try:
+    # noinspection PyCompatibility
+    from collections.abc import Sequence
+except ImportError:
+    # noinspection PyCompatibility
+    from collections import Sequence
 
 PY2 = sys.version_info[0] == 2
 
 text_type = type(u"")
 binary_type = type(b"")
 string_types = text_type, binary_type
+
+
+def get_content_text(content):
+    """
+    Try hard to extract a good string representation of the cell content.
+
+    >>> from benker.cell import get_content_text
+
+    >>> get_content_text(None) == ''
+    True
+    >>> get_content_text('') == ''
+    True
+    >>> print(get_content_text('Hi'))
+    Hi
+    >>> print(get_content_text(True))
+    True
+    >>> print(get_content_text(123))
+    123
+    >>> print(get_content_text(3.14))
+    3.14
+    >>> get_content_text([None, None]) == ''
+    True
+    >>> print(get_content_text(["hello", " ", "world!"]))
+    hello world!
+
+    :param content: Cell content.
+
+    :return: the cell text:
+
+        - if the content is ``None``: returns "",
+        - if the content is a string: return the string unchanged,
+        - if the content is a number: return the string representation of the number,
+        - if the content is a list of strings, return the concatenated strings (``None`` is ignored),
+        - if the content is a list of XML nodes, return the concatenated strings of the elements
+          (the processing-instruction and the comments are ignored),
+        - else: return a concatenation of the string representation of the content items.
+
+    .. versionadded:: 0.4.1
+    """
+    if content is None:
+        return u""
+    if isinstance(content, text_type):
+        return content
+    if isinstance(content, binary_type):
+        return content.decode('utf-8')  # PY2
+    if isinstance(content, numbers.Number):
+        return text_type(content)
+    if isinstance(content, Sequence):
+        return u"".join(get_content_text(node) for node in content)
+    if hasattr(content, 'tag'):
+        tag = content.tag
+        if isinstance(tag, string_types):
+            # etree._Element
+            text = content.xpath('string()')
+            if isinstance(text, binary_type):
+                return text.decode('utf-8')  # PY2
+            return text
+        # etree._ProcessingInstruction or etree._Comment
+        return u""
+    return text_type(content)
 
 
 @functools.total_ordering
@@ -167,36 +235,7 @@ class Cell(Styled):
            Improve the string representation of a cell in order to extract the cell text
            even if it contains a list of strings or XML nodes.
         """
-        content = self.content
-        if content is None:
-            return u""
-        if isinstance(content, text_type):
-            return content
-        if isinstance(content, binary_type):
-            return content.decode('utf-8')  # PY2
-        if isinstance(content, (bool, int, float)):
-            return text_type(content)
-
-        # We don't want to import lxml here, so we introspect the content.
-        text = u""
-        for node in content:
-            if node is None:
-                pass
-            elif isinstance(node, text_type):
-                text += node
-            elif isinstance(node, binary_type):
-                text += node.decode('utf-8')  # PY2
-            elif hasattr(node, 'tag'):
-                tag = node.tag
-                if isinstance(tag, string_types):
-                    # etree._Element
-                    text += node.xpath('string()')
-                else:
-                    # ignore: etree._ProcessingInstruction or etree._Comment
-                    pass
-            else:
-                text += text_type(node)
-        return text
+        return get_content_text(self.content)
 
     if PY2:
         __unicode__ = __str__

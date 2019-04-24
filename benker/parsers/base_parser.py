@@ -60,5 +60,7 @@ def value_of(element, xpath, namespaces=None, default=None):
 
     :return: the first result or the *default* value.
     """
+    if element is None:
+        return default
     nodes = element.xpath(xpath, namespaces=namespaces)
     return nodes[0] if nodes else default
