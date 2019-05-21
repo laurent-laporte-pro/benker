@@ -306,12 +306,16 @@ class RowView(TableView):
         :ivar nature: nature: a way to distinguish the body cells, from the header and the footer.
             The default value is ``None``, but you can use "body", "header", "footer" or whatever
             is suitable for your needs.
+            If set to ``None``, the cell nature is inherited from the row nature.
 
         :param int width:
             Width of the cell (columns spanning), default to 1.
 
         :param int height:
             Height of the cell (rows spanning), default to 1.
+
+        .. versionchanged:: 0.4.2
+           The *nature* of a cell is inherited from its parent's row.
         """
         caught_cells = self._caught_cells
         y = self._pos
@@ -325,6 +329,7 @@ class RowView(TableView):
                 x = bounding_box.max.x + 1
         else:
             x = 1
+        nature = self.nature if nature is None else nature
         cell = Cell(content, styles=styles, nature=nature,
                     x=x, y=y, width=width, height=height)
         self._table[cell.min] = cell
@@ -369,12 +374,16 @@ class ColView(TableView):
         :ivar nature: nature: a way to distinguish the body cells, from the header and the footer.
             The default value is ``None``, but you can use "body", "header", "footer" or whatever
             is suitable for your needs.
+            If set to ``None``, the cell nature is inherited from the column nature.
 
         :param int width:
             Width of the cell (columns spanning), default to 1.
 
         :param int height:
             Height of the cell (rows spanning), default to 1.
+
+        .. versionchanged:: 0.4.2
+           The *nature* of a cell is inherited from its parent's column.
         """
         caught_cells = self._caught_cells
         x = self._pos
@@ -388,6 +397,7 @@ class ColView(TableView):
                 y = bounding_box.max.y + 1
         else:
             y = 1
+        nature = self.nature if nature is None else nature
         cell = Cell(content, styles=styles, nature=nature,
                     x=x, y=y, width=width, height=height)
         self._table[cell.min] = cell

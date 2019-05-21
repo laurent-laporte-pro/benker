@@ -139,6 +139,25 @@ You can insert a row to a table. This row is then used to insert cells.
     | Jean-Bapt | Delambre  | 1749-1822 |           |
     +-----------+-----------+-----------+-----------+
 
+The *nature* of a cell is inherited from its parent's row.
+The first row contains the header, so the cell nature is "header":
+
+.. doctest:: table
+
+    >>> table.rows[1].nature
+    'header'
+    >>> [cell.nature for cell in table.rows[1].owned_cells]
+    ['header', 'header', 'header']
+
+The other rows have no *nature*, so the cell nature is ``None``
+
+.. doctest:: table
+
+    >>> table.rows[2].nature is None
+    True
+    >>> all(cell.nature is None for cell in table.rows[2].owned_cells)
+    True
+
 
 .. _benker__table__merging:
 
