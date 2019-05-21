@@ -8,6 +8,18 @@ The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`
 and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
 
+v0.4.2 (unreleased)
+===================
+
+Bug fix release
+
+Fixed
+-----
+
+* Change in the class :class:`~benker.styled.Styled`:
+  The default value of the *nature* parameter is ``None`` (instead of "body").
+
+
 v0.4.1 (2019-04-24)
 ===================
 
@@ -16,7 +28,7 @@ Bug fix release
 Fixed
 -----
 
-* Change in the :class:`~benker.parsers.ooxml.OoxmlParser`:
+* Change in the parser :class:`~benker.parsers.ooxml.OoxmlParser`:
   fix the 'x-sect-cols' value extraction when the ``w:sectPr`` is missing (use "1" by default).
 
 * Fix the Formex4 builder :class:`~benker.builders.formex4.Formex4Builder`:

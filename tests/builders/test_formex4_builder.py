@@ -21,7 +21,7 @@ P = E.P
     ({}, {'COL': u"1"}),
     ({'width': 2}, {'COL': u"1", 'COLSPAN': u"2"}),
     ({'height': 2}, {'COL': u"1", 'ROWSPAN': u"2"}),
-    ({'nature': 'body'}, {'COL': u"1"}),
+    ({'nature': 'body'}, {'COL': u"1", 'TYPE': 'NORMAL'}),
     ({'nature': 'head'}, {'COL': u"1", 'TYPE': 'HEADER'}),
     ({'nature': 'foot'}, {'COL': u"1", 'TYPE': 'TOTAL'}),
 ])

@@ -8,7 +8,7 @@ A :class:`~benker.cell.Cell` object stores the *content* of a :class:`~benker.gr
 A cell can have *styles*, a dictionary of key-value properties attached to the cell.
 
 A cell has a *nature* to distinguish between header, body and footer cells.
-The default *nature* is "body", but you can also use "header", "footer" or whatever…
+The default *nature* is ``None``, but you can also use "body", "header", "footer" or whatever…
 
 A cell has top-left coordinates: *x* and *y*. The default coordinates is (1, 1):
 this is the top-left coordinate of the cell box.
@@ -200,7 +200,7 @@ class Cell(Styled):
 
     :type nature: str
     :ivar nature: nature: a way to distinguish the body cells, from the header and the footer.
-        The default value is "body", but you can use "header", "footer" or whatever
+        The default value is ``None``, but you can use "body", "header", "footer" or whatever
         is suitable for your needs.
 
         .. note::
@@ -209,10 +209,13 @@ class Cell(Styled):
             of two natures is done by keeping the first nature and
             dropping the second one. In other words, the resulting nature is
             the group of the most top-left nature of the merged cells.
+
+    .. versionchanged:: 0.4.2
+       The default value of *nature* is ``None`` (instead of "body").
     """
     __slots__ = ('content', '_box')
 
-    def __init__(self, content, styles=None, nature="body", x=1, y=1, width=1, height=1):
+    def __init__(self, content, styles=None, nature=None, x=1, y=1, width=1, height=1):
         super(Cell, self).__init__(styles, nature)
         self.content = content
         self._box = Box(x, y, x + width - 1, y + height - 1)

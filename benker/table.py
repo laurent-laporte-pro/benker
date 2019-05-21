@@ -189,7 +189,7 @@ class TableView(Styled):
     """
     __slots__ = ('_table', '_pos', '_owned_cells', '_caught_cells')
 
-    def __init__(self, table, pos, styles=None, nature="body"):
+    def __init__(self, table, pos, styles=None, nature=None):
         """
         Initialize a row/column view.
 
@@ -205,8 +205,11 @@ class TableView(Styled):
 
         :param str nature:
             Cell *nature* used to distinguish the body cells, from the header and the footer.
-            The default value is "body", but you can use "header", "footer" or whatever
+            The default value is ``None``, but you can use "body", "header", "footer" or whatever
             is suitable for your needs.
+
+        .. versionchanged:: 0.4.2
+           The default value of *nature* is ``None`` (instead of "body").
         """
         super(TableView, self).__init__(styles, nature)
         self._table = table
@@ -280,7 +283,7 @@ class RowView(TableView):
         """ Row position in the table (1-based). """
         return self._pos
 
-    def insert_cell(self, content, styles=None, nature='body', width=1, height=1):
+    def insert_cell(self, content, styles=None, nature=None, width=1, height=1):
         """
         Insert a new cell in the row at the next free position, or at the end.
 
@@ -301,7 +304,7 @@ class RowView(TableView):
 
         :type nature: str
         :ivar nature: nature: a way to distinguish the body cells, from the header and the footer.
-            The default value is "body", but you can use "header", "footer" or whatever
+            The default value is ``None``, but you can use "body", "header", "footer" or whatever
             is suitable for your needs.
 
         :param int width:
@@ -364,7 +367,7 @@ class ColView(TableView):
 
         :type nature: str
         :ivar nature: nature: a way to distinguish the body cells, from the header and the footer.
-            The default value is "body", but you can use "header", "footer" or whatever
+            The default value is ``None``, but you can use "body", "header", "footer" or whatever
             is suitable for your needs.
 
         :param int width:
@@ -407,7 +410,7 @@ class Table(Styled, MutableMapping):
         >>> table.rows[1].insert_cell("two")
 
         >>> table[(2, 1)]
-        <Cell('two', styles={}, nature='body', x=2, y=1, width=1, height=1)>
+        <Cell('two', styles={}, nature=None, x=2, y=1, width=1, height=1)>
 
         >>> table.cols[1].insert_cell("alpha")
         >>> table.cols[2].insert_cell("beta")
@@ -465,8 +468,8 @@ class Table(Styled, MutableMapping):
     :type nature: str
     :ivar nature:
         A table can have a nature: a way to distinguish the body cells,
-        from the header and the footer. The default value is "body", but you can
-        use "header", "footer" or whatever is suitable for your needs.
+        from the header and the footer. The default value is ``None``, but you can
+        use "body", "header", "footer" or whatever is suitable for your needs.
         This kind of information is in general not stored in the styles,
         even if it is similar.
 

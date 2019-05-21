@@ -29,14 +29,13 @@ class Styled(object):
         is not a problem if you use non-mutable values like :class:`str`).
 
     A styled object stores a nature: a way to distinguish the body cells,
-    from the header and the footer. The default value is "body", but you can
-    use "header", "footer" or whatever is suitable for your needs.
+    from the header and the footer. The default value is ``None``, but you can
+    use "body", "header", "footer" or whatever is suitable for your needs.
     This kind of information is in general not stored in the styles,
     even if it is similar.
 
     Tables can also have a *nature*, similar to HTML ``@class`` attribute,
     you can use it do identify the styles to apply to your table.
-    For tables, the default value is ``None``.
 
     .. note::
 

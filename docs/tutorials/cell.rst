@@ -222,16 +222,16 @@ It is possible to change the cell position and size by using two kind of transfo
 
     >>> c1 = Cell("A")
     >>> c1
-    <Cell('A', styles={}, nature='body', x=1, y=1, width=1, height=1)>
+    <Cell('A', styles={}, nature=None, x=1, y=1, width=1, height=1)>
 
     >>> c1.move_to(Coord(2, 3))
-    <Cell('A', styles={}, nature='body', x=2, y=3, width=1, height=1)>
+    <Cell('A', styles={}, nature=None, x=2, y=3, width=1, height=1)>
 
     >>> c1.resize(Size(3, 4))
-    <Cell('A', styles={}, nature='body', x=1, y=1, width=3, height=4)>
+    <Cell('A', styles={}, nature=None, x=1, y=1, width=3, height=4)>
 
     >>> c1.transform(Coord(2, 3), Size(3, 4))
-    <Cell('A', styles={}, nature='body', x=2, y=3, width=3, height=4)>
+    <Cell('A', styles={}, nature=None, x=2, y=3, width=3, height=4)>
 
 The transformation functions don't change the current cell but produce
 a new one with new coordinates/size.

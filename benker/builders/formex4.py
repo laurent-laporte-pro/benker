@@ -302,7 +302,7 @@ class Formex4Builder(BaseBuilder):
         """
         # cell_styles = cell.styles
         attrs = {'COL': str(cell.box.min.x)}
-        if cell.nature != row.nature:
+        if cell.nature and cell.nature != row.nature:
             nature_types = {"head": u"HEADER", "body": u"NORMAL", "foot": u"TOTAL"}
             attrs['TYPE'] = nature_types[cell.nature]
         if cell.width > 1:
