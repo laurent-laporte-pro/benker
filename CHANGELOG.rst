@@ -16,11 +16,13 @@ Bug fix release
 Fixed
 -----
 
-* Change in the class :class:`~benker.styled.Styled`:
-  The default value of the *nature* parameter is ``None`` (instead of "body").
+Fix #1: Cell nature should inherit row nature by default.
 
-* Change in the methods :meth:`~benker.table.RowView.insert_cell` and :meth:`~benker.table.ColView.insert_cell`
-  The *nature* of a cell is inherited from its parent's row (or column).
+  * Change in the class :class:`~benker.styled.Styled`:
+    The default value of the *nature* parameter is ``None`` (instead of "body").
+
+  * Change in the methods :meth:`~benker.table.RowView.insert_cell` and :meth:`~benker.table.ColView.insert_cell`
+    The *nature* of a cell is inherited from its parent's row (or column).
 
 
 v0.4.1 (2019-04-24)
