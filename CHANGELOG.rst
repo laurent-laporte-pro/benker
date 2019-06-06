@@ -24,6 +24,11 @@ Fix #1: Cell nature should inherit row nature by default.
   * Change in the methods :meth:`~benker.table.RowView.insert_cell` and :meth:`~benker.table.ColView.insert_cell`
     The *nature* of a cell is inherited from its parent's row (or column).
 
+Other
+-----
+
+* Change the requirements for Sphinx: add 'requests[security]' for Python 2.7.
+
 
 v0.4.1 (2019-04-24)
 ===================

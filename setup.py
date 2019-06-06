@@ -19,7 +19,8 @@ tests_require = [
     'py',
     'isort',
     'check-manifest',
-    'Sphinx',
+    'sphinx < 2',
+    'requests[security] ; python_version < "3"',
     'xmldiff'
 ]
 
