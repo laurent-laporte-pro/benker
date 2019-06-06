@@ -130,7 +130,7 @@ class Formex4Builder(BaseBuilder):
         """
         Build the Formex4 ``<CORPUS>`` element.
 
-        :type  tbl_elem: etree.Element
+        :type  tbl_elem: etree._Element
         :param tbl_elem: Parent element: ``<TBL>``.
 
         :type  table: benker.table.Table
@@ -165,7 +165,7 @@ class Formex4Builder(BaseBuilder):
              </TI>
            </TITLE>
 
-        :type  tbl_elem: etree.Element
+        :type  tbl_elem: etree._Element
         :param tbl_elem: Parent element: ``<TBL>``.
 
         :type  row: benker.table.RowView
@@ -216,7 +216,7 @@ class Formex4Builder(BaseBuilder):
             in each cell of a row which has a specific type in order to avoid the default
             overriding (see the first row of the example below).
 
-        :type  corpus_elem: etree.Element
+        :type  corpus_elem: etree._Element
         :param corpus_elem: Parent element: ``<CORPUS>``.
 
         :type  row: benker.table.RowView
@@ -291,7 +291,7 @@ class Formex4Builder(BaseBuilder):
             of contents of the cells. It overrides the value of the TYPE attribute defined for
             the row (ROW) which contains the cell.
 
-        :type  row_elem: etree.Element
+        :type  row_elem: etree._Element
         :param row_elem: Parent element: ``<ROW>``.
 
         :type  cell: benker.cell.Cell

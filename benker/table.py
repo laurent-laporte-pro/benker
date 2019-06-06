@@ -303,7 +303,7 @@ class RowView(TableView):
             list of styles.
 
         :type nature: str
-        :ivar nature: nature: a way to distinguish the body cells, from the header and the footer.
+        :ivar nature: a way to distinguish the body cells, from the header and the footer.
             The default value is ``None``, but you can use "body", "header", "footer" or whatever
             is suitable for your needs.
             If set to ``None``, the cell nature is inherited from the row nature.
@@ -371,7 +371,7 @@ class ColView(TableView):
             list of styles.
 
         :type nature: str
-        :ivar nature: nature: a way to distinguish the body cells, from the header and the footer.
+        :ivar nature: a way to distinguish the body cells, from the header and the footer.
             The default value is ``None``, but you can use "body", "header", "footer" or whatever
             is suitable for your needs.
             If set to ``None``, the cell nature is inherited from the column nature.

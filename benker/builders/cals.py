@@ -190,7 +190,7 @@ class CalsBuilder(BaseBuilder):
            ``@colsep``, ``@rowsep`` and ``@tgroupstyle`` attributes are generated only
            if the *table_in_tgroup* options is ``True``.
 
-        :type  table_elem: etree.Element
+        :type  table_elem: etree._Element
         :param table_elem: Parent element: ``<table>``.
 
         :type  table: benker.table.Table
@@ -235,7 +235,7 @@ class CalsBuilder(BaseBuilder):
            because this value is usually implied, and can be deduce
            from the ``@colname`` attribute.
 
-        :type  group_elem: etree.Element
+        :type  group_elem: etree._Element
         :param group_elem: Parent element: ``<tgroup>``.
 
         :type  col: benker.table.ColView
@@ -254,7 +254,7 @@ class CalsBuilder(BaseBuilder):
         """
         Build the CALS ``<tbody>``, `<thead>``, or `<tfoot>`` element.
 
-        :type  group_elem: etree.Element
+        :type  group_elem: etree._Element
         :param group_elem: Parent element: ``<tgroup>``.
 
         :param row_list: List of rows
@@ -283,7 +283,7 @@ class CalsBuilder(BaseBuilder):
            We use the ``<?change-start?>`` PI to mark the start of the inserted row,
            and the ``<?change-end?>`` PI to mark the end.
 
-        :type  tbody_elem: etree.Element
+        :type  tbody_elem: etree._Element
         :param tbody_elem: Parent element: ``<tbody>``, `<thead>``, or `<tfoot>``.
 
         :type  row: benker.table.RowView
@@ -357,7 +357,7 @@ class CalsBuilder(BaseBuilder):
 
         -   ``@morerows`` is set when the cell is spanned vertically.
 
-        :type  row_elem: etree.Element
+        :type  row_elem: etree._Element
         :param row_elem: Parent element: ``<row>``.
 
         :type  cell: benker.cell.Cell

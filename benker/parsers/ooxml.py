@@ -839,7 +839,7 @@ class OoxmlParser(BaseParser):
         :type  w_tbl: etree._Element
         :param w_tbl: Office Open XML element.
 
-        :rtype: etree.Element
+        :rtype: etree._Element
         :return: CALS element.
         """
         state = self._state
