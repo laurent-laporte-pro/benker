@@ -16,7 +16,7 @@ Bug fix release
 Fixed
 -----
 
-Fix #1: Cell nature should inherit row nature by default.
+`#1 <https://github.com/laurent-laporte-pro/benker/issues/1>`_: Cell nature should inherit row nature by default.
 
   * Change in the class :class:`~benker.styled.Styled`:
     The default value of the *nature* parameter is ``None`` (instead of "body").
