@@ -29,6 +29,8 @@ Other
 
 * Change the requirements for Sphinx: add 'requests[security]' for Python 2.7.
 
+* Fix an issue with the AppVeyor build: change the Tox configuration: set ``py27,py34,py35: pip >= 9.0.3``.
+
 
 v0.4.1 (2019-04-24)
 ===================
