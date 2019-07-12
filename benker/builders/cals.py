@@ -34,7 +34,7 @@ def _get_border_style(styles, style):
     return value
 
 
-def _get_frame_attr(styles):
+def get_frame_attr(styles):
     frame_styles = {'border-top': False, 'border-right': False, 'border-bottom': False, 'border-left': False}
     for style in frame_styles:
         value = _get_border_style(styles, style) or u"none"
@@ -52,12 +52,12 @@ def _get_frame_attr(styles):
     }.get((top, bottom, left, right), u"none")
 
 
-def _get_colsep_attr(styles, style="x-cell-border-right"):
+def get_colsep_attr(styles, style="x-cell-border-right"):
     value = _get_border_style(styles, style)
     return None if value is None else "0" if value == "none" else "1"
 
 
-def _get_rowsep_attr(styles, style="x-cell-border-bottom"):
+def get_rowsep_attr(styles, style="x-cell-border-bottom"):
     value = _get_border_style(styles, style)
     return None if value is None else "0" if value == "none" else "1"
 
@@ -155,10 +155,10 @@ class CalsBuilder(BaseBuilder):
         self._table_colsep = u"0"
         self._table_rowsep = u"0"
         table_styles = table.styles
-        attrs = {'frame': _get_frame_attr(table_styles), }
+        attrs = {'frame': get_frame_attr(table_styles), }
         if not self.table_in_tgroup:
-            self._table_colsep = attrs['colsep'] = _get_colsep_attr(table_styles) or "0"
-            self._table_rowsep = attrs['rowsep'] = _get_rowsep_attr(table_styles) or "0"
+            self._table_colsep = attrs['colsep'] = get_colsep_attr(table_styles) or "0"
+            self._table_rowsep = attrs['rowsep'] = get_rowsep_attr(table_styles) or "0"
             if table.nature is not None:
                 attrs['tabstyle'] = table.nature
         if 'x-sect-orient' in table_styles:
@@ -201,8 +201,8 @@ class CalsBuilder(BaseBuilder):
         table_styles = table.styles
         attrs = {u'cols': str(len(table.cols))}
         if self.table_in_tgroup:
-            self._table_colsep = attrs['colsep'] = _get_colsep_attr(table_styles) or "0"
-            self._table_rowsep = attrs['rowsep'] = _get_rowsep_attr(table_styles) or "0"
+            self._table_colsep = attrs['colsep'] = get_colsep_attr(table_styles) or "0"
+            self._table_rowsep = attrs['rowsep'] = get_rowsep_attr(table_styles) or "0"
             if table.nature is not None:
                 attrs['tgroupstyle'] = table.nature
         group_elem = etree.SubElement(table_elem, u"tgroup", attrib=attrs)
@@ -367,12 +367,12 @@ class CalsBuilder(BaseBuilder):
         attrs = {}
         if cell.box.max.x != self._table.bounding_box.max.x:
             # generate @colsep if the cell isn't in the last column
-            cell_colsep = _get_colsep_attr(cell_styles, "border-right")
+            cell_colsep = get_colsep_attr(cell_styles, "border-right")
             if cell_colsep and cell_colsep != self._table_colsep:
                 attrs['colsep'] = cell_colsep
         if cell.box.max.y != self._table.bounding_box.max.y:
             # generate @rowsep if the cell isn't in the last row
-            cell_rowsep = _get_rowsep_attr(cell_styles, "border-bottom")
+            cell_rowsep = get_rowsep_attr(cell_styles, "border-bottom")
             if cell_rowsep and cell_rowsep != self._table_rowsep:
                 attrs['rowsep'] = cell_rowsep
         if 'vertical-align' in cell_styles:

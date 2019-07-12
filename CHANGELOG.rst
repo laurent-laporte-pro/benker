@@ -8,6 +8,20 @@ The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`
 and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
 
+v0.5.0 (unreleased)
+===================
+
+Minor release
+
+Added
+-----
+
+* Change in the converter: :func:`~benker.converters.ooxml2formex4.convert_ooxml2formex4`:
+  Add the option *use_cals* (and related options: *cals_ns*, *cals_prefix* and *width_unit*):
+  This options is used to generate additional CALS-like elements and attributes
+  to simplify the layout of Formex document in typesetting systems.
+
+
 v0.4.2 (2019-06-06)
 ===================
 

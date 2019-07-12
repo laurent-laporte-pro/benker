@@ -58,8 +58,22 @@ class BaseConverter(object):
                 -   ``True`` to insert the attributes ``@colsep``, ``@rowsep``,
                     and ``@tgroupstyle`` in the ``<tgroup>`` element.
 
-            **Formex4 builder options:** *(none)*
+            **Formex4 builder options:**
 
+            ``use_cals`` (default: ``False``):
+                Generate additional CALS-like elements and attributes
+                to simplify the layout of Formex document in typesetting systems.
+
+            ``cals_ns`` (default: "https://lib.benker.com/schemas/cals.xsd"):
+                Namespace to use for CALS-like elements and attributes (requires: ``use_cals``).
+                Set "" (empty) if you don't want to use namespace.
+
+            ``cals_prefix`` (default: "cals"):
+                Namespace prefix to use for CALS-like elements and attributes (requires: ``use_cals``).
+
+            ``width_unit`` (default: "mm"):
+                Unit to use for column widths (requires: ``use_cals``).
+                Possible values are: 'cm', 'dm', 'ft', 'in', 'm', 'mm', 'pc', 'pt', 'px'.
         """
         builder = self.builder_cls(**options)
         parser = self.parser_cls(builder, **options)

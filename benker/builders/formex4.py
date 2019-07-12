@@ -23,11 +23,19 @@ Specifications and examples:
   `TBL <http://formex.publications.europa.eu/formex-4/manual/manual.htm#TBL>`_
 
 """
+import re
 
 from lxml import etree
 
 from benker.builders.base_builder import BaseBuilder
+from benker.builders.cals import get_colsep_attr
+from benker.builders.cals import get_frame_attr
+from benker.builders.cals import get_rowsep_attr
 from benker.parsers.lxml_iterwalk import iterwalk
+from benker.units import convert_value
+
+CALS_NS = "https://lib.benker.com/schemas/cals.xsd"
+CALS_PREFIX = "cals"
 
 text_type = type(u"")
 
@@ -45,18 +53,60 @@ class Formex4Builder(BaseBuilder):
     according to the `TBL Schema <http://formex.publications.europa.eu/formex-4/manual/manual.htm#TBL>`_
     """
 
-    def __init__(self, **options):
+    def __init__(self,
+                 use_cals=False,
+                 cals_ns=CALS_NS,
+                 cals_prefix=CALS_PREFIX,
+                 width_unit="mm",
+                 **options):
         """
         Initialize the builder.
 
-        :param str options: Extra conversion options.
+        :param bool use_cals:
+            Generate additional CALS-like elements and attributes
+            to simplify the layout of Formex document in typesetting systems.
+
+        :param str cals_ns:
+            Namespace to use for CALS-like elements and attributes (requires: ``use_cals``).
+            Set "" (empty) if you don't want to use namespace.
+
+        :param str cals_prefix:
+            Namespace prefix to use for CALS-like elements and attributes (requires: ``use_cals``).
+
+        :param str width_unit:
+            Unit to use for column widths (requires: ``use_cals``).
+            Possible values are: 'cm', 'dm', 'ft', 'in', 'm', 'mm', 'pc', 'pt', 'px'.
+
+        :keyword options: Extra conversion options.
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
         """
         # Internal state of the table used during building
         self._table = None
+        self._table_colsep = u"0"  # for cals
+        self._table_rowsep = u"0"  # for cals
+
+        # NO.SEQ counter
         self._no_seq = 0
+
+        # options
+        self.use_cals = use_cals
+        self.cals_ns = cals_ns
+        self.cals_prefix = cals_prefix
+        self.width_unit = width_unit
+
         super(Formex4Builder, self).__init__(**options)
+
+    @property
+    def ns_map(self):
+        if self.use_cals and self.cals_ns:
+            return {self.cals_prefix: self.cals_ns}
+        return {}
+
+    def get_cals_qname(self, name):
+        if self.cals_ns:
+            return etree.QName(self.cals_ns, name)
+        return name
 
     def generate_table_tree(self, table):
         """
@@ -122,7 +172,21 @@ class Formex4Builder(BaseBuilder):
             orient = table_styles['x-sect-orient']
             if orient in orient_page_sizes:
                 attrs['PAGE.SIZE'] = orient_page_sizes[orient]
-        table_elem = etree.Element(u"TBL", attrib=attrs)
+
+        # support for CALS-like elements and attributes
+        if self.use_cals:
+            qname = self.get_cals_qname
+            attrs[qname("frame")] = get_frame_attr(table_styles)
+            self._table_colsep = attrs[qname('colsep')] = get_colsep_attr(table_styles) or "0"
+            self._table_rowsep = attrs[qname('rowsep')] = get_rowsep_attr(table_styles) or "0"
+            if table.nature is not None:
+                attrs[qname('tabstyle')] = table.nature
+            if 'x-sect-orient' in table_styles:
+                attrs[qname('orient')] = {"landscape": "land", "portrait": "port"}[table_styles['x-sect-orient']]
+            if 'x-sect-cols' in table_styles:
+                attrs[qname('pgwide')] = "1" if table_styles['x-sect-cols'] == "1" else "0"
+
+        table_elem = etree.Element(u"TBL", attrib=attrs, nsmap=self.ns_map)
         self.build_corpus(table_elem, table)
         return table_elem
 
@@ -148,6 +212,12 @@ class Formex4Builder(BaseBuilder):
             self.build_title(tbl_elem, rows.pop(0))
 
         corpus_elem = etree.SubElement(tbl_elem, u"CORPUS", attrib=attrs)
+
+        # support for CALS-like elements and attributes
+        if self.use_cals:
+            for col in table.cols:
+                self.build_colspec(corpus_elem, col)
+
         for row in rows:
             self.build_row(corpus_elem, row)
 
@@ -191,6 +261,39 @@ class Formex4Builder(BaseBuilder):
                 ti_elem = etree.SubElement(title_elem, u"TI")
                 etree.SubElement(ti_elem, u"IE")
 
+    def build_colspec(self, group_elem, col):
+        """
+        Build the CALS ``<colspec>`` element (only is *use_cals* is ``True``).
+
+        CALS attributes:
+
+        -   ``@colname`` is the column name. Its format is "c{col_pos}".
+
+        -   ``@colwidth`` width of the column (with its unit).
+            The unit is defined by the *width_unit* options.
+
+        .. note::
+
+           The ``@colnum`` attribute (number of column) is not generated
+           because this value is usually implied, and can be deduce
+           from the ``@colname`` attribute.
+
+        :type  group_elem: etree._Element
+        :param group_elem: Parent element: ``<tgroup>``.
+
+        :type  col: benker.table.ColView
+        :param col: Columns
+        """
+        col_styles = col.styles
+        qname = self.get_cals_qname
+        attrs = {qname('colname'): u"c{0}".format(col.col_pos)}
+        if 'width' in col_styles:
+            width = col_styles['width']
+            width, unit = re.findall(r"([+-]?(?:[0-9]*[.])?[0-9]+)(\w+)", width)[0]
+            value = convert_value(float(width), unit, self.width_unit)
+            attrs[qname('colwidth')] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
+        etree.SubElement(group_elem, qname(u"colspec"), attrib=attrs)
+
     def build_row(self, corpus_elem, row):
         """
         Build the Formex4 ``<ROW>`` element.
@@ -227,6 +330,16 @@ class Formex4Builder(BaseBuilder):
         nature_types = {"head": u"HEADER", "foot": u"TOTAL"}
         if row.nature in nature_types:
             attrs['TYPE'] = nature_types[row.nature]
+
+        # support for CALS-like elements and attributes
+        if self.use_cals:
+            qname = self.get_cals_qname
+            if 'valign' in row_styles:
+                # same values as CSS/Properties/vertical-align
+                attrs[qname('valign')] = {'top': 'top',
+                                          'middle': 'middle',
+                                          'bottom': 'bottom',
+                                          'baseline': 'bottom'}[row_styles['valign']]
 
         if 'x-ins' in row_styles:
             # <?change-start change-id="ct140446841083680" type="row:insertion"
@@ -300,7 +413,7 @@ class Formex4Builder(BaseBuilder):
         :type  row: benker.table.RowView
         :param row: The parent row.
         """
-        # cell_styles = cell.styles
+        cell_styles = cell.styles
         attrs = {'COL': str(cell.box.min.x)}
         if cell.nature and cell.nature != row.nature:
             nature_types = {"head": u"HEADER", "body": u"NORMAL", "foot": u"TOTAL"}
@@ -309,6 +422,40 @@ class Formex4Builder(BaseBuilder):
             attrs[u"COLSPAN"] = str(cell.width)
         if cell.height > 1:
             attrs[u"ROWSPAN"] = str(cell.height)
+
+        # support for CALS-like elements and attributes
+        if self.use_cals:
+            qname = self.get_cals_qname
+            if cell.box.max.x != self._table.bounding_box.max.x:
+                # generate @colsep if the cell isn't in the last column
+                cell_colsep = get_colsep_attr(cell_styles, "border-right")
+                if cell_colsep and cell_colsep != self._table_colsep:
+                    attrs[qname('colsep')] = cell_colsep
+            if cell.box.max.y != self._table.bounding_box.max.y:
+                # generate @rowsep if the cell isn't in the last row
+                cell_rowsep = get_rowsep_attr(cell_styles, "border-bottom")
+                if cell_rowsep and cell_rowsep != self._table_rowsep:
+                    attrs[qname('rowsep')] = cell_rowsep
+            if 'vertical-align' in cell_styles:
+                # same values as CSS/Properties/vertical-align
+                # 'w-both' is an extension of OoxmlParser
+                attrs[qname('valign')] = {'top': u'top',
+                                          'middle': u'middle',
+                                          'bottom': u'bottom',
+                                          'baseline': u'bottom',
+                                          'w-both': u'bottom'}[cell_styles['vertical-align']]
+            if 'align' in cell_styles:
+                # same values as CSS/Properties/text-align
+                attrs[qname('align')] = {'left': u'left',
+                                         'center': u'center',
+                                         'right': u'right',
+                                         'justify': u'justify'}[cell_styles['align']]
+            if cell.width > 1:
+                attrs[qname("namest")] = u"c{0}".format(cell.box.min.x)
+                attrs[qname("nameend")] = u"c{0}".format(cell.box.max.x)
+            if cell.height > 1:
+                attrs[qname("morerows")] = str(cell.height - 1)
+
         cell_elem = etree.SubElement(row_elem, u"CELL", attrib=attrs)
         text = text_type(cell)
         if text:
