@@ -21,6 +21,8 @@ Added
   This options is used to generate additional CALS-like elements and attributes
   to simplify the layout of Formex document in typesetting systems.
 
+* Add support for the Table/Cell shading in the OOXML parser.
+
 
 v0.4.2 (2019-06-06)
 ===================

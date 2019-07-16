@@ -910,6 +910,10 @@ class OoxmlParser(BaseParser):
 
         attrs = real_table_borders.copy()
 
+        # -- Table shading
+        shd = Shd(value_of(w_tbl, 'w:tblPr/w:shd'))
+        attrs.update(shd.styles)
+
         # -- Sections: http://officeopenxml.com/WPsection.php
 
         # A section's properties are stored in a sectPr element.
@@ -1058,6 +1062,10 @@ class OoxmlParser(BaseParser):
 
         if height:
             styles = {}
+
+            # -- Cell shading
+            shd = Shd(value_of(w_tc, 'w:tcPr/w:shd'))
+            styles.update(shd.styles)
 
             # -- Vertical alignment
             #
