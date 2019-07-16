@@ -49,7 +49,7 @@
           <entry/>
         </row>
         <row>
-          <entry nameend="c3" namest="c1" rowsep="0">
+          <entry bgcolor="#FBE4D5" nameend="c3" namest="c1" rowsep="0">
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
               <w:r>
                 <w:t>1</w:t>
@@ -86,7 +86,7 @@
           </entry>
         </row>
         <row>
-          <entry nameend="c3" namest="c1">
+          <entry bgcolor="#FBE4D5" nameend="c3" namest="c1">
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA">
               <w:r>
                 <w:t>6</w:t>

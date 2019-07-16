@@ -23,6 +23,8 @@ Added
 
 * Add support for the Table/Cell shading in the OOXML parser.
 
+* Add support for ``bgcolor`` (Table/Cell background color) in the CALS builder.
+
 
 v0.4.2 (2019-06-06)
 ===================

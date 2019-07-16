@@ -150,6 +150,9 @@ class CalsBuilder(BaseBuilder):
         :param table: Table
 
         :return: The newly-created ``<table>`` element.
+
+        .. versionchanged:: 0.5.0
+           Add support for ``bgcolor``.
         """
         self._table = table
         self._table_colsep = u"0"
@@ -165,6 +168,8 @@ class CalsBuilder(BaseBuilder):
             attrs['orient'] = {"landscape": "land", "portrait": "port"}[table_styles['x-sect-orient']]
         if 'x-sect-cols' in table_styles:
             attrs['pgwide'] = "1" if table_styles['x-sect-cols'] == "1" else "0"
+        if 'background-color' in table_styles:
+            attrs['bgcolor'] = table_styles['background-color']
         table_elem = etree.Element(u"table", attrib=attrs)
         self.build_tgroup(table_elem, table)
         return table_elem
@@ -362,6 +367,9 @@ class CalsBuilder(BaseBuilder):
 
         :type  cell: benker.cell.Cell
         :param cell: The cell.
+
+        .. versionchanged:: 0.5.0
+           Add support for ``bgcolor``.
         """
         cell_styles = cell.styles
         attrs = {}
@@ -394,6 +402,8 @@ class CalsBuilder(BaseBuilder):
             attrs[u"nameend"] = u"c{0}".format(cell.box.max.x)
         if cell.height > 1:
             attrs[u"morerows"] = str(cell.height - 1)
+        if 'background-color' in cell_styles:
+            attrs['bgcolor'] = cell_styles['background-color']
 
         entry_elem = etree.SubElement(row_elem, u"entry", attrib=attrs)
         if cell.content is not None:
