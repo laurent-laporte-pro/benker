@@ -25,6 +25,9 @@ Added
 
 * Add support for ``bgcolor`` (Table/Cell background color) in the CALS builder.
 
+* Add support for ``bgcolor`` (Table/Cell background color) in the Formex4 builder
+  (only with the *use_cals* option).
+
 
 v0.4.2 (2019-06-06)
 ===================

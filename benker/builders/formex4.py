@@ -151,6 +151,10 @@ class Formex4Builder(BaseBuilder):
         :param table: Table
 
         :return: The newly-created ``<TBL>`` element.
+
+        .. versionchanged:: 0.5.0
+           Add support for CALS-like elements and attributes.
+           Add support for ``bgcolor`` (Table background color).
         """
         self._table = table
         table_styles = table.styles
@@ -185,8 +189,16 @@ class Formex4Builder(BaseBuilder):
                 attrs[qname('orient')] = {"landscape": "land", "portrait": "port"}[table_styles['x-sect-orient']]
             if 'x-sect-cols' in table_styles:
                 attrs[qname('pgwide')] = "1" if table_styles['x-sect-cols'] == "1" else "0"
+            if 'background-color' in table_styles:
+                attrs[qname('bgcolor')] = table_styles['background-color']
 
         table_elem = etree.Element(u"TBL", attrib=attrs, nsmap=self.ns_map)
+
+        # support for CALS-like elements and attributes
+        if self.use_cals:
+            for col in table.cols:
+                self.build_colspec(table_elem, col)
+
         self.build_corpus(table_elem, table)
         return table_elem
 
@@ -212,11 +224,6 @@ class Formex4Builder(BaseBuilder):
             self.build_title(tbl_elem, rows.pop(0))
 
         corpus_elem = etree.SubElement(tbl_elem, u"CORPUS", attrib=attrs)
-
-        # support for CALS-like elements and attributes
-        if self.use_cals:
-            for col in table.cols:
-                self.build_colspec(corpus_elem, col)
 
         for row in rows:
             self.build_row(corpus_elem, row)
@@ -283,6 +290,9 @@ class Formex4Builder(BaseBuilder):
 
         :type  col: benker.table.ColView
         :param col: Columns
+
+        .. versionchanged:: 0.5.0
+           Add support for CALS-like elements and attributes.
         """
         col_styles = col.styles
         qname = self.get_cals_qname
@@ -324,6 +334,9 @@ class Formex4Builder(BaseBuilder):
 
         :type  row: benker.table.RowView
         :param row: The row.
+
+        .. versionchanged:: 0.5.0
+           Add support for CALS-like elements and attributes.
         """
         row_styles = row.styles
         attrs = {}
@@ -412,6 +425,10 @@ class Formex4Builder(BaseBuilder):
 
         :type  row: benker.table.RowView
         :param row: The parent row.
+
+        .. versionchanged:: 0.5.0
+           Add support for CALS-like elements and attributes.
+           Add support for ``bgcolor`` (Table background color).
         """
         cell_styles = cell.styles
         attrs = {'COL': str(cell.box.min.x)}
@@ -455,6 +472,9 @@ class Formex4Builder(BaseBuilder):
                 attrs[qname("nameend")] = u"c{0}".format(cell.box.max.x)
             if cell.height > 1:
                 attrs[qname("morerows")] = str(cell.height - 1)
+            if 'background-color' in cell_styles:
+                attrs[qname('bgcolor')] = cell_styles['background-color']
+
 
         cell_elem = etree.SubElement(row_elem, u"CELL", attrib=attrs)
         text = text_type(cell)
