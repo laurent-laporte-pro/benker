@@ -45,9 +45,12 @@ TEST_DATA = [
             </w:tcPr>
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"><w:r><w:t>1</w:t></w:r></w:p>
         </w:tc>""",
-        {'border-collapse': 'collapse',
-         'border-right': 'solid 1.5pt #4472C4',
-         'border-bottom': 'none'},
+        {
+            'border-collapse': 'collapse',
+            'border-right': 'solid 1.5pt #4472C4',
+            'border-bottom': 'none',
+            'background-color': '#FBE4D5',
+        },
         id="style_border-right_solid_border-bottom_none"),
 
     pytest.param(

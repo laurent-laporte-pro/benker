@@ -11,25 +11,16 @@ Specifications:
   `Word Processing - Table Grid/Column Definition <http://officeopenxml.com/WPtableGrid.php>`_.
 """
 import collections
-import functools
 
 from lxml import etree
 
 from benker.parsers.base_parser import BaseParser
-from benker.parsers.base_parser import value_of as base_value_of
 from benker.parsers.lxml_iterwalk import iterwalk
+from benker.parsers.ooxml.namespaces import NS, w, value_of
+from benker.parsers.ooxml.w_pg_sz import PgSz
+from benker.parsers.ooxml.w_shd import Shd
 from benker.table import Table
 
-#: Namespace map used for xpath evaluation in Office Open XML documents
-NS = {'w': "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
-
-
-def ns_name(ns, name):
-    return '{' + ns + '}' + name
-
-
-w = functools.partial(ns_name, NS['w'])
-value_of = functools.partial(base_value_of, namespaces=NS)
 
 #: See w:ST_Border: http://www.datypic.com/sc/ooxml/t-w_ST_Border.html
 #: See CSS styles: https://www.w3.org/wiki/CSS/Properties/border-top-style
@@ -928,18 +919,8 @@ class OoxmlParser(BaseParser):
 
         w_sect_pr = value_of(w_tbl, 'following::w:p/w:pPr/w:sectPr | following::w:sectPr')
 
-        # - ``x-sect-orient``: Section orientation
-        #   Possible values are "landscape" and "portrait".
-        sect_orient = value_of(w_sect_pr, 'w:pgSz/@w:orient')
-        if sect_orient:
-            attrs['x-sect-orient'] = sect_orient
-
-        # - ``x-sect-size``: Section size (width and height)
-        sect_w = value_of(w_sect_pr, 'w:pgSz/@w:w')
-        sect_h = value_of(w_sect_pr, 'w:pgSz/@w:h')
-        if sect_w and sect_h:
-            # convert twentieths of a point to 'pt'
-            attrs['x-sect-size'] = float(sect_w) / 20, float(sect_h) / 20
+        pg_sz = PgSz(value_of(w_sect_pr, 'w:pgSz'))
+        attrs.update(pg_sz.styles)
 
         # - w:cols -- Specifies the set of columns for the section.
         # - ``x-sect-cols``: Section column number
