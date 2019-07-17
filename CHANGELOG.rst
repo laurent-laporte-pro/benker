@@ -34,6 +34,9 @@ Other
 * Fix an issue with the AppVeyor build: upgrade setuptools version in ``appveyor.yml``,
   change the Tox configuration: set ``py27,py34,py35: pip >= 9.0.3, < 19.2``.
 
+* Change the project‘s slogan: “Easily convert your CALS, HTML, Formex4, Office Open XML (docx)
+  tables from one format to another.”
+
 
 v0.4.2 (2019-06-06)
 ===================

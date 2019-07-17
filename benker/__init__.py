@@ -1,4 +1,4 @@
-"""Benker - Organize your data in a spatial grid system for CALS, HTML, Formex4, Office Open XML tables conversion"""
+"""Benker - Easily convert your CALS, HTML, Formex4, Office Open XML (docx) tables from one format to another."""
 
 __version__ = "0.5.0b1"
 __author__ = "Laurent LAPORTE <laurent.laporte.pro@gmail.com>"

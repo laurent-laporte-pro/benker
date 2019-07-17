@@ -41,7 +41,7 @@ setup(
     author="Laurent LAPORTE",
     author_email="laurent.laporte.pro@gmail.com",
 
-    description="Organize your data in a spatial grid system for CALS, HTML, Formex4, Office Open XML tables conversion",
+    description="Easily convert your CALS, HTML, Formex4, Office Open XML (docx) tables from one format to another.",
     long_description=read("README.rst"),
     long_description_content_type='text/x-rst',
 

@@ -22,7 +22,7 @@ Benker
    :target: https://raw.githubusercontent.com/laurent-laporte-pro/benker/master/LICENSE
    :alt: GitHub license
 
-Organize your data in a spatial grid system for CALS, HTML, Formex4, Office Open XML tables conversion
+Easily convert your CALS, HTML, Formex4, Office Open XML (docx) tables from one format to another.
 
 Overview
 --------
