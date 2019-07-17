@@ -28,6 +28,12 @@ Added
 * Add support for ``bgcolor`` (Table/Cell background color) in the Formex4 builder
   (only with the *use_cals* option).
 
+Other
+-----
+
+* Fix an issue with the AppVeyor build: upgrade setuptools version in ``appveyor.yml``,
+  change the Tox configuration: set ``py27,py34,py35: pip >= 9.0.3, < 19.2``.
+
 
 v0.4.2 (2019-06-06)
 ===================
