@@ -133,6 +133,8 @@ class CalsBuilder(BaseBuilder):
         -   ``@pgwide`` is built from the "x-sect-cols" style (column number of the current section).
             Default value is "0" (width of the current column).
 
+        -   ``@bgcolor`` is built from the "background-color" style (HTML color).
+
         .. note::
 
            ``@colsep``, ``@rowsep`` and ``@tabstyle`` attributes are generated only
@@ -366,6 +368,8 @@ class CalsBuilder(BaseBuilder):
         -   ``@namest``/``@nameend`` are set when the cell is spanned horizontally.
 
         -   ``@morerows`` is set when the cell is spanned vertically.
+
+        -   ``@bgcolor`` is built from the "background-color" style (HTML color).
 
         :type  row_elem: etree._Element
         :param row_elem: Parent element: ``<row>``.
