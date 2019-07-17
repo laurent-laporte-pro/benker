@@ -33,10 +33,9 @@ from benker.builders.cals import get_colsep_attr
 from benker.builders.cals import get_frame_attr
 from benker.builders.cals import get_rowsep_attr
 from benker.parsers.lxml_iterwalk import iterwalk
+from benker.schemas import CALS_NS
+from benker.schemas import CALS_PREFIX
 from benker.units import convert_value
-
-CALS_NS = "https://lib.benker.com/schemas/cals.xsd"
-CALS_PREFIX = "cals"
 
 text_type = type(u"")
 
@@ -108,8 +107,13 @@ class Formex4Builder(BaseBuilder):
             return {self.cals_prefix: self.cals_ns}
         return {}
 
+    # def get_formex_qname(self, name):
+    #     if self.formex_prefix and self.formex_ns:
+    #         return etree.QName(self.formex_ns, name)
+    #     return name
+
     def get_cals_qname(self, name):
-        if self.cals_ns:
+        if self.cals_prefix and self.cals_ns:
             return etree.QName(self.cals_ns, name)
         return name
 
