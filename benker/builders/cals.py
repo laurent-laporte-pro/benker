@@ -36,14 +36,14 @@ def _get_border_style(styles, style):
 
 
 def get_frame_attr(styles):
-    frame_styles = {'border-top': False, 'border-right': False, 'border-bottom': False, 'border-left': False}
+    frame_styles = {"border-top": False, "border-right": False, "border-bottom": False, "border-left": False}
     for style in frame_styles:
         value = _get_border_style(styles, style) or u"none"
         frame_styles[style] = value != u"none"
-    top = frame_styles['border-top']
-    bottom = frame_styles['border-bottom']
-    left = frame_styles['border-left']
-    right = frame_styles['border-right']
+    top = frame_styles["border-top"]
+    bottom = frame_styles["border-bottom"]
+    left = frame_styles["border-left"]
+    right = frame_styles["border-right"]
     return {
         (True, True, True, True): u"all",
         (True, True, False, False): u"topbot",
@@ -163,16 +163,16 @@ class CalsBuilder(BaseBuilder):
         table_styles = table.styles
         attrs = {'frame': get_frame_attr(table_styles)}
         if not self.table_in_tgroup:
-            self._table_colsep = attrs['colsep'] = get_colsep_attr(table_styles) or "0"
-            self._table_rowsep = attrs['rowsep'] = get_rowsep_attr(table_styles) or "0"
+            self._table_colsep = attrs["colsep"] = get_colsep_attr(table_styles) or "0"
+            self._table_rowsep = attrs["rowsep"] = get_rowsep_attr(table_styles) or "0"
             if table.nature is not None:
-                attrs['tabstyle'] = table.nature
-        if 'x-sect-orient' in table_styles:
-            attrs['orient'] = {"landscape": "land", "portrait": "port"}[table_styles['x-sect-orient']]
-        if 'x-sect-cols' in table_styles:
-            attrs['pgwide'] = "1" if table_styles['x-sect-cols'] == "1" else "0"
-        if 'background-color' in table_styles:
-            attrs['bgcolor'] = table_styles['background-color']
+                attrs["tabstyle"] = table.nature
+        if "x-sect-orient" in table_styles:
+            attrs["orient"] = {"landscape": "land", "portrait": "port"}[table_styles["x-sect-orient"]]
+        if "x-sect-cols" in table_styles:
+            attrs["pgwide"] = "1" if table_styles["x-sect-cols"] == "1" else "0"
+        if "background-color" in table_styles:
+            attrs["bgcolor"] = table_styles["background-color"]
         table_elem = etree.Element(u"table", attrib=attrs)
         self.build_tgroup(table_elem, table)
         return table_elem
@@ -207,20 +207,20 @@ class CalsBuilder(BaseBuilder):
         :return: The newly-created ``<tgroup>`` element.
         """
         table_styles = table.styles
-        attrs = {u'cols': str(len(table.cols))}
+        attrs = {u"cols": str(len(table.cols))}
         if self.table_in_tgroup:
-            self._table_colsep = attrs['colsep'] = get_colsep_attr(table_styles) or "0"
-            self._table_rowsep = attrs['rowsep'] = get_rowsep_attr(table_styles) or "0"
+            self._table_colsep = attrs["colsep"] = get_colsep_attr(table_styles) or "0"
+            self._table_rowsep = attrs["rowsep"] = get_rowsep_attr(table_styles) or "0"
             if table.nature is not None:
-                attrs['tgroupstyle'] = table.nature
+                attrs["tgroupstyle"] = table.nature
         group_elem = etree.SubElement(table_elem, u"tgroup", attrib=attrs)
         for col in table.cols:
             self.build_colspec(group_elem, col)
-        # -- group rows by head/body/foot
+        # -- group rows by header/body/footer
         groups = [(k, list(g)) for k, g in itertools.groupby(table.rows, key=lambda r: r.nature)]
-        # -- sort the groups in the order: head => foot => body
-        groups = sorted(groups, key=lambda item: {"head": 0, "foot": 1, "body": 2}[item[0]])
-        group_tags = {"head": u"thead", "body": u"tbody", "foot": u"tfoot"}
+        # -- sort the groups in the order: header => footer => body
+        groups = sorted(groups, key=lambda item: {"header": 0, "footer": 1, "body": 2}[item[0]])
+        group_tags = {"header": u"thead", "body": u"tbody", "footer": u"tfoot"}
         for nature, row_list in groups:
             nature_tag = group_tags[nature]
             self.build_tbody(group_elem, row_list, nature_tag)
@@ -250,12 +250,12 @@ class CalsBuilder(BaseBuilder):
         :param col: Columns
         """
         col_styles = col.styles
-        attrs = {u'colname': u"c{0}".format(col.col_pos)}
-        if 'width' in col_styles:
-            width = col_styles['width']
+        attrs = {u"colname": u"c{0}".format(col.col_pos)}
+        if "width" in col_styles:
+            width = col_styles["width"]
             width, unit = re.findall(r"([+-]?(?:[0-9]*[.])?[0-9]+)(\w+)", width)[0]
             value = convert_value(float(width), unit, self.width_unit)
-            attrs['colwidth'] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
+            attrs["colwidth"] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
         etree.SubElement(group_elem, u"colspec", attrib=attrs)
 
     def build_tbody(self, group_elem, row_list, nature_tag):
@@ -304,7 +304,7 @@ class CalsBuilder(BaseBuilder):
         #
         row_styles = row.styles
         attrs = {}
-        if 'valign' in row_styles:
+        if "valign" in row_styles:
             # same values as CSS/Properties/vertical-align
             # fmt: off
             attrs['valign'] = {
@@ -315,7 +315,7 @@ class CalsBuilder(BaseBuilder):
             }[row_styles['valign']]
             # fmt: on
 
-        if 'x-ins' in row_styles:
+        if "x-ins" in row_styles:
             # <?change-start change-id="ct140446841083680" type="row:insertion"
             #   creator="Anita BARREL" date="2017-11-15T11:46:00"?>
             rev_attrs = collections.OrderedDict({'type': 'row:insertion'})
@@ -330,7 +330,7 @@ class CalsBuilder(BaseBuilder):
 
         row_elem = etree.SubElement(tbody_elem, u"row", attrib=attrs)
 
-        if 'x-ins' in row_styles:
+        if "x-ins" in row_styles:
             # <?change-end change-id="ct139821811327752" type="row:insertion"?>
             rev_attrs = collections.OrderedDict({'type': 'row:insertion'})
             if 'x-ins-id' in row_styles:
@@ -386,13 +386,13 @@ class CalsBuilder(BaseBuilder):
             # generate @colsep if the cell isn't in the last column
             cell_colsep = get_colsep_attr(cell_styles, "border-right")
             if cell_colsep and cell_colsep != self._table_colsep:
-                attrs['colsep'] = cell_colsep
+                attrs["colsep"] = cell_colsep
         if cell.box.max.y != self._table.bounding_box.max.y:
             # generate @rowsep if the cell isn't in the last row
             cell_rowsep = get_rowsep_attr(cell_styles, "border-bottom")
             if cell_rowsep and cell_rowsep != self._table_rowsep:
-                attrs['rowsep'] = cell_rowsep
-        if 'vertical-align' in cell_styles:
+                attrs["rowsep"] = cell_rowsep
+        if "vertical-align" in cell_styles:
             # same values as CSS/Properties/vertical-align
             # 'w-both' is an extension of OoxmlParser
             attrs['valign'] = {
@@ -417,8 +417,8 @@ class CalsBuilder(BaseBuilder):
             attrs[u"nameend"] = u"c{0}".format(cell.box.max.x)
         if cell.height > 1:
             attrs[u"morerows"] = str(cell.height - 1)
-        if 'background-color' in cell_styles:
-            attrs['bgcolor'] = cell_styles['background-color']
+        if "background-color" in cell_styles:
+            attrs["bgcolor"] = cell_styles["background-color"]
 
         entry_elem = etree.SubElement(row_elem, u"entry", attrib=attrs)
         if cell.content is not None:

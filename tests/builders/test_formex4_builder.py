@@ -17,15 +17,15 @@ ROW = E.ROW
 P = E.P
 
 
-@pytest.mark.parametrize('kwargs, expected', [
+@pytest.mark.parametrize('kwargs, attrib', [
     ({}, {'COL': u"1"}),
     ({'width': 2}, {'COL': u"1", 'COLSPAN': u"2"}),
     ({'height': 2}, {'COL': u"1", 'ROWSPAN': u"2"}),
     ({'nature': 'body'}, {'COL': u"1", 'TYPE': 'NORMAL'}),
-    ({'nature': 'head'}, {'COL': u"1", 'TYPE': 'HEADER'}),
-    ({'nature': 'foot'}, {'COL': u"1", 'TYPE': 'TOTAL'}),
+    ({'nature': 'header'}, {'COL': u"1", 'TYPE': 'HEADER'}),
+    ({'nature': 'footer'}, {'COL': u"1", 'TYPE': 'TOTAL'}),
 ])
-def test_build_cell__body(kwargs, expected):
+def test_build_cell__body(kwargs, attrib):
     builder = Formex4Builder()
 
     p_elem = P(u"text")
@@ -41,16 +41,16 @@ def test_build_cell__body(kwargs, expected):
     # -- check the '<CELL>' attributes
     entry_elem = row_elem[0]  # type: etree._Element
     assert entry_elem.tag == u"CELL"
-    assert entry_elem.attrib == expected
+    assert entry_elem.attrib == attrib
     assert entry_elem[0] == p_elem
 
 
-@pytest.mark.parametrize('kwargs, expected', [
+@pytest.mark.parametrize('kwargs, attrib', [
     ({'nature': 'body'}, {'COL': u"1", 'TYPE': 'NORMAL'}),
-    ({'nature': 'head'}, {'COL': u"1"}),
-    ({'nature': 'foot'}, {'COL': u"1", 'TYPE': 'TOTAL'}),
+    ({'nature': 'header'}, {'COL': u"1"}),
+    ({'nature': 'footer'}, {'COL': u"1", 'TYPE': 'TOTAL'}),
 ])
-def test_build_cell__head(kwargs, expected):
+def test_build_cell__head(kwargs, attrib):
     builder = Formex4Builder()
 
     p_elem = P(u"text")
@@ -61,13 +61,13 @@ def test_build_cell__head(kwargs, expected):
     # -- build the cell
     row_elem = ROW()
     row_y1 = next(iter(table.rows))
-    row_y1.nature = "head"
+    row_y1.nature = "header"
     builder.build_cell(row_elem, cell_x1_y1, row_y1)
 
     # -- check the '<CELL>' attributes
     entry_elem = row_elem[0]  # type: etree._Element
     assert entry_elem.tag == u"CELL"
-    assert entry_elem.attrib == expected
+    assert entry_elem.attrib == attrib
     assert entry_elem[0] == p_elem
 
 
@@ -154,7 +154,7 @@ def test_build_tbl():
     # see: formex-4/samples/jo-compl-2002C_061/C_2002061EN.01000403.xml
 
     table = Table()
-    table.rows[1].nature = "head"
+    table.rows[1].nature = "header"
     table.rows[1].insert_cell([P(u"Expert group")])
     table.rows[1].insert_cell([P(u"First name and surname of the expert")])
     table.rows[2].insert_cell([P(u"Control of infectious diseases")])
@@ -235,7 +235,7 @@ def test_build_tbl__with_title():
 
     table = Table()
     table.rows[1].insert_cell([P(u"1 euro =")], width=3, styles={"align": "center"})
-    table.rows[2].nature = "head"
+    table.rows[2].nature = "header"
     table.rows[2].insert_cell([P()])
     table.rows[2].insert_cell([P(u"Currency")])
     table.rows[2].insert_cell([P(u"Exchange rate")])

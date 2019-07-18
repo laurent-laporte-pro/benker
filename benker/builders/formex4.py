@@ -169,22 +169,22 @@ class Formex4Builder(BaseBuilder):
         table_styles = table.styles
         self._no_seq += 1
         attrs = {
-            'NO.SEQ': u"{:04d}".format(self._no_seq),
+            "NO.SEQ": u"{:04d}".format(self._no_seq),
             # 'CLASS': u"GEN",  # default value
-            'COLS': str(len(table.cols)),
+            "COLS": str(len(table.cols)),
             # 'PAGE.SIZE': u"SINGLE.PORTRAIT",  # default value
         }
-        if 'x-sect-orient' in table_styles:
+        if "x-sect-orient" in table_styles:
             # size = (width x height) in 'pt'
-            size = table_styles.get('x-sect-size', (595, 842))
+            size = table_styles.get("x-sect-size", (595, 842))
             # C4 format 22.9cm x 32.4cm is a little bigger than A4
             if (size[0] <= 649 and size[1] <= 918) or (size[0] <= 918 and size[1] <= 649):
                 orient_page_sizes = {"landscape": "SINGLE.LANDSCAPE"}
             else:
                 orient_page_sizes = {"landscape": "DOUBLE.LANDSCAPE", "portrait": "DOUBLE.PORTRAIT"}
-            orient = table_styles['x-sect-orient']
+            orient = table_styles["x-sect-orient"]
             if orient in orient_page_sizes:
-                attrs['PAGE.SIZE'] = orient_page_sizes[orient]
+                attrs["PAGE.SIZE"] = orient_page_sizes[orient]
 
         table_elem = etree.Element(u"TBL", attrib=attrs, nsmap=self.ns_map)
 
@@ -207,7 +207,7 @@ class Formex4Builder(BaseBuilder):
 
         # Does the first row/cell contains a centered title?
         first_cell = table[(1, 1)]
-        align = first_cell.styles.get('align')
+        align = first_cell.styles.get("align")
         if first_cell.width == table.bounding_box.width and align == "center":
             # yes, we can generate the title
             self.build_title(tbl_elem, rows.pop(0))
@@ -304,14 +304,14 @@ class Formex4Builder(BaseBuilder):
            Add support for CALS-like elements and attributes.
         """
         col_styles = col.styles
-        qname = self.get_cals_qname
-        attrs = {qname('colname'): u"c{0}".format(col.col_pos)}
-        if 'width' in col_styles:
-            width = col_styles['width']
+        cals = self.get_cals_qname
+        attrs = {cals("colname"): u"c{0}".format(col.col_pos)}
+        if "width" in col_styles:
+            width = col_styles["width"]
             width, unit = re.findall(r"([+-]?(?:[0-9]*[.])?[0-9]+)(\w+)", width)[0]
             value = convert_value(float(width), unit, self.width_unit)
-            attrs[qname('colwidth')] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
-        etree.SubElement(group_elem, qname(u"colspec"), attrib=attrs)
+            attrs[cals("colwidth")] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
+        etree.SubElement(group_elem, cals(u"colspec"), attrib=attrs)
 
     def build_row(self, corpus_elem, row):
         """
@@ -349,14 +349,14 @@ class Formex4Builder(BaseBuilder):
         """
         row_styles = row.styles
         attrs = {}
-        nature_types = {"head": u"HEADER", "foot": u"TOTAL"}
+        nature_types = {"header": u"HEADER", "footer": u"TOTAL"}
         if row.nature in nature_types:
-            attrs['TYPE'] = nature_types[row.nature]
+            attrs["TYPE"] = nature_types[row.nature]
 
         # support for CALS-like elements and attributes
         if self.use_cals:
-            qname = self.get_cals_qname
-            if 'valign' in row_styles:
+            cals = self.get_cals_qname
+            if "valign" in row_styles:
                 # same values as CSS/Properties/vertical-align
                 # fmt: off
                 attrs[qname('valign')] = {
@@ -367,7 +367,7 @@ class Formex4Builder(BaseBuilder):
                 }[row_styles['valign']]
                 # fmt: on
 
-        if 'x-ins' in row_styles:
+        if "x-ins" in row_styles:
             # <?change-start change-id="ct140446841083680" type="row:insertion"
             #   creator="Anita BARREL" date="2017-11-15T11:46:00"?>
             rev_attrs = collections.OrderedDict({'type': 'row:insertion'})
@@ -382,7 +382,7 @@ class Formex4Builder(BaseBuilder):
 
         row_elem = etree.SubElement(corpus_elem, u"ROW", attrib=attrs)
 
-        if 'x-ins' in row_styles:
+        if "x-ins" in row_styles:
             # <?change-end change-id="ct139821811327752" type="row:insertion"?>
             rev_attrs = collections.OrderedDict({'type': 'row:insertion'})
             if 'x-ins-id' in row_styles:
@@ -444,10 +444,10 @@ class Formex4Builder(BaseBuilder):
            Add support for ``bgcolor`` (Table background color).
         """
         cell_styles = cell.styles
-        attrs = {'COL': str(cell.box.min.x)}
+        attrs = {"COL": str(cell.box.min.x)}
         if cell.nature and cell.nature != row.nature:
-            nature_types = {"head": u"HEADER", "body": u"NORMAL", "foot": u"TOTAL"}
-            attrs['TYPE'] = nature_types[cell.nature]
+            nature_types = {"header": u"HEADER", "body": u"NORMAL", "footer": u"TOTAL"}
+            attrs["TYPE"] = nature_types[cell.nature]
         if cell.width > 1:
             attrs[u"COLSPAN"] = str(cell.width)
         if cell.height > 1:
@@ -455,21 +455,21 @@ class Formex4Builder(BaseBuilder):
 
         # support for CALS-like elements and attributes
         if self.use_cals:
-            qname = self.get_cals_qname
+            cals = self.get_cals_qname
             if cell.box.max.x != self._table.bounding_box.max.x:
                 # generate @colsep if the cell isn't in the last column
                 cell_colsep = get_colsep_attr(cell_styles, "border-right")
                 if cell_colsep and cell_colsep != self._table_colsep:
-                    attrs[qname('colsep')] = cell_colsep
+                    attrs[cals("colsep")] = cell_colsep
             if cell.box.max.y != self._table.bounding_box.max.y:
                 # generate @rowsep if the cell isn't in the last row
                 cell_rowsep = get_rowsep_attr(cell_styles, "border-bottom")
                 if cell_rowsep and cell_rowsep != self._table_rowsep:
-                    attrs[qname('rowsep')] = cell_rowsep
-            if 'vertical-align' in cell_styles:
+                    attrs[cals("rowsep")] = cell_rowsep
+            if "vertical-align" in cell_styles:
                 # same values as CSS/Properties/vertical-align
                 # 'w-both' is an extension of OoxmlParser
-                attrs[qname('valign')] = {
+                attrs[cals('valign')] = {
                     'top': u'top',
                     'middle': u'middle',
                     'bottom': u'bottom',
@@ -478,19 +478,19 @@ class Formex4Builder(BaseBuilder):
                 }[cell_styles['vertical-align']]
             if 'align' in cell_styles:
                 # same values as CSS/Properties/text-align
-                attrs[qname('align')] = {
+                attrs[cals('align')] = {
                     'left': u'left',
                     'center': u'center',
                     'right': u'right',
                     'justify': u'justify',
                 }[cell_styles['align']]
             if cell.width > 1:
-                attrs[qname("namest")] = u"c{0}".format(cell.box.min.x)
-                attrs[qname("nameend")] = u"c{0}".format(cell.box.max.x)
+                attrs[cals("namest")] = u"c{0}".format(cell.box.min.x)
+                attrs[cals("nameend")] = u"c{0}".format(cell.box.max.x)
             if cell.height > 1:
-                attrs[qname("morerows")] = str(cell.height - 1)
-            if 'background-color' in cell_styles:
-                attrs[qname('bgcolor')] = cell_styles['background-color']
+                attrs[cals("morerows")] = str(cell.height - 1)
+            if "background-color" in cell_styles:
+                attrs[cals("bgcolor")] = cell_styles["background-color"]
 
         cell_elem = etree.SubElement(row_elem, u"CELL", attrib=attrs)
         text = text_type(cell)
@@ -514,12 +514,12 @@ class Formex4Builder(BaseBuilder):
         :param tree: The resulting tree.
         """
         root = tree.getroot()
-        context = iterwalk(root, events=('start',), tag=('TBL',))
+        context = iterwalk(root, events=("start",), tag=("TBL",))
 
         stack = []
         for action, elem in context:  # type: str, etree._Element
             elem_tag = elem.tag
-            if elem_tag == 'TBL':
+            if elem_tag == "TBL":
                 elem_level = int(elem.xpath("count(ancestor-or-self::TBL)"))
                 curr_level = len(stack)
                 if curr_level < elem_level:
@@ -527,7 +527,7 @@ class Formex4Builder(BaseBuilder):
                 else:
                     stack[:] = stack[:elem_level]
                 stack[elem_level - 1] += 1
-                no_seq = u'.'.join(u"{:04d}".format(value) for value in stack)
-                elem.attrib['NO.SEQ'] = no_seq
+                no_seq = u".".join(u"{:04d}".format(value) for value in stack)
+                elem.attrib["NO.SEQ"] = no_seq
             else:
                 raise NotImplementedError(elem_tag)

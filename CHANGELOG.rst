@@ -28,6 +28,14 @@ Added
 * Add support for ``bgcolor`` (Table/Cell background color) in the Formex4 builder
   (only with the *use_cals* option).
 
+Fixed
+-----
+
+* Change in the builder :class:`~benker.builders.cals.CalsBuilder`:
+  the possible values for row/cell *nature* is "header", "body" and "footer"
+  (instead of "head", "body", "foot").
+
+
 Other
 -----
 
