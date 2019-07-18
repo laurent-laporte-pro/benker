@@ -214,18 +214,18 @@ class Formex4Builder(BaseBuilder):
 
         # support for CALS-like elements and attributes
         if self.use_cals:
-            qname = self.get_cals_qname
-            attrs[qname("frame")] = get_frame_attr(table_styles)
-            self._table_colsep = attrs[qname('colsep')] = get_colsep_attr(table_styles) or "0"
-            self._table_rowsep = attrs[qname('rowsep')] = get_rowsep_attr(table_styles) or "0"
+            cals = self.get_cals_qname
+            attrs[cals("frame")] = get_frame_attr(table_styles)
+            self._table_colsep = attrs[cals("colsep")] = get_colsep_attr(table_styles) or "0"
+            self._table_rowsep = attrs[cals("rowsep")] = get_rowsep_attr(table_styles) or "0"
             if table.nature is not None:
-                attrs[qname('tabstyle')] = table.nature
-            if 'x-sect-orient' in table_styles:
-                attrs[qname('orient')] = {"landscape": "land", "portrait": "port"}[table_styles['x-sect-orient']]
-            if 'x-sect-cols' in table_styles:
-                attrs[qname('pgwide')] = "1" if table_styles['x-sect-cols'] == "1" else "0"
-            if 'background-color' in table_styles:
-                attrs[qname('bgcolor')] = table_styles['background-color']
+                attrs[cals("tabstyle")] = table.nature
+            if "x-sect-orient" in table_styles:
+                attrs[cals("orient")] = {"landscape": "land", "portrait": "port"}[table_styles["x-sect-orient"]]
+            if "x-sect-cols" in table_styles:
+                attrs[cals("pgwide")] = "1" if table_styles["x-sect-cols"] == "1" else "0"
+            if "background-color" in table_styles:
+                attrs[cals("bgcolor")] = table_styles["background-color"]
 
         corpus_elem = etree.SubElement(tbl_elem, u"CORPUS", attrib=attrs)
 
@@ -359,7 +359,7 @@ class Formex4Builder(BaseBuilder):
             if "valign" in row_styles:
                 # same values as CSS/Properties/vertical-align
                 # fmt: off
-                attrs[qname('valign')] = {
+                attrs[cals('valign')] = {
                     'top': 'top',
                     'middle': 'middle',
                     'bottom': 'bottom',
