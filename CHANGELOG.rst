@@ -28,6 +28,9 @@ Added
 * Add support for ``bgcolor`` (Table/Cell background color) in the Formex4 builder
   (only with the *use_cals* option).
 
+* Change in the class :class:`benker.table.Table`:
+  add the method :meth:`~benker.table.Table.fill_missing` to fill the missing cells in a table.
+
 Fixed
 -----
 

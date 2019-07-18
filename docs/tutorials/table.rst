@@ -303,3 +303,36 @@ Here are the **caught_cells** of this table:
     col #2: merged, merged, C
     col #3: A, D
 
+Fill missing cells
+~~~~~~~~~~~~~~~~~~
+
+When you build a table (from an uncontrolled source), you may have missing cells (holes).
+For instance, in the table below, the cell C2 is missing:
+
+.. doctest:: table
+
+    >>> table = Table()
+    >>> table.rows[1].insert_cell("one")
+    >>> table.rows[1].insert_cell("two")
+    >>> table.rows[1].insert_cell("three")
+    >>> table.rows[1].insert_cell("four", height=2)
+    >>> table.rows[2].insert_cell("un-deux", width=2)
+    >>> print(table)
+    +-----------+-----------+-----------+-----------+
+    |    one    |    two    |   three   |   four    |
+    +-----------------------+-----------|           |
+    |  un-deux              |           |           |
+    +-----------------------+-----------+-----------+
+
+If you need to fill the missing cells, you can use the
+:meth:`~benker.table.Table.fill_missing` method, like this:
+
+.. doctest:: table
+
+    >>> table.fill_missing("HERE")
+    >>> print(table)
+    +-----------+-----------+-----------+-----------+
+    |    one    |    two    |   three   |   four    |
+    +-----------------------+-----------|           |
+    |  un-deux              |   HERE    |           |
+    +-----------------------+-----------+-----------+

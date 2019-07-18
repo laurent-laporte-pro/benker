@@ -600,3 +600,39 @@ class Table(Styled, MutableMapping):
     def expand(self, coord, width=0, height=0, content_appender=None):
         self._grid.expand(coord, width=width, height=height, content_appender=content_appender)
         self._refresh_views()
+
+    def fill_missing(self, content, styles=None, nature=None):
+        """
+        Fill the missing cells in the table.
+
+        This method is useful when some rows has missing cells (holes).
+
+        :param content:
+            User-defined cell content. It can be of any type: ``None``,
+            :class:`str`, :class:`int`, :class:`float`, a container (:class:`list`),
+            a XML element, etc. The same content can be shared by several cells, it's
+            your own responsibility to handle the copy (or deep copy) of the *content*
+            reference when needed.
+
+        :type  styles: typing.Dict[str, str]
+        :param styles:
+            User-defined cell styles: a dictionary of key-value pairs.
+            This values are useful to store some HTML-like styles (border-style,
+            border-width, border-color, vertical-align, text-align, etc.).
+            Of course, we are not tied to the HTML-like styles, you can use your own
+            list of styles.
+
+        :type nature: str
+        :ivar nature: a way to distinguish the body cells, from the header and the footer.
+            The default value is ``None``, but you can use "body", "header", "footer" or whatever
+            is suitable for your needs.
+            If set to ``None``, the cell nature is inherited from the row nature.
+
+        .. versionadded:: 0.5.0
+        """
+        bounding_box = self.bounding_box
+        for y in range(bounding_box.min.y, bounding_box.max.y + 1):
+            for x in range(bounding_box.min.x, bounding_box.max.x + 1):
+                if (x, y) not in self:
+                    cell = Cell(content, styles=styles, nature=nature, x=x, y=y)
+                    self[(x, y)] = cell
