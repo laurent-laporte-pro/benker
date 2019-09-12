@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+Cet exemple factice de tableau contient quelques exemples de balises
+que l'on peut rencontrer dans un tableau Formex.
+
+*   un titre de tableau,
+*   des GR.SEQ,
+*   des notes de bas de page qui devront apparaître à la fin du tableau,
+*   un corpus:
+
+    -   avec une en-tête HEADER
+    -   une ligne d'ALIAS,
+    -   des lignes de tableau classiques,
+    -   des blocs de lignes de tableaux.
+
+Cet exemple contient aussi des attributs et éléments CALS qui aident à la conversion Formex vers CALS.
+-->
+<GENERAL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:cals="https://jouve.com/schemas/opue/doj/formex-cals"
+         xsi:noNamespaceSchemaLocation="formex-05.59-20170418_jouve.xd"
+         NNC="YES">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="C_2019000EN.01000101.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>000</NO.OJ>
+      <YEAR>2019</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20190912">20190912</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0001</NO.SEQ>
+    <PAGE.FIRST>1</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>1</PAGE.LAST>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+  </BIB.INSTANCE>
+  <CONTENTS>
+    <TBL COLS="2" NO.SEQ="0001">
+      <TITLE>
+        <TI>
+          <P>Table title</P>
+        </TI>
+      </TITLE>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="BOLD">GR.SEQ Title</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <NP>
+          <NO.P>1</NO.P>
+          <TXT>text</TXT>
+        </NP>
+        <NP>
+          <NO.P>2</NO.P>
+          <TXT>text</TXT>
+        </NP>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="BOLD">GR.SEQ Title</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <NP>
+          <NO.P>1</NO.P>
+          <TXT>text</TXT>
+        </NP>
+        <NP>
+          <NO.P>2</NO.P>
+          <TXT>text</TXT>
+        </NP>
+      </GR.SEQ>
+      <GR.NOTES>
+        <TITLE>
+          <TI>
+            <P>GR.NOTES Title</P>
+          </TI>
+        </TITLE>
+        <NOTE NOTE.ID="N0001">
+          <P>Table note</P>
+        </NOTE>
+      </GR.NOTES>
+      <CORPUS cals:colsep="1" cals:frame="all" cals:pgwide="1" cals:rowsep="1" cals:tabstyle="Grilledutableau">
+        <cals:colspec cals:colname="c1" cals:colwidth="79.92mm"/>
+        <cals:colspec cals:colname="c2" cals:colwidth="79.92mm"/>
+        <ROW TYPE="HEADER">
+          <CELL TYPE="HEADER" COL="1">
+            <HT TYPE="BOLD">Header 1</HT>
+          </CELL>
+          <CELL TYPE="HEADER" COL="2">
+            <HT TYPE="BOLD">Header 2</HT>
+          </CELL>
+        </ROW>
+        <ROW TYPE="ALIAS">
+          <CELL TYPE="ALIAS" COL="1">(1)</CELL>
+          <CELL TYPE="ALIAS" COL="2">(2)</CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">Cell A1</CELL>
+          <CELL COL="2">Cell B1</CELL>
+        </ROW>
+        <BLK>
+          <TI.BLK COL.START="1" COL.END="2">
+            <P>
+              <HT TYPE="BOLD">TI.BLK title</HT>
+            </P>
+          </TI.BLK>
+          <STI.BLK COL.START="1" COL.END="1">
+            <P>STI.BLK title</P>
+          </STI.BLK>
+          <ROW>
+            <CELL COL="1" COLSPAN="2" cals:nameend="c2" cals:namest="c1">Cell A2-B2</CELL>
+          </ROW>
+          <ROW>
+            <CELL COL="1" ROWSPAN="2" cals:morerows="1">Cell A3-A4</CELL>
+            <CELL COL="2">Cell B3</CELL>
+          </ROW>
+          <ROW>
+            <CELL COL="2">Cell B4</CELL>
+          </ROW>
+          <BLK>
+            <TI.BLK COL.START="1" COL.END="2">
+              <P>
+                <HT TYPE="BOLD">TI.BLK title</HT>
+              </P>
+            </TI.BLK>
+            <ROW TYPE="TOTAL">
+              <CELL TYPE="TOTAL" COL="1">Cell A5</CELL>
+              <CELL TYPE="TOTAL" COL="2">Cell B5</CELL>
+            </ROW>
+          </BLK>
+        </BLK>
+      </CORPUS>
+    </TBL>
+  </CONTENTS>
+</GENERAL>
