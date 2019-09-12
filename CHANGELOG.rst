@@ -37,6 +37,13 @@ Other
 * Change the project‘s slogan: “Easily convert your CALS, HTML, Formex4, Office Open XML (docx)
   tables from one format to another.”
 
+* Change Tox configuration file to test the library with lxml v4.3 on Python 3.4
+  (support for Python 3.4 was removed in `lxml v4.4 <https://lxml.de/4.4/changes-4.4.0.html>`_).
+
+* Change Tox configuration file to test the library on Python 3.8.
+
+* Change the Travis CI configuration to build on Python 3.7 and 3.8-dev.
+
 
 v0.4.2 (2019-06-06)
 ===================
