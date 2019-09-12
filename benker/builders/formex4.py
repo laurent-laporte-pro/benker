@@ -177,6 +177,32 @@ class Formex4Builder(BaseBuilder):
             if orient in orient_page_sizes:
                 attrs['PAGE.SIZE'] = orient_page_sizes[orient]
 
+        table_elem = etree.Element(u"TBL", attrib=attrs, nsmap=self.ns_map)
+
+        self.build_corpus(table_elem, table)
+        return table_elem
+
+    def build_corpus(self, tbl_elem, table):
+        """
+        Build the Formex4 ``<CORPUS>`` element.
+
+        :type  tbl_elem: etree._Element
+        :param tbl_elem: Parent element: ``<TBL>``.
+
+        :type  table: benker.table.Table
+        :param table: Table
+        """
+        table_styles = table.styles
+        attrs = {}  # no attribute
+        rows = list(table.rows)
+
+        # Does the first row/cell contains a centered title?
+        first_cell = table[(1, 1)]
+        align = first_cell.styles.get('align')
+        if first_cell.width == table.bounding_box.width and align == "center":
+            # yes, we can generate the title
+            self.build_title(tbl_elem, rows.pop(0))
+
         # support for CALS-like elements and attributes
         if self.use_cals:
             qname = self.get_cals_qname
@@ -192,38 +218,12 @@ class Formex4Builder(BaseBuilder):
             if 'background-color' in table_styles:
                 attrs[qname('bgcolor')] = table_styles['background-color']
 
-        table_elem = etree.Element(u"TBL", attrib=attrs, nsmap=self.ns_map)
+        corpus_elem = etree.SubElement(tbl_elem, u"CORPUS", attrib=attrs)
 
         # support for CALS-like elements and attributes
         if self.use_cals:
             for col in table.cols:
-                self.build_colspec(table_elem, col)
-
-        self.build_corpus(table_elem, table)
-        return table_elem
-
-    def build_corpus(self, tbl_elem, table):
-        """
-        Build the Formex4 ``<CORPUS>`` element.
-
-        :type  tbl_elem: etree._Element
-        :param tbl_elem: Parent element: ``<TBL>``.
-
-        :type  table: benker.table.Table
-        :param table: Table
-        """
-        # table_styles = table.styles
-        attrs = {}  # no attribute
-        rows = list(table.rows)
-
-        # Does the first row/cell contains a centered title?
-        first_cell = table[(1, 1)]
-        align = first_cell.styles.get('align')
-        if first_cell.width == table.bounding_box.width and align == "center":
-            # yes, we can generate the title
-            self.build_title(tbl_elem, rows.pop(0))
-
-        corpus_elem = etree.SubElement(tbl_elem, u"CORPUS", attrib=attrs)
+                self.build_colspec(corpus_elem, col)
 
         for row in rows:
             self.build_row(corpus_elem, row)
