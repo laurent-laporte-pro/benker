@@ -8,39 +8,39 @@
       <tbody>
         <row>
           <entry valign="top">
-            <w:p>
+            <w:p w:rsidR="00BD3409" w:rsidRPr="00BD3409" w:rsidRDefault="00BD3409" w:rsidP="00042CE3">
               <w:pPr/>
-              <w:r>
+              <w:r w:rsidRPr="00BD3409">
                 <w:t>Top-left</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry align="center" valign="top">
-            <w:p>
+          <entry valign="top" align="center">
+            <w:p w:rsidR="00BD3409" w:rsidRPr="00BD3409" w:rsidRDefault="00BD3409" w:rsidP="00042CE3">
               <w:pPr>
                 <w:jc w:val="center"/>
               </w:pPr>
-              <w:r>
+              <w:r w:rsidRPr="00BD3409">
                 <w:t>Top-center</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry align="right" valign="top">
-            <w:p>
+          <entry valign="top" align="right">
+            <w:p w:rsidR="00BD3409" w:rsidRPr="00BD3409" w:rsidRDefault="00BD3409" w:rsidP="00042CE3">
               <w:pPr>
                 <w:jc w:val="right"/>
               </w:pPr>
-              <w:r>
+              <w:r w:rsidRPr="00BD3409">
                 <w:t>Top-right</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry align="justify" valign="top">
-            <w:p>
+          <entry valign="top" align="justify">
+            <w:p w:rsidR="00BD3409" w:rsidRPr="00BD3409" w:rsidRDefault="00BD3409" w:rsidP="00042CE3">
               <w:pPr>
                 <w:jc w:val="both"/>
               </w:pPr>
-              <w:r>
+              <w:r w:rsidRPr="00BD3409">
                 <w:t>Top-justify</w:t>
               </w:r>
             </w:p>
@@ -48,39 +48,39 @@
         </row>
         <row>
           <entry valign="middle">
-            <w:p>
+            <w:p w:rsidR="00BD3409" w:rsidRPr="00BD3409" w:rsidRDefault="00BD3409" w:rsidP="00042CE3">
               <w:pPr/>
-              <w:r>
+              <w:r w:rsidRPr="00BD3409">
                 <w:t>Middle-left</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry align="center" valign="middle">
-            <w:p>
+          <entry valign="middle" align="center">
+            <w:p w:rsidR="00BD3409" w:rsidRPr="00BD3409" w:rsidRDefault="00BD3409" w:rsidP="00042CE3">
               <w:pPr>
                 <w:jc w:val="center"/>
               </w:pPr>
-              <w:r>
+              <w:r w:rsidRPr="00BD3409">
                 <w:t>Middle-center</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry align="right" valign="middle">
-            <w:p>
+          <entry valign="middle" align="right">
+            <w:p w:rsidR="00BD3409" w:rsidRPr="00BD3409" w:rsidRDefault="00BD3409" w:rsidP="00042CE3">
               <w:pPr>
                 <w:jc w:val="right"/>
               </w:pPr>
-              <w:r>
+              <w:r w:rsidRPr="00BD3409">
                 <w:t>Middle-right</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry align="justify" valign="middle">
-            <w:p>
+          <entry valign="middle" align="justify">
+            <w:p w:rsidR="00BD3409" w:rsidRPr="00BD3409" w:rsidRDefault="00BD3409" w:rsidP="00042CE3">
               <w:pPr>
                 <w:jc w:val="both"/>
               </w:pPr>
-              <w:r>
+              <w:r w:rsidRPr="00BD3409">
                 <w:t>Middle-justify</w:t>
               </w:r>
             </w:p>
@@ -88,39 +88,39 @@
         </row>
         <row>
           <entry valign="bottom">
-            <w:p>
+            <w:p w:rsidR="00BD3409" w:rsidRPr="00BD3409" w:rsidRDefault="00BD3409" w:rsidP="00042CE3">
               <w:pPr/>
-              <w:r>
+              <w:r w:rsidRPr="00BD3409">
                 <w:t>Bottom-left</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry align="center" valign="bottom">
-            <w:p>
+          <entry valign="bottom" align="center">
+            <w:p w:rsidR="00BD3409" w:rsidRPr="00BD3409" w:rsidRDefault="00BD3409" w:rsidP="00042CE3">
               <w:pPr>
                 <w:jc w:val="center"/>
               </w:pPr>
-              <w:r>
+              <w:r w:rsidRPr="00BD3409">
                 <w:t>Bottom-center</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry align="right" valign="bottom">
-            <w:p>
+          <entry valign="bottom" align="right">
+            <w:p w:rsidR="00BD3409" w:rsidRPr="00BD3409" w:rsidRDefault="00BD3409" w:rsidP="00042CE3">
               <w:pPr>
                 <w:jc w:val="right"/>
               </w:pPr>
-              <w:r>
+              <w:r w:rsidRPr="00BD3409">
                 <w:t>Bottom-right</w:t>
               </w:r>
             </w:p>
           </entry>
-          <entry align="justify" valign="bottom">
-            <w:p>
+          <entry valign="bottom" align="justify">
+            <w:p w:rsidR="00BD3409" w:rsidRPr="00BD3409" w:rsidRDefault="00BD3409" w:rsidP="00042CE3">
               <w:pPr>
                 <w:jc w:val="both"/>
               </w:pPr>
-              <w:r>
+              <w:r w:rsidRPr="00BD3409">
                 <w:t>Bottom-justify</w:t>
               </w:r>
             </w:p>

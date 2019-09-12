@@ -6,49 +6,282 @@
       <colspec colname="c3" colwidth="61.70pt"/>
       <tbody>
         <row>
-          <!-- <entry colsep="0"><w:p>Version</w:p></entry> -->
-          <entry><w:p>Version</w:p></entry>
-          <entry align="center" namest="c2" nameend="c3"><w:p>Adoption Trends</w:p></entry>
+          <entry>
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="008E38E2">
+              <w:r w:rsidRPr="00493067">
+                <w:t>Version</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry align="center" namest="c2" nameend="c3">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="center"/>
+                <w:cnfStyle w:val="100000000000" w:firstRow="1" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+              <w:r w:rsidRPr="00493067">
+                <w:t>Adoption Trends</w:t>
+              </w:r>
+            </w:p>
+          </entry>
         </row>
         <row>
-          <entry><w:p>12.x</w:p></entry>
-          <entry align="right" colsep="0"><w:p>66.3%</w:p></entry>
-          <entry align="right"><w:p/></entry>
+          <entry>
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="008E38E2">
+              <w:r w:rsidRPr="00493067">
+                <w:t>12.x</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry colsep="0" align="right">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="right"/>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+              <w:r w:rsidRPr="00493067">
+                <w:t>66.3%</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry align="right">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="right"/>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+            </w:p>
+          </entry>
         </row>
         <row>
-          <entry><w:p>11.x</w:p></entry>
-          <entry align="right" colsep="0"><w:p>23.5%</w:p></entry>
-          <entry align="right"><w:p/></entry>
+          <entry>
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="008E38E2">
+              <w:r w:rsidRPr="00493067">
+                <w:t>11.x</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry colsep="0" align="right">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="right"/>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+              <w:r w:rsidRPr="00493067">
+                <w:t>23.5%</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry align="right">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="right"/>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+            </w:p>
+          </entry>
         </row>
         <row>
-          <entry><w:p>10.x</w:p></entry>
-          <entry align="right" colsep="0"><w:p>4.8%</w:p></entry>
-          <entry align="right"><w:p/></entry>
+          <entry>
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="008E38E2">
+              <w:r w:rsidRPr="00493067">
+                <w:t>10.x</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry colsep="0" align="right">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="right"/>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+              <w:r w:rsidRPr="00493067">
+                <w:t>4.8%</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry align="right">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="right"/>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+            </w:p>
+          </entry>
         </row>
         <row>
-          <entry><w:p>9.x</w:p></entry>
-          <entry align="right" colsep="0"><w:p>4.5%</w:p></entry>
-          <entry align="right"><w:p/></entry>
+          <entry>
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="008E38E2">
+              <w:r w:rsidRPr="00493067">
+                <w:t>9.x</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry colsep="0" align="right">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="right"/>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+              <w:r w:rsidRPr="00493067">
+                <w:t>4.5%</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry align="right">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="right"/>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+            </w:p>
+          </entry>
         </row>
         <row>
-          <entry><w:p>8.x</w:p></entry>
-          <entry align="right" colsep="0"><w:p>0.1%</w:p></entry>
-          <entry align="right"><w:p/></entry>
+          <entry>
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="008E38E2">
+              <w:r w:rsidRPr="00493067">
+                <w:t>8.x</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry colsep="0" align="right">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="right"/>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+              <w:r w:rsidRPr="00493067">
+                <w:t>0.1%</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry align="right">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="right"/>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+            </w:p>
+          </entry>
         </row>
         <row>
-          <entry><w:p>7.x</w:p></entry>
-          <entry align="right" colsep="0"><w:p>0.2%</w:p></entry>
-          <entry align="right"><w:p/></entry>
+          <entry>
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="008E38E2">
+              <w:r w:rsidRPr="00493067">
+                <w:t>7.x</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry colsep="0" align="right">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="right"/>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+              <w:r w:rsidRPr="00493067">
+                <w:t>0.2%</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry align="right">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="right"/>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+            </w:p>
+          </entry>
         </row>
         <row>
-          <entry><w:p>6.x</w:p></entry>
-          <entry align="right" colsep="0"><w:p>0.4%</w:p></entry>
-          <entry align="right"><w:p/></entry>
+          <entry>
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="008E38E2">
+              <w:r w:rsidRPr="00493067">
+                <w:t>6.x</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry colsep="0" align="right">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="right"/>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+              <w:r w:rsidRPr="00493067">
+                <w:t>0.4%</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry align="right">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="right"/>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+            </w:p>
+          </entry>
         </row>
         <row>
-          <entry><w:p>5.x</w:p></entry>
-          <entry align="right" colsep="0"><w:p>0.2%</w:p></entry>
-          <entry align="right"><w:p/></entry>
+          <entry>
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="008E38E2">
+              <w:r w:rsidRPr="00493067">
+                <w:t>5.x</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry colsep="0" align="right">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="right"/>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+              <w:r w:rsidRPr="00493067">
+                <w:t>0.2%</w:t>
+              </w:r>
+            </w:p>
+          </entry>
+          <entry align="right">
+            <w:p w:rsidR="00ED5FDD" w:rsidRPr="00493067" w:rsidRDefault="00ED5FDD" w:rsidP="00ED5FDD">
+              <w:pPr>
+                <w:jc w:val="right"/>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+              </w:pPr>
+            </w:p>
+          </entry>
         </row>
       </tbody>
     </tgroup>
@@ -69,704 +302,3945 @@
       <thead>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>Device</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="100000000000" w:firstRow="1" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>Device Usage</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="100000000000" w:firstRow="1" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>12.X</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="100000000000" w:firstRow="1" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>11.X</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="100000000000" w:firstRow="1" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>10.X</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="100000000000" w:firstRow="1" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>9.X</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="100000000000" w:firstRow="1" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>8.X</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="100000000000" w:firstRow="1" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>7.X</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="100000000000" w:firstRow="1" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>6.X</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="100000000000" w:firstRow="1" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>5.X</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="100000000000" w:firstRow="1" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>4.X</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
       </thead>
       <tbody>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad Air 2</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>18.7%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>63.3%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>29.2%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>7.6%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad Air</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>16.6%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>69.6%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>23.4%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>4.3%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>2.5%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.1%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad Mini 2</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>13.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>66.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>32.5%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>1.5%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad 5</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>12.2%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>86.7%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>13.3%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad 2G</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>7.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>95.3%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>2.8%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>1.7%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.2%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad Mini</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>5.9%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>98.8%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>1.2%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad 6</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>5.2%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>78.9%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>21.1%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad 4G</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>4.6%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>98.8%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>1.1%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.1%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad Mini 4</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>4.2%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>95.5%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>2.2%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>2.3%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad+ Pro 2</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>2.6%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>83.2%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>16.8%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad 3G</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>2.5%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>99.9%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.1%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:lastRenderedPageBreak/>
+                <w:t>iPad Mini 3</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>2.1%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>73.1%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>19.9%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>7.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad Pro 2</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>1.7%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>100.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad+ Pro</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>1.3%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>71.9%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>28.1%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad Pro</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>1.1%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>97.7%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.3%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>2.1%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad 1G</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.6%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>100.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad Pro 3</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.4%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>100.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>iPad+ Pro 3</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.2%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>100.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000000000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="0" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
         <row>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>Overall</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t xml:space="preserve"> </w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>58.7%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>17.6%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>7.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>15.5%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.4%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.1%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.6%</w:t>
+              </w:r>
+            </w:p>
           </entry>
           <entry>
-            <w:p/>
+            <w:p w:rsidR="001D1F6B" w:rsidRPr="001D1F6B" w:rsidRDefault="001D1F6B" w:rsidP="00804328">
+              <w:pPr>
+                <w:cnfStyle w:val="000000100000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0"
+                            w:oddVBand="0" w:evenVBand="0" w:oddHBand="1" w:evenHBand="0" w:firstRowFirstColumn="0"
+                            w:firstRowLastColumn="0" w:lastRowFirstColumn="0" w:lastRowLastColumn="0"/>
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="001D1F6B">
+                <w:rPr>
+                  <w:lang w:val="en-US"/>
+                </w:rPr>
+                <w:t>0.0%</w:t>
+              </w:r>
+            </w:p>
           </entry>
         </row>
       </tbody>

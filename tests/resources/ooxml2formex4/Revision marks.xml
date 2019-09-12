@@ -90,7 +90,7 @@
           </w:p>
         </CELL>
       </ROW>
-      <?change-start change-id="ct0" creator="Laurent Laporte" date="2018-11-21T18:08:00Z" type="row:insertion"?>
+      <?change-start type="row:insertion" change-id="ct0" creator="Laurent Laporte" date="2018-11-21T18:08:00Z"?>
       <ROW>
         <CELL COL="1" ROWSPAN="2">
           <w:p w:rsidR="00697A18" w:rsidRDefault="00697A18" w:rsidP="00F10B0E">
@@ -149,8 +149,8 @@
           </w:p>
         </CELL>
       </ROW>
-      <?change-end change-id="ct0" type="row:insertion"?>
-      <?change-start change-id="ct10" creator="Laurent Laporte" date="2018-11-21T18:09:00Z" type="row:insertion"?>
+      <?change-end type="row:insertion" change-id="ct0"?>
+      <?change-start type="row:insertion" change-id="ct10" creator="Laurent Laporte" date="2018-11-21T18:09:00Z"?>
       <ROW>
         <CELL COL="2">
           <w:p w:rsidR="00697A18" w:rsidRDefault="00697A18" w:rsidP="00F10B0E">
@@ -181,7 +181,7 @@
           </w:p>
         </CELL>
       </ROW>
-      <?change-end change-id="ct10" type="row:insertion"?>
+      <?change-end type="row:insertion" change-id="ct10"?>
     </CORPUS>
   </TBL>
 </expected>

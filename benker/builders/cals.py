@@ -15,6 +15,7 @@ Specifications and examples:
   `CALS Table Model <https://en.wikipedia.org/wiki/CALS_Table_Model>`_
 
 """
+import collections
 import itertools
 import re
 
@@ -158,7 +159,7 @@ class CalsBuilder(BaseBuilder):
         self._table_colsep = u"0"
         self._table_rowsep = u"0"
         table_styles = table.styles
-        attrs = {'frame': get_frame_attr(table_styles), }
+        attrs = {'frame': get_frame_attr(table_styles)}
         if not self.table_in_tgroup:
             self._table_colsep = attrs['colsep'] = get_colsep_attr(table_styles) or "0"
             self._table_rowsep = attrs['rowsep'] = get_rowsep_attr(table_styles) or "0"
@@ -311,7 +312,7 @@ class CalsBuilder(BaseBuilder):
         if 'x-ins' in row_styles:
             # <?change-start change-id="ct140446841083680" type="row:insertion"
             #   creator="Anita BARREL" date="2017-11-15T11:46:00"?>
-            rev_attrs = {'type': 'row:insertion'}
+            rev_attrs = collections.OrderedDict({'type': 'row:insertion'})
             if 'x-ins-id' in row_styles:
                 rev_attrs['change-id'] = "ct{0}".format(row_styles['x-ins-id'])
             if 'x-ins-author' in row_styles:
@@ -325,7 +326,7 @@ class CalsBuilder(BaseBuilder):
 
         if 'x-ins' in row_styles:
             # <?change-end change-id="ct139821811327752" type="row:insertion"?>
-            rev_attrs = {'type': 'row:insertion'}
+            rev_attrs = collections.OrderedDict({'type': 'row:insertion'})
             if 'x-ins-id' in row_styles:
                 rev_attrs['change-id'] = "ct{0}".format(row_styles['x-ins-id'])
             rev_pi = revision_mark('change-end', rev_attrs)

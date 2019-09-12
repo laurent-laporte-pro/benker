@@ -3,6 +3,8 @@ import zipfile
 
 import py.path  # type hints
 import pytest
+import xmldiff.main
+from lxml import etree
 
 from benker.converters.ooxml2cals import convert_ooxml2cals
 
@@ -52,6 +54,16 @@ def test_convert_ooxml2cals(input_name, expected_name, tmpdir):
     src_xml = RESOURCES_DIR.join(input_name)  # type: py.path.local
     dst_xml = tmpdir.join(src_xml.basename)
     convert_ooxml2cals(str(src_xml), str(dst_xml), width_unit='pt')
+
+    # - Compare with expected
+    xml_parser = etree.XMLParser(remove_blank_text=True)
     expected_xml = RESOURCES_DIR.join(expected_name)  # type: py.path.local
-    # shutil.copy(str(dst_xml), str(expected_xml))
-    CalsComparator().compare_files(str(dst_xml), str(expected_xml))
+    expected_tree = etree.parse(str(expected_xml), parser=xml_parser)
+    expected_elements = expected_tree.xpath("//table")
+    dst_tree = etree.parse(str(dst_xml), parser=xml_parser)
+    dst_elements = dst_tree.xpath("//table")
+    assert len(expected_elements) == len(dst_elements)
+
+    for dst_elem, expected_elem in zip(dst_elements, expected_elements):
+        diff_list = xmldiff.main.diff_trees(dst_elem, expected_elem)
+        assert not diff_list
