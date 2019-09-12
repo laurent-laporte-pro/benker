@@ -23,6 +23,7 @@ Specifications and examples:
   `TBL <https://publications.europa.eu/documents/3938058/5910419/formex_manual_on_screen_version.html#TBL>`_
 
 """
+import collections
 
 from lxml import etree
 
@@ -245,7 +246,7 @@ class Formex4Builder(BaseBuilder):
         if 'x-ins' in row_styles:
             # <?change-start change-id="ct140446841083680" type="row:insertion"
             #   creator="Anita BARREL" date="2017-11-15T11:46:00"?>
-            rev_attrs = {'type': 'row:insertion'}
+            rev_attrs = collections.OrderedDict({'type': 'row:insertion'})
             if 'x-ins-id' in row_styles:
                 rev_attrs['change-id'] = "ct{0}".format(row_styles['x-ins-id'])
             if 'x-ins-author' in row_styles:
@@ -259,7 +260,7 @@ class Formex4Builder(BaseBuilder):
 
         if 'x-ins' in row_styles:
             # <?change-end change-id="ct139821811327752" type="row:insertion"?>
-            rev_attrs = {'type': 'row:insertion'}
+            rev_attrs = collections.OrderedDict({'type': 'row:insertion'})
             if 'x-ins-id' in row_styles:
                 rev_attrs['change-id'] = "ct{0}".format(row_styles['x-ins-id'])
             rev_pi = revision_mark('change-end', rev_attrs)
