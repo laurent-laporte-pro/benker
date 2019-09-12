@@ -54,12 +54,16 @@ class Formex4Builder(BaseBuilder):
     according to the `TBL Schema <http://formex.publications.europa.eu/formex-4/manual/manual.htm#TBL>`_
     """
 
-    def __init__(self,
-                 use_cals=False,
-                 cals_ns=CALS_NS,
-                 cals_prefix=CALS_PREFIX,
-                 width_unit="mm",
-                 **options):
+    # fmt: off
+    def __init__(
+        self,
+        use_cals=False,
+        cals_ns=CALS_NS,
+        cals_prefix=CALS_PREFIX,
+        width_unit="mm",
+        **options
+    ):
+        # fmt: on
         """
         Initialize the builder.
 
@@ -350,10 +354,14 @@ class Formex4Builder(BaseBuilder):
             qname = self.get_cals_qname
             if 'valign' in row_styles:
                 # same values as CSS/Properties/vertical-align
-                attrs[qname('valign')] = {'top': 'top',
-                                          'middle': 'middle',
-                                          'bottom': 'bottom',
-                                          'baseline': 'bottom'}[row_styles['valign']]
+                # fmt: off
+                attrs[qname('valign')] = {
+                    'top': 'top',
+                    'middle': 'middle',
+                    'bottom': 'bottom',
+                    'baseline': 'bottom',
+                }[row_styles['valign']]
+                # fmt: on
 
         if 'x-ins' in row_styles:
             # <?change-start change-id="ct140446841083680" type="row:insertion"
@@ -457,17 +465,21 @@ class Formex4Builder(BaseBuilder):
             if 'vertical-align' in cell_styles:
                 # same values as CSS/Properties/vertical-align
                 # 'w-both' is an extension of OoxmlParser
-                attrs[qname('valign')] = {'top': u'top',
-                                          'middle': u'middle',
-                                          'bottom': u'bottom',
-                                          'baseline': u'bottom',
-                                          'w-both': u'bottom'}[cell_styles['vertical-align']]
+                attrs[qname('valign')] = {
+                    'top': u'top',
+                    'middle': u'middle',
+                    'bottom': u'bottom',
+                    'baseline': u'bottom',
+                    'w-both': u'bottom',
+                }[cell_styles['vertical-align']]
             if 'align' in cell_styles:
                 # same values as CSS/Properties/text-align
-                attrs[qname('align')] = {'left': u'left',
-                                         'center': u'center',
-                                         'right': u'right',
-                                         'justify': u'justify'}[cell_styles['align']]
+                attrs[qname('align')] = {
+                    'left': u'left',
+                    'center': u'center',
+                    'right': u'right',
+                    'justify': u'justify',
+                }[cell_styles['align']]
             if cell.width > 1:
                 attrs[qname("namest")] = u"c{0}".format(cell.box.min.x)
                 attrs[qname("nameend")] = u"c{0}".format(cell.box.max.x)
@@ -475,7 +487,6 @@ class Formex4Builder(BaseBuilder):
                 attrs[qname("morerows")] = str(cell.height - 1)
             if 'background-color' in cell_styles:
                 attrs[qname('bgcolor')] = cell_styles['background-color']
-
 
         cell_elem = etree.SubElement(row_elem, u"CELL", attrib=attrs)
         text = text_type(cell)

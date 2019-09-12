@@ -304,10 +304,14 @@ class CalsBuilder(BaseBuilder):
         attrs = {}
         if 'valign' in row_styles:
             # same values as CSS/Properties/vertical-align
-            attrs['valign'] = {'top': 'top',
-                               'middle': 'middle',
-                               'bottom': 'bottom',
-                               'baseline': 'bottom'}[row_styles['valign']]
+            # fmt: off
+            attrs['valign'] = {
+                'top': 'top',
+                'middle': 'middle',
+                'bottom': 'bottom',
+                'baseline': 'bottom',
+            }[row_styles['valign']]
+            # fmt: on
 
         if 'x-ins' in row_styles:
             # <?change-start change-id="ct140446841083680" type="row:insertion"
@@ -387,17 +391,23 @@ class CalsBuilder(BaseBuilder):
         if 'vertical-align' in cell_styles:
             # same values as CSS/Properties/vertical-align
             # 'w-both' is an extension of OoxmlParser
-            attrs['valign'] = {'top': u'top',
-                               'middle': u'middle',
-                               'bottom': u'bottom',
-                               'baseline': u'bottom',
-                               'w-both': u'bottom'}[cell_styles['vertical-align']]
+            attrs['valign'] = {
+                'top': u'top',
+                'middle': u'middle',
+                'bottom': u'bottom',
+                'baseline': u'bottom',
+                'w-both': u'bottom',
+            }[cell_styles['vertical-align']]
         if 'align' in cell_styles:
             # same values as CSS/Properties/text-align
-            attrs['align'] = {'left': u'left',
-                              'center': u'center',
-                              'right': u'right',
-                              'justify': u'justify'}[cell_styles['align']]
+            # fmt: off
+            attrs['align'] = {
+                'left': u'left',
+                'center': u'center',
+                'right': u'right',
+                'justify': u'justify',
+            }[cell_styles['align']]
+            # fmt: on
         if cell.width > 1:
             attrs[u"namest"] = u"c{0}".format(cell.box.min.x)
             attrs[u"nameend"] = u"c{0}".format(cell.box.max.x)
