@@ -761,32 +761,8 @@ def _get_style_borders(w_styles, style_id):
 
 class OoxmlParser(BaseParser):
     """
-    Office Open XML to CALS tables parsers.
+    Office Open XML parser.
     """
-
-    class _State(object):
-        """
-        Parsing state for the converter (internal usage).
-        """
-
-        def __init__(self):
-            self.col_pos = 0
-            self.col = None
-            self.row_pos = 0
-            self.row = None
-            self.table = None
-
-        reset = __init__
-
-        def next_col(self):
-            self.col_pos += 1
-            self.col = None
-
-        def next_row(self):
-            self.col_pos = 0
-            self.col = None
-            self.row_pos += 1
-            self.row = None
 
     def __init__(self, builder, styles_path=None, **options):
         """
@@ -805,7 +781,6 @@ class OoxmlParser(BaseParser):
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
         """
-        self._state = self._State()
         self._w_styles = None
         self.styles_path = styles_path
         super(OoxmlParser, self).__init__(builder, **options)
@@ -877,8 +852,7 @@ class OoxmlParser(BaseParser):
             else:
                 if elem_tag == w('tr'):
                     # add missing entries
-                    for _ in range(state.col_pos, len(state.table.cols)):
-                        state.row.insert_cell(None, nature=state.row.nature)
+                    state.table.fill_missing(None)
 
         return state.table
 
