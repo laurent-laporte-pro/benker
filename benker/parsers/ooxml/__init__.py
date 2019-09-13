@@ -980,7 +980,7 @@ class OoxmlParser(BaseParser):
         w_tbl_header = value_of(w_tr, "w:trPr/w:tblHeader")
         if w_tbl_header is not None:
             w_tbl_header = value_of(w_tr, "w:trPr/w:tblHeader/@w:val", default=u"true")
-        nature = {"true": u"head", "false": u"body", None: u"body"}[w_tbl_header]
+        nature = {"true": u"header", "false": u"body", None: u"body"}[w_tbl_header]
         state = self._state
         state.row = state.table.rows[state.row_pos]
         state.row.nature = nature
