@@ -35,12 +35,8 @@ When building the internal table object, this builder will:
 
 from lxml import etree
 
-from benker.parsers.base_parser import BaseParser
+from benker.parsers.base_parser import BaseParser, Namespace
 from benker.parsers.lxml_iterwalk import iterwalk
-from benker.schemas import CALS_NS
-from benker.schemas import CALS_PREFIX
-from benker.schemas import FORMEX_NS
-from benker.schemas import FORMEX_PREFIX
 from benker.table import Table
 
 #: Default value for a solid border (for @cals:frame/@cals:colsep/@cals:rowsep, ...)
@@ -68,6 +64,16 @@ def get_frame_styles(frame):
     return styles
 
 
+def make_prefix_ns(prefix, ns):
+    # type: (str or None, str or None) -> (str or None, str or None)
+    ns = ns or None
+    prefix = prefix or None
+    if prefix and not ns:
+        raise ValueError("prefix '{prefix}' defined without namespace"
+                         .format(prefix=prefix))
+    return prefix, ns
+
+
 class Formex4Parser(BaseParser):
     """
     Formex 4 tables parser
@@ -76,10 +82,10 @@ class Formex4Parser(BaseParser):
     def __init__(
         self,
         builder,
-        formex_ns=FORMEX_NS,
-        formex_prefix=FORMEX_PREFIX,
-        cals_ns=CALS_NS,
-        cals_prefix=CALS_PREFIX,
+        formex_prefix=None,
+        formex_ns=None,
+        cals_prefix=None,
+        cals_ns=None,
         **options,
     ):
         """
@@ -91,60 +97,52 @@ class Formex4Parser(BaseParser):
 
         :param str formex_ns:
             Namespace to use for Formex elements and attributes.
-            Set "" (empty) if you don't use namespace.
+            Set ``None`` (or "") if you don't use namespace.
 
         :param str formex_prefix:
             Namespace prefix to use for Formex elements and attributes.
+            If a prefix is defined, a namespace must also be defined.
 
         :param str cals_ns:
             Namespace to use for CALS-like elements and attributes.
-            Set "" (empty) if you don't use namespace.
+            Set ``None`` (or "") if you don't use namespace.
 
         :param str cals_prefix:
             Namespace prefix to use for CALS-like elements and attributes.
+            If a prefix is defined, a namespace must also be defined.
 
         :keyword str options: Extra conversion options.
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
         """
-        self.formex_ns = formex_ns
-        self.formex_prefix = formex_prefix
-        self.cals_ns = cals_ns
-        self.cals_prefix = cals_prefix
+        self._ns_map = {}
+        self.formex_ns = self._register_namespace(formex_prefix, formex_ns)
+        self.cals_ns = self._register_namespace(cals_prefix, cals_ns)
         super(Formex4Parser, self).__init__(builder, **options)
+
+    def _register_namespace(self, prefix, ns):
+        ns = ns or None
+        prefix = prefix or None
+        if prefix and not ns:
+            raise ValueError("prefix '{prefix}' defined without namespace"
+                             .format(prefix=prefix))
+        if prefix in self._ns_map and self._ns_map[prefix] != ns:
+            if prefix:
+                fmt = "prefix '{prefix}' is already mapped to '{ns}'"
+            else:
+                fmt = "default prefix is already mapped to '{ns}'"
+            raise ValueError(fmt.format(prefix=prefix, ns=self._ns_map[prefix]))
+        if ns:
+            self._ns_map[prefix] = ns
+        return Namespace(prefix, ns)
 
     @property
     def ns_map(self):
-        map = {}
-        if self.formex_prefix and self.formex_ns:
-            map[self.formex_prefix] = self.formex_ns
-        if self.cals_prefix and self.cals_ns:
-            map[self.cals_prefix] = self.cals_ns
-        return map
-
-    def get_formex_qname(self, name):
-        if self.formex_prefix and self.formex_ns:
-            return etree.QName(self.formex_ns, name)
-        return name
-
-    def get_cals_qname(self, name):
-        if self.cals_prefix and self.cals_ns:
-            return etree.QName(self.cals_ns, name)
-        return name
-
-    def get_formex_name(self, name):
-        if self.formex_prefix and self.formex_ns:
-            return "{prefix}:{name}".format(prefix=self.formex_prefix, name=name)
-        return name
-
-    def get_cals_name(self, name):
-        if self.cals_prefix and self.cals_ns:
-            return "{prefix}:{name}".format(prefix=self.cals_prefix, name=name)
-        return name
+        return self._ns_map
 
     def transform_tables(self, tree):
-        name = self.get_formex_name
-        for node in tree.xpath("//{TBL}".format(TBL=name("TBL")), namespaces=self.ns_map):
+        name = self.formex_ns.get_name
+        for node in tree.xpath("//{CORPUS}".format(CORPUS=name("CORPUS")), namespaces=self.ns_map):
             table = self.parse_table(node)
             table_elem = self.builder.generate_table_tree(table)
             parent = node.getparent()
@@ -153,31 +151,27 @@ class Formex4Parser(BaseParser):
             table_elem.tail = node.tail
             parent.remove(node)
 
-    def parse_table(self, w_tbl):
+    def parse_table(self, fmx_corpus):
         """
-        Convert a Office Open XML ``<w:tbl>`` into CALS ``<table>``
+        Convert a ``<CORPUS>`` Formex element into table object.
 
-        :type  w_tbl: etree._Element
-        :param w_tbl: Office Open XML element.
+        :type  fmx_corpus: etree._Element
+        :param fmx_corpus: Formex element.
 
         :rtype: etree._Element
-        :return: CALS element.
+        :return: Table.
         """
         state = self._state
         state.reset()
 
         # -- Formex elements
-        fmx = self.get_formex_qname
-
-        TBL = fmx("TBL")
-        TITLE = fmx("TITLE")
-        GR_SEQ = fmx("GR.SEQ")
-        GR_NOTES = fmx("GR.NOTES")
+        fmx = self.formex_ns.get_qname
 
         # CORPUS := (ROW | BLK]+
         CORPUS = fmx("CORPUS")
         ROW = fmx("ROW")
         CELL = fmx("CELL")
+        MARGIN = fmx("MARGIN")
 
         # BLK := (TI.BLK, STI.BLK*)*, (ROW | BLK]*
         BLK = fmx("BLK")
@@ -185,17 +179,17 @@ class Formex4Parser(BaseParser):
         STI_BLK = fmx("STI.BLK")  # spanned cell
 
         # -- CLAS-like elements
-        cals = self.get_cals_qname
+        cals = self.cals_ns.get_qname
 
         colspec = cals("colspec")
 
-        elements = {TBL, TITLE, GR_SEQ, GR_NOTES, CORPUS, ROW, CELL, BLK, TI_BLK, STI_BLK, colspec}
-        context = iterwalk(w_tbl, events=("start", "end"), tag=elements)
+        elements = {CORPUS, ROW, CELL, MARGIN, BLK, TI_BLK, STI_BLK, colspec}
+        context = iterwalk(fmx_corpus, events=("start", "end"), tag=elements)
 
         depth = 0
         for action, elem in context:
             elem_tag = elem.tag
-            if elem_tag == TBL:
+            if elem_tag == CORPUS:
                 if action == "start":
                     depth += 1
                 else:
@@ -206,23 +200,8 @@ class Formex4Parser(BaseParser):
                 # It will be handled separately in another call to convert_tbl()
                 continue
             if action == "start":
-                if elem_tag == TBL:
-                    self.parse_tbl(elem)
-
-                elif elem_tag == TITLE:
-                    state.next_row()
-                    self.parse_title(elem)
-
-                elif elem_tag == GR_SEQ:
-                    state.next_row()
-                    self.parse_gr_seq(elem)
-
-                elif elem_tag == GR_NOTES:
-                    state.next_row()
-                    self.parse_gr_notes(elem)
-
-                elif elem_tag == CORPUS:
-                    # only a container
+                if elem_tag == CORPUS:
+                    self.parse_corpus(elem)
                     pass
 
                 elif elem_tag == BLK:
@@ -241,6 +220,9 @@ class Formex4Parser(BaseParser):
                     state.next_row()
                     self.parse_row(elem)
 
+                elif elem_tag == MARGIN:
+                    raise NotImplementedError(elem_tag)
+
                 elif elem_tag == CELL:
                     state.next_col()
                     self.parse_cell(elem)
@@ -252,45 +234,19 @@ class Formex4Parser(BaseParser):
                 else:
                     raise NotImplementedError(elem_tag)
             else:
-                if elem_tag in {TITLE, GR_SEQ, GR_NOTES, TI_BLK, STI_BLK, ROW}:
+                if elem_tag in {TI_BLK, STI_BLK, ROW}:
                     # add missing entries
                     state.table.fill_missing("???")
 
         return state.table
 
-    def parse_tbl(self, tbl_elem):
-        """
-        Parse a ``TBL`` element
-
-        :type  tbl_elem: etree._Element
-        :param tbl_elem: table
-        """
-        fmx = self.get_formex_qname
-        cals = self.get_cals_qname
-
-        styles = {}
-
-        # -- attribute @fmx:NO.SEQ => ignored (computed)
-
-        # -- attribute @fmx:CLASS
-        cls = tbl_elem.attrib.get(fmx("CLASS"))
-        if cls:
-            styles["tabstyle"] = cls
-
-        # -- attribute @fmx:COLS => ignored (*table.cols*)
-
-        # -- attribute @fmx:PAGE.SIZE
-        page_size = tbl_elem.attrib.get(fmx("PAGE.SIZE"))
-        page_size_map = {
-            "DOUBLE.LANDSCAPE": "landscape",
-            "DOUBLE.PORTRAIT": "portrait",
-            "SINGLE.LANDSCAPE": "landscape",
-            "SINGLE.PORTRAIT": "portrait",
-        }
-        if page_size in page_size_map:
-            styles["x-sect-orient"] = page_size_map[page_size]
+    def parse_corpus(self, fmx_corpus):
+        # type: (etree._Element) -> None
+        tbl_elem = fmx_corpus.getparent()
+        styles = self.parse_tbl_styles(tbl_elem)
 
         # support for CALS-like elements and attributes
+        cals = self.cals_ns.get_qname
 
         # -- attribute @cals:frame
         frame = tbl_elem.attrib.get(cals("frame"))
@@ -329,43 +285,40 @@ class Formex4Parser(BaseParser):
         self._state.table = table
         return self._state  # mainly for unit test
 
-    def parse_title(self, title_elem, nature="title"):
+    def parse_tbl_styles(self, tbl_elem):
         """
-        Parse a ``TABLE``  element, considering it like a row of a single cell.
+        Parse a ``TBL`` element and extract the styles
 
-        :type  title_elem: etree._Element
-        :param title_elem: table title
+        :type  tbl_elem: etree._Element
+        :param tbl_elem: table
 
-        :type  nature: str
-        :param nature: nature of the row
+        :return: dictionary of styles
         """
-        fmx = self.get_formex_qname
-        fmx_name = self.get_formex_name
+        fmx = self.formex_ns.get_qname
 
-        # -- find the TBL ancestor to get tht @fmx:COLS attribute
-        xpath = "ancestor::{TBL}[1]".format(TBL=fmx_name("TBL"))
-        tbl_elem = title_elem.xpath(xpath, namespaces=self.ns_map)[0]
-        cols = int(tbl_elem.attrib.get(fmx("COLS"), "0"))
+        styles = {}
 
-        # -- Create a ROW
-        state = self._state
-        state.row = state.table.rows[state.row_pos]
-        state.row.nature = nature
+        # -- attribute @fmx:NO.SEQ => ignored (computed)
 
-        # -- Insert a single CELL
-        content = title_elem.getchildren()
-        state.row.insert_cell(content, width=cols)
+        # -- attribute @fmx:CLASS
+        cls = tbl_elem.attrib.get(fmx("CLASS"))
+        if cls:
+            styles["tabstyle"] = cls
 
-        return state  # mainly for unit test
+        # -- attribute @fmx:COLS => ignored (*table.cols*)
 
-    def parse_gr_seq(self, gr_seq_elem):
-        """
-        Parse a ``GR.SEQ`` element, considering it like a row of a single cell.
+        # -- attribute @fmx:PAGE.SIZE
+        page_size = tbl_elem.attrib.get(fmx("PAGE.SIZE"))
+        page_size_map = {
+            "DOUBLE.LANDSCAPE": "landscape",
+            "DOUBLE.PORTRAIT": "portrait",
+            "SINGLE.LANDSCAPE": "landscape",
+            "SINGLE.PORTRAIT": "portrait",
+        }
+        if page_size in page_size_map:
+            styles["x-sect-orient"] = page_size_map[page_size]
 
-        :type  gr_seq_elem: etree._Element
-        :param gr_seq_elem: structured text blocks (``GR.SEQ``)
-        """
-        return self.parse_title(gr_seq_elem, nature="text-block")
+        return styles
 
     def parse_gr_notes(self, gr_notes_elem):
         """
@@ -406,8 +359,8 @@ class Formex4Parser(BaseParser):
         :type  nature: str
         :param nature: nature of the row
         """
-        fmx = self.get_formex_qname
-        cals = self.get_cals_qname
+        fmx = self.formex_ns.get_qname
+        cals = self.cals_ns.get_qname
 
         # -- attribute @fmx:MARGIN => Not implemented
 
@@ -430,8 +383,8 @@ class Formex4Parser(BaseParser):
         :type  cell_elem: etree._Element
         :param cell_elem: table cell
         """
-        fmx = self.get_formex_qname
-        cals = self.get_cals_qname
+        fmx = self.formex_ns.get_qname
+        cals = self.cals_ns.get_qname
 
         # -- attribute @fmx:COL => not used
 

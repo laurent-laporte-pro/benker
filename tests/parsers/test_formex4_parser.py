@@ -2,6 +2,7 @@
 from __future__ import print_function
 
 import textwrap
+import unittest
 
 import pytest
 from lxml import etree
@@ -12,77 +13,31 @@ from benker.parsers.formex4 import BORDER_NONE
 from benker.parsers.formex4 import BORDER_SOLID
 from benker.parsers.formex4 import Formex4Parser
 from benker.parsers.formex4 import get_frame_styles
-from benker.schemas import CALS_NS
-from benker.schemas import CALS_PREFIX
-from benker.schemas import FORMEX_NS
+from benker.schemas import FORMEX_NS, CALS_NS, CALS_PREFIX
 from benker.schemas import FORMEX_PREFIX
 
 
-def test_ns_map__default():
-    builder = BaseBuilder()
-    parser = Formex4Parser(builder)
-    assert parser.ns_map == {FORMEX_PREFIX: FORMEX_NS, CALS_PREFIX: CALS_NS}
+class TestFormex4Parser(unittest.TestCase):
+    def setUp(self):
+        self.builder = BaseBuilder()
 
+    def test_builder_attached(self):
+        parser = Formex4Parser(self.builder)
+        assert parser.builder is self.builder
 
-@pytest.mark.parametrize("formex_prefix", [None, "formex"])
-@pytest.mark.parametrize("formex_ns", [None, "http://server.com/formex"])
-@pytest.mark.parametrize("cals_prefix", [None, "cals"])
-@pytest.mark.parametrize("cals_ns", [None, "http://server.com/cals"])
-def test_ns_map(formex_prefix, formex_ns, cals_prefix, cals_ns):
-    expected = {}
-    if formex_prefix and formex_ns:
-        expected[formex_prefix] = formex_ns
-    if cals_prefix and cals_ns:
-        expected[cals_prefix] = cals_ns
-    builder = BaseBuilder()
-    parser = Formex4Parser(
-        builder, formex_ns=formex_ns, formex_prefix=formex_prefix, cals_ns=cals_ns, cals_prefix=cals_prefix
-    )
-    assert expected == parser.ns_map
+    def test_ns_map(self):
+        parser = Formex4Parser(self.builder)
+        assert parser.ns_map == {}
+        parser = Formex4Parser(self.builder, formex_ns="http://opoce", cals_prefix=CALS_PREFIX, cals_ns=CALS_NS)
+        assert parser.ns_map == {None: "http://opoce", CALS_PREFIX: CALS_NS}
+        parser = Formex4Parser(self.builder, formex_prefix="fmx", formex_ns="http://opoce")
+        assert parser.ns_map == {"fmx": "http://opoce"}
 
-
-@pytest.mark.parametrize("formex_prefix", [None, "formex"])
-@pytest.mark.parametrize("formex_ns", [None, "http://server.com/formex"])
-def test_get_formex_qname(formex_prefix, formex_ns):
-    name = "dummy"
-    prefix = "{" + formex_ns + "}" if formex_prefix and formex_ns else ""
-    expected = prefix + name
-    builder = BaseBuilder()
-    parser = Formex4Parser(builder, formex_ns=formex_ns, formex_prefix=formex_prefix)
-    assert expected == parser.get_formex_qname(name)
-
-
-@pytest.mark.parametrize("cals_prefix", [None, "cals"])
-@pytest.mark.parametrize("cals_ns", [None, "http://server.com/cals"])
-def test_get_cals_qname(cals_prefix, cals_ns):
-    name = "dummy"
-    prefix = "{" + cals_ns + "}" if cals_prefix and cals_ns else ""
-    expected = prefix + name
-    builder = BaseBuilder()
-    parser = Formex4Parser(builder, cals_ns=cals_ns, cals_prefix=cals_prefix)
-    assert expected == parser.get_cals_qname(name)
-
-
-@pytest.mark.parametrize("formex_prefix", [None, "formex"])
-@pytest.mark.parametrize("formex_ns", [None, "http://server.com/formex"])
-def test_get_formex_name(formex_prefix, formex_ns):
-    name = "dummy"
-    prefix = formex_prefix + ":" if formex_prefix and formex_ns else ""
-    expected = prefix + name
-    builder = BaseBuilder()
-    parser = Formex4Parser(builder, formex_ns=formex_ns, formex_prefix=formex_prefix)
-    assert expected == parser.get_formex_name(name)
-
-
-@pytest.mark.parametrize("cals_prefix", [None, "cals"])
-@pytest.mark.parametrize("cals_ns", [None, "http://server.com/cals"])
-def test_get_cals_name(cals_prefix, cals_ns):
-    name = "dummy"
-    prefix = cals_prefix + ":" if cals_prefix and cals_ns else ""
-    expected = prefix + name
-    builder = BaseBuilder()
-    parser = Formex4Parser(builder, cals_ns=cals_ns, cals_prefix=cals_prefix)
-    assert expected == parser.get_cals_name(name)
+    def test_invalid_ns_map(self):
+        with self.assertRaises(ValueError):
+            Formex4Parser(self.builder, formex_prefix="fmx")
+        with self.assertRaises(ValueError):
+            Formex4Parser(self.builder, cals_prefix="fmx")
 
 
 class StrBuilder(BaseBuilder):
