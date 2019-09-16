@@ -1,6 +1,4 @@
 # coding: utf-8
-from __future__ import print_function
-
 import textwrap
 import unittest
 
@@ -59,8 +57,8 @@ def test_transform_tables__no_namespace():
     parser = Formex4Parser(builder, formex_ns="")
     parser.transform_tables(tree)
     str_table = tree.xpath("//table")[0].text
-    print("str_table:")
-    print(str_table)
+    # print("str_table:")
+    # print(str_table)
     # fmt: off
     assert str_table == textwrap.dedent("""\
     +-----------+-----------+
@@ -83,8 +81,8 @@ def test_transform_tables__with_namespace():
     parser = Formex4Parser(builder, formex_prefix=FORMEX_PREFIX, formex_ns=FORMEX_NS)
     parser.transform_tables(tree)
     str_table = tree.xpath("//table")[0].text
-    print("str_table:")
-    print(str_table)
+    # print("str_table:")
+    # print(str_table)
     # fmt: off
     assert str_table == textwrap.dedent("""\
     +-----------+-----------+
@@ -229,11 +227,11 @@ def test_parse_tbl_corpus(attrib, styles):
     "attrib, styles, nature",
     [
         ({}, {}, "body"),
-        ({"TYPE": "ALIAS"}, {"rowstyle": "ALIAS"}, "header"),
-        ({"TYPE": "HEADER"}, {"rowstyle": "HEADER"}, "header"),
-        ({"TYPE": "NORMAL"}, {"rowstyle": "NORMAL"}, "body"),
-        ({"TYPE": "NOTCOL"}, {"rowstyle": "NOTCOL"}, "body"),
-        ({"TYPE": "TOTAL"}, {"rowstyle": "TOTAL"}, "footer"),
+        ({"TYPE": "ALIAS"}, {"rowstyle": "ROW-ALIAS"}, "header"),
+        ({"TYPE": "HEADER"}, {"rowstyle": "ROW-HEADER"}, "header"),
+        ({"TYPE": "NORMAL"}, {"rowstyle": "ROW-NORMAL"}, "body"),
+        ({"TYPE": "NOTCOL"}, {"rowstyle": "ROW-NOTCOL"}, "body"),
+        ({"TYPE": "TOTAL"}, {"rowstyle": "ROW-TOTAL"}, "footer"),
     ],
 )
 def test_parse_row(attrib, styles, nature):
@@ -252,18 +250,18 @@ def test_parse_row(attrib, styles, nature):
 @pytest.mark.parametrize(
     "attrib, styles, nature",
     [
-        ({}, {"rowstyle": "level2"}, "body"),
-        ({"TYPE": "ALIAS"}, {"rowstyle": "ALIAS-level2"}, "header"),
-        ({"TYPE": "HEADER"}, {"rowstyle": "HEADER-level2"}, "header"),
-        ({"TYPE": "NORMAL"}, {"rowstyle": "NORMAL-level2"}, "body"),
-        ({"TYPE": "NOTCOL"}, {"rowstyle": "NOTCOL-level2"}, "body"),
-        ({"TYPE": "TOTAL"}, {"rowstyle": "TOTAL-level2"}, "footer"),
+        ({}, {"rowstyle": "ROW-level2"}, "body"),
+        ({"TYPE": "ALIAS"}, {"rowstyle": "ROW-ALIAS-level2"}, "header"),
+        ({"TYPE": "HEADER"}, {"rowstyle": "ROW-HEADER-level2"}, "header"),
+        ({"TYPE": "NORMAL"}, {"rowstyle": "ROW-NORMAL-level2"}, "body"),
+        ({"TYPE": "NOTCOL"}, {"rowstyle": "ROW-NOTCOL-level2"}, "body"),
+        ({"TYPE": "TOTAL"}, {"rowstyle": "ROW-TOTAL-level2"}, "footer"),
     ],
 )
 def test_parse_row__in_blk_level2(attrib, styles, nature):
     E = ElementMaker()
     fmx_row = E.ROW(**attrib)
-    fmx_blk = E.BLK(E.BLK(fmx_row))
+    E.BLK(E.BLK(fmx_row))
     parser = Formex4Parser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
@@ -272,6 +270,99 @@ def test_parse_row__in_blk_level2(attrib, styles, nature):
     row = state.row
     assert row.styles == styles
     assert row.nature == nature
+
+
+def test_parse_row__ti_blk_level1():
+    fmx_blk = etree.Element("BLK")
+    fmx_ti_blk = etree.XML("""<TI.BLK COL.START="1" COL.END="2"><P>paragraph</P></TI.BLK>""")
+    fmx_blk.append(fmx_ti_blk)
+    parser = Formex4Parser(BaseBuilder())
+    state = parser.setup_table()
+    state.next_row()
+    state = parser.parse_ti_blk(fmx_ti_blk)
+    row = state.row
+    assert row.styles == {"rowstyle": "TI.BLK-level1"}
+    assert row.nature == "body"
+    table = state.table
+    cell = table[(1, 1)]
+    assert cell.styles == {}
+    assert cell.nature == "body"
+    assert cell.width == 2
+    assert cell.height == 1
+    assert etree.tounicode(cell.content[0]) == "<P>paragraph</P>"
+
+
+def test_parse_row__ti_blk_level2():
+    fmx_blk = etree.Element("BLK")
+    fmx_blk = etree.SubElement(fmx_blk, "BLK")
+    fmx_ti_blk = etree.XML("""<TI.BLK><IE/></TI.BLK>""")
+    fmx_blk.append(fmx_ti_blk)
+    parser = Formex4Parser(BaseBuilder())
+    state = parser.setup_table()
+    state.next_row()
+    state = parser.parse_ti_blk(fmx_ti_blk)
+    row = state.row
+    assert row.styles == {"rowstyle": "TI.BLK-level2"}
+    assert row.nature == "body"
+    table = state.table
+    cell = table[(1, 1)]
+    assert cell.styles == {}
+    assert cell.nature == "body"
+    assert cell.width == 1
+    assert cell.height == 1
+    assert cell.content == ""
+
+
+def test_parse_row__ti_blk_level2__with_namespace():
+    def fmx(name):
+        return etree.QName(FORMEX_NS, name).text
+
+    BLK = fmx("BLK")
+    TI_BLK = fmx("TI.BLK")
+    IE = fmx("IE")
+
+    fmx_blk1 = etree.Element(BLK, nsmap={None: FORMEX_NS})
+    fmx_blk2 = etree.SubElement(fmx_blk1, BLK, nsmap={None: FORMEX_NS})
+    fmx_ti_blk = etree.SubElement(fmx_blk2, TI_BLK, nsmap={None: FORMEX_NS})
+    etree.SubElement(fmx_ti_blk, IE, nsmap={None: FORMEX_NS})
+
+    parser = Formex4Parser(BaseBuilder(), formex_ns=FORMEX_NS, cals_prefix=CALS_PREFIX, cals_ns=CALS_NS)
+    state = parser.setup_table()
+    state.next_row()
+    state = parser.parse_ti_blk(fmx_ti_blk)
+
+    row = state.row
+    assert row.styles == {"rowstyle": "TI.BLK-level2"}
+    assert row.nature == "body"
+    table = state.table
+    cell = table[(1, 1)]
+    assert cell.styles == {}
+    assert cell.nature == "body"
+    assert cell.width == 1
+    assert cell.height == 1
+    assert cell.content == ""
+
+
+def test_parse_row__sti_blk_level1():
+    fmx_blk = etree.Element("BLK")
+    fmx_sti_blk = etree.XML("""<STI.BLK COL.START="2" COL.END="2">text</STI.BLK>""")
+    fmx_blk.append(fmx_sti_blk)
+    parser = Formex4Parser(BaseBuilder())
+    state = parser.setup_table()
+    state.next_row()
+    state = parser.parse_sti_blk(fmx_sti_blk)
+    row = state.row
+    assert row.styles == {"rowstyle": "STI.BLK-level1"}
+    assert row.nature == "body"
+    table = state.table
+    cell1 = table[(1, 1)]
+    assert cell1.content is None
+    cell2 = table[(2, 1)]
+    assert cell2.styles == {}
+    assert cell2.nature == "body"
+    assert cell2.width == 1
+    assert cell2.height == 1
+    assert cell2.content[0] == "text"
 
 
 @pytest.mark.parametrize(

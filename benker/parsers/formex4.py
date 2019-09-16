@@ -72,8 +72,7 @@ def make_prefix_ns(prefix, ns):
     ns = ns or None
     prefix = prefix or None
     if prefix and not ns:
-        raise ValueError("prefix '{prefix}' defined without namespace"
-                         .format(prefix=prefix))
+        raise ValueError("prefix '{prefix}' defined without namespace".format(prefix=prefix))
     return prefix, ns
 
 
@@ -82,15 +81,7 @@ class Formex4Parser(BaseParser):
     Formex 4 tables parser
     """
 
-    def __init__(
-        self,
-        builder,
-        formex_prefix=None,
-        formex_ns=None,
-        cals_prefix=None,
-        cals_ns=None,
-        **options,
-    ):
+    def __init__(self, builder, formex_prefix=None, formex_ns=None, cals_prefix=None, cals_ns=None, **options):
         """
         Construct a parser
 
@@ -127,8 +118,7 @@ class Formex4Parser(BaseParser):
         ns = ns or None
         prefix = prefix or None
         if prefix and not ns:
-            raise ValueError("prefix '{prefix}' defined without namespace"
-                             .format(prefix=prefix))
+            raise ValueError("prefix '{prefix}' defined without namespace".format(prefix=prefix))
         if prefix in self._ns_map and self._ns_map[prefix] != ns:
             if prefix:
                 fmt = "prefix '{prefix}' is already mapped to '{ns}'"
@@ -144,8 +134,11 @@ class Formex4Parser(BaseParser):
         return self._ns_map
 
     def transform_tables(self, tree):
-        name = self.formex_ns.get_name
-        for node in tree.xpath("//{CORPUS}".format(CORPUS=name("CORPUS")), namespaces=self.ns_map):
+        if self.formex_ns.uri:
+            nodes = tree.xpath("//fmx:CORPUS", namespaces={"fmx": self.formex_ns.uri})
+        else:
+            nodes = tree.xpath("//CORPUS")
+        for node in nodes:
             table = self.parse_table(node)
             table_elem = self.builder.generate_table_tree(table)
             parent = node.getparent()
@@ -336,24 +329,6 @@ class Formex4Parser(BaseParser):
         """
         return self.parse_title(gr_notes_elem, nature="footer")
 
-    def parse_ti_blk(self, ti_blk_elem):
-        """
-        Parse a ``TI.BLK`` element, considering it like a row of a single cell.
-
-        :type  ti_blk_elem: etree._Element
-        :param ti_blk_elem: title of the ``BLK``.
-        """
-        return self.parse_title(ti_blk_elem, nature="title")
-
-    def parse_sti_blk(self, sti_blk_elem):
-        """
-        Parse a ``STI.BLK`` element, considering it like a row of a single cell.
-
-        :type  sti_blk_elem: etree._Element
-        :param sti_blk_elem: subtitle of the ``BLK``.
-        """
-        return self.parse_title(sti_blk_elem, nature="subtitle")
-
     def parse_row(self, row_elem):
         """
         Parse a ``ROW`` element which contains ``CELL`` elements.
@@ -362,9 +337,6 @@ class Formex4Parser(BaseParser):
 
         :type  row_elem: etree._Element
         :param row_elem: table row
-
-        :type  nature: str
-        :param nature: nature of the row
         """
         fmx = self.formex_ns.get_qname
         styles = {}
@@ -376,11 +348,12 @@ class Formex4Parser(BaseParser):
 
         # the @fmx:TYPE is preserved in a @cals:rowstyle
         # the BLK level is also stored in this attribute
-        blk_count = len(row_elem.xpath("ancestor::BLK"))
+        name = self.formex_ns.get_name
+        blk_count = self._count_blk(row_elem)
         blk_level = "level{count}".format(count=blk_count) if blk_count else None
         row_styles = list(filter(None, [row_type, blk_level]))
         if row_styles:
-            styles["rowstyle"] = "-".join(row_styles)
+            styles["rowstyle"] = "-".join(["ROW"] + row_styles)
 
         # support for CALS-like elements and attributes
         cals = self.cals_ns.get_qname
@@ -398,6 +371,96 @@ class Formex4Parser(BaseParser):
         state.row.styles = styles
 
         return state  # mainly for unit test
+
+    def parse_ti_blk(self, ti_blk_elem):
+        """
+        Parse a ``TI.BLK`` element, considering it like a row of a single cell.
+
+        For instance:
+
+        .. code-block::
+
+           <TI.BLK COL.START="1" COL.END="2">
+             <P><HT TYPE="BOLD">TI.BLK title</HT></P>
+           </TI.BLK>
+
+        :type  ti_blk_elem: etree._Element
+        :param ti_blk_elem: title of the ``BLK``.
+        """
+        styles = {}
+
+        # the @fmx:TYPE is preserved in a @cals:rowstyle
+        # the BLK level is also stored in this attribute
+        name = self.formex_ns.get_name
+        blk_count = self._count_blk(ti_blk_elem)
+        blk_level = "TI.BLK-level{count}".format(count=blk_count)
+        styles["rowstyle"] = blk_level
+
+        return self._insert_blk_title_row(ti_blk_elem, styles)
+
+    def parse_sti_blk(self, sti_blk_elem):
+        """
+        Parse a ``STI.BLK`` element, considering it like a row of a single cell.
+
+        For instance:
+
+        .. code-block::
+
+           <STI.BLK COL.START="1" COL.END="1">
+             <P>STI.BLK title</P>
+           </STI.BLK>
+
+        :type  sti_blk_elem: etree._Element
+        :param sti_blk_elem: subtitle of the ``BLK``.
+        """
+        styles = {}
+
+        # the @fmx:TYPE is preserved in a @cals:rowstyle
+        # the BLK level is also stored in this attribute
+        name = self.formex_ns.get_name
+        blk_count = self._count_blk(sti_blk_elem)
+        blk_level = "STI.BLK-level{count}".format(count=blk_count)
+        styles["rowstyle"] = blk_level
+
+        return self._insert_blk_title_row(sti_blk_elem, styles)
+
+    def _count_blk(self, fmx_node):
+        if self.formex_ns.uri:
+            blk_count = len(fmx_node.xpath("//ancestor::fmx:BLK", namespaces={"fmx": self.formex_ns.uri}))
+        else:
+            blk_count = len(fmx_node.xpath("//ancestor::BLK"))
+        return blk_count
+
+    def _insert_blk_title_row(self, blk_title_elem, styles):
+        # -- Create a ROW
+        state = self._state
+        state.row = state.table.rows[state.row_pos]
+        state.row.nature = "body"
+        state.row.styles = styles
+
+        fmx = self.formex_ns.get_qname
+        col_start = int(blk_title_elem.attrib.get(fmx("COL.START"), "1"))
+        col_end = int(blk_title_elem.attrib.get(fmx("COL.END"), "1"))
+        width = col_end - col_start + 1
+
+        # -- Insert empty cells if necessary
+        for x in range(1, col_start):
+            state.row.insert_cell(None, nature=state.row.nature)
+
+        # -- Create a CELL
+        if self._contains_ie(blk_title_elem):
+            content = ""
+        else:
+            text = [blk_title_elem.text] if blk_title_elem.text else []
+            content = text + blk_title_elem.getchildren()
+        state.row.insert_cell(content, width=width, height=1, nature=state.row.nature)
+
+        return state
+
+    def _contains_ie(self, fmx_node):
+        return (self.formex_ns.uri and fmx_node.xpath("//fmx:IE", namespaces={"fmx": self.formex_ns.uri})) or (
+            not self.formex_ns.uri and fmx_node.xpath("//IE")
+        )
 
     def parse_cell(self, cell_elem):
         """
@@ -458,7 +521,7 @@ class Formex4Parser(BaseParser):
             height = int(morerows) + 1
 
         # -- Create a CELL
-        if cell_elem.xpath("IE"):
+        if self._contains_ie(cell_elem):
             content = ""
         else:
             text = [cell_elem.text] if cell_elem.text else []
