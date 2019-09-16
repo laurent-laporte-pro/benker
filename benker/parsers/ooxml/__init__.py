@@ -878,7 +878,7 @@ class OoxmlParser(BaseParser):
                 if elem_tag == w('tr'):
                     # add missing entries
                     for _ in range(state.col_pos, len(state.table.cols)):
-                        state.row.insert_cell(None)
+                        state.row.insert_cell(None, nature=state.row.nature)
 
         return state.table
 

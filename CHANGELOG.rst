@@ -38,6 +38,8 @@ Fixed
   the possible values for row/cell *nature* is "header", "body" and "footer"
   (instead of "head", "body", "foot").
 
+* Fix in the class :class:`~benker.parsers.ooxml.OoxmlParser`: rows with missing cells are filled
+  with empty cells of the same nature as the row.
 
 Other
 -----
