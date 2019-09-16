@@ -167,21 +167,18 @@ class Formex4Parser(BaseParser):
         # -- Formex elements
         fmx = self.formex_ns.get_qname
 
-        # CORPUS := (ROW | BLK]+
-        CORPUS = fmx("CORPUS")
-        ROW = fmx("ROW")
-        CELL = fmx("CELL")
-        MARGIN = fmx("MARGIN")
-
-        # BLK := (TI.BLK, STI.BLK*)*, (ROW | BLK]*
-        BLK = fmx("BLK")
-        TI_BLK = fmx("TI.BLK")  # spanned cell
-        STI_BLK = fmx("STI.BLK")  # spanned cell
+        CORPUS = fmx("CORPUS").text
+        ROW = fmx("ROW").text
+        CELL = fmx("CELL").text
+        MARGIN = fmx("MARGIN").text
+        BLK = fmx("BLK").text
+        TI_BLK = fmx("TI.BLK").text
+        STI_BLK = fmx("STI.BLK").text
 
         # -- CLAS-like elements
         cals = self.cals_ns.get_qname
 
-        colspec = cals("colspec")
+        colspec = cals("colspec").text
 
         elements = {CORPUS, ROW, CELL, MARGIN, BLK, TI_BLK, STI_BLK, colspec}
         context = iterwalk(fmx_corpus, events=("start", "end"), tag=elements)
@@ -197,12 +194,17 @@ class Formex4Parser(BaseParser):
             if depth > 1:
                 # .. note:: context.skip_subtree() is not available for all version of lxml
                 # This <TBL> element is inside the table.
-                # It will be handled separately in another call to convert_tbl()
+                # It will be handled separately in another call to transform_tables()
                 continue
             if action == "start":
-                if elem_tag == CORPUS:
-                    self.parse_corpus(elem)
-                    pass
+                # tags sorted by frequency:
+                if elem_tag == CELL:
+                    state.next_col()
+                    self.parse_cell(elem)
+
+                elif elem_tag == ROW:
+                    state.next_row()
+                    self.parse_row(elem)
 
                 elif elem_tag == BLK:
                     # only a container
@@ -216,74 +218,76 @@ class Formex4Parser(BaseParser):
                     state.next_row()
                     self.parse_sti_blk(elem)
 
-                elif elem_tag == ROW:
-                    state.next_row()
-                    self.parse_row(elem)
-
-                elif elem_tag == MARGIN:
-                    raise NotImplementedError(elem_tag)
-
-                elif elem_tag == CELL:
-                    state.next_col()
-                    self.parse_cell(elem)
-
                 elif elem_tag == colspec:
                     state.next_col()
                     self.parse_colspec(elem)
 
+                elif elem_tag == CORPUS:
+                    self.parse_corpus(elem)
+
+                elif elem_tag == MARGIN:
+                    raise NotImplementedError("MARGIN is not supported yet")
+
                 else:
                     raise NotImplementedError(elem_tag)
             else:
-                if elem_tag in {TI_BLK, STI_BLK, ROW}:
+                if elem_tag == CORPUS:
                     # add missing entries
                     state.table.fill_missing("???")
 
         return state.table
 
+    def setup_table(self, styles=None):
+        table = Table(styles=styles)
+        self._state.table = table
+        return self._state
+
     def parse_corpus(self, fmx_corpus):
         # type: (etree._Element) -> None
         tbl_elem = fmx_corpus.getparent()
-        styles = self.parse_tbl_styles(tbl_elem)
+        if tbl_elem is None:
+            # the TBL element may be missing (unit tests).
+            styles = {}
+        else:
+            styles = self.parse_tbl_styles(tbl_elem)
 
-        # support for CALS-like elements and attributes
-        cals = self.cals_ns.get_qname
+            # support for CALS-like elements and attributes
+            cals = self.cals_ns.get_qname
 
-        # -- attribute @cals:frame
-        frame = tbl_elem.attrib.get(cals("frame"))
-        styles.update(get_frame_styles(frame))
+            # -- attribute @cals:frame
+            frame = tbl_elem.attrib.get(cals("frame"))
+            styles.update(get_frame_styles(frame))
 
-        # -- attribute @cals:colsep
-        colsep = tbl_elem.attrib.get(cals("colsep"))
-        colsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
-        if colsep in colsep_map:
-            styles["x-cell-border-right"] = colsep_map[colsep]
+            # -- attribute @cals:colsep
+            colsep = tbl_elem.attrib.get(cals("colsep"))
+            colsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
+            if colsep in colsep_map:
+                styles["x-cell-border-right"] = colsep_map[colsep]
 
-        # -- attribute @cals:rowsep
-        rowsep = tbl_elem.attrib.get(cals("rowsep"))
-        rowsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
-        if rowsep in rowsep_map:
-            styles["x-cell-border-bottom"] = rowsep_map[rowsep]
+            # -- attribute @cals:rowsep
+            rowsep = tbl_elem.attrib.get(cals("rowsep"))
+            rowsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
+            if rowsep in rowsep_map:
+                styles["x-cell-border-bottom"] = rowsep_map[rowsep]
 
-        # -- attribute @cals:orient
-        orient = tbl_elem.attrib.get(cals("orient"))
-        orient_map = {"land": "landscape", "port": "portrait"}
-        if orient in orient_map:
-            styles["x-sect-orient"] = orient_map[orient]
+            # -- attribute @cals:orient
+            orient = tbl_elem.attrib.get(cals("orient"))
+            orient_map = {"land": "landscape", "port": "portrait"}
+            if orient in orient_map:
+                styles["x-sect-orient"] = orient_map[orient]
 
-        # -- attribute @cals:pgwide
-        pgwide = tbl_elem.attrib.get(cals("pgwide"))
-        pgwide_map = {"0": "2", "1": "1"}
-        if pgwide in pgwide_map:
-            styles["x-sect-cols"] = pgwide_map[pgwide]
+            # -- attribute @cals:pgwide
+            pgwide = tbl_elem.attrib.get(cals("pgwide"))
+            pgwide_map = {"0": "2", "1": "1"}
+            if pgwide in pgwide_map:
+                styles["x-sect-cols"] = pgwide_map[pgwide]
 
-        # -- attribute @cals:bgcolor
-        bgcolor = tbl_elem.attrib.get(cals("bgcolor"))
-        if bgcolor:
-            styles["background-color"] = bgcolor
+            # -- attribute @cals:bgcolor
+            bgcolor = tbl_elem.attrib.get(cals("bgcolor"))
+            if bgcolor:
+                styles["background-color"] = bgcolor
 
-        table = Table(styles=styles)
-        self._state.table = table
-        return self._state  # mainly for unit test
+        return self.setup_table(styles)
 
     def parse_tbl_styles(self, tbl_elem):
         """
@@ -295,7 +299,6 @@ class Formex4Parser(BaseParser):
         :return: dictionary of styles
         """
         fmx = self.formex_ns.get_qname
-
         styles = {}
 
         # -- attribute @fmx:NO.SEQ => ignored (computed)
@@ -360,7 +363,7 @@ class Formex4Parser(BaseParser):
         :param nature: nature of the row
         """
         fmx = self.formex_ns.get_qname
-        cals = self.cals_ns.get_qname
+        styles = {}
 
         # -- attribute @fmx:MARGIN => Not implemented
 
@@ -369,10 +372,19 @@ class Formex4Parser(BaseParser):
         row_type = row_elem.attrib.get(fmx("TYPE"))
         nature = type_map.get(row_type, "body")
 
+        # support for CALS-like elements and attributes
+        cals = self.cals_ns.get_qname
+
+        # -- attribute @cals:rowstyle (extension)
+        rowstyle = row_elem.attrib.get(cals("rowstyle"))
+        if rowstyle:
+            styles["rowstyle"] = rowstyle
+
         # -- Create a ROW
         state = self._state
         state.row = state.table.rows[state.row_pos]
         state.row.nature = nature
+        state.row.style = styles
 
         return state  # mainly for unit test
 
@@ -384,7 +396,7 @@ class Formex4Parser(BaseParser):
         :param cell_elem: table cell
         """
         fmx = self.formex_ns.get_qname
-        cals = self.cals_ns.get_qname
+        styles = {}
 
         # -- attribute @fmx:COL => not used
 
@@ -401,7 +413,25 @@ class Formex4Parser(BaseParser):
         cell_nature = type_map.get(cell_type)
         nature = cell_nature or row_nature
 
-        styles = {}
+        # support for CALS-like elements and attributes
+        cals = self.cals_ns.get_qname
+
+        # -- attribute @cals:colsep
+        colsep = cell_elem.attrib.get(cals("colsep"))
+        colsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
+        if colsep in colsep_map:
+            styles["x-cell-border-right"] = colsep_map[colsep]
+
+        # -- attribute @cals:rowsep
+        rowsep = cell_elem.attrib.get(cals("rowsep"))
+        rowsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
+        if rowsep in rowsep_map:
+            styles["x-cell-border-bottom"] = rowsep_map[rowsep]
+
+        # -- attribute @cals:bgcolor
+        bgcolor = cell_elem.attrib.get(cals("bgcolor"))
+        if bgcolor:
+            styles["background-color"] = bgcolor
 
         # -- Create a CELL
         if cell_elem.xpath("IE"):

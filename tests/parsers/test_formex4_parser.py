@@ -51,46 +51,46 @@ class StrBuilder(BaseBuilder):
         return element
 
 
-def test_transform_tables():
-    E = ElementMaker(namespace=FORMEX_NS, nsmap={FORMEX_PREFIX: FORMEX_NS})
-    tbl_elem = E.TBL(E.CORPUS(
-        E.ROW(E.CELL("A1"), E.CELL("B1")),
-        E.ROW(E.CELL("A2", COLSPAN="2"))  # fixme: fmx namespace missing
-    ))
-    tree = E.FORMEX(tbl_elem)
-    builder = StrBuilder()
-    parser = Formex4Parser(builder)
-    parser.transform_tables(tree)
-    str_table = tree.xpath("table")[0].text
-    print("str_table:")
-    print(str_table)
-    assert str_table == textwrap.dedent("""\
-    +-----------+-----------+
-    |    A1     |    B1     |
-    +-----------+-----------+
-    |    A2                 |
-    +-----------+-----------+""")
-
-
 def test_transform_tables__no_namespace():
     E = ElementMaker()
-    tbl_elem = E.TBL(E.CORPUS(
+    fmx_tbl = E.TBL(E.CORPUS(
         E.ROW(E.CELL("A1"), E.CELL("B1", ROWSPAN="2")),
         E.ROW(E.CELL("A2"))
     ))
-    tree = E.FORMEX(tbl_elem)
+    tree = E.FORMEX(fmx_tbl)
     builder = StrBuilder()
     parser = Formex4Parser(builder, formex_ns="")
     parser.transform_tables(tree)
-    str_table = tree.xpath("table")[0].text
+    str_table = tree.xpath("//table")[0].text
     print("str_table:")
     print(str_table)
     assert str_table == textwrap.dedent("""\
     +-----------+-----------+
     |    A1     |    B1     |
-    +-----------+           +
+    +-----------|           |
     |    A2     |           |
     +-----------+-----------+""")
+
+
+def test_transform_tables__with_namespace():
+    E = ElementMaker(namespace=FORMEX_NS, nsmap={FORMEX_PREFIX: FORMEX_NS})
+    colspan = etree.QName(FORMEX_NS, "COLSPAN")
+    tree = E.FORMEX(E.TBL(E.CORPUS(
+        E.ROW(E.CELL("A1"), E.CELL("B1")),
+        E.ROW(E.CELL("A2", **{colspan.text: "2"}))
+    )))
+    builder = StrBuilder()
+    parser = Formex4Parser(builder, formex_prefix=FORMEX_PREFIX, formex_ns=FORMEX_NS)
+    parser.transform_tables(tree)
+    str_table = tree.xpath("//table")[0].text
+    print("str_table:")
+    print(str_table)
+    assert str_table == textwrap.dedent("""\
+    +-----------+-----------+
+    |    A1     |    B1     |
+    +-----------------------+
+    |    A2                 |
+    +-----------------------+""")
 
 
 @pytest.mark.parametrize(
@@ -213,37 +213,13 @@ def test_get_frame_styles(frame, expected):
         ),
     ],
 )
-def test_parse_tbl(attrib, styles):
-    E = ElementMaker()
-    tbl_elem = etree.Element("TBL", attrib=attrib)
-    parser = Formex4Parser(BaseBuilder(), formex_ns="", cals_ns="")
-    state = parser.parse_tbl(tbl_elem)
+def test_parse_tbl_corpus(attrib, styles):
+    fmx_tbl = etree.Element("TBL", attrib=attrib)
+    fmx_corpus = etree.SubElement(fmx_tbl, "CORPUS")
+    parser = Formex4Parser(BaseBuilder())
+    state = parser.parse_corpus(fmx_corpus)
     table = state.table
     assert table.styles == styles
-
-
-def test_parse_title():
-    assert 0
-
-
-def test_parse_gr_seq():
-    assert 0
-
-
-def test_parse_gr_notes():
-    assert 0
-
-
-def test_parse_ti_blk():
-    assert 0
-
-
-def test_parse_sti_blk():
-    assert 0
-
-
-def test_parse_row():
-    assert 0
 
 
 @pytest.mark.parametrize(
@@ -262,21 +238,14 @@ def test_parse_row():
     ])
 def test_parse_cell(attrib, styles, nature, size):
     E = ElementMaker()
-    cell_elem = etree.Element("CELL", attrib=attrib)
-    row_elem = E.ROW(cell_elem)
-    tbl_elem = E.TBL(row_elem)
-    parser = Formex4Parser(BaseBuilder(), formex_ns="", cals_ns="")
-    state = parser.parse_tbl(tbl_elem)
+    fmx_cell = E.CELL(**attrib)
+    parser = Formex4Parser(BaseBuilder())
+    state = parser.setup_table()
     state.next_row()
     state.row = state.table.rows[state.row_pos]
-    state.next_col()
-    state = parser.parse_cell(cell_elem)
+    parser.parse_cell(fmx_cell)
     table = state.table
     cell = table[(1, 1)]
     assert cell.styles == styles
     assert cell.nature == nature
     assert cell.size == size
-
-
-def test_parse_colspec():
-    assert 0
