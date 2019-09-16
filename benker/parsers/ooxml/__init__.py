@@ -16,11 +16,12 @@ from lxml import etree
 
 from benker.parsers.base_parser import BaseParser
 from benker.parsers.lxml_iterwalk import iterwalk
-from benker.parsers.ooxml.namespaces import NS, w, value_of
+from benker.parsers.ooxml.namespaces import NS
+from benker.parsers.ooxml.namespaces import value_of
+from benker.parsers.ooxml.namespaces import w
 from benker.parsers.ooxml.w_pg_sz import PgSz
 from benker.parsers.ooxml.w_shd import Shd
 from benker.table import Table
-
 
 #: See w:ST_Border: http://www.datypic.com/sc/ooxml/t-w_ST_Border.html
 #: See CSS styles: https://www.w3.org/wiki/CSS/Properties/border-top-style
