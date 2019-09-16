@@ -850,6 +850,7 @@ class OoxmlParser(BaseParser):
                 else:
                     raise NotImplementedError(elem_tag)
             else:
+                # fixme: if elem_tag == w("tbl"):
                 if elem_tag == w('tr'):
                     # add missing entries
                     state.table.fill_missing(None)
