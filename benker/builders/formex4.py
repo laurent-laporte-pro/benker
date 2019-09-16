@@ -107,15 +107,12 @@ class Formex4Builder(BaseBuilder):
             return {self.cals_prefix: self.cals_ns}
         return {}
 
-    # def get_formex_qname(self, name):
-    #     if self.formex_prefix and self.formex_ns:
-    #         return etree.QName(self.formex_ns, name)
-    #     return name
-
     def get_cals_qname(self, name):
-        if self.cals_prefix and self.cals_ns:
+        # lxml < 4: uri must be not None
+        if self.cals_ns:
             return etree.QName(self.cals_ns, name)
-        return name
+        else:
+            return etree.QName(name)
 
     def generate_table_tree(self, table):
         """
@@ -311,7 +308,7 @@ class Formex4Builder(BaseBuilder):
             width, unit = re.findall(r"([+-]?(?:[0-9]*[.])?[0-9]+)(\w+)", width)[0]
             value = convert_value(float(width), unit, self.width_unit)
             attrs[cals("colwidth")] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
-        etree.SubElement(group_elem, cals(u"colspec"), attrib=attrs)
+        etree.SubElement(group_elem, cals("colspec"), attrib=attrs)
 
     def build_row(self, corpus_elem, row):
         """

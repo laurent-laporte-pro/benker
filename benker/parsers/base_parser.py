@@ -99,7 +99,11 @@ class Namespace(collections.namedtuple("Namespace", "prefix, uri")):
     """
     def get_qname(self, name):
         """ get the qualified name """
-        return etree.QName(self.uri, name)
+        # lxml < 4: uri must be not None
+        if self.uri:
+            return etree.QName(self.uri, name)
+        else:
+            return etree.QName(name)
 
     def get_name(self, name):
         """ get the prefixed name """

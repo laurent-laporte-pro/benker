@@ -34,8 +34,6 @@ When building the internal table object, this builder will:
 """
 import re
 
-from lxml import etree
-
 from benker.box import Box
 from benker.parsers.base_parser import BaseParser
 from benker.parsers.base_parser import Namespace
@@ -352,7 +350,6 @@ class Formex4Parser(BaseParser):
 
         # the @fmx:TYPE is preserved in a @cals:rowstyle
         # the BLK level is also stored in this attribute
-        name = self.formex_ns.get_name
         blk_count = self._count_blk(fmx_row)
         blk_level = "level{count}".format(count=blk_count) if blk_count else None
         row_styles = list(filter(None, [row_type, blk_level]))
