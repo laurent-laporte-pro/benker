@@ -234,7 +234,7 @@ class Formex4Parser(BaseParser):
                 elif elem_tag == CORPUS:
                     # if there is a GR.NOTES, we create a row for it with the nature "footer"
                     if self.formex_ns.uri:
-                        nodes = elem.xpath("preceding-sibling::fmx:GR.NOTES", namespaces={"fmx", self.formex_ns.uri})
+                        nodes = elem.xpath("preceding-sibling::fmx:GR.NOTES", namespaces={"fmx": self.formex_ns.uri})
                     else:
                         nodes = elem.xpath("preceding-sibling::GR.NOTES")
                     if nodes:
@@ -573,7 +573,56 @@ class Formex4Parser(BaseParser):
         """
         Parse a CALS-like ``colspec`` element.
 
+        For instance:
+
+        .. code-block:: xml
+
+           <colspec
+             colname="c1"
+             colnum="1"
+             colsep="1"
+             rowsep="1"
+             colwidth="30mm"
+             align="center"/>
+
         :type  cals_colspec: etree._Element
         :param cals_colspec: CALS-like ``colspec`` element.
         """
-        raise NotImplementedError("fixme")
+        cals = self.cals_ns.get_qname
+        styles = {}
+
+        # -- attribute @cals:colname is ignored
+        # -- attribute @cals:char is ignored
+        # -- attribute @cals:charoff is ignored
+
+        # -- attribute @cals:colnum
+        colnum = cals_colspec.attrib.get(cals("colnum"))
+        colnum = int(colnum) if colnum else self._state.col_pos
+
+        # -- attribute @cals:colsep
+        colsep = cals_colspec.attrib.get(cals("colsep"))
+        colsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
+        if colsep in colsep_map:
+            styles["x-border-right"] = colsep_map[colsep]
+
+        # -- attribute @cals:rowsep
+        rowsep = cals_colspec.attrib.get(cals("rowsep"))
+        rowsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
+        if rowsep in rowsep_map:
+            styles["x-border-bottom"] = rowsep_map[rowsep]
+
+        # -- attribute @cals:rowsep
+        colwidth = cals_colspec.attrib.get(cals("colwidth"))
+        if colwidth:
+            styles["width"] = colwidth
+
+        # -- attribute @cals:rowsep
+        align = cals_colspec.attrib.get(cals("align"))
+        if align:
+            styles["align"] = align
+
+        state = self._state
+        state.col = state.table.cols[colnum]
+        state.col.styles.update(styles)
+
+        return state
