@@ -147,6 +147,7 @@ class Formex4Parser(BaseParser):
             table_elem.tail = node.tail
             parent.remove(node)
 
+    # noinspection PyPep8Naming
     def parse_table(self, fmx_corpus):
         """
         Convert a ``<CORPUS>`` Formex element into table object.
@@ -231,6 +232,18 @@ class Formex4Parser(BaseParser):
                     bounding_box = Box(1, state.row_pos, len(state.table.rows), state.row_pos)
                     state.table.fill_missing(bounding_box, None, nature=state.row.nature)
                 elif elem_tag == CORPUS:
+                    # if there is a GR.NOTES, we create a row for it with the nature "footer"
+                    if self.formex_ns.uri:
+                        nodes = elem.xpath("preceding-sibling::fmx:GR.NOTES", namespaces={"fmx", self.formex_ns.uri})
+                    else:
+                        nodes = elem.xpath("preceding-sibling::GR.NOTES")
+                    if nodes:
+                        # Convert the GR.NOTES and remove it
+                        fmx_gr_notes = nodes[0]
+                        state.next_row()
+                        self.parse_gr_notes(fmx_gr_notes)
+                        fmx_tbl = fmx_gr_notes.getparent()
+                        fmx_tbl.remove(fmx_gr_notes)
                     state.table.fill_missing(state.table.bounding_box, None)
 
         return state.table
@@ -241,57 +254,57 @@ class Formex4Parser(BaseParser):
         return self._state
 
     def parse_corpus(self, fmx_corpus):
-        tbl_elem = fmx_corpus.getparent()
-        if tbl_elem is None:
+        fmx_tbl = fmx_corpus.getparent()
+        if fmx_tbl is None:
             # the TBL element may be missing (unit tests).
             styles = {}
         else:
-            styles = self.parse_tbl_styles(tbl_elem)
+            styles = self.parse_tbl_styles(fmx_tbl)
 
             # support for CALS-like elements and attributes
             cals = self.cals_ns.get_qname
 
             # -- attribute @cals:frame
-            frame = tbl_elem.attrib.get(cals("frame"))
+            frame = fmx_tbl.attrib.get(cals("frame"))
             styles.update(get_frame_styles(frame))
 
             # -- attribute @cals:colsep
-            colsep = tbl_elem.attrib.get(cals("colsep"))
+            colsep = fmx_tbl.attrib.get(cals("colsep"))
             colsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
             if colsep in colsep_map:
                 styles["x-cell-border-right"] = colsep_map[colsep]
 
             # -- attribute @cals:rowsep
-            rowsep = tbl_elem.attrib.get(cals("rowsep"))
+            rowsep = fmx_tbl.attrib.get(cals("rowsep"))
             rowsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
             if rowsep in rowsep_map:
                 styles["x-cell-border-bottom"] = rowsep_map[rowsep]
 
             # -- attribute @cals:orient
-            orient = tbl_elem.attrib.get(cals("orient"))
+            orient = fmx_tbl.attrib.get(cals("orient"))
             orient_map = {"land": "landscape", "port": "portrait"}
             if orient in orient_map:
                 styles["x-sect-orient"] = orient_map[orient]
 
             # -- attribute @cals:pgwide
-            pgwide = tbl_elem.attrib.get(cals("pgwide"))
+            pgwide = fmx_tbl.attrib.get(cals("pgwide"))
             pgwide_map = {"0": "2", "1": "1"}
             if pgwide in pgwide_map:
                 styles["x-sect-cols"] = pgwide_map[pgwide]
 
             # -- attribute @cals:bgcolor
-            bgcolor = tbl_elem.attrib.get(cals("bgcolor"))
+            bgcolor = fmx_tbl.attrib.get(cals("bgcolor"))
             if bgcolor:
                 styles["background-color"] = bgcolor
 
         return self.setup_table(styles)
 
-    def parse_tbl_styles(self, tbl_elem):
+    def parse_tbl_styles(self, fmx_tbl):
         """
         Parse a ``TBL`` element and extract the styles
 
-        :type  tbl_elem: etree._Element
-        :param tbl_elem: table
+        :type  fmx_tbl: etree._Element
+        :param fmx_tbl: table
 
         :return: dictionary of styles
         """
@@ -301,14 +314,14 @@ class Formex4Parser(BaseParser):
         # -- attribute @fmx:NO.SEQ => ignored (computed)
 
         # -- attribute @fmx:CLASS
-        cls = tbl_elem.attrib.get(fmx("CLASS"))
+        cls = fmx_tbl.attrib.get(fmx("CLASS"))
         if cls:
             styles["tabstyle"] = cls
 
         # -- attribute @fmx:COLS => ignored (*table.cols*)
 
         # -- attribute @fmx:PAGE.SIZE
-        page_size = tbl_elem.attrib.get(fmx("PAGE.SIZE"))
+        page_size = fmx_tbl.attrib.get(fmx("PAGE.SIZE"))
         page_size_map = {
             "DOUBLE.LANDSCAPE": "landscape",
             "DOUBLE.PORTRAIT": "portrait",
@@ -320,36 +333,27 @@ class Formex4Parser(BaseParser):
 
         return styles
 
-    def parse_gr_notes(self, gr_notes_elem):
-        """
-        Parse a ``GR.NOTES`` element, considering it like a row of a single cell.
-
-        :type  gr_notes_elem: etree._Element
-        :param gr_notes_elem: group of notes called in the table (``GR.NOTES``)
-        """
-        return self.parse_title(gr_notes_elem, nature="footer")
-
-    def parse_row(self, row_elem):
+    def parse_row(self, fmx_row):
         """
         Parse a ``ROW`` element which contains ``CELL`` elements.
 
         This element may be in a ``BLK```
 
-        :type  row_elem: etree._Element
-        :param row_elem: table row
+        :type  fmx_row: etree._Element
+        :param fmx_row: table row
         """
         fmx = self.formex_ns.get_qname
         styles = {}
 
         # -- attribute @fmx:TYPE => *nature*
         type_map = {"ALIAS": "header", "HEADER": "header", "NORMAL": "body", "NOTCOL": "body", "TOTAL": "footer"}
-        row_type = row_elem.attrib.get(fmx("TYPE"))
+        row_type = fmx_row.attrib.get(fmx("TYPE"))
         nature = type_map.get(row_type, "body")
 
         # the @fmx:TYPE is preserved in a @cals:rowstyle
         # the BLK level is also stored in this attribute
         name = self.formex_ns.get_name
-        blk_count = self._count_blk(row_elem)
+        blk_count = self._count_blk(fmx_row)
         blk_level = "level{count}".format(count=blk_count) if blk_count else None
         row_styles = list(filter(None, [row_type, blk_level]))
         if row_styles:
@@ -359,7 +363,7 @@ class Formex4Parser(BaseParser):
         cals = self.cals_ns.get_qname
 
         # -- attribute @cals:rowstyle (extension)
-        rowstyle = row_elem.attrib.get(cals("rowstyle"))
+        rowstyle = fmx_row.attrib.get(cals("rowstyle"))
         if rowstyle:
             # overrides the previously calculated @cals:rowstyle attribute
             styles["rowstyle"] = rowstyle
@@ -372,7 +376,7 @@ class Formex4Parser(BaseParser):
 
         return state  # mainly for unit test
 
-    def parse_ti_blk(self, ti_blk_elem):
+    def parse_ti_blk(self, fmx_ti_blk):
         """
         Parse a ``TI.BLK`` element, considering it like a row of a single cell.
 
@@ -384,21 +388,20 @@ class Formex4Parser(BaseParser):
              <P><HT TYPE="BOLD">TI.BLK title</HT></P>
            </TI.BLK>
 
-        :type  ti_blk_elem: etree._Element
-        :param ti_blk_elem: title of the ``BLK``.
+        :type  fmx_ti_blk: etree._Element
+        :param fmx_ti_blk: title of the ``BLK``.
         """
         styles = {}
 
         # the @fmx:TYPE is preserved in a @cals:rowstyle
         # the BLK level is also stored in this attribute
-        name = self.formex_ns.get_name
-        blk_count = self._count_blk(ti_blk_elem)
+        blk_count = self._count_blk(fmx_ti_blk)
         blk_level = "TI.BLK-level{count}".format(count=blk_count)
         styles["rowstyle"] = blk_level
 
-        return self._insert_blk_title_row(ti_blk_elem, styles)
+        return self._insert_blk_title_row(fmx_ti_blk, styles)
 
-    def parse_sti_blk(self, sti_blk_elem):
+    def parse_sti_blk(self, fmx_sti_blk):
         """
         Parse a ``STI.BLK`` element, considering it like a row of a single cell.
 
@@ -410,19 +413,55 @@ class Formex4Parser(BaseParser):
              <P>STI.BLK title</P>
            </STI.BLK>
 
-        :type  sti_blk_elem: etree._Element
-        :param sti_blk_elem: subtitle of the ``BLK``.
+        :type  fmx_sti_blk: etree._Element
+        :param fmx_sti_blk: subtitle of the ``BLK``.
         """
         styles = {}
 
         # the @fmx:TYPE is preserved in a @cals:rowstyle
         # the BLK level is also stored in this attribute
-        name = self.formex_ns.get_name
-        blk_count = self._count_blk(sti_blk_elem)
+        blk_count = self._count_blk(fmx_sti_blk)
         blk_level = "STI.BLK-level{count}".format(count=blk_count)
         styles["rowstyle"] = blk_level
 
-        return self._insert_blk_title_row(sti_blk_elem, styles)
+        return self._insert_blk_title_row(fmx_sti_blk, styles)
+
+    def parse_gr_notes(self, fmx_gr_notes):
+        """
+        Parse a ``GR.NOTES`` element, considering it like a row of a single cell.
+
+        For instance::
+
+        .. code-block::
+
+           <GR.NOTES>
+             <TITLE>
+               <TI>
+                 <P>GR.NOTES Title</P>
+               </TI>
+             </TITLE>
+             <NOTE NOTE.ID="N0001">
+               <P>Table note</P>
+             </NOTE>
+           </GR.NOTES>
+
+        :type  fmx_gr_notes: etree._Element
+        :param fmx_gr_notes: group of notes called in the table (``GR.NOTES``)
+        """
+        # -- Create a ROW
+        state = self._state
+        state.row = state.table.rows[state.row_pos]
+        state.row.nature = "footer"
+
+        # -- Create a CELL
+        if self._contains_ie(fmx_gr_notes):
+            content = ""
+        else:
+            text = [fmx_gr_notes.text] if fmx_gr_notes.text else []
+            content = text + fmx_gr_notes.getchildren()
+        state.row.insert_cell(content, width=state.table.bounding_box.width, height=1, nature=state.row.nature)
+
+        return state
 
     def _count_blk(self, fmx_node):
         if self.formex_ns.uri:
@@ -431,7 +470,7 @@ class Formex4Parser(BaseParser):
             blk_count = len(fmx_node.xpath("//ancestor::BLK"))
         return blk_count
 
-    def _insert_blk_title_row(self, blk_title_elem, styles):
+    def _insert_blk_title_row(self, fmx_blk_title, styles):
         # -- Create a ROW
         state = self._state
         state.row = state.table.rows[state.row_pos]
@@ -439,8 +478,8 @@ class Formex4Parser(BaseParser):
         state.row.styles = styles
 
         fmx = self.formex_ns.get_qname
-        col_start = int(blk_title_elem.attrib.get(fmx("COL.START"), "1"))
-        col_end = int(blk_title_elem.attrib.get(fmx("COL.END"), "1"))
+        col_start = int(fmx_blk_title.attrib.get(fmx("COL.START"), "1"))
+        col_end = int(fmx_blk_title.attrib.get(fmx("COL.END"), "1"))
         width = col_end - col_start + 1
 
         # -- Insert empty cells if necessary
@@ -448,11 +487,11 @@ class Formex4Parser(BaseParser):
             state.row.insert_cell(None, nature=state.row.nature)
 
         # -- Create a CELL
-        if self._contains_ie(blk_title_elem):
+        if self._contains_ie(fmx_blk_title):
             content = ""
         else:
-            text = [blk_title_elem.text] if blk_title_elem.text else []
-            content = text + blk_title_elem.getchildren()
+            text = [fmx_blk_title.text] if fmx_blk_title.text else []
+            content = text + fmx_blk_title.getchildren()
         state.row.insert_cell(content, width=width, height=1, nature=state.row.nature)
 
         return state
@@ -462,12 +501,12 @@ class Formex4Parser(BaseParser):
             not self.formex_ns.uri and fmx_node.xpath("//IE")
         )
 
-    def parse_cell(self, cell_elem):
+    def parse_cell(self, fmx_cell):
         """
         Parse a ``CELL`` element.
 
-        :type  cell_elem: etree._Element
-        :param cell_elem: table cell
+        :type  fmx_cell: etree._Element
+        :param fmx_cell: table cell
         """
         fmx = self.formex_ns.get_qname
         styles = {}
@@ -475,15 +514,15 @@ class Formex4Parser(BaseParser):
         # -- attribute @fmx:COL => not used
 
         # -- attribute @fmx:COLSPAN
-        width = int(cell_elem.attrib.get(fmx("COLSPAN"), "1"))
+        width = int(fmx_cell.attrib.get(fmx("COLSPAN"), "1"))
 
         # -- attribute @fmx:ROWSPAN
-        height = int(cell_elem.attrib.get(fmx("ROWSPAN"), "1"))
+        height = int(fmx_cell.attrib.get(fmx("ROWSPAN"), "1"))
 
         # -- attribute @fmx:TYPE
         row_nature = self._state.row.nature
         type_map = {"ALIAS": "header", "HEADER": "header", "NORMAL": "body", "NOTCOL": "body", "TOTAL": "footer"}
-        cell_type = cell_elem.attrib.get(fmx("TYPE"))
+        cell_type = fmx_cell.attrib.get(fmx("TYPE"))
         cell_nature = type_map.get(cell_type)
         nature = cell_nature or row_nature
 
@@ -491,49 +530,50 @@ class Formex4Parser(BaseParser):
         cals = self.cals_ns.get_qname
 
         # -- attribute @cals:colsep
-        colsep = cell_elem.attrib.get(cals("colsep"))
+        colsep = fmx_cell.attrib.get(cals("colsep"))
         colsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
         if colsep in colsep_map:
             styles["x-cell-border-right"] = colsep_map[colsep]
 
         # -- attribute @cals:rowsep
-        rowsep = cell_elem.attrib.get(cals("rowsep"))
+        rowsep = fmx_cell.attrib.get(cals("rowsep"))
         rowsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
         if rowsep in rowsep_map:
             styles["x-cell-border-bottom"] = rowsep_map[rowsep]
 
         # -- attribute @cals:bgcolor
-        bgcolor = cell_elem.attrib.get(cals("bgcolor"))
+        bgcolor = fmx_cell.attrib.get(cals("bgcolor"))
         if bgcolor:
             styles["background-color"] = bgcolor
 
         # -- attributes @cals:namest and @cals:nameend
-        name_start = cell_elem.attrib.get(cals("namest"))
-        name_end = cell_elem.attrib.get(cals("nameend"))
+        name_start = fmx_cell.attrib.get(cals("namest"))
+        name_end = fmx_cell.attrib.get(cals("nameend"))
         if name_start and name_end:
             col_start = int(re.findall(r"\d+", name_start)[0])
             col_end = int(re.findall(r"\d+", name_end)[0])
             width = col_end - col_start + 1
 
         # -- attribute @cals:morerows
-        morerows = cell_elem.attrib.get(cals("morerows"))
+        morerows = fmx_cell.attrib.get(cals("morerows"))
         if morerows:
             height = int(morerows) + 1
 
         # -- Create a CELL
-        if self._contains_ie(cell_elem):
+        if self._contains_ie(fmx_cell):
             content = ""
         else:
-            text = [cell_elem.text] if cell_elem.text else []
-            content = text + cell_elem.getchildren()
+            text = [fmx_cell.text] if fmx_cell.text else []
+            content = text + fmx_cell.getchildren()
         self._state.row.insert_cell(content, width=width, height=height, styles=styles, nature=nature)
 
         return self._state  # mainly for unit test
 
-    def parse_colspec(self, colspec_elem):
+    def parse_colspec(self, cals_colspec):
         """
         Parse a CALS-like ``colspec`` element.
 
-        :type  colspec_elem: etree._Element
-        :param colspec_elem: CALS-like ``colspec`` element.
+        :type  cals_colspec: etree._Element
+        :param cals_colspec: CALS-like ``colspec`` element.
         """
+        raise NotImplementedError("fixme")

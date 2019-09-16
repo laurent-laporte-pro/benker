@@ -365,6 +365,36 @@ def test_parse_row__sti_blk_level1():
     assert cell2.content[0] == "text"
 
 
+def test_parse_gr_notes():
+    fmx_gr_notes = etree.XML("""<GR.NOTES>
+      <TITLE><TI><P>GR.NOTES Title</P></TI></TITLE>
+      <NOTE NOTE.ID="N0001"><P>Table note</P></NOTE>
+    </GR.NOTES>""")
+    parser = Formex4Parser(BaseBuilder())
+    state = parser.setup_table()
+    # -- insert at least one ROW for testing
+    state.next_row()
+    state.row = state.table.rows[state.row_pos]
+    state.row.insert_cell("text1")
+    state.row.insert_cell("text2")
+    state.row.insert_cell("text3")
+    # -- then add the footer
+    state.next_row()
+    state = parser.parse_gr_notes(fmx_gr_notes)
+    row = state.row
+    assert row.styles == {}
+    assert row.nature == "footer"
+    # -- the cell is in the row 2
+    cell = state.table[(1, 2)]
+    assert cell.styles == {}
+    assert cell.nature == "footer"
+    assert cell.width == 3
+    assert cell.height == 1
+    content = [node for node in cell.content if isinstance(node, etree._Element)]
+    assert etree.tounicode(content[0], with_tail=False) == "<TITLE><TI><P>GR.NOTES Title</P></TI></TITLE>"
+    assert etree.tounicode(content[1], with_tail=False) == '<NOTE NOTE.ID="N0001"><P>Table note</P></NOTE>'
+
+
 @pytest.mark.parametrize(
     "attrib, styles, nature, size",
     [
