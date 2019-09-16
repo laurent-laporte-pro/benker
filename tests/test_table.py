@@ -41,7 +41,7 @@ def test_fill_missing_cells():
     table.rows[1].insert_cell("four", height=2)
     table.rows[2].insert_cell("un-deux", width=2)
 
-    table.fill_missing("???")
+    table.fill_missing(table.bounding_box, "???")
     text = str(table)
     assert text == textwrap.dedent("""\
     +-----------+-----------+-----------+-----------+

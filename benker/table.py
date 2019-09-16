@@ -601,11 +601,15 @@ class Table(Styled, MutableMapping):
         self._grid.expand(coord, width=width, height=height, content_appender=content_appender)
         self._refresh_views()
 
-    def fill_missing(self, content, styles=None, nature=None):
+    def fill_missing(self, bounding_box, content, styles=None, nature=None):
         """
         Fill the missing cells in the table.
 
         This method is useful when some rows has missing cells (holes).
+
+        :type  bounding_box: Box
+        :param bounding_box:
+            The bounding box delimiting the cells/rows to fill if missing.
 
         :param content:
             User-defined cell content. It can be of any type: ``None``,
@@ -630,7 +634,6 @@ class Table(Styled, MutableMapping):
 
         .. versionadded:: 0.5.0
         """
-        bounding_box = self.bounding_box
         for y in range(bounding_box.min.y, bounding_box.max.y + 1):
             for x in range(bounding_box.min.x, bounding_box.max.x + 1):
                 if (x, y) not in self:

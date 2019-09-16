@@ -32,10 +32,11 @@ When building the internal table object, this builder will:
    elements may be added with the Formex 4 builder,
    see :class:`~benker.builders.formex4.Formex4Builder`.
 """
-
 from lxml import etree
 
-from benker.parsers.base_parser import BaseParser, Namespace
+from benker.box import Box
+from benker.parsers.base_parser import BaseParser
+from benker.parsers.base_parser import Namespace
 from benker.parsers.lxml_iterwalk import iterwalk
 from benker.table import Table
 
@@ -231,9 +232,11 @@ class Formex4Parser(BaseParser):
                 else:
                     raise NotImplementedError(elem_tag)
             else:
-                if elem_tag == CORPUS:
-                    # add missing entries
-                    state.table.fill_missing("???")
+                if elem_tag in {ROW, TI_BLK, STI_BLK}:
+                    bounding_box = Box(1, state.row_pos, len(state.table.rows), state.row_pos)
+                    state.table.fill_missing(bounding_box, None, nature=state.row.nature)
+                elif elem_tag == CORPUS:
+                    state.table.fill_missing(state.table.bounding_box, None)
 
         return state.table
 
@@ -243,7 +246,6 @@ class Formex4Parser(BaseParser):
         return self._state
 
     def parse_corpus(self, fmx_corpus):
-        # type: (etree._Element) -> None
         tbl_elem = fmx_corpus.getparent()
         if tbl_elem is None:
             # the TBL element may be missing (unit tests).

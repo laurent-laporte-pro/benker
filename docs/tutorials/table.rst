@@ -329,7 +329,7 @@ If you need to fill the missing cells, you can use the
 
 .. doctest:: table
 
-    >>> table.fill_missing("HERE")
+    >>> table.fill_missing(table.bounding_box, "HERE")
     >>> print(table)
     +-----------+-----------+-----------+-----------+
     |    one    |    two    |   three   |   four    |
