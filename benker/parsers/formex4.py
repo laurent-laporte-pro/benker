@@ -32,6 +32,8 @@ When building the internal table object, this builder will:
    elements may be added with the Formex 4 builder,
    see :class:`~benker.builders.formex4.Formex4Builder`.
 """
+import re
+
 from lxml import etree
 
 from benker.box import Box
@@ -367,12 +369,18 @@ class Formex4Parser(BaseParser):
         fmx = self.formex_ns.get_qname
         styles = {}
 
-        # -- attribute @fmx:MARGIN => Not implemented
-
         # -- attribute @fmx:TYPE => *nature*
         type_map = {"ALIAS": "header", "HEADER": "header", "NORMAL": "body", "NOTCOL": "body", "TOTAL": "footer"}
         row_type = row_elem.attrib.get(fmx("TYPE"))
         nature = type_map.get(row_type, "body")
+
+        # the @fmx:TYPE is preserved in a @cals:rowstyle
+        # the BLK level is also stored in this attribute
+        blk_count = len(row_elem.xpath("ancestor::BLK"))
+        blk_level = "level{count}".format(count=blk_count) if blk_count else None
+        row_styles = list(filter(None, [row_type, blk_level]))
+        if row_styles:
+            styles["rowstyle"] = "-".join(row_styles)
 
         # support for CALS-like elements and attributes
         cals = self.cals_ns.get_qname
@@ -380,13 +388,14 @@ class Formex4Parser(BaseParser):
         # -- attribute @cals:rowstyle (extension)
         rowstyle = row_elem.attrib.get(cals("rowstyle"))
         if rowstyle:
+            # overrides the previously calculated @cals:rowstyle attribute
             styles["rowstyle"] = rowstyle
 
         # -- Create a ROW
         state = self._state
         state.row = state.table.rows[state.row_pos]
         state.row.nature = nature
-        state.row.style = styles
+        state.row.styles = styles
 
         return state  # mainly for unit test
 
@@ -434,6 +443,19 @@ class Formex4Parser(BaseParser):
         bgcolor = cell_elem.attrib.get(cals("bgcolor"))
         if bgcolor:
             styles["background-color"] = bgcolor
+
+        # -- attributes @cals:namest and @cals:nameend
+        name_start = cell_elem.attrib.get(cals("namest"))
+        name_end = cell_elem.attrib.get(cals("nameend"))
+        if name_start and name_end:
+            col_start = int(re.findall(r"\d+", name_start)[0])
+            col_end = int(re.findall(r"\d+", name_end)[0])
+            width = col_end - col_start + 1
+
+        # -- attribute @cals:morerows
+        morerows = cell_elem.attrib.get(cals("morerows"))
+        if morerows:
+            height = int(morerows) + 1
 
         # -- Create a CELL
         if cell_elem.xpath("IE"):
