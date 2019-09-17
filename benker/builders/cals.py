@@ -315,6 +315,10 @@ class CalsBuilder(BaseBuilder):
             }[row_styles['valign']]
             # fmt: on
 
+        row_rowsep = get_rowsep_attr(row_styles, "border-bottom")
+        if row_rowsep and row_rowsep != self._table_rowsep:
+            attrs["rowsep"] = row_rowsep
+
         if "x-ins" in row_styles:
             # <?change-start change-id="ct140446841083680" type="row:insertion"
             #   creator="Anita BARREL" date="2017-11-15T11:46:00"?>
