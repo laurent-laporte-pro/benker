@@ -13,8 +13,8 @@ v0.5.0 (unreleased)
 
 Minor release
 
-Added
------
+Changed
+-------
 
 * Refactoring (rename "Formex4" to "Formex"):
 
@@ -25,6 +25,18 @@ Added
   - the class ``Ooxml2Formex4Converter`` is renamed ``Ooxml2FormexConverter``,
   - the function ``convert_ooxml2formex4`` is renamed ``convert_ooxml2formex``,
   - the class ``Formex4Parser`` is renamed ``FormexParser``,
+
+* Change in the class :class:`benker.table.Table`:
+  add the method :meth:`~benker.table.Table.fill_missing` to fill the missing cells in a table.
+
+* Change in the class :class:`benker.builders.cals.CalsBuilder`:
+  Add support for the ``@cals:rowstyle`` attribute (extension).
+
+* Change in the method :class:`~benker.parsers.base_parser.BaseParser.parse_file`:
+  Always generate the XML declaration in the destination file.
+
+Added
+-----
 
 * Change in the converter: :func:`~benker.converters.ooxml2formex.convert_ooxml2formex`:
   Add the option *use_cals* (and related options: *cals_ns*, *cals_prefix* and *width_unit*):
@@ -37,12 +49,6 @@ Added
 
 * Add support for ``bgcolor`` (Table/Cell background color) in the Formex 4 builder
   (only with the *use_cals* option).
-
-* Change in the class :class:`benker.table.Table`:
-  add the method :meth:`~benker.table.Table.fill_missing` to fill the missing cells in a table.
-
-* Change in the class :class:`benker.builders.cals.CalsBuilder`:
-  Add support for the ``@cals:rowstyle`` attribute (extension).
 
 Fixed
 -----

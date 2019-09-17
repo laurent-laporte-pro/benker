@@ -62,10 +62,23 @@ class BaseParser(object):
         self._state = self._State()
 
     def parse_file(self, src_xml, dst_xml):
+        """
+        Parse and convert the tables from one format to another.
+
+        :param str src_xml:
+            Source path of the XML file to convert.
+
+        :param str dst_xml:
+            Destination path of the XML file to produce.
+
+        .. versionchanged:: 0.5.0
+           Always generate the XML declaration in the destination file.
+        """
+
         tree = etree.parse(src_xml)
         self.transform_tables(tree)
         self.builder.finalize_tree(tree)
-        tree.write(dst_xml, encoding=self.encoding, pretty_print=False)
+        tree.write(dst_xml, xml_declaration=True, encoding=self.encoding, pretty_print=False)
 
     def transform_tables(self, tree):
         raise NotImplementedError
