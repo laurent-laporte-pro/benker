@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+Cet exemple factice de tableau contient quelques exemples de balises
+que l'on peut rencontrer dans un tableau Formex.
+
+*   un titre de tableau,
+*   des GR.SEQ,
+*   des notes de bas de page qui devront apparaître à la fin du tableau,
+*   un corpus:
+
+    -   avec une en-tête HEADER
+    -   une ligne d'ALIAS,
+    -   des lignes de tableau classiques,
+    -   des blocs de lignes de tableaux.
+
+Cet exemple contient aussi des attributs et éléments CALS qui aident à la conversion Formex vers CALS.
+-->
+<GENERAL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="formex-05.59-20170418_jouve.xd" NNC="YES">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="C_2019000EN.01000101.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>000</NO.OJ>
+      <YEAR>2019</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20190912">20190912</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0001</NO.SEQ>
+    <PAGE.FIRST>1</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>1</PAGE.LAST>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+  </BIB.INSTANCE>
+  <CONTENTS>
+    <TBL COLS="2" NO.SEQ="0001">
+      <TITLE>
+        <TI>
+          <P>Table title</P>
+        </TI>
+      </TITLE>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="BOLD">GR.SEQ Title</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <NP>
+          <NO.P>1</NO.P>
+          <TXT>text</TXT>
+        </NP>
+        <NP>
+          <NO.P>2</NO.P>
+          <TXT>text</TXT>
+        </NP>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="BOLD">GR.SEQ Title</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <NP>
+          <NO.P>1</NO.P>
+          <TXT>text</TXT>
+        </NP>
+        <NP>
+          <NO.P>2</NO.P>
+          <TXT>text</TXT>
+        </NP>
+      </GR.SEQ>
+      <table frame="all" colsep="1" rowsep="1" tabstyle="Grilledutableau" pgwide="1">
+        <tgroup cols="2">
+          <colspec colnum="1" colname="c1" colwidth="80.00mm" align="left"/>
+          <colspec colnum="2" colname="c2" colwidth="60.00mm" align="center"/>
+          <thead>
+            <row rowstyle="ROW-HEADER">
+              <entry>
+                <HT TYPE="BOLD">Header 1</HT>
+              </entry>
+              <entry>
+                <HT TYPE="BOLD">Header 2</HT>
+              </entry>
+            </row>
+            <row rowstyle="ROW-ALIAS">
+              <entry>(1)</entry>
+              <entry>(2)</entry>
+            </row>
+          </thead>
+          <tfoot>
+            <row>
+              <entry namest="c1" nameend="c2">
+                <TITLE>
+                  <TI>
+                    <P>GR.NOTES Title</P>
+                  </TI>
+                </TITLE>
+                <NOTE NOTE.ID="N0001">
+                  <P>Table note</P>
+                </NOTE>
+              </entry>
+            </row>
+          </tfoot>
+          <tbody>
+            <row valign="middle" rowsep="0">
+              <entry>Cell A1</entry>
+              <entry>Cell B1</entry>
+            </row>
+            <row rowstyle="TI.BLK-level1">
+              <entry namest="c1" nameend="c2">
+                <P>
+                  <HT TYPE="BOLD">TI.BLK title</HT>
+                </P>
+              </entry>
+            </row>
+            <row rowstyle="STI.BLK-level1">
+              <entry>
+                <P>STI.BLK title</P>
+              </entry>
+              <entry/>
+            </row>
+            <row rowstyle="ROW-level1">
+              <entry namest="c1" nameend="c2">Cell A2-B2</entry>
+            </row>
+            <row rowstyle="ROW-level1">
+              <entry morerows="1">Cell A3-A4</entry>
+              <entry>Cell B3</entry>
+            </row>
+            <row rowstyle="ROW-level1">
+              <entry>Cell B4</entry>
+            </row>
+            <row rowstyle="TI.BLK-level2">
+              <entry namest="c1" nameend="c2">
+                <P>
+                  <HT TYPE="BOLD">TI.BLK title</HT>
+                </P>
+              </entry>
+            </row>
+            <row rowstyle="ROW-TOTAL-level2">
+              <entry>Cell A5</entry>
+              <entry>Cell B5</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </TBL>
+  </CONTENTS>
+</GENERAL>

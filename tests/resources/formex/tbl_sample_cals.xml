@@ -103,7 +103,7 @@ Cet exemple contient aussi des attributs et éléments CALS qui aident à la con
           <CELL TYPE="ALIAS" COL="1">(1)</CELL>
           <CELL TYPE="ALIAS" COL="2">(2)</CELL>
         </ROW>
-        <ROW cals:rowsep="1" cals:valign="middle">
+        <ROW cals:rowsep="0" cals:valign="middle">
           <CELL COL="1">Cell A1</CELL>
           <CELL COL="2">Cell B1</CELL>
         </ROW>
