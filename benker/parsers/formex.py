@@ -218,7 +218,7 @@ class FormexParser(BaseParser):
                     raise NotImplementedError(elem_tag)
             else:
                 if elem_tag in {ROW, TI_BLK, STI_BLK}:
-                    bounding_box = Box(1, state.row_pos, len(state.table.rows), state.row_pos)
+                    bounding_box = Box(1, state.row_pos, len(state.table.cols), state.row_pos)
                     state.table.fill_missing(bounding_box, None, nature=state.row.nature)
                 elif elem_tag == CORPUS:
                     # if there is a GR.NOTES, we create a row for it with the nature "footer"

@@ -71,6 +71,35 @@ def test_transform_tables__no_namespace():
     # fmt: on
 
 
+def test_transform_tables__with_header():
+    E = ElementMaker()
+    fmx_tbl = E.TBL(E.CORPUS(
+        E.ROW(E.CELL("Header 1", TYPE="HEADER"), E.CELL("Header 2", TYPE="HEADER"), TYPE="HEADER"),
+        E.ROW(E.CELL("A1"), E.CELL("B1")),
+        E.ROW(E.CELL("A2"), E.CELL("B2")),
+        E.ROW(E.CELL("A3"), E.CELL("B3")),
+    ))
+    tree = E.FORMEX(fmx_tbl)
+    builder = StrBuilder()
+    parser = FormexParser(builder, formex_ns="")
+    parser.transform_tables(tree)
+    str_table = tree.xpath("//table")[0].text
+    # print("str_table:")
+    # print(str_table)
+    # fmt: off
+    assert str_table == textwrap.dedent("""\
+    +-----------+-----------+
+    | Header 1  | Header 2  |
+    +-----------+-----------+
+    |    A1     |    B1     |
+    +-----------+-----------+
+    |    A2     |    B2     |
+    +-----------+-----------+
+    |    A3     |    B3     |
+    +-----------+-----------+""")
+    # fmt: on
+
+
 def test_transform_tables__with_namespace():
     E = ElementMaker(namespace=FORMEX_NS, nsmap={FORMEX_PREFIX: FORMEX_NS})
     colspan = etree.QName(FORMEX_NS, "COLSPAN")
