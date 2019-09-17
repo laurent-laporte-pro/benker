@@ -65,15 +65,6 @@ def get_frame_styles(frame):
     return styles
 
 
-def make_prefix_ns(prefix, ns):
-    # type: (str or None, str or None) -> (str or None, str or None)
-    ns = ns or None
-    prefix = prefix or None
-    if prefix and not ns:
-        raise ValueError("prefix '{prefix}' defined without namespace".format(prefix=prefix))
-    return prefix, ns
-
-
 class Formex4Parser(BaseParser):
     """
     Formex 4 tables parser
