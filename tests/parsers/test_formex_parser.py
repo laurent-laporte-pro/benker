@@ -182,23 +182,51 @@ def test_get_frame_styles(frame, expected):
 
 
 @pytest.mark.parametrize(
-    "attrib, styles",
+    "attrib, styles, nature",
     # fmt: off
     [
-        ({"COLS": "1"}, {}),
-        ({"NO.SEQ": "0001", "COLS": "1", "PAGE.SIZE": "DOUBLE.LANDSCAPE"}, {"x-sect-orient": "landscape"}),
+        (
+            {"COLS": "1"},
+            {},
+            None,
+        ),
+        (
+            {"NO.SEQ": "0001", "COLS": "1", "PAGE.SIZE": "DOUBLE.LANDSCAPE"},
+            {"x-sect-orient": "landscape"},
+            None,
+        ),
         (
             {"NO.SEQ": "0001", "CLASS": "GEN", "COLS": "1", "PAGE.SIZE": "SINGLE.PORTRAIT"},
-            {"tabstyle": "GEN", "x-sect-orient": "portrait"},
+            {"x-sect-orient": "portrait"},
+            "GEN",
         ),
         (
             {"NO.SEQ": "0001", "CLASS": "SCHEDULE", "COLS": "1", "PAGE.SIZE": "SINGLE.LANDSCAPE"},
-            {"tabstyle": "SCHEDULE", "x-sect-orient": "landscape"},
+            {"x-sect-orient": "landscape"},
+            "SCHEDULE",
         ),
         (
             {"NO.SEQ": "0001", "CLASS": "RECAP", "COLS": "1", "PAGE.SIZE": "DOUBLE.PORTRAIT"},
-            {"tabstyle": "RECAP", "x-sect-orient": "portrait"},
+            {"x-sect-orient": "portrait"},
+            "RECAP",
         ),
+    ],
+    # fmt: on
+)
+def test_parse_tbl_corpus(attrib, styles, nature):
+    fmx_tbl = etree.Element("TBL", attrib=attrib)
+    fmx_corpus = etree.SubElement(fmx_tbl, "CORPUS")
+    parser = FormexParser(BaseBuilder())
+    state = parser.parse_corpus(fmx_corpus)
+    table = state.table
+    assert table.styles == styles
+    assert table.nature == nature
+
+
+@pytest.mark.parametrize(
+    "attrib, styles",
+    # fmt: off
+    [
         (
             {"frame": "all"},
             {
@@ -244,12 +272,11 @@ def test_get_frame_styles(frame, expected):
             {"bgcolor": "#FF8000"},
             {"background-color": "#FF8000"},
         ),
-    ],
+    ]
     # fmt: on
 )
-def test_parse_tbl_corpus(attrib, styles):
-    fmx_tbl = etree.Element("TBL", attrib=attrib)
-    fmx_corpus = etree.SubElement(fmx_tbl, "CORPUS")
+def test_parse_corpus(attrib, styles):
+    fmx_corpus = etree.Element("CORPUS", attrib=attrib)
     parser = FormexParser(BaseBuilder())
     state = parser.parse_corpus(fmx_corpus)
     table = state.table

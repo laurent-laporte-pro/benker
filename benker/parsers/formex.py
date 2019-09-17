@@ -226,9 +226,8 @@ class FormexParser(BaseParser):
                         nodes = elem.xpath("preceding-sibling::fmx:GR.NOTES", namespaces={"fmx": self.formex_ns.uri})
                     else:
                         nodes = elem.xpath("preceding-sibling::GR.NOTES")
-                    if nodes:
+                    for fmx_gr_notes in nodes:
                         # Convert the GR.NOTES and remove it
-                        fmx_gr_notes = nodes[0]
                         state.next_row()
                         self.parse_gr_notes(fmx_gr_notes)
                         fmx_tbl = fmx_gr_notes.getparent()
@@ -237,56 +236,58 @@ class FormexParser(BaseParser):
 
         return state.table
 
-    def setup_table(self, styles=None):
-        table = Table(styles=styles)
+    def setup_table(self, styles=None, nature=None):
+        table = Table(styles=styles, nature=nature)
         self._state.table = table
         return self._state
 
     def parse_corpus(self, fmx_corpus):
         fmx_tbl = fmx_corpus.getparent()
-        if fmx_tbl is None:
-            # the TBL element may be missing (unit tests).
-            styles = {}
-        else:
-            styles = self.parse_tbl_styles(fmx_tbl)
+        styles, nature = self.parse_tbl_styles(fmx_tbl)
 
-            # support for CALS-like elements and attributes
-            cals = self.cals_ns.get_qname
+        # support for CALS-like elements and attributes
+        cals = self.cals_ns.get_qname
 
-            # -- attribute @cals:frame
-            frame = fmx_tbl.attrib.get(cals("frame"))
-            styles.update(get_frame_styles(frame))
+        # -- attribute @cals:frame
+        frame = fmx_corpus.attrib.get(cals("frame"))
+        styles.update(get_frame_styles(frame))
 
-            # -- attribute @cals:colsep
-            colsep = fmx_tbl.attrib.get(cals("colsep"))
-            colsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
-            if colsep in colsep_map:
-                styles["x-cell-border-right"] = colsep_map[colsep]
+        # -- attribute @cals:colsep
+        colsep = fmx_corpus.attrib.get(cals("colsep"))
+        colsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
+        if colsep in colsep_map:
+            styles["x-cell-border-right"] = colsep_map[colsep]
 
-            # -- attribute @cals:rowsep
-            rowsep = fmx_tbl.attrib.get(cals("rowsep"))
-            rowsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
-            if rowsep in rowsep_map:
-                styles["x-cell-border-bottom"] = rowsep_map[rowsep]
+        # -- attribute @cals:rowsep
+        rowsep = fmx_corpus.attrib.get(cals("rowsep"))
+        rowsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
+        if rowsep in rowsep_map:
+            styles["x-cell-border-bottom"] = rowsep_map[rowsep]
 
-            # -- attribute @cals:orient
-            orient = fmx_tbl.attrib.get(cals("orient"))
-            orient_map = {"land": "landscape", "port": "portrait"}
-            if orient in orient_map:
-                styles["x-sect-orient"] = orient_map[orient]
+        # -- attribute @cals:orient
+        orient = fmx_corpus.attrib.get(cals("orient"))
+        orient_map = {"land": "landscape", "port": "portrait"}
+        if orient in orient_map:
+            styles["x-sect-orient"] = orient_map[orient]
 
-            # -- attribute @cals:pgwide
-            pgwide = fmx_tbl.attrib.get(cals("pgwide"))
-            pgwide_map = {"0": "2", "1": "1"}
-            if pgwide in pgwide_map:
-                styles["x-sect-cols"] = pgwide_map[pgwide]
+        # -- attribute @cals:pgwide
+        pgwide = fmx_corpus.attrib.get(cals("pgwide"))
+        pgwide_map = {"0": "2", "1": "1"}
+        if pgwide in pgwide_map:
+            styles["x-sect-cols"] = pgwide_map[pgwide]
 
-            # -- attribute @cals:bgcolor
-            bgcolor = fmx_tbl.attrib.get(cals("bgcolor"))
-            if bgcolor:
-                styles["background-color"] = bgcolor
+        # -- attribute @cals:bgcolor
+        bgcolor = fmx_corpus.attrib.get(cals("bgcolor"))
+        if bgcolor:
+            styles["background-color"] = bgcolor
 
-        return self.setup_table(styles)
+        # -- attribute @cals:tabstyle
+        tabstyle = fmx_corpus.attrib.get(cals("tabstyle"))
+        if tabstyle:
+            # overrides the calculated tabstyle (see @fmx:CLASS)
+            nature = nature + "-" + tabstyle if nature else tabstyle
+
+        return self.setup_table(styles, nature)
 
     def parse_tbl_styles(self, fmx_tbl):
         """
@@ -295,17 +296,19 @@ class FormexParser(BaseParser):
         :type  fmx_tbl: etree._Element
         :param fmx_tbl: table
 
-        :return: dictionary of styles
+        :return: dictionary of styles and nature
         """
+        if fmx_tbl is None:
+            # mainly for unit tests
+            return {}, None
+
         fmx = self.formex_ns.get_qname
         styles = {}
 
         # -- attribute @fmx:NO.SEQ => ignored (computed)
 
-        # -- attribute @fmx:CLASS
-        cls = fmx_tbl.attrib.get(fmx("CLASS"))
-        if cls:
-            styles["tabstyle"] = cls
+        # -- attribute @fmx:CLASS => @cals:tabstyle or @cals:tgroupstyle
+        nature = fmx_tbl.attrib.get(fmx("CLASS"))
 
         # -- attribute @fmx:COLS => ignored (*table.cols*)
 
@@ -320,7 +323,7 @@ class FormexParser(BaseParser):
         if page_size in page_size_map:
             styles["x-sect-orient"] = page_size_map[page_size]
 
-        return styles
+        return styles, nature
 
     def parse_row(self, fmx_row):
         """
@@ -465,9 +468,9 @@ class FormexParser(BaseParser):
 
     def _count_blk(self, fmx_node):
         if self.formex_ns.uri:
-            blk_count = len(fmx_node.xpath("//ancestor::fmx:BLK", namespaces={"fmx": self.formex_ns.uri}))
+            blk_count = len(fmx_node.xpath("ancestor::fmx:BLK", namespaces={"fmx": self.formex_ns.uri}))
         else:
-            blk_count = len(fmx_node.xpath("//ancestor::BLK"))
+            blk_count = len(fmx_node.xpath("ancestor::BLK"))
         return blk_count
 
     def _insert_blk_title_row(self, fmx_blk_title, styles):
