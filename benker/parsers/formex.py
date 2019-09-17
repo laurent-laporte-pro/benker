@@ -335,7 +335,7 @@ class FormexParser(BaseParser):
         styles = {}
 
         # -- attribute @fmx:TYPE => *nature*
-        type_map = {"ALIAS": "header", "HEADER": "header", "NORMAL": "body", "NOTCOL": "body", "TOTAL": "footer"}
+        type_map = {"ALIAS": "header", "HEADER": "header", "NORMAL": "body", "NOTCOL": "body", "TOTAL": "body"}
         row_type = fmx_row.attrib.get(fmx("TYPE"))
         nature = type_map.get(row_type, "body")
 

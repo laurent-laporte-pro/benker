@@ -264,7 +264,7 @@ def test_parse_tbl_corpus(attrib, styles):
         ({"TYPE": "HEADER"}, {"rowstyle": "ROW-HEADER"}, "header"),
         ({"TYPE": "NORMAL"}, {"rowstyle": "ROW-NORMAL"}, "body"),
         ({"TYPE": "NOTCOL"}, {"rowstyle": "ROW-NOTCOL"}, "body"),
-        ({"TYPE": "TOTAL"}, {"rowstyle": "ROW-TOTAL"}, "footer"),
+        ({"TYPE": "TOTAL"}, {"rowstyle": "ROW-TOTAL"}, "body"),
         ({"TYPE": "NORMAL", "rowstyle": "ROW-TOTAL"}, {"rowstyle": "ROW-TOTAL"}, "body"),
         ({"valign": "top"}, {"valign": "top"}, "body"),
         ({"valign": "middle"}, {"valign": "middle"}, "body"),
@@ -294,7 +294,7 @@ def test_parse_row(attrib, styles, nature):
         ({"TYPE": "HEADER"}, {"rowstyle": "ROW-HEADER-level2"}, "header"),
         ({"TYPE": "NORMAL"}, {"rowstyle": "ROW-NORMAL-level2"}, "body"),
         ({"TYPE": "NOTCOL"}, {"rowstyle": "ROW-NOTCOL-level2"}, "body"),
-        ({"TYPE": "TOTAL"}, {"rowstyle": "ROW-TOTAL-level2"}, "footer"),
+        ({"TYPE": "TOTAL"}, {"rowstyle": "ROW-TOTAL-level2"}, "body"),
     ],
 )
 def test_parse_row__in_blk_level2(attrib, styles, nature):
