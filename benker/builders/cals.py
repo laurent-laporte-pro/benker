@@ -296,6 +296,9 @@ class CalsBuilder(BaseBuilder):
 
         :type  row: benker.table.RowView
         :param row: The row.
+
+        .. versionadded:: 0.5.0
+           Add support for the ``@cals:rowstyle`` attribute (extension).
         """
         # Possible attrs:
         # - Row height: min-height' or 'height'
@@ -318,6 +321,10 @@ class CalsBuilder(BaseBuilder):
         row_rowsep = get_rowsep_attr(row_styles, "border-bottom")
         if row_rowsep and row_rowsep != self._table_rowsep:
             attrs["rowsep"] = row_rowsep
+
+        # -- attribute @cals:rowstyle (extension)
+        if "rowstyle" in row_styles:
+            attrs["rowstyle"] = row_styles["rowstyle"]
 
         if "x-ins" in row_styles:
             # <?change-start change-id="ct140446841083680" type="row:insertion"

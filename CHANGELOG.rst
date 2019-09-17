@@ -41,6 +41,9 @@ Added
 * Change in the class :class:`benker.table.Table`:
   add the method :meth:`~benker.table.Table.fill_missing` to fill the missing cells in a table.
 
+* Change in the class :class:`benker.builders.cals.CalsBuilder`:
+  Add support for the ``@cals:rowstyle`` attribute (extension).
+
 Fixed
 -----
 
