@@ -426,4 +426,10 @@ class CalsBuilder(BaseBuilder):
 
         entry_elem = etree.SubElement(row_elem, u"entry", attrib=attrs)
         if cell.content is not None:
-            entry_elem.extend(cell.content)
+            for node in cell.content:
+                # noinspection PyProtectedMember
+                if isinstance(node, etree._Element):
+                    entry_elem.append(node)
+                else:
+                    text = entry_elem.text or ""
+                    entry_elem.text = text + node
