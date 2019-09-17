@@ -22,6 +22,10 @@ Specifications and examples:
 - An example of Formex 4 table is available in the Schema documentation:
   `TBL <http://formex.publications.europa.eu/formex-4/manual/manual.htm#TBL>`_
 
+.. versionchanged:: 0.5.0
+   Refactoring (rename "Formex4" to "Formex"):
+
+   - the class ``Formex4Builder`` is renamed ``FormexBuilder``,
 """
 import collections
 import re
@@ -37,6 +41,14 @@ from benker.parsers.lxml_qname import QName
 from benker.schemas import CALS_NS
 from benker.schemas import CALS_PREFIX
 from benker.units import convert_value
+
+# noinspection PyProtectedMember
+#: ElementTree Type
+ElementTreeType = etree._ElementTree
+
+# noinspection PyProtectedMember
+#: Element Type
+ElementType = etree._Element
 
 text_type = type(u"")
 
@@ -189,7 +201,7 @@ class FormexBuilder(BaseBuilder):
         """
         Build the Formex 4 ``<CORPUS>`` element.
 
-        :type  tbl_elem: etree._Element
+        :type  tbl_elem: ElementType
         :param tbl_elem: Parent element: ``<TBL>``.
 
         :type  table: benker.table.Table
@@ -245,7 +257,7 @@ class FormexBuilder(BaseBuilder):
              </TI>
            </TITLE>
 
-        :type  tbl_elem: etree._Element
+        :type  tbl_elem: ElementType
         :param tbl_elem: Parent element: ``<TBL>``.
 
         :type  row: benker.table.RowView
@@ -288,7 +300,7 @@ class FormexBuilder(BaseBuilder):
            because this value is usually implied, and can be deduce
            from the ``@colname`` attribute.
 
-        :type  group_elem: etree._Element
+        :type  group_elem: ElementType
         :param group_elem: Parent element: ``<tgroup>``.
 
         :type  col: benker.table.ColView
@@ -332,7 +344,7 @@ class FormexBuilder(BaseBuilder):
             in each cell of a row which has a specific type in order to avoid the default
             overriding (see the first row of the example below).
 
-        :type  corpus_elem: etree._Element
+        :type  corpus_elem: ElementType
         :param corpus_elem: Parent element: ``<CORPUS>``.
 
         :type  row: benker.table.RowView
@@ -424,7 +436,7 @@ class FormexBuilder(BaseBuilder):
             of contents of the cells. It overrides the value of the TYPE attribute defined for
             the row (ROW) which contains the cell.
 
-        :type  row_elem: etree._Element
+        :type  row_elem: ElementType
         :param row_elem: Parent element: ``<ROW>``.
 
         :type  cell: benker.cell.Cell
@@ -504,14 +516,14 @@ class FormexBuilder(BaseBuilder):
         Finalize the resulting tree structure:
         calculate the ``@NO.SEQ`` values: sequence number of each table.
 
-        :type  tree: etree._ElementTree
+        :type  tree: ElementTreeType
         :param tree: The resulting tree.
         """
         root = tree.getroot()
         context = iterwalk(root, events=("start",), tag=("TBL",))
 
         stack = []
-        for action, elem in context:  # type: str, etree._Element
+        for action, elem in context:  # type: str, ElementType
             elem_tag = elem.tag
             if elem_tag == "TBL":
                 elem_level = int(elem.xpath("count(ancestor-or-self::TBL)"))

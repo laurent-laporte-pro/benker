@@ -8,5 +8,6 @@
    :caption: Available Converters
 
    benker.converters.base_converter
+   benker.converters.formex2cals
    benker.converters.ooxml2cals
    benker.converters.ooxml2formex

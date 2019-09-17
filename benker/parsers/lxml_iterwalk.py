@@ -7,6 +7,14 @@ Python alternative to :class:`lxml.etree.iterwalk` for lxml < 4.2.1
 """
 from lxml import etree
 
+# noinspection PyProtectedMember
+#: ElementTree Type
+ElementTreeType = etree._ElementTree
+
+# noinspection PyProtectedMember
+#: Element Type
+ElementType = etree._Element
+
 if etree.LXML_VERSION >= (4, 2, 1, 0):
     iterwalk = etree.iterwalk
 
@@ -16,7 +24,7 @@ else:
             self.tags = {tag} if isinstance(tag, str) else set(tag)
 
         def __call__(self, element_or_tree):
-            # type: (etree._ElementTree or etree._Element) -> bool
+            # type: (ElementTreeType or ElementType) -> bool
             return element_or_tree.tag in self.tags
 
     def _iterwalk_impl(tree, events, matcher):

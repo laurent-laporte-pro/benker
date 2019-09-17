@@ -1,4 +1,8 @@
 # coding: utf-8
+"""
+OOXML namespaces
+================
+"""
 import functools
 
 from benker.parsers.base_parser import value_of as base_value_of

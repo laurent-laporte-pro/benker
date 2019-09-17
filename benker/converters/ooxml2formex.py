@@ -2,6 +2,12 @@
 """
 Office Open XML to Formex 4 converter
 =====================================
+
+.. versionchanged:: 0.5.0
+   Refactoring (rename "Formex4" to "Formex"):
+
+   - the class ``Ooxml2Formex4Converter`` is renamed ``Ooxml2FormexConverter``,
+   - the function ``convert_ooxml2formex4`` is renamed ``convert_ooxml2formex``,
 """
 from benker.builders.formex import FormexBuilder
 from benker.converters.base_converter import BaseConverter

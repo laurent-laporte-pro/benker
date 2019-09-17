@@ -1,5 +1,5 @@
 .. This documentation can be updated with the following command:
-   sphinx-apidoc -o docs/api/ . "setup.py" "test_*.py" --separate --no-toc --no-headings --module-first
+   sphinx-apidoc -o docs/api/ . "setup.py" "test_*.py" tests --separate --no-toc --no-headings --module-first
 
 .. To check the documentation links:
    sphinx-build -n docs/ dist/docs/
@@ -30,20 +30,10 @@ API
 
 .. toctree::
    :maxdepth: 1
-   :caption: Parsers:
+   :caption: Parsers, builders and converters:
 
    benker.parsers
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Builders:
-
    benker.builders
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Converters:
-
    benker.converters
 
 .. toctree::

@@ -24,6 +24,10 @@ from lxml import etree
 from benker.builders.base_builder import BaseBuilder
 from benker.units import convert_value
 
+# noinspection PyProtectedMember
+#: Element Type
+ElementType = etree._Element
+
 
 def _get_border_style(styles, style):
     parts = styles.get(style, "")
@@ -198,7 +202,7 @@ class CalsBuilder(BaseBuilder):
            ``@colsep``, ``@rowsep`` and ``@tgroupstyle`` attributes are generated only
            if the *table_in_tgroup* options is ``True``.
 
-        :type  table_elem: etree._Element
+        :type  table_elem: ElementType
         :param table_elem: Parent element: ``<table>``.
 
         :type  table: benker.table.Table
@@ -243,7 +247,7 @@ class CalsBuilder(BaseBuilder):
             The value can be "left", "right", "center", or "justify"
             (the value "char" is not supported).
 
-        :type  group_elem: etree._Element
+        :type  group_elem: ElementType
         :param group_elem: Parent element: ``<tgroup>``.
 
         :type  col: benker.table.ColView
@@ -277,7 +281,7 @@ class CalsBuilder(BaseBuilder):
         """
         Build the CALS ``<tbody>``, `<thead>``, or `<tfoot>`` element.
 
-        :type  group_elem: etree._Element
+        :type  group_elem: ElementType
         :param group_elem: Parent element: ``<tgroup>``.
 
         :param row_list: List of rows
@@ -306,7 +310,7 @@ class CalsBuilder(BaseBuilder):
            We use the ``<?change-start?>`` PI to mark the start of the inserted row,
            and the ``<?change-end?>`` PI to mark the end.
 
-        :type  tbody_elem: etree._Element
+        :type  tbody_elem: ElementType
         :param tbody_elem: Parent element: ``<tbody>``, `<thead>``, or `<tfoot>``.
 
         :type  row: benker.table.RowView
@@ -397,7 +401,7 @@ class CalsBuilder(BaseBuilder):
 
         -   ``@bgcolor`` is built from the "background-color" style (HTML color).
 
-        :type  row_elem: etree._Element
+        :type  row_elem: ElementType
         :param row_elem: Parent element: ``<row>``.
 
         :type  cell: benker.cell.Cell
@@ -450,7 +454,7 @@ class CalsBuilder(BaseBuilder):
         if cell.content is not None:
             for node in cell.content:
                 # noinspection PyProtectedMember
-                if isinstance(node, etree._Element):
+                if isinstance(node, ElementType):
                     entry_elem.append(node)
                 else:
                     text = entry_elem.text or ""

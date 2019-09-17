@@ -1,4 +1,10 @@
 # coding: utf-8
+"""
+OOXML Page size
+===============
+
+Page Size dimensions, orientation and printer paper code.
+"""
 
 from benker.parsers.ooxml.namespaces import value_of
 from benker.parsers.ooxml.types import StPageOrientation

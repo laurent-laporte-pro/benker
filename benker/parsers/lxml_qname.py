@@ -4,6 +4,8 @@ lxml - QName
 ============
 
 Python alternative to :class:`lxml.etree.QName` for lxml < 4
+
+.. versionadded:: 0.5.0
 """
 from lxml import etree
 

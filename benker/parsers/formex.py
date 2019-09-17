@@ -31,14 +31,22 @@ When building the internal table object, this builder will:
    ``rowsep``, ...) and CALS-like elements (for instance ``colspec``). This attributes and
    elements may be added with the Formex 4 builder,
    see :class:`~benker.builders.formex.FormexBuilder`.
+
+.. versionadded:: 0.5.0
 """
 import re
+
+from lxml import etree
 
 from benker.box import Box
 from benker.parsers.base_parser import BaseParser
 from benker.parsers.base_parser import Namespace
 from benker.parsers.lxml_iterwalk import iterwalk
 from benker.table import Table
+
+# noinspection PyProtectedMember
+#: Element Type
+ElementType = etree._Element
 
 #: Default value for a solid border (for @cals:frame/@cals:colsep/@cals:rowsep, ...)
 BORDER_SOLID = "solid 1pt black"
@@ -141,10 +149,10 @@ class FormexParser(BaseParser):
         """
         Convert a ``<CORPUS>`` Formex element into table object.
 
-        :type  fmx_corpus: etree._Element
+        :type  fmx_corpus: ElementType
         :param fmx_corpus: Formex element.
 
-        :rtype: etree._Element
+        :rtype: ElementType
         :return: Table.
         """
         state = self._state
@@ -293,7 +301,7 @@ class FormexParser(BaseParser):
         """
         Parse a ``TBL`` element and extract the styles
 
-        :type  fmx_tbl: etree._Element
+        :type  fmx_tbl: ElementType
         :param fmx_tbl: table
 
         :return: dictionary of styles and nature
@@ -331,7 +339,7 @@ class FormexParser(BaseParser):
 
         This element may be in a ``BLK```
 
-        :type  fmx_row: etree._Element
+        :type  fmx_row: ElementType
         :param fmx_row: table row
         """
         fmx = self.formex_ns.get_qname
@@ -385,13 +393,13 @@ class FormexParser(BaseParser):
 
         For instance:
 
-        .. code-block::
+        .. code-block:: xml
 
            <TI.BLK COL.START="1" COL.END="2">
              <P><HT TYPE="BOLD">TI.BLK title</HT></P>
            </TI.BLK>
 
-        :type  fmx_ti_blk: etree._Element
+        :type  fmx_ti_blk: ElementType
         :param fmx_ti_blk: title of the ``BLK``.
         """
         styles = {}
@@ -410,13 +418,13 @@ class FormexParser(BaseParser):
 
         For instance:
 
-        .. code-block::
+        .. code-block:: xml
 
            <STI.BLK COL.START="1" COL.END="1">
              <P>STI.BLK title</P>
            </STI.BLK>
 
-        :type  fmx_sti_blk: etree._Element
+        :type  fmx_sti_blk: ElementType
         :param fmx_sti_blk: subtitle of the ``BLK``.
         """
         styles = {}
@@ -433,9 +441,9 @@ class FormexParser(BaseParser):
         """
         Parse a ``GR.NOTES`` element, considering it like a row of a single cell.
 
-        For instance::
+        For instance:
 
-        .. code-block::
+        .. code-block:: xml
 
            <GR.NOTES>
              <TITLE>
@@ -448,7 +456,7 @@ class FormexParser(BaseParser):
              </NOTE>
            </GR.NOTES>
 
-        :type  fmx_gr_notes: etree._Element
+        :type  fmx_gr_notes: ElementType
         :param fmx_gr_notes: group of notes called in the table (``GR.NOTES``)
         """
         # -- Create a ROW
@@ -508,7 +516,7 @@ class FormexParser(BaseParser):
         """
         Parse a ``CELL`` element.
 
-        :type  fmx_cell: etree._Element
+        :type  fmx_cell: ElementType
         :param fmx_cell: table cell
         """
         fmx = self.formex_ns.get_qname
@@ -588,7 +596,7 @@ class FormexParser(BaseParser):
              colwidth="30mm"
              align="center"/>
 
-        :type  cals_colspec: etree._Element
+        :type  cals_colspec: ElementType
         :param cals_colspec: CALS-like ``colspec`` element.
         """
         cals = self.cals_ns.get_qname

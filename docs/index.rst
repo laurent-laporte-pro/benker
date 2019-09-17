@@ -134,7 +134,7 @@ The following table show you the available converters which groups parser and bu
           :scale: 60%
      - *(unavailable)*
      - *(unavailable)*
-     - *(unavailable)*
+     - :func:`~benker.converters.formex2cals.convert_formex2cals`
      - –
 
 

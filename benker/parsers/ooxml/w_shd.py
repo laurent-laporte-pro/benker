@@ -1,4 +1,10 @@
 # coding: utf-8
+"""
+OOXML Shading
+=============
+
+Table/Cell shading and Table Shading Exception
+"""
 from lxml import etree
 
 from benker.parsers.ooxml.namespaces import value_of

@@ -20,6 +20,8 @@ class BaseParser(object):
     class _State(object):
         """
         Parsing state for the converter (internal usage).
+
+        .. versionadded:: 0.5.0
         """
 
         def __init__(self):
@@ -111,6 +113,8 @@ def value_of(element, xpath, namespaces=None, default=None):
 class Namespace(collections.namedtuple("Namespace", "prefix, uri")):
     """
     A namespace is defined by a *prefix* and an *uri*.
+
+    .. versionadded:: 0.5.0
     """
     def get_qname(self, name):
         """ get the qualified name """

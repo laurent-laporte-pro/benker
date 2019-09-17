@@ -35,7 +35,6 @@ class BaseBuilder(object):
         """
         Give the opportunity to finalize the resulting tree structure.
 
-        :type  tree: etree._ElementTree
         :param tree: The resulting tree.
 
         .. versionadded:: 0.4.0

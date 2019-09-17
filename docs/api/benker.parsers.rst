@@ -9,9 +9,11 @@
 
    benker.parsers.base_parser
    benker.parsers.ooxml
+   benker.parsers.formex
 
 .. toctree::
    :maxdepth: 1
    :caption: Parser utilities
 
    benker.parsers.lxml_iterwalk
+   benker.parsers.lxml_qname

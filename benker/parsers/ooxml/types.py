@@ -1,4 +1,10 @@
 # coding: utf-8
+"""
+OOXML Standard Types
+====================
+
+Utility classes used to store/convert OOXML standard types.
+"""
 
 
 class StValue(object):

@@ -2,6 +2,8 @@
 """
 Formex 4 to CALS converter
 ==========================
+
+.. versionadded:: 0.5.0
 """
 
 
