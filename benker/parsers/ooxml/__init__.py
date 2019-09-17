@@ -14,6 +14,7 @@ import collections
 
 from lxml import etree
 
+from benker.box import Box
 from benker.parsers.base_parser import BaseParser
 from benker.parsers.lxml_iterwalk import iterwalk
 from benker.parsers.ooxml.namespaces import NS
@@ -765,30 +766,6 @@ class OoxmlParser(BaseParser):
     Office Open XML parser.
     """
 
-    class _State(object):
-        """
-        Parsing state for the converter (internal usage).
-        """
-
-        def __init__(self):
-            self.col_pos = 0
-            self.col = None
-            self.row_pos = 0
-            self.row = None
-            self.table = None
-
-        reset = __init__
-
-        def next_col(self):
-            self.col_pos += 1
-            self.col = None
-
-        def next_row(self):
-            self.col_pos = 0
-            self.col = None
-            self.row_pos += 1
-            self.row = None
-
     def __init__(self, builder, styles_path=None, **options):
         """
         Construct a parser
@@ -878,8 +855,8 @@ class OoxmlParser(BaseParser):
             else:
                 if elem_tag == w('tr'):
                     # add missing entries
-                    for _ in range(state.col_pos, len(state.table.cols)):
-                        state.row.insert_cell(None, nature=state.row.nature)
+                    bounding_box = Box(1, state.row_pos, len(state.table.cols), state.row_pos)
+                    state.table.fill_missing(bounding_box, None, nature=state.row.nature)
 
         return state.table
 
