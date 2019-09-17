@@ -11,7 +11,9 @@ from benker.parsers.formex4 import BORDER_NONE
 from benker.parsers.formex4 import BORDER_SOLID
 from benker.parsers.formex4 import Formex4Parser
 from benker.parsers.formex4 import get_frame_styles
-from benker.schemas import FORMEX_NS, CALS_NS, CALS_PREFIX
+from benker.schemas import CALS_NS
+from benker.schemas import CALS_PREFIX
+from benker.schemas import FORMEX_NS
 from benker.schemas import FORMEX_PREFIX
 
 

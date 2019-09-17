@@ -1,7 +1,8 @@
 # coding: utf-8
 
 from benker.parsers.ooxml.namespaces import value_of
-from benker.parsers.ooxml.types import StTwipsMeasure, StPageOrientation
+from benker.parsers.ooxml.types import StPageOrientation
+from benker.parsers.ooxml.types import StTwipsMeasure
 
 
 class PgSz(object):
