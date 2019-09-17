@@ -236,6 +236,11 @@ def test_parse_tbl_corpus(attrib, styles):
         ({"TYPE": "NORMAL"}, {"rowstyle": "ROW-NORMAL"}, "body"),
         ({"TYPE": "NOTCOL"}, {"rowstyle": "ROW-NOTCOL"}, "body"),
         ({"TYPE": "TOTAL"}, {"rowstyle": "ROW-TOTAL"}, "footer"),
+        ({"valign": "top"}, {"valign": "top"}, "body"),
+        ({"valign": "middle"}, {"valign": "middle"}, "body"),
+        ({"valign": "bottom"}, {"valign": "bottom"}, "body"),
+        ({"rowsep": "0"}, {"border-bottom": BORDER_NONE}, "body"),
+        ({"rowsep": "1"}, {"border-bottom": BORDER_SOLID}, "body"),
     ],
 )
 def test_parse_row(attrib, styles, nature):

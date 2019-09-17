@@ -365,6 +365,18 @@ class Formex4Parser(BaseParser):
             # overrides the previously calculated @cals:rowstyle attribute
             styles["rowstyle"] = rowstyle
 
+        # -- attribute @cals:valign (extension)
+        valign = fmx_row.attrib.get(cals("valign"))
+        valign_map = {'top': 'top', 'middle': 'middle', 'bottom': 'bottom'}
+        if valign in valign_map:
+            styles["valign"] = valign_map[valign]
+
+        # -- attribute @cals:rowsep
+        rowsep = fmx_row.attrib.get(cals("rowsep"))
+        rowsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
+        if rowsep in rowsep_map:
+            styles["border-bottom"] = rowsep_map[rowsep]
+
         # -- Create a ROW
         state = self._state
         state.row = state.table.rows[state.row_pos]
