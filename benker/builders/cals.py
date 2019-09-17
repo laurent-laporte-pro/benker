@@ -22,6 +22,7 @@ import re
 from lxml import etree
 
 from benker.builders.base_builder import BaseBuilder
+from benker.common.namespace import Namespace
 from benker.units import convert_value
 
 # noinspection PyProtectedMember
@@ -79,9 +80,19 @@ class CalsBuilder(BaseBuilder):
     CALS table builder.
     """
 
-    def __init__(self, width_unit="mm", table_in_tgroup=False, **options):
+    def __init__(self,
+                 cals_ns=None,
+                 cals_prefix=None,
+                 width_unit="mm", table_in_tgroup=False, **options):
         """
         Initialize the builder.
+
+        :param str cals_ns:
+            Namespace to use for CALS-like elements and attributes (requires: ``use_cals``).
+            Set "" (empty) if you don't want to use namespace.
+
+        :param str cals_prefix:
+            Namespace prefix to use for CALS-like elements and attributes (requires: ``use_cals``).
 
         :param str width_unit:
             Unit to use for column widths.
@@ -95,15 +106,39 @@ class CalsBuilder(BaseBuilder):
         :param str options: Extra conversion options.
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
+
+        .. versionchanged:: 0.5.0
+           Add the options *cals_ns* and *cals_prefix*.
         """
         # Internal state of the table used during building
         self._table = None
         self._table_colsep = u"0"
         self._table_rowsep = u"0"
         # options
+        self._ns_map = {}
+        self.cals_ns = self._register_namespace(cals_prefix, cals_ns)
         self.width_unit = width_unit
         self.table_in_tgroup = table_in_tgroup
         super(CalsBuilder, self).__init__(**options)
+
+    def _register_namespace(self, prefix, ns):
+        ns = ns or None
+        prefix = prefix or None
+        if prefix and not ns:
+            raise ValueError("prefix '{prefix}' defined without namespace".format(prefix=prefix))
+        if prefix in self._ns_map and self._ns_map[prefix] != ns:
+            if prefix:
+                fmt = "prefix '{prefix}' is already mapped to '{ns}'"
+            else:
+                fmt = "default prefix is already mapped to '{ns}'"
+            raise ValueError(fmt.format(prefix=prefix, ns=self._ns_map[prefix]))
+        if ns:
+            self._ns_map[prefix] = ns
+        return Namespace(prefix, ns)
+
+    @property
+    def ns_map(self):
+        return self._ns_map
 
     def generate_table_tree(self, table):
         """
@@ -164,20 +199,23 @@ class CalsBuilder(BaseBuilder):
         self._table = table
         self._table_colsep = u"0"
         self._table_rowsep = u"0"
+
+        # support for CALS namespace
+        cals = self.cals_ns.get_qname
         table_styles = table.styles
-        attrs = {'frame': get_frame_attr(table_styles)}
+        attrs = {cals('frame'): get_frame_attr(table_styles)}
         if not self.table_in_tgroup:
-            self._table_colsep = attrs["colsep"] = get_colsep_attr(table_styles) or "0"
-            self._table_rowsep = attrs["rowsep"] = get_rowsep_attr(table_styles) or "0"
+            self._table_colsep = attrs[cals("colsep")] = get_colsep_attr(table_styles) or "0"
+            self._table_rowsep = attrs[cals("rowsep")] = get_rowsep_attr(table_styles) or "0"
             if table.nature is not None:
-                attrs["tabstyle"] = table.nature
+                attrs[cals("tabstyle")] = table.nature
         if "x-sect-orient" in table_styles:
-            attrs["orient"] = {"landscape": "land", "portrait": "port"}[table_styles["x-sect-orient"]]
+            attrs[cals("orient")] = {"landscape": "land", "portrait": "port"}[table_styles["x-sect-orient"]]
         if "x-sect-cols" in table_styles:
-            attrs["pgwide"] = "1" if table_styles["x-sect-cols"] == "1" else "0"
+            attrs[cals("pgwide")] = "1" if table_styles["x-sect-cols"] == "1" else "0"
         if "background-color" in table_styles:
-            attrs["bgcolor"] = table_styles["background-color"]
-        table_elem = etree.Element(u"table", attrib=attrs)
+            attrs[cals("bgcolor")] = table_styles["background-color"]
+        table_elem = etree.Element(cals(u"table"), attrib=attrs, nsmap=self.ns_map)
         self.build_tgroup(table_elem, table)
         return table_elem
 
@@ -210,14 +248,16 @@ class CalsBuilder(BaseBuilder):
 
         :return: The newly-created ``<tgroup>`` element.
         """
+        # support for CALS namespace
+        cals = self.cals_ns.get_qname
         table_styles = table.styles
-        attrs = {u"cols": str(len(table.cols))}
+        attrs = {cals(u"cols"): str(len(table.cols))}
         if self.table_in_tgroup:
-            self._table_colsep = attrs["colsep"] = get_colsep_attr(table_styles) or "0"
-            self._table_rowsep = attrs["rowsep"] = get_rowsep_attr(table_styles) or "0"
+            self._table_colsep = attrs[cals("colsep")] = get_colsep_attr(table_styles) or "0"
+            self._table_rowsep = attrs[cals("rowsep")] = get_rowsep_attr(table_styles) or "0"
             if table.nature is not None:
-                attrs["tgroupstyle"] = table.nature
-        group_elem = etree.SubElement(table_elem, u"tgroup", attrib=attrs)
+                attrs[cals("tgroupstyle")] = table.nature
+        group_elem = etree.SubElement(table_elem, cals(u"tgroup"), attrib=attrs, nsmap=self.ns_map)
         for col in table.cols:
             self.build_colspec(group_elem, col)
         # -- group rows by header/body/footer
@@ -256,26 +296,28 @@ class CalsBuilder(BaseBuilder):
         .. versionchanged:: 0.5.0
            The ``@colnum`` and ``@align`` attributes are generated.
         """
+        # support for CALS namespace
+        cals = self.cals_ns.get_qname
         col_styles = col.styles
 
         # -- @cals:colnum
         # -- @cals:colname
-        attrs = {u"colnum": u"{0}".format(col.col_pos), u"colname": u"c{0}".format(col.col_pos)}
+        attrs = {cals(u"colnum"): u"{0}".format(col.col_pos), cals(u"colname"): u"c{0}".format(col.col_pos)}
 
         # -- @cals:colwidth
         if "width" in col_styles:
             width = col_styles["width"]
             width, unit = re.findall(r"([+-]?(?:[0-9]*[.])?[0-9]+)(\w+)", width)[0]
             value = convert_value(float(width), unit, self.width_unit)
-            attrs["colwidth"] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
+            attrs[cals("colwidth")] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
 
         # -- @cals:align
         align = col_styles.get("align")
         align_map = {"left": "left", "right": "right", "center": "center", "justify": "justify"}
         if align in align_map:
-            attrs["align"] = align_map[align]
+            attrs[cals("align")] = align_map[align]
 
-        etree.SubElement(group_elem, u"colspec", attrib=attrs)
+        etree.SubElement(group_elem, cals(u"colspec"), attrib=attrs, nsmap=self.ns_map)
 
     def build_tbody(self, group_elem, row_list, nature_tag):
         """
@@ -288,7 +330,9 @@ class CalsBuilder(BaseBuilder):
 
         :param nature_tag: name of the tag: 'tbody', 'thead' or 'tfoot'.
         """
-        nature_elem = etree.SubElement(group_elem, nature_tag)
+        # support for CALS namespace
+        cals = self.cals_ns.get_qname
+        nature_elem = etree.SubElement(group_elem, cals(nature_tag), nsmap=self.ns_map)
         for row in row_list:
             self.build_row(nature_elem, row)
 
@@ -324,12 +368,14 @@ class CalsBuilder(BaseBuilder):
         # - Insertion revision mark: 'x-ins', 'x-ins-id', 'x-ins-author', 'x-ins-date'
         # - Vertical align: 'valign'
         #
+        # support for CALS namespace
+        cals = self.cals_ns.get_qname
         row_styles = row.styles
         attrs = {}
         if "valign" in row_styles:
             # same values as CSS/Properties/vertical-align
             # fmt: off
-            attrs['valign'] = {
+            attrs[cals('valign')] = {
                 'top': 'top',
                 'middle': 'middle',
                 'bottom': 'bottom',
@@ -339,11 +385,11 @@ class CalsBuilder(BaseBuilder):
 
         row_rowsep = get_rowsep_attr(row_styles, "border-bottom")
         if row_rowsep and row_rowsep != self._table_rowsep:
-            attrs["rowsep"] = row_rowsep
+            attrs[cals("rowsep")] = row_rowsep
 
         # -- attribute @cals:rowstyle (extension)
         if "rowstyle" in row_styles:
-            attrs["rowstyle"] = row_styles["rowstyle"]
+            attrs[cals("rowstyle")] = row_styles["rowstyle"]
 
         if "x-ins" in row_styles:
             # <?change-start change-id="ct140446841083680" type="row:insertion"
@@ -358,7 +404,7 @@ class CalsBuilder(BaseBuilder):
             rev_pi = revision_mark("change-start", rev_attrs)
             tbody_elem.append(rev_pi)
 
-        row_elem = etree.SubElement(tbody_elem, u"row", attrib=attrs)
+        row_elem = etree.SubElement(tbody_elem, cals(u"row"), attrib=attrs, nsmap=self.ns_map)
 
         if "x-ins" in row_styles:
             # <?change-end change-id="ct139821811327752" type="row:insertion"?>
@@ -410,22 +456,24 @@ class CalsBuilder(BaseBuilder):
         .. versionchanged:: 0.5.0
            Add support for ``bgcolor``.
         """
+        # support for CALS namespace
+        cals = self.cals_ns.get_qname
         cell_styles = cell.styles
         attrs = {}
         if cell.box.max.x != self._table.bounding_box.max.x:
             # generate @colsep if the cell isn't in the last column
             cell_colsep = get_colsep_attr(cell_styles, "border-right")
             if cell_colsep and cell_colsep != self._table_colsep:
-                attrs["colsep"] = cell_colsep
+                attrs[cals("colsep")] = cell_colsep
         if cell.box.max.y != self._table.bounding_box.max.y:
             # generate @rowsep if the cell isn't in the last row
             cell_rowsep = get_rowsep_attr(cell_styles, "border-bottom")
             if cell_rowsep and cell_rowsep != self._table_rowsep:
-                attrs["rowsep"] = cell_rowsep
+                attrs[cals("rowsep")] = cell_rowsep
         if "vertical-align" in cell_styles:
             # same values as CSS/Properties/vertical-align
             # 'w-both' is an extension of OoxmlParser
-            attrs['valign'] = {
+            attrs[cals('valign')] = {
                 'top': u'top',
                 'middle': u'middle',
                 'bottom': u'bottom',
@@ -435,7 +483,7 @@ class CalsBuilder(BaseBuilder):
         if 'align' in cell_styles:
             # same values as CSS/Properties/text-align
             # fmt: off
-            attrs['align'] = {
+            attrs[cals('align')] = {
                 'left': u'left',
                 'center': u'center',
                 'right': u'right',
@@ -443,14 +491,14 @@ class CalsBuilder(BaseBuilder):
             }[cell_styles['align']]
             # fmt: on
         if cell.width > 1:
-            attrs[u"namest"] = u"c{0}".format(cell.box.min.x)
-            attrs[u"nameend"] = u"c{0}".format(cell.box.max.x)
+            attrs[cals(u"namest")] = u"c{0}".format(cell.box.min.x)
+            attrs[cals(u"nameend")] = u"c{0}".format(cell.box.max.x)
         if cell.height > 1:
-            attrs[u"morerows"] = str(cell.height - 1)
+            attrs[cals(u"morerows")] = str(cell.height - 1)
         if "background-color" in cell_styles:
-            attrs["bgcolor"] = cell_styles["background-color"]
+            attrs[cals("bgcolor")] = cell_styles["background-color"]
 
-        entry_elem = etree.SubElement(row_elem, u"entry", attrib=attrs)
+        entry_elem = etree.SubElement(row_elem, cals(u"entry"), attrib=attrs, nsmap=self.ns_map)
         if cell.content is not None:
             for node in cell.content:
                 # noinspection PyProtectedMember

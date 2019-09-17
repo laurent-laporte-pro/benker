@@ -5,11 +5,8 @@ Base Parser
 
 Base class of parsers.
 """
-import collections
 
 from lxml import etree
-
-from benker.parsers.lxml_qname import QName
 
 
 class BaseParser(object):
@@ -108,19 +105,3 @@ def value_of(element, xpath, namespaces=None, default=None):
         return default
     nodes = element.xpath(xpath, namespaces=namespaces)
     return nodes[0] if nodes else default
-
-
-class Namespace(collections.namedtuple("Namespace", "prefix, uri")):
-    """
-    A namespace is defined by a *prefix* and an *uri*.
-
-    .. versionadded:: 0.5.0
-    """
-    def get_qname(self, name):
-        """ get the qualified name """
-        return QName(self.uri, name)
-
-    def get_name(self, name):
-        """ get the prefixed name """
-        fmt = "{prefix}:{name}" if self.prefix else "{name}"
-        return fmt.format(prefix=self.prefix, name=name)

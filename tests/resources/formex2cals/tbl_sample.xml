@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!--
 Cet exemple factice de tableau contient quelques exemples de balises
 que l'on peut rencontrer dans un tableau Formex.
@@ -14,8 +14,7 @@ que l'on peut rencontrer dans un tableau Formex.
     -   des blocs de lignes de tableaux.
 -->
 <GENERAL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="formex-05.59-20170418_jouve.xd"
-         NNC="YES">
+         xsi:noNamespaceSchemaLocation="formex-05.59-20170418_jouve.xd" NNC="YES">
   <BIB.INSTANCE>
     <DOCUMENT.REF FILE="C_2019000EN.01000101.doc.xml">
       <COLL>C</COLL>
@@ -75,27 +74,28 @@ que l'on peut rencontrer dans un tableau Formex.
           <TXT>text</TXT>
         </NP>
       </GR.SEQ>
-      <table frame="none" colsep="0" rowsep="0">
-        <tgroup cols="2">
-          <colspec colname="c1"/>
-          <colspec colname="c2"/>
-          <thead>
-            <row rowstyle="ROW-HEADER">
-              <entry>
+      <cals:table xmlns:cals="https://jouve.com/schemas/opue/doj/formex-cals" cals:frame="none" cals:colsep="0"
+                  cals:rowsep="0">
+        <cals:tgroup cals:cols="2">
+          <cals:colspec cals:colnum="1" cals:colname="c1"/>
+          <cals:colspec cals:colnum="2" cals:colname="c2"/>
+          <cals:thead>
+            <cals:row cals:rowstyle="ROW-HEADER">
+              <cals:entry>
                 <HT TYPE="BOLD">Header 1</HT>
-              </entry>
-              <entry>
+              </cals:entry>
+              <cals:entry>
                 <HT TYPE="BOLD">Header 2</HT>
-              </entry>
-            </row>
-            <row rowstyle="ROW-ALIAS">
-              <entry>(1)</entry>
-              <entry>(2)</entry>
-            </row>
-          </thead>
-          <tfoot>
-            <row>
-              <entry namest="c1" nameend="c2">
+              </cals:entry>
+            </cals:row>
+            <cals:row cals:rowstyle="ROW-ALIAS">
+              <cals:entry>(1)</cals:entry>
+              <cals:entry>(2)</cals:entry>
+            </cals:row>
+          </cals:thead>
+          <cals:tfoot>
+            <cals:row>
+              <cals:entry cals:namest="c1" cals:nameend="c2">
                 <TITLE>
                   <TI>
                     <P>GR.NOTES Title</P>
@@ -104,51 +104,51 @@ que l'on peut rencontrer dans un tableau Formex.
                 <NOTE NOTE.ID="N0001">
                   <P>Table note</P>
                 </NOTE>
-              </entry>
-            </row>
-          </tfoot>
-          <tbody>
-            <row>
-              <entry>Cell A1</entry>
-              <entry>Cell B1</entry>
-            </row>
-            <row rowstyle="TI.BLK-level1">
-              <entry namest="c1" nameend="c2">
+              </cals:entry>
+            </cals:row>
+          </cals:tfoot>
+          <cals:tbody>
+            <cals:row>
+              <cals:entry>Cell A1</cals:entry>
+              <cals:entry>Cell B1</cals:entry>
+            </cals:row>
+            <cals:row cals:rowstyle="TI.BLK-level1">
+              <cals:entry cals:namest="c1" cals:nameend="c2">
                 <P>
                   <HT TYPE="BOLD">TI.BLK title</HT>
                 </P>
-              </entry>
-            </row>
-            <row rowstyle="STI.BLK-level1">
-              <entry>
+              </cals:entry>
+            </cals:row>
+            <cals:row cals:rowstyle="STI.BLK-level1">
+              <cals:entry>
                 <P>STI.BLK title</P>
-              </entry>
-              <entry/>
-            </row>
-            <row rowstyle="ROW-level1">
-              <entry namest="c1" nameend="c2">Cell A2-B2</entry>
-            </row>
-            <row rowstyle="ROW-level1">
-              <entry morerows="1">Cell A3-A4</entry>
-              <entry>Cell B3</entry>
-            </row>
-            <row rowstyle="ROW-level1">
-              <entry>Cell B4</entry>
-            </row>
-            <row rowstyle="TI.BLK-level2">
-              <entry namest="c1" nameend="c2">
+              </cals:entry>
+              <cals:entry/>
+            </cals:row>
+            <cals:row cals:rowstyle="ROW-level1">
+              <cals:entry cals:namest="c1" cals:nameend="c2">Cell A2-B2</cals:entry>
+            </cals:row>
+            <cals:row cals:rowstyle="ROW-level1">
+              <cals:entry cals:morerows="1">Cell A3-A4</cals:entry>
+              <cals:entry>Cell B3</cals:entry>
+            </cals:row>
+            <cals:row cals:rowstyle="ROW-level1">
+              <cals:entry>Cell B4</cals:entry>
+            </cals:row>
+            <cals:row cals:rowstyle="TI.BLK-level2">
+              <cals:entry cals:namest="c1" cals:nameend="c2">
                 <P>
                   <HT TYPE="BOLD">TI.BLK title</HT>
                 </P>
-              </entry>
-            </row>
-            <row rowstyle="ROW-TOTAL-level2">
-              <entry>Cell A5</entry>
-              <entry>Cell B5</entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
+              </cals:entry>
+            </cals:row>
+            <cals:row cals:rowstyle="ROW-TOTAL-level2">
+              <cals:entry>Cell A5</cals:entry>
+              <cals:entry>Cell B5</cals:entry>
+            </cals:row>
+          </cals:tbody>
+        </cals:tgroup>
+      </cals:table>
     </TBL>
   </CONTENTS>
 </GENERAL>

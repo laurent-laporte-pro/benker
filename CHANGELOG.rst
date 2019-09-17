@@ -32,6 +32,7 @@ Changed
 * Change in the class :class:`benker.builders.cals.CalsBuilder`:
   Add support for the ``@cals:rowstyle`` attribute (extension).
   The ``@colnum`` and ``@align`` attributes are generated for the ``<colspec>`` element.
+  The new options *cals_ns* and *cals_prefix* allow the used of namespaces in CALS.
 
 * Change in the method :class:`~benker.parsers.base_parser.BaseParser.parse_file`:
   Always generate the XML declaration in the destination file.

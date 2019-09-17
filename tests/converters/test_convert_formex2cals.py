@@ -16,8 +16,8 @@ from tests.resources import RESOURCES_DIR
 @pytest.mark.parametrize(
     'input_name, expected_name',
     [
-        # ("formex/tbl_small_table.xml", "formex2cals/tbl_small_table.xml"),
-        # ("formex/tbl_sample.xml", "formex2cals/tbl_sample.xml"),
+        ("formex/tbl_small_table.xml", "formex2cals/tbl_small_table.xml"),
+        ("formex/tbl_sample.xml", "formex2cals/tbl_sample.xml"),
         ("formex/tbl_sample_cals.xml", "formex2cals/tbl_sample_cals.xml")
     ],
 )
@@ -38,9 +38,10 @@ def test_convert_formex2cals(input_name, expected_name, tmpdir):
     expected_xml = RESOURCES_DIR.join(expected_name)  # type: py.path.local
     if expected_xml.exists():
         expected_tree = etree.parse(str(expected_xml), parser=xml_parser)
-        expected_elements = expected_tree.xpath("//table")
+        NS = {"cals": "https://jouve.com/schemas/opue/doj/formex-cals"}
+        expected_elements = expected_tree.xpath("//cals:table", namespaces=NS)
         dst_tree = etree.parse(str(dst_xml), parser=xml_parser)
-        dst_elements = dst_tree.xpath("//table")
+        dst_elements = dst_tree.xpath("//cals:table", namespaces=NS)
         assert len(expected_elements) == len(dst_elements)
 
         for dst_elem, expected_elem in zip(dst_elements, expected_elements):

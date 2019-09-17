@@ -15,8 +15,8 @@ import collections
 from lxml import etree
 
 from benker.box import Box
+from benker.common.lxml_iterwalk import iterwalk
 from benker.parsers.base_parser import BaseParser
-from benker.parsers.lxml_iterwalk import iterwalk
 from benker.parsers.ooxml.namespaces import NS
 from benker.parsers.ooxml.namespaces import value_of
 from benker.parsers.ooxml.namespaces import w

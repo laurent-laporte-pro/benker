@@ -39,9 +39,9 @@ import re
 from lxml import etree
 
 from benker.box import Box
+from benker.common.lxml_iterwalk import iterwalk
+from benker.common.namespace import Namespace
 from benker.parsers.base_parser import BaseParser
-from benker.parsers.base_parser import Namespace
-from benker.parsers.lxml_iterwalk import iterwalk
 from benker.table import Table
 
 # noinspection PyProtectedMember

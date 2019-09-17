@@ -36,8 +36,8 @@ from benker.builders.base_builder import BaseBuilder
 from benker.builders.cals import get_colsep_attr
 from benker.builders.cals import get_frame_attr
 from benker.builders.cals import get_rowsep_attr
-from benker.parsers.lxml_iterwalk import iterwalk
-from benker.parsers.lxml_qname import QName
+from benker.common.lxml_iterwalk import iterwalk
+from benker.common.lxml_qname import QName
 from benker.schemas import CALS_NS
 from benker.schemas import CALS_PREFIX
 from benker.units import convert_value

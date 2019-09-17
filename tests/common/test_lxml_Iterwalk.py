@@ -2,7 +2,7 @@
 import pytest
 from lxml import etree
 
-from benker.parsers.lxml_iterwalk import iterwalk
+from benker.common.lxml_iterwalk import iterwalk
 
 
 @pytest.mark.parametrize(
