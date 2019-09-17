@@ -600,13 +600,13 @@ class Formex4Parser(BaseParser):
         colsep = cals_colspec.attrib.get(cals("colsep"))
         colsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
         if colsep in colsep_map:
-            styles["x-border-right"] = colsep_map[colsep]
+            styles["border-right"] = colsep_map[colsep]
 
         # -- attribute @cals:rowsep
         rowsep = cals_colspec.attrib.get(cals("rowsep"))
         rowsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
         if rowsep in rowsep_map:
-            styles["x-border-bottom"] = rowsep_map[rowsep]
+            styles["border-bottom"] = rowsep_map[rowsep]
 
         # -- attribute @cals:rowsep
         colwidth = cals_colspec.attrib.get(cals("colwidth"))
@@ -615,8 +615,9 @@ class Formex4Parser(BaseParser):
 
         # -- attribute @cals:rowsep
         align = cals_colspec.attrib.get(cals("align"))
-        if align:
-            styles["align"] = align
+        align_map = {"left": "left", "right": "right", "center": "center", "justify": "justify", "char": "left"}
+        if align in align_map:
+            styles["align"] = align_map[align]
 
         state = self._state
         state.col = state.table.cols[colnum]

@@ -68,6 +68,7 @@ def test_transform_tables__no_namespace():
     +-----------|           |
     |    A2     |           |
     +-----------+-----------+""")
+    # fmt: on
 
 
 def test_transform_tables__with_namespace():
@@ -92,6 +93,7 @@ def test_transform_tables__with_namespace():
     +-----------------------+
     |    A2                 |
     +-----------------------+""")
+    # fmt: on
 
 
 @pytest.mark.parametrize(
@@ -368,10 +370,12 @@ def test_parse_row__sti_blk_level1():
 
 
 def test_parse_gr_notes():
-    fmx_gr_notes = etree.XML("""<GR.NOTES>
+    fmx_gr_notes = etree.XML(
+        """<GR.NOTES>
       <TITLE><TI><P>GR.NOTES Title</P></TI></TITLE>
       <NOTE NOTE.ID="N0001"><P>Table note</P></NOTE>
-    </GR.NOTES>""")
+    </GR.NOTES>"""
+    )
     parser = Formex4Parser(BaseBuilder())
     state = parser.setup_table()
     # -- insert at least one ROW for testing
@@ -444,3 +448,21 @@ def test_parse_cell__with_cals():
     }
     assert cell.nature is None
     assert cell.size == (3, 2)
+
+
+def test_parse_colspec():
+    E = ElementMaker()
+    cals_colspec = E.colspec(
+        colnum="1", colname="c1", colwidth="70mm", colsep="0", rowsep="1", align="char", char=",", charoff="50"
+    )
+    parser = Formex4Parser(BaseBuilder())
+    state = parser.setup_table()
+    parser.parse_colspec(cals_colspec)
+    table = state.table
+    col = table.cols[1]
+    assert col.styles == {
+        'align': 'left',
+        'width': '70mm',
+        'border-bottom': 'solid 1pt black',
+        'border-right': 'none',
+    }
