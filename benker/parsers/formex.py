@@ -1,7 +1,7 @@
 # coding: utf-8
 """
-Formex4 Parser
-==============
+Formex 4 Parser
+===============
 
 This module can parse the tables (``TBL`` elements) of a Formex 4 file.
 
@@ -30,7 +30,7 @@ When building the internal table object, this builder will:
    also able to parse CALS-like attributes (for instance ``frame``, ``cols``, ``colsep``,
    ``rowsep``, ...) and CALS-like elements (for instance ``colspec``). This attributes and
    elements may be added with the Formex 4 builder,
-   see :class:`~benker.builders.formex4.Formex4Builder`.
+   see :class:`~benker.builders.formex.FormexBuilder`.
 """
 import re
 
@@ -65,7 +65,7 @@ def get_frame_styles(frame):
     return styles
 
 
-class Formex4Parser(BaseParser):
+class FormexParser(BaseParser):
     """
     Formex 4 tables parser
     """
@@ -101,7 +101,7 @@ class Formex4Parser(BaseParser):
         self._ns_map = {}
         self.formex_ns = self._register_namespace(formex_prefix, formex_ns)
         self.cals_ns = self._register_namespace(cals_prefix, cals_ns)
-        super(Formex4Parser, self).__init__(builder, **options)
+        super(FormexParser, self).__init__(builder, **options)
 
     def _register_namespace(self, prefix, ns):
         ns = ns or None

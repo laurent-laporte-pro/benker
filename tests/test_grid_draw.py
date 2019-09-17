@@ -7,6 +7,7 @@ from benker.grid import Grid
 
 
 def test_g1():
+    # fmt: off
     g1 = Grid([
         Cell("aaa", x=1, y=1, width=2), Cell("bb", x=3, y=1),
         Cell("cc", x=1, y=2), Cell("dddddddddd", x=2, y=2, width=2)
@@ -19,9 +20,11 @@ def test_g1():
     |    cc     | ddddddddd             |
     +-----------+-----------------------+""")
     assert expected == actual
+    # fmt: on
 
 
 def test_g2():
+    # fmt: off
     g2 = Grid([
         Cell("aaaaaa", x=1, y=1, width=2), Cell("bb", x=3, y=1),
         Cell("cc", x=1, y=2), Cell("dddddd", x=2, y=2, width=2)
@@ -34,9 +37,11 @@ def test_g2():
     |    cc     |  dddddd               |
     +-----------+-----------------------+""")
     assert expected == actual
+    # fmt: on
 
 
 def test_g3():
+    # fmt: off
     g3 = Grid([
         Cell("aaa", x=1, y=1, width=2), Cell("b", x=3, y=1),
         Cell("cc", x=1, y=2), Cell("ddddd", x=2, y=2, width=2)
@@ -49,9 +54,11 @@ def test_g3():
     |    cc     |   ddddd               |
     +-----------+-----------------------+""")
     assert expected == actual
+    # fmt: on
 
 
 def test_g4():
+    # fmt: off
     g4 = Grid([
         Cell("aa", x=1, y=1, height=2), Cell("bbb", x=2, y=1, width=2),
         Cell("ccc", x=2, y=2, height=2), Cell("dd", x=3, y=2),
@@ -67,9 +74,11 @@ def test_g4():
     |   eeee    |           |  ffffff   |
     +-----------+-----------+-----------+""")
     assert expected == actual
+    # fmt: on
 
 
 def test_g5():
+    # fmt: off
     g5 = Grid([
         Cell("aa", x=1, y=1, height=2), Cell("bb", x=2, y=1), Cell("cccc", x=3, y=1),
         Cell("ddd", x=2, y=2), Cell("eeeee", x=3, y=2),
@@ -85,9 +94,11 @@ def test_g5():
     |    ff                 |  gggggg   |
     +-----------------------+-----------+""")
     assert expected == actual
+    # fmt: on
 
 
 def test_g6():
+    # fmt: off
     g6 = Grid([
         Cell("a", x=1, y=1), Cell("bb", x=2, y=1),
         Cell("cc", x=1, y=2), Cell("d", x=2, y=2)
@@ -100,9 +111,11 @@ def test_g6():
     |    cc     |     d     |
     +-----------+-----------+""")
     assert expected == actual
+    # fmt: on
 
 
 def test_g7():
+    # fmt: off
     g7 = Grid([
         Cell("aa", x=1, y=1, height=2), Cell("bb", x=2, y=1), Cell("cccc", x=3, y=1),
         Cell("ddd", x=2, y=2), Cell("eeeee", x=3, y=2),
@@ -118,3 +131,4 @@ def test_g7():
     |  ffffff               |  gggggg   |
     +-----------------------+-----------+""")
     assert expected == actual
+    # fmt: on

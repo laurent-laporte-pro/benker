@@ -114,7 +114,7 @@ The following table show you the available converters which groups parser and bu
      - –
      - *(unavailable)*
      - :func:`~benker.converters.ooxml2cals.convert_ooxml2cals`
-     - :func:`~benker.converters.ooxml2formex4.convert_ooxml2formex4`
+     - :func:`~benker.converters.ooxml2formex.convert_ooxml2formex`
 
    * - .. image:: /_static/puzzle-html-parser-40.png
           :scale: 60%
@@ -178,7 +178,7 @@ For example, to convert the tables of a ``.docx`` document to Formex4 format, yo
     import os
     import zipfile
 
-    from benker.converters.ooxml2formex4 import convert_ooxml2formex4
+    from benker.converters.ooxml2formex4 import convert_ooxml2formex
 
     # - Unzip the ``.docx`` in a temporary directory
     src_zip = "/path/to/demo.docx"
@@ -198,7 +198,7 @@ For example, to convert the tables of a ``.docx`` document to Formex4 format, yo
         'encoding': 'utf-8',
         'styles_path': styles_xml,
     }
-    convert_ooxml2formex4(src_xml, dst_xml, **options)
+    convert_ooxml2formex(src_xml, dst_xml, **options)
 
 This code produces a table like that:
 

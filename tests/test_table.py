@@ -6,6 +6,7 @@ from benker.table import Table
 
 
 def test_colspan():
+    # fmt: off
     table = Table()
     table.cols[1].insert_cell("one")
     table.cols[1].insert_cell("spanned", width=2)
@@ -17,9 +18,11 @@ def test_colspan():
     +-----------------------+
     |  spanned              |
     +-----------------------+""")
+    # fmt: on
 
 
 def test_rowspan():
+    # fmt: off
     table = Table()
     table.rows[1].insert_cell("one")
     table.rows[1].insert_cell("spanned", height=2)
@@ -31,9 +34,11 @@ def test_rowspan():
     +-----------|           |
     |    two    |           |
     +-----------+-----------+""")
+    # fmt: on
 
 
 def test_fill_missing_cells():
+    # fmt: off
     table = Table()
     table.rows[1].insert_cell("one")
     table.rows[1].insert_cell("two")
@@ -49,3 +54,4 @@ def test_fill_missing_cells():
     +-----------------------+-----------|           |
     |  un-deux              |    ???    |           |
     +-----------------------+-----------+-----------+""")
+    # fmt: on

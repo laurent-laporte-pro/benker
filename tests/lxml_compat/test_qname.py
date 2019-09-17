@@ -45,7 +45,6 @@ def test_qname__none_tag():
 
 
 class MyQName(etree.QName):
-
     def __init__(self, text_or_uri_or_element, tag=None):
         if text_or_uri_or_element is None:
             super(MyQName, self).__init__(tag)

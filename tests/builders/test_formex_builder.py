@@ -8,7 +8,7 @@ import xmldiff.main
 from lxml import etree
 from lxml.builder import E
 
-from benker.builders.formex4 import Formex4Builder
+from benker.builders.formex import FormexBuilder
 from benker.cell import Cell
 from benker.table import Table
 
@@ -17,16 +17,19 @@ ROW = E.ROW
 P = E.P
 
 
-@pytest.mark.parametrize('kwargs, attrib', [
-    ({}, {'COL': u"1"}),
-    ({'width': 2}, {'COL': u"1", 'COLSPAN': u"2"}),
-    ({'height': 2}, {'COL': u"1", 'ROWSPAN': u"2"}),
-    ({'nature': 'body'}, {'COL': u"1", 'TYPE': 'NORMAL'}),
-    ({'nature': 'header'}, {'COL': u"1", 'TYPE': 'HEADER'}),
-    ({'nature': 'footer'}, {'COL': u"1", 'TYPE': 'TOTAL'}),
-])
+@pytest.mark.parametrize(
+    'kwargs, attrib',
+    [
+        ({}, {'COL': u"1"}),
+        ({'width': 2}, {'COL': u"1", 'COLSPAN': u"2"}),
+        ({'height': 2}, {'COL': u"1", 'ROWSPAN': u"2"}),
+        ({'nature': 'body'}, {'COL': u"1", 'TYPE': 'NORMAL'}),
+        ({'nature': 'header'}, {'COL': u"1", 'TYPE': 'HEADER'}),
+        ({'nature': 'footer'}, {'COL': u"1", 'TYPE': 'TOTAL'}),
+    ],
+)
 def test_build_cell__body(kwargs, attrib):
-    builder = Formex4Builder()
+    builder = FormexBuilder()
 
     p_elem = P(u"text")
     cell_x1_y1 = Cell([p_elem], x=1, y=1, **kwargs)
@@ -45,13 +48,16 @@ def test_build_cell__body(kwargs, attrib):
     assert entry_elem[0] == p_elem
 
 
-@pytest.mark.parametrize('kwargs, attrib', [
-    ({'nature': 'body'}, {'COL': u"1", 'TYPE': 'NORMAL'}),
-    ({'nature': 'header'}, {'COL': u"1"}),
-    ({'nature': 'footer'}, {'COL': u"1", 'TYPE': 'TOTAL'}),
-])
+@pytest.mark.parametrize(
+    'kwargs, attrib',
+    [
+        ({'nature': 'body'}, {'COL': u"1", 'TYPE': 'NORMAL'}),
+        ({'nature': 'header'}, {'COL': u"1"}),
+        ({'nature': 'footer'}, {'COL': u"1", 'TYPE': 'TOTAL'}),
+    ],
+)
 def test_build_cell__head(kwargs, attrib):
-    builder = Formex4Builder()
+    builder = FormexBuilder()
 
     p_elem = P(u"text")
     cell_x1_y1 = Cell([p_elem], x=1, y=1, **kwargs)
@@ -75,19 +81,21 @@ def test_build_title():
     table = Table()
     table.rows[1].insert_cell(u"Title", styles={"align": "center"})
 
-    builder = Formex4Builder()
+    builder = FormexBuilder()
     tbl_elem = TBL()
     builder.build_title(tbl_elem, table.rows[0])
 
     # -- check the '<TITLE>' attributes
     title_elem = tbl_elem[0]  # type: etree._Element
     xml_parser = etree.XMLParser(remove_blank_text=True)
+    # fmt: off
     expected = etree.XML(u"""\
     <TITLE>
       <TI>
         <P>Title</P>
       </TI>
     </TITLE>""", parser=xml_parser)
+    # fmt: on
 
     diff_list = xmldiff.main.diff_trees(title_elem, expected)
     if diff_list:
@@ -99,19 +107,21 @@ def test_build_title__empty():
     table = Table()
     table.rows[1].insert_cell(None, styles={"align": "center"})
 
-    builder = Formex4Builder()
+    builder = FormexBuilder()
     tbl_elem = TBL()
     builder.build_title(tbl_elem, table.rows[0])
 
     # -- check the '<TITLE>' attributes
     title_elem = tbl_elem[0]  # type: etree._Element
     xml_parser = etree.XMLParser(remove_blank_text=True)
+    # fmt: off
     expected = etree.XML(u"""\
     <TITLE>
       <TI>
         <IE/>
       </TI>
     </TITLE>""", parser=xml_parser)
+    # fmt: on
 
     diff_list = xmldiff.main.diff_trees(title_elem, expected)
     if diff_list:
@@ -121,18 +131,17 @@ def test_build_title__empty():
 
 def test_build_title__subtitle():
     table = Table()
-    content = [P(u"TITLE"),
-               P(u"Subtitle 1"),
-               P(u"Subtitle 2")]
+    content = [P(u"TITLE"), P(u"Subtitle 1"), P(u"Subtitle 2")]
     table.rows[1].insert_cell(content, styles={"align": "center"})
 
-    builder = Formex4Builder()
+    builder = FormexBuilder()
     tbl_elem = TBL()
     builder.build_title(tbl_elem, table.rows[0])
 
     # -- check the '<TITLE>' attributes
     title_elem = tbl_elem[0]  # type: etree._Element
     xml_parser = etree.XMLParser(remove_blank_text=True)
+    # fmt: off
     expected = etree.XML(u"""\
     <TITLE>
       <TI>
@@ -143,6 +152,7 @@ def test_build_title__subtitle():
         <P>Subtitle 2</P>
       </STI>
     </TITLE>""", parser=xml_parser)
+    # fmt: on
 
     diff_list = xmldiff.main.diff_trees(title_elem, expected)
     if diff_list:
@@ -166,11 +176,12 @@ def test_build_tbl():
     table.rows[6].insert_cell([P(u"Controlled thermonuclear fusion")])
     table.rows[6].insert_cell([P(u"Pekka PIRILÄ")])
 
-    builder = Formex4Builder()
+    builder = FormexBuilder()
     table_elem = builder.build_tbl(table)
 
     xml_parser = etree.XMLParser(remove_blank_text=True)
 
+    # fmt: off
     expected = etree.XML(u"""\
     <TBL COLS="2" NO.SEQ="0001">
       <CORPUS>
@@ -218,6 +229,7 @@ def test_build_tbl():
         </ROW>
       </CORPUS>
     </TBL>""", parser=xml_parser)
+    # fmt: on
 
     for elem in table_elem.xpath("//*"):
         elem.text = elem.text or None
@@ -246,11 +258,12 @@ def test_build_tbl__with_title():
     table.rows[4].insert_cell([P(u"Japanese yen")])
     table.rows[4].insert_cell([P(u"121,05")])
 
-    builder = Formex4Builder()
+    builder = FormexBuilder()
     table_elem = builder.build_tbl(table)
 
     xml_parser = etree.XMLParser(remove_blank_text=True)
 
+    # fmt: off
     expected = etree.XML(u"""\
     <TBL COLS="3" NO.SEQ="0001">
       <TITLE>
@@ -295,6 +308,7 @@ def test_build_tbl__with_title():
         </ROW>
       </CORPUS>
     </TBL>""", parser=xml_parser)
+    # fmt: on
 
     for elem in table_elem.xpath("//*"):
         elem.text = elem.text or None
@@ -307,18 +321,21 @@ def test_build_tbl__with_title():
         assert diff_list == []
 
 
-@pytest.mark.parametrize('orient, size, expected', [
-    ('portrait', (595, 841), {'NO.SEQ': '0001', 'COLS': '1'}),
-    ('landscape', (595, 841), {'NO.SEQ': '0001', 'COLS': '1', 'PAGE.SIZE': 'SINGLE.LANDSCAPE'}),
-    ('portrait', (841, 595), {'NO.SEQ': '0001', 'COLS': '1'}),
-    ('landscape', (841, 595), {'NO.SEQ': '0001', 'COLS': '1', 'PAGE.SIZE': 'SINGLE.LANDSCAPE'}),
-    ('portrait', (1190, 841), {'NO.SEQ': '0001', 'COLS': '1', 'PAGE.SIZE': 'DOUBLE.PORTRAIT'}),
-    ('landscape', (1190, 841), {'NO.SEQ': '0001', 'COLS': '1', 'PAGE.SIZE': 'DOUBLE.LANDSCAPE'}),
-    ('portrait', (841, 1190), {'NO.SEQ': '0001', 'COLS': '1', 'PAGE.SIZE': 'DOUBLE.PORTRAIT'}),
-    ('landscape', (841, 1190), {'NO.SEQ': '0001', 'COLS': '1', 'PAGE.SIZE': 'DOUBLE.LANDSCAPE'}),
-])
+@pytest.mark.parametrize(
+    'orient, size, expected',
+    [
+        ('portrait', (595, 841), {'NO.SEQ': '0001', 'COLS': '1'}),
+        ('landscape', (595, 841), {'NO.SEQ': '0001', 'COLS': '1', 'PAGE.SIZE': 'SINGLE.LANDSCAPE'}),
+        ('portrait', (841, 595), {'NO.SEQ': '0001', 'COLS': '1'}),
+        ('landscape', (841, 595), {'NO.SEQ': '0001', 'COLS': '1', 'PAGE.SIZE': 'SINGLE.LANDSCAPE'}),
+        ('portrait', (1190, 841), {'NO.SEQ': '0001', 'COLS': '1', 'PAGE.SIZE': 'DOUBLE.PORTRAIT'}),
+        ('landscape', (1190, 841), {'NO.SEQ': '0001', 'COLS': '1', 'PAGE.SIZE': 'DOUBLE.LANDSCAPE'}),
+        ('portrait', (841, 1190), {'NO.SEQ': '0001', 'COLS': '1', 'PAGE.SIZE': 'DOUBLE.PORTRAIT'}),
+        ('landscape', (841, 1190), {'NO.SEQ': '0001', 'COLS': '1', 'PAGE.SIZE': 'DOUBLE.LANDSCAPE'}),
+    ],
+)
 def test_build_tbl__orient(orient, size, expected):
-    builder = Formex4Builder()
+    builder = FormexBuilder()
     table = Table(styles={'x-sect-orient': orient, 'x-sect-size': size})
     table.rows[1].insert_cell(u"text")
     table_elem = builder.build_tbl(table)
@@ -326,7 +343,7 @@ def test_build_tbl__orient(orient, size, expected):
 
 
 def test_build_tbl__no_seq():
-    builder = Formex4Builder()
+    builder = FormexBuilder()
     table1 = Table()
     table1.rows[1].insert_cell(u"text1")
     table1_elem = builder.build_tbl(table1)
@@ -338,7 +355,7 @@ def test_build_tbl__no_seq():
 
 
 def test_build_tbl__empty_cell():
-    builder = Formex4Builder()
+    builder = FormexBuilder()
     table1 = Table()
     table1.rows[1].insert_cell(u"")
     table1_elem = builder.build_tbl(table1)

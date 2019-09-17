@@ -1,9 +1,9 @@
 # coding: utf-8
 """
-Formex4 Builder
-===============
+Formex 4 Builder
+================
 
-This module can construct a Formex4 table from
+This module can construct a Formex 4 table from
 an instance of type :class:`~benker.table.Table`.
 
 :abbr:`Formex (Formalized Exchange of Electronic Publications)` describes the format for the exchange
@@ -12,14 +12,14 @@ markup for documents which are published in the different series of the Official
 of the European Union.
 
 This builder allow you to convert Word document tables
-into Formex4 tables using the Formex4 schema (formex-05.59-20170418.xd).
+into Formex 4 tables using the Formex 4 schema (formex-05.59-20170418.xd).
 
 Specifications and examples:
 
-- The Formex4 documentation and schema is available online in the Publication Office:
+- The Formex 4 documentation and schema is available online in the Publication Office:
   `Formex Version 4 <http://formex.publications.europa.eu/formex-4/formex-4.htm>`_.
 
-- An example of Formex4 table is available in the Schema documentation:
+- An example of Formex 4 table is available in the Schema documentation:
   `TBL <http://formex.publications.europa.eu/formex-4/manual/manual.htm#TBL>`_
 
 """
@@ -48,9 +48,9 @@ def revision_mark(name, attrs):
     return rev_pi
 
 
-class Formex4Builder(BaseBuilder):
+class FormexBuilder(BaseBuilder):
     """
-    Formex4 builder used to convert tables into ``TBL`` elements
+    Formex 4 builder used to convert tables into ``TBL`` elements
     according to the `TBL Schema <http://formex.publications.europa.eu/formex-4/manual/manual.htm#TBL>`_
     """
 
@@ -100,7 +100,7 @@ class Formex4Builder(BaseBuilder):
         self.cals_prefix = cals_prefix
         self.width_unit = width_unit
 
-        super(Formex4Builder, self).__init__(**options)
+        super(FormexBuilder, self).__init__(**options)
 
     @property
     def ns_map(self):
@@ -125,9 +125,9 @@ class Formex4Builder(BaseBuilder):
 
     def build_tbl(self, table):
         """
-        Build the Formex4 ``<TBL>`` element.
+        Build the Formex 4 ``<TBL>`` element.
 
-        Formex4 attributes:
+        Formex 4 attributes:
 
         -   ``@NO.SEQ`` This mandatory attribute provides a sequence number to the table.
             This number represents the order in which the table appears in the document.
@@ -187,7 +187,7 @@ class Formex4Builder(BaseBuilder):
 
     def build_corpus(self, tbl_elem, table):
         """
-        Build the Formex4 ``<CORPUS>`` element.
+        Build the Formex 4 ``<CORPUS>`` element.
 
         :type  tbl_elem: etree._Element
         :param tbl_elem: Parent element: ``<TBL>``.
@@ -309,9 +309,9 @@ class Formex4Builder(BaseBuilder):
 
     def build_row(self, corpus_elem, row):
         """
-        Build the Formex4 ``<ROW>`` element.
+        Build the Formex 4 ``<ROW>`` element.
 
-        Formex4 attributes:
+        Formex 4 attributes:
 
         -   ``@TYPE`` The TYPE attribute indicates the specific role of the row in the table.
             The allowed values are:
@@ -390,9 +390,9 @@ class Formex4Builder(BaseBuilder):
     # noinspection PyMethodMayBeStatic
     def build_cell(self, row_elem, cell, row):
         """
-        Build the Formex4 ``<CELL>`` element.
+        Build the Formex 4 ``<CELL>`` element.
 
-        Formex4 attributes:
+        Formex 4 attributes:
 
         -   ``@COL`` The mandatory COL attribute is used to specify in which column the cell is located.
 

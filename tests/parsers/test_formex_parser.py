@@ -7,37 +7,37 @@ from lxml import etree
 from lxml.builder import ElementMaker
 
 from benker.builders.base_builder import BaseBuilder
-from benker.parsers.formex4 import BORDER_NONE
-from benker.parsers.formex4 import BORDER_SOLID
-from benker.parsers.formex4 import Formex4Parser
-from benker.parsers.formex4 import get_frame_styles
+from benker.parsers.formex import BORDER_NONE
+from benker.parsers.formex import BORDER_SOLID
+from benker.parsers.formex import FormexParser
+from benker.parsers.formex import get_frame_styles
 from benker.schemas import CALS_NS
 from benker.schemas import CALS_PREFIX
 from benker.schemas import FORMEX_NS
 from benker.schemas import FORMEX_PREFIX
 
 
-class TestFormex4Parser(unittest.TestCase):
+class TestFormexParser(unittest.TestCase):
     def setUp(self):
         self.builder = BaseBuilder()
 
     def test_builder_attached(self):
-        parser = Formex4Parser(self.builder)
+        parser = FormexParser(self.builder)
         assert parser.builder is self.builder
 
     def test_ns_map(self):
-        parser = Formex4Parser(self.builder)
+        parser = FormexParser(self.builder)
         assert parser.ns_map == {}
-        parser = Formex4Parser(self.builder, formex_ns="http://opoce", cals_prefix=CALS_PREFIX, cals_ns=CALS_NS)
+        parser = FormexParser(self.builder, formex_ns="http://opoce", cals_prefix=CALS_PREFIX, cals_ns=CALS_NS)
         assert parser.ns_map == {None: "http://opoce", CALS_PREFIX: CALS_NS}
-        parser = Formex4Parser(self.builder, formex_prefix="fmx", formex_ns="http://opoce")
+        parser = FormexParser(self.builder, formex_prefix="fmx", formex_ns="http://opoce")
         assert parser.ns_map == {"fmx": "http://opoce"}
 
     def test_invalid_ns_map(self):
         with self.assertRaises(ValueError):
-            Formex4Parser(self.builder, formex_prefix="fmx")
+            FormexParser(self.builder, formex_prefix="fmx")
         with self.assertRaises(ValueError):
-            Formex4Parser(self.builder, cals_prefix="fmx")
+            FormexParser(self.builder, cals_prefix="fmx")
 
 
 class StrBuilder(BaseBuilder):
@@ -56,7 +56,7 @@ def test_transform_tables__no_namespace():
     fmx_tbl = E.TBL(E.CORPUS(E.ROW(E.CELL("A1"), E.CELL("B1", ROWSPAN="2")), E.ROW(E.CELL("A2"))))
     tree = E.FORMEX(fmx_tbl)
     builder = StrBuilder()
-    parser = Formex4Parser(builder, formex_ns="")
+    parser = FormexParser(builder, formex_ns="")
     parser.transform_tables(tree)
     str_table = tree.xpath("//table")[0].text
     # print("str_table:")
@@ -81,7 +81,7 @@ def test_transform_tables__with_namespace():
     )))
     # fmt: on
     builder = StrBuilder()
-    parser = Formex4Parser(builder, formex_prefix=FORMEX_PREFIX, formex_ns=FORMEX_NS)
+    parser = FormexParser(builder, formex_prefix=FORMEX_PREFIX, formex_ns=FORMEX_NS)
     parser.transform_tables(tree)
     str_table = tree.xpath("//table")[0].text
     # print("str_table:")
@@ -221,7 +221,7 @@ def test_get_frame_styles(frame, expected):
 def test_parse_tbl_corpus(attrib, styles):
     fmx_tbl = etree.Element("TBL", attrib=attrib)
     fmx_corpus = etree.SubElement(fmx_tbl, "CORPUS")
-    parser = Formex4Parser(BaseBuilder())
+    parser = FormexParser(BaseBuilder())
     state = parser.parse_corpus(fmx_corpus)
     table = state.table
     assert table.styles == styles
@@ -236,6 +236,7 @@ def test_parse_tbl_corpus(attrib, styles):
         ({"TYPE": "NORMAL"}, {"rowstyle": "ROW-NORMAL"}, "body"),
         ({"TYPE": "NOTCOL"}, {"rowstyle": "ROW-NOTCOL"}, "body"),
         ({"TYPE": "TOTAL"}, {"rowstyle": "ROW-TOTAL"}, "footer"),
+        ({"TYPE": "NORMAL", "rowstyle": "ROW-TOTAL"}, {"rowstyle": "ROW-TOTAL"}, "body"),
         ({"valign": "top"}, {"valign": "top"}, "body"),
         ({"valign": "middle"}, {"valign": "middle"}, "body"),
         ({"valign": "bottom"}, {"valign": "bottom"}, "body"),
@@ -246,7 +247,7 @@ def test_parse_tbl_corpus(attrib, styles):
 def test_parse_row(attrib, styles, nature):
     E = ElementMaker()
     fmx_row = E.ROW(**attrib)
-    parser = Formex4Parser(BaseBuilder())
+    parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
     state.row = state.table.rows[state.row_pos]
@@ -271,7 +272,7 @@ def test_parse_row__in_blk_level2(attrib, styles, nature):
     E = ElementMaker()
     fmx_row = E.ROW(**attrib)
     E.BLK(E.BLK(fmx_row))
-    parser = Formex4Parser(BaseBuilder())
+    parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
     state.row = state.table.rows[state.row_pos]
@@ -285,7 +286,7 @@ def test_parse_row__ti_blk_level1():
     fmx_blk = etree.Element("BLK")
     fmx_ti_blk = etree.XML("""<TI.BLK COL.START="1" COL.END="2"><P>paragraph</P></TI.BLK>""")
     fmx_blk.append(fmx_ti_blk)
-    parser = Formex4Parser(BaseBuilder())
+    parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
     state = parser.parse_ti_blk(fmx_ti_blk)
@@ -306,7 +307,7 @@ def test_parse_row__ti_blk_level2():
     fmx_blk = etree.SubElement(fmx_blk, "BLK")
     fmx_ti_blk = etree.XML("""<TI.BLK><IE/></TI.BLK>""")
     fmx_blk.append(fmx_ti_blk)
-    parser = Formex4Parser(BaseBuilder())
+    parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
     state = parser.parse_ti_blk(fmx_ti_blk)
@@ -335,7 +336,7 @@ def test_parse_row__ti_blk_level2__with_namespace():
     fmx_ti_blk = etree.SubElement(fmx_blk2, TI_BLK, nsmap={None: FORMEX_NS})
     etree.SubElement(fmx_ti_blk, IE, nsmap={None: FORMEX_NS})
 
-    parser = Formex4Parser(BaseBuilder(), formex_ns=FORMEX_NS, cals_prefix=CALS_PREFIX, cals_ns=CALS_NS)
+    parser = FormexParser(BaseBuilder(), formex_ns=FORMEX_NS, cals_prefix=CALS_PREFIX, cals_ns=CALS_NS)
     state = parser.setup_table()
     state.next_row()
     state = parser.parse_ti_blk(fmx_ti_blk)
@@ -356,7 +357,7 @@ def test_parse_row__sti_blk_level1():
     fmx_blk = etree.Element("BLK")
     fmx_sti_blk = etree.XML("""<STI.BLK COL.START="2" COL.END="2">text</STI.BLK>""")
     fmx_blk.append(fmx_sti_blk)
-    parser = Formex4Parser(BaseBuilder())
+    parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
     state = parser.parse_sti_blk(fmx_sti_blk)
@@ -381,7 +382,7 @@ def test_parse_gr_notes():
       <NOTE NOTE.ID="N0001"><P>Table note</P></NOTE>
     </GR.NOTES>"""
     )
-    parser = Formex4Parser(BaseBuilder())
+    parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     # -- insert at least one ROW for testing
     state.next_row()
@@ -424,7 +425,7 @@ def test_parse_gr_notes():
 def test_parse_cell(attrib, styles, nature, size):
     E = ElementMaker()
     fmx_cell = E.CELL(**attrib)
-    parser = Formex4Parser(BaseBuilder())
+    parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
     state.row = state.table.rows[state.row_pos]
@@ -439,7 +440,7 @@ def test_parse_cell(attrib, styles, nature, size):
 def test_parse_cell__with_cals():
     E = ElementMaker()
     fmx_cell = E.CELL(colsep="1", rowsep="1", namest="c1", nameend="c3", bgcolor="#00007f", morerows="1")
-    parser = Formex4Parser(BaseBuilder())
+    parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
     state.row = state.table.rows[state.row_pos]
@@ -460,14 +461,9 @@ def test_parse_colspec():
     cals_colspec = E.colspec(
         colnum="1", colname="c1", colwidth="70mm", colsep="0", rowsep="1", align="char", char=",", charoff="50"
     )
-    parser = Formex4Parser(BaseBuilder())
+    parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     parser.parse_colspec(cals_colspec)
     table = state.table
     col = table.cols[1]
-    assert col.styles == {
-        'align': 'left',
-        'width': '70mm',
-        'border-bottom': 'solid 1pt black',
-        'border-right': 'none',
-    }
+    assert col.styles == {'align': 'left', 'width': '70mm', 'border-bottom': 'solid 1pt black', 'border-right': 'none'}

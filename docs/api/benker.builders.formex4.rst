@@ -1,4 +1,4 @@
-.. automodule:: benker.builders.formex4
+.. automodule:: benker.builders.formex
     :members:
     :undoc-members:
     :show-inheritance:

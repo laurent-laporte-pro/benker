@@ -58,7 +58,7 @@ class BaseConverter(object):
                 -   ``True`` to insert the attributes ``@colsep``, ``@rowsep``,
                     and ``@tgroupstyle`` in the ``<tgroup>`` element.
 
-            **Formex4 builder options:**
+            **Formex 4 builder options:**
 
             ``use_cals`` (default: ``False``):
                 Generate additional CALS-like elements and attributes

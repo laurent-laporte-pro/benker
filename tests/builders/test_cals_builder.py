@@ -8,6 +8,7 @@ from benker.table import Table
 
 TEST_DATA__WITH_SEP = [
 
+    # fmt: off
     pytest.param(
         {},
         {},
@@ -15,8 +16,8 @@ TEST_DATA__WITH_SEP = [
 
     pytest.param(
         {'border-top': 'double 1.0pt #FFFFFF',
-         'border-right': 'dotted 2.0pt #FF0000',
-         'border-bottom': 'dashed 3.0pt #00FF00',
+            'border-right': 'dotted 2.0pt #FF0000',
+            'border-bottom': 'dashed 3.0pt #00FF00',
          'border-left': 'outset 4.0pt #0000FF'},
         {'colsep': '1', 'rowsep': '1'},
         id="style_border-all"),
@@ -40,6 +41,7 @@ TEST_DATA__WITH_SEP = [
         {'border-left': 'double 1.0pt #FFFFFF'},
         {},
         id="style_border-left"),
+    # fmt: on
 ]
 
 
@@ -74,6 +76,7 @@ def test_build_cell__with_sep(cell_styles, expected):
 
 TEST_DATA__WITHOUT_SEP = [
 
+    # fmt: off
     pytest.param(
         {},
         {},
@@ -81,8 +84,8 @@ TEST_DATA__WITHOUT_SEP = [
 
     pytest.param(
         {'border-top': 'double 1.0pt #FFFFFF',
-         'border-right': 'dotted 2.0pt #FF0000',
-         'border-bottom': 'dashed 3.0pt #00FF00',
+            'border-right': 'dotted 2.0pt #FF0000',
+            'border-bottom': 'dashed 3.0pt #00FF00',
          'border-left': 'outset 4.0pt #0000FF'},
         {'colsep': '1', 'rowsep': '1'},
         id="style_border-all"),
@@ -106,6 +109,7 @@ TEST_DATA__WITHOUT_SEP = [
         {'border-left': 'double 1.0pt #FFFFFF'},
         {},
         id="style_border-left"),
+    # fmt: on
 ]
 
 
@@ -142,26 +146,26 @@ def test_build_cell__without_sep(cell_styles, expected):
 
 
 TEST_DATA__ALIGN = [
-
     pytest.param(
         {'vertical-align': 'top', 'align': 'left'},
         {'valign': 'top', 'align': 'left'},
-        id="style_vertical-align_top_align_left"),
-
+        id="style_vertical-align_top_align_left",
+    ),
     pytest.param(
         {'vertical-align': 'bottom', 'align': 'right'},
         {'valign': 'bottom', 'align': 'right'},
-        id="style_vertical-align_bottom_align_right"),
-
+        id="style_vertical-align_bottom_align_right",
+    ),
     pytest.param(
         {'vertical-align': 'middle', 'align': 'center'},
         {'valign': 'middle', 'align': 'center'},
-        id="style_vertical-align_middle_align_center"),
-
+        id="style_vertical-align_middle_align_center",
+    ),
     pytest.param(
         {'vertical-align': 'w-both', 'align': 'justify'},
         {'valign': 'bottom', 'align': 'justify'},
-        id="style_vertical-align_both_align_justify"),
+        id="style_vertical-align_both_align_justify",
+    ),
 ]
 
 

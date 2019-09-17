@@ -7,10 +7,8 @@ from benker.parsers.ooxml import OoxmlParser
 from benker.table import Table
 
 TEST_DATA = [
-
     # without style
     # -------------
-
     pytest.param(
         u"""<w:tc xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"><w:r><w:t>empty</w:t></w:r></w:p>
@@ -29,10 +27,8 @@ TEST_DATA = [
         {},
         id="style_is_empty",
     ),
-
     # Borders
     # -------
-
     pytest.param(
         u"""<w:tc xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
             <w:tcPr>
@@ -89,10 +85,8 @@ TEST_DATA = [
         {"border-collapse": "collapse", "x-border-tl2br": "solid 0.5pt", "x-border-tr2bl": "solid 0.5pt"},
         id="style_border-tl2br-tr2bl",
     ),
-
     # align and vertical-align
     # ------------------------
-
     pytest.param(
         u"""<w:tc xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
             <w:tcPr><w:vAlign w:val="top"/></w:tcPr>

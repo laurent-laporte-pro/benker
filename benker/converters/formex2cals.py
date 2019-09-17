@@ -1,24 +1,26 @@
 # coding: utf-8
 """
-Office Open XML to Formex4 converter
-====================================
+Formex 4 to CALS converter
+==========================
 """
-from benker.builders.formex4 import Formex4Builder
+
+
+from benker.builders.cals import CalsBuilder
 from benker.converters.base_converter import BaseConverter
-from benker.parsers.ooxml import OoxmlParser
+from benker.parsers.formex import FormexParser
 
 
-class Ooxml2Formex4Converter(BaseConverter):
+class Formex2CalsConverter(BaseConverter):
     """
-    Office Open XML to Formex4 converter
+    Formex 4 to CALS converter
     """
-    parser_cls = OoxmlParser
-    builder_cls = Formex4Builder
+    parser_cls = FormexParser
+    builder_cls = CalsBuilder
 
 
-def convert_ooxml2formex4(src_xml, dst_xml, **options):
+def convert_formex2cals(src_xml, dst_xml, **options):
     """
-    Convert Office Open XML (OOXML) tables to Formex4 tables.
+    Convert Formex 4 tables to Cals tables.
 
     :param str src_xml:
         Source path of the XML file to convert.
@@ -36,5 +38,5 @@ def convert_ooxml2formex4(src_xml, dst_xml, **options):
         See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
         to have a list of all possible options.
     """
-    converter = Ooxml2Formex4Converter()
+    converter = Formex2CalsConverter()
     converter.convert_file(src_xml, dst_xml, **options)

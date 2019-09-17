@@ -16,7 +16,17 @@ Minor release
 Added
 -----
 
-* Change in the converter: :func:`~benker.converters.ooxml2formex4.convert_ooxml2formex4`:
+* Refactoring (rename "Formex4" to "Formex"):
+
+  - the module ``benker/builders/formex4.py`` is renamed ``benker/builders/formex.py``,
+  - the module ``benker/converters/ooxml2formex4.py`` is renamed ``benker/converters/ooxml2formex.py``,
+  - the module ``benker/parsers/formex4.py`` is renamed ``benker/parsers/formex.py``,
+  - the class ``Formex4Builder`` is renamed ``FormexBuilder``,
+  - the class ``Ooxml2Formex4Converter`` is renamed ``Ooxml2FormexConverter``,
+  - the function ``convert_ooxml2formex4`` is renamed ``convert_ooxml2formex``,
+  - the class ``Formex4Parser`` is renamed ``FormexParser``,
+
+* Change in the converter: :func:`~benker.converters.ooxml2formex.convert_ooxml2formex`:
   Add the option *use_cals* (and related options: *cals_ns*, *cals_prefix* and *width_unit*):
   This options is used to generate additional CALS-like elements and attributes
   to simplify the layout of Formex document in typesetting systems.
@@ -25,7 +35,7 @@ Added
 
 * Add support for ``bgcolor`` (Table/Cell background color) in the CALS builder.
 
-* Add support for ``bgcolor`` (Table/Cell background color) in the Formex4 builder
+* Add support for ``bgcolor`` (Table/Cell background color) in the Formex 4 builder
   (only with the *use_cals* option).
 
 * Change in the class :class:`benker.table.Table`:
@@ -47,7 +57,7 @@ Other
 * Fix an issue with the AppVeyor build: upgrade setuptools version in ``appveyor.yml``,
   change the Tox configuration: set ``py27,py34,py35: pip >= 9.0.3, < 19.2``.
 
-* Change the project‘s slogan: “Easily convert your CALS, HTML, Formex4, Office Open XML (docx)
+* Change the project‘s slogan: “Easily convert your CALS, HTML, Formex 4, Office Open XML (docx)
   tables from one format to another.”
 
 * Change Tox configuration file to test the library with lxml v4.3 on Python 3.4
@@ -93,7 +103,7 @@ Fixed
 * Change in the parser :class:`~benker.parsers.ooxml.OoxmlParser`:
   fix the 'x-sect-cols' value extraction when the ``w:sectPr`` is missing (use "1" by default).
 
-* Fix the Formex4 builder :class:`~benker.builders.formex4.Formex4Builder`:
+* Fix the Formex 4 builder :class:`~benker.builders.formex.FormexBuilder`:
   Generate a ``<IE/>`` element if the cell content (the string representation) is empty.
 
 
@@ -105,11 +115,11 @@ Feature release
 Added
 -----
 
-* New converter: :func:`~benker.converters.ooxml2formex4.convert_ooxml2formex4`:
-  Convert Office Open XML (OOXML) tables to Formex4 tables.
+* New converter: :func:`~benker.converters.ooxml2formex.convert_ooxml2formex`:
+  Convert Office Open XML (OOXML) tables to Formex 4 tables.
 
-* New builder: :class:`~benker.builders.formex4.Formex4Builder`:
-  Formex4 builder used to convert tables into ``TBL`` elements.
+* New builder: :class:`~benker.builders.formex.FormexBuilder`:
+  Formex 4 builder used to convert tables into ``TBL`` elements.
 
 * Change in the parser :class:`~benker.parsers.ooxml.OoxmlParser`:
 
