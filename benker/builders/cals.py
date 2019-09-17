@@ -232,30 +232,45 @@ class CalsBuilder(BaseBuilder):
 
         CALS attributes:
 
+        -   ``@colnum`` is the column number.
+
         -   ``@colname`` is the column name. Its format is "c{col_pos}".
 
         -   ``@colwidth`` width of the column (with its unit).
             The unit is defined by the *width_unit* options.
 
-        .. note::
-
-           The ``@colnum`` attribute (number of column) is not generated
-           because this value is usually implied, and can be deduce
-           from the ``@colname`` attribute.
+        -   ``@align`` horizontal alignment of table entry content.
+            The value can be "left", "right", "center", or "justify"
+            (the value "char" is not supported).
 
         :type  group_elem: etree._Element
         :param group_elem: Parent element: ``<tgroup>``.
 
         :type  col: benker.table.ColView
         :param col: Columns
+
+        .. versionchanged:: 0.5.0
+           The ``@colnum`` and ``@align`` attributes are generated.
         """
         col_styles = col.styles
-        attrs = {u"colname": u"c{0}".format(col.col_pos)}
+
+        # -- @cals:colnum
+        # -- @cals:colname
+        attrs = {u"colnum": u"{0}".format(col.col_pos), u"colname": u"c{0}".format(col.col_pos)}
+
+        # -- @cals:colwidth
         if "width" in col_styles:
             width = col_styles["width"]
             width, unit = re.findall(r"([+-]?(?:[0-9]*[.])?[0-9]+)(\w+)", width)[0]
             value = convert_value(float(width), unit, self.width_unit)
             attrs["colwidth"] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
+
+        # -- @cals:align
+        align = col_styles.get("align")
+        align_map = {"left": "left", "right": "right", "center": "center", "justify": "justify"}
+        if align in align_map:
+            attrs["align"] = align_map[align]
+
         etree.SubElement(group_elem, u"colspec", attrib=attrs)
 
     def build_tbody(self, group_elem, row_list, nature_tag):

@@ -6,8 +6,8 @@
   <!-- frame="top" -->
   <table frame="top" pgwide="1" colsep="0" rowsep="0" tabstyle="TableGrid">
     <tgroup cols="2">
-      <colspec colname="c1" colwidth="233.75pt"/>
-      <colspec colname="c2" colwidth="233.75pt"/>
+      <colspec colnum="1" colname="c1" colwidth="233.75pt"/>
+      <colspec colnum="2" colname="c2" colwidth="233.75pt"/>
       <tbody>
         <row>
           <entry colsep="1" rowsep="1" align="left">
@@ -99,8 +99,8 @@
   <!-- frame="bottom" -->
   <table frame="bottom" pgwide="1" colsep="0" rowsep="0" tabstyle="TableGrid">
     <tgroup cols="2">
-      <colspec colname="c1" colwidth="233.75pt"/>
-      <colspec colname="c2" colwidth="233.75pt"/>
+      <colspec colnum="1" colname="c1" colwidth="233.75pt"/>
+      <colspec colnum="2" colname="c2" colwidth="233.75pt"/>
       <tbody>
         <row>
           <entry colsep="1" rowsep="1" align="left">
@@ -186,8 +186,8 @@
   <!-- frame="topbot" -->
   <table frame="topbot" pgwide="1" colsep="0" rowsep="0" tabstyle="TableGrid">
     <tgroup cols="2">
-      <colspec colname="c1" colwidth="233.75pt"/>
-      <colspec colname="c2" colwidth="233.75pt"/>
+      <colspec colnum="1" colname="c1" colwidth="233.75pt"/>
+      <colspec colnum="2" colname="c2" colwidth="233.75pt"/>
       <tbody>
         <row>
           <entry colsep="1" rowsep="1" align="left">
@@ -272,8 +272,8 @@
   <!-- frame="sides" -->
   <table frame="sides" pgwide="1" colsep="0" rowsep="0" tabstyle="TableGrid">
     <tgroup cols="2">
-      <colspec colname="c1" colwidth="233.75pt"/>
-      <colspec colname="c2" colwidth="233.75pt"/>
+      <colspec colnum="1" colname="c1" colwidth="233.75pt"/>
+      <colspec colnum="2" colname="c2" colwidth="233.75pt"/>
       <tbody>
         <row>
           <entry colsep="1" rowsep="1" align="left">
@@ -358,8 +358,8 @@
   <!-- frame="all" -->
   <table frame="all" pgwide="1" colsep="0" rowsep="0" tabstyle="TableGrid">
     <tgroup cols="2">
-      <colspec colname="c1" colwidth="233.75pt"/>
-      <colspec colname="c2" colwidth="233.75pt"/>
+      <colspec colnum="1" colname="c1" colwidth="233.75pt"/>
+      <colspec colnum="2" colname="c2" colwidth="233.75pt"/>
       <tbody>
         <row>
           <entry colsep="1" rowsep="1" align="left">
@@ -444,8 +444,8 @@
   <!-- frame="none" -->
   <table frame="none" pgwide="1" colsep="0" rowsep="0" tabstyle="TableGrid">
     <tgroup cols="2">
-      <colspec colname="c1" colwidth="233.75pt"/>
-      <colspec colname="c2" colwidth="233.75pt"/>
+      <colspec colnum="1" colname="c1" colwidth="233.75pt"/>
+      <colspec colnum="2" colname="c2" colwidth="233.75pt"/>
       <tbody>
         <row>
           <entry>
