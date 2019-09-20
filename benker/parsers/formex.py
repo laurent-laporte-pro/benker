@@ -40,7 +40,7 @@ from lxml import etree
 
 from benker.box import Box
 from benker.common.lxml_iterwalk import iterwalk
-from benker.common.namespace import Namespace
+from benker.common.lxml_qname import QName
 from benker.parsers.base_parser import BaseParser
 from benker.parsers.cals.frame_styles import BORDER_NONE
 from benker.parsers.cals.frame_styles import BORDER_SOLID
@@ -57,7 +57,7 @@ class FormexParser(BaseParser):
     Formex 4 tables parser
     """
 
-    def __init__(self, builder, formex_prefix=None, formex_ns=None, cals_prefix=None, cals_ns=None, **options):
+    def __init__(self, builder, formex_ns=None, cals_ns=None, **options):
         """
         Construct a parser
 
@@ -69,49 +69,27 @@ class FormexParser(BaseParser):
             Namespace to use for Formex elements and attributes.
             Set ``None`` (or "") if you don't use namespace.
 
-        :param str formex_prefix:
-            Namespace prefix to use for Formex elements and attributes.
-            If a prefix is defined, a namespace must also be defined.
-
         :param str cals_ns:
             Namespace to use for CALS-like elements and attributes.
             Set ``None`` (or "") if you don't use namespace.
-
-        :param str cals_prefix:
-            Namespace prefix to use for CALS-like elements and attributes.
-            If a prefix is defined, a namespace must also be defined.
 
         :keyword str options: Extra conversion options.
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
         """
-        self._ns_map = {}
-        self.formex_ns = self._register_namespace(formex_prefix, formex_ns)
-        self.cals_ns = self._register_namespace(cals_prefix, cals_ns)
+        self.formex_ns = formex_ns
+        self.cals_ns = cals_ns
         super(FormexParser, self).__init__(builder, **options)
 
-    def _register_namespace(self, prefix, ns):
-        ns = ns or None
-        prefix = prefix or None
-        if prefix and not ns:
-            raise ValueError("prefix '{prefix}' defined without namespace".format(prefix=prefix))
-        if prefix in self._ns_map and self._ns_map[prefix] != ns:
-            if prefix:
-                fmt = "prefix '{prefix}' is already mapped to '{ns}'"
-            else:
-                fmt = "default prefix is already mapped to '{ns}'"
-            raise ValueError(fmt.format(prefix=prefix, ns=self._ns_map[prefix]))
-        if ns:
-            self._ns_map[prefix] = ns
-        return Namespace(prefix, ns)
+    def get_formex_qname(self, name):
+        return QName(self.formex_ns, name)
 
-    @property
-    def ns_map(self):
-        return self._ns_map
+    def get_cals_qname(self, name):
+        return QName(self.cals_ns, name)
 
     def transform_tables(self, tree):
-        if self.formex_ns.uri:
-            nodes = tree.xpath("//fmx:CORPUS", namespaces={"fmx": self.formex_ns.uri})
+        if self.formex_ns:
+            nodes = tree.xpath("//fmx:CORPUS", namespaces={"fmx": self.formex_ns})
         else:
             nodes = tree.xpath("//CORPUS")
         for node in nodes:
@@ -138,7 +116,7 @@ class FormexParser(BaseParser):
         state.reset()
 
         # -- Formex elements
-        fmx = self.formex_ns.get_qname
+        fmx = self.get_formex_qname
 
         CORPUS = fmx("CORPUS").text
         ROW = fmx("ROW").text
@@ -149,7 +127,7 @@ class FormexParser(BaseParser):
         STI_BLK = fmx("STI.BLK").text
 
         # -- CLAS-like elements
-        cals = self.cals_ns.get_qname
+        cals = self.get_cals_qname
 
         colspec = cals("colspec").text
 
@@ -209,8 +187,8 @@ class FormexParser(BaseParser):
                     state.table.fill_missing(bounding_box, None, nature=state.row.nature)
                 elif elem_tag == CORPUS:
                     # if there is a GR.NOTES, we create a row for it with the nature "footer"
-                    if self.formex_ns.uri:
-                        nodes = elem.xpath("preceding-sibling::fmx:GR.NOTES", namespaces={"fmx": self.formex_ns.uri})
+                    if self.formex_ns:
+                        nodes = elem.xpath("preceding-sibling::fmx:GR.NOTES", namespaces={"fmx": self.formex_ns})
                     else:
                         nodes = elem.xpath("preceding-sibling::GR.NOTES")
                     for fmx_gr_notes in nodes:
@@ -233,7 +211,7 @@ class FormexParser(BaseParser):
         styles, nature = self.parse_tbl_styles(fmx_tbl)
 
         # support for CALS-like elements and attributes
-        cals = self.cals_ns.get_qname
+        cals = self.get_cals_qname
 
         # -- attribute @cals:frame
         frame = fmx_corpus.attrib.get(cals("frame"))
@@ -289,7 +267,7 @@ class FormexParser(BaseParser):
             # mainly for unit tests
             return {}, None
 
-        fmx = self.formex_ns.get_qname
+        fmx = self.get_formex_qname
         styles = {}
 
         # -- attribute @fmx:NO.SEQ => ignored (computed)
@@ -321,7 +299,7 @@ class FormexParser(BaseParser):
         :type  fmx_row: ElementType
         :param fmx_row: table row
         """
-        fmx = self.formex_ns.get_qname
+        fmx = self.get_formex_qname
         styles = {}
 
         # -- attribute @fmx:TYPE => *nature*
@@ -338,7 +316,7 @@ class FormexParser(BaseParser):
             styles["rowstyle"] = "-".join(["ROW"] + row_styles)
 
         # support for CALS-like elements and attributes
-        cals = self.cals_ns.get_qname
+        cals = self.get_cals_qname
 
         # -- attribute @cals:rowstyle (extension)
         rowstyle = fmx_row.attrib.get(cals("rowstyle"))
@@ -454,8 +432,8 @@ class FormexParser(BaseParser):
         return state
 
     def _count_blk(self, fmx_node):
-        if self.formex_ns.uri:
-            blk_count = len(fmx_node.xpath("ancestor::fmx:BLK", namespaces={"fmx": self.formex_ns.uri}))
+        if self.formex_ns:
+            blk_count = len(fmx_node.xpath("ancestor::fmx:BLK", namespaces={"fmx": self.formex_ns}))
         else:
             blk_count = len(fmx_node.xpath("ancestor::BLK"))
         return blk_count
@@ -467,7 +445,7 @@ class FormexParser(BaseParser):
         state.row.nature = "body"
         state.row.styles = styles
 
-        fmx = self.formex_ns.get_qname
+        fmx = self.get_formex_qname
         col_start = int(fmx_blk_title.attrib.get(fmx("COL.START"), "1"))
         col_end = int(fmx_blk_title.attrib.get(fmx("COL.END"), "1"))
         width = col_end - col_start + 1
@@ -487,8 +465,8 @@ class FormexParser(BaseParser):
         return state
 
     def _contains_ie(self, fmx_node):
-        return (self.formex_ns.uri and fmx_node.xpath("//fmx:IE", namespaces={"fmx": self.formex_ns.uri})) or (
-            not self.formex_ns.uri and fmx_node.xpath("//IE")
+        return (self.formex_ns and fmx_node.xpath("//fmx:IE", namespaces={"fmx": self.formex_ns})) or (
+            not self.formex_ns and fmx_node.xpath("//IE")
         )
 
     def parse_fmx_cell(self, fmx_cell):
@@ -498,7 +476,7 @@ class FormexParser(BaseParser):
         :type  fmx_cell: ElementType
         :param fmx_cell: table cell
         """
-        fmx = self.formex_ns.get_qname
+        fmx = self.get_formex_qname
         styles = {}
 
         # -- attribute @fmx:COL => not used
@@ -517,7 +495,7 @@ class FormexParser(BaseParser):
         nature = cell_nature or row_nature
 
         # support for CALS-like elements and attributes
-        cals = self.cals_ns.get_qname
+        cals = self.get_cals_qname
 
         # -- attribute @cals:colsep
         colsep = fmx_cell.attrib.get(cals("colsep"))
@@ -578,7 +556,7 @@ class FormexParser(BaseParser):
         :type  cals_colspec: ElementType
         :param cals_colspec: CALS-like ``colspec`` element.
         """
-        cals = self.cals_ns.get_qname
+        cals = self.get_cals_qname
         styles = {}
 
         # -- attribute @cals:colname is ignored

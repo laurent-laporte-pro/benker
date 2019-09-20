@@ -24,19 +24,16 @@ class TestFormexParser(unittest.TestCase):
         parser = FormexParser(self.builder)
         assert parser.builder is self.builder
 
-    def test_ns_map(self):
+    def test_ns(self):
         parser = FormexParser(self.builder)
-        assert parser.ns_map == {}
-        parser = FormexParser(self.builder, formex_ns="http://opoce", cals_prefix=CALS_PREFIX, cals_ns=CALS_NS)
-        assert parser.ns_map == {None: "http://opoce", CALS_PREFIX: CALS_NS}
-        parser = FormexParser(self.builder, formex_prefix="fmx", formex_ns="http://opoce")
-        assert parser.ns_map == {"fmx": "http://opoce"}
-
-    def test_invalid_ns_map(self):
-        with self.assertRaises(ValueError):
-            FormexParser(self.builder, formex_prefix="fmx")
-        with self.assertRaises(ValueError):
-            FormexParser(self.builder, cals_prefix="fmx")
+        assert parser.formex_ns is None
+        assert parser.cals_ns is None
+        parser = FormexParser(self.builder, formex_ns="http://opoce")
+        assert parser.formex_ns == "http://opoce"
+        assert parser.cals_ns is None
+        parser = FormexParser(self.builder, cals_ns=CALS_NS)
+        assert parser.formex_ns is None
+        assert parser.cals_ns == CALS_NS
 
 
 class StrBuilder(BaseBuilder):
@@ -55,7 +52,7 @@ def test_transform_tables__no_namespace():
     fmx_tbl = E.TBL(E.CORPUS(E.ROW(E.CELL("A1"), E.CELL("B1", ROWSPAN="2")), E.ROW(E.CELL("A2"))))
     tree = E.FORMEX(fmx_tbl)
     builder = StrBuilder()
-    parser = FormexParser(builder, formex_ns="")
+    parser = FormexParser(builder)
     parser.transform_tables(tree)
     str_table = tree.xpath("//table")[0].text
     # print("str_table:")
@@ -80,7 +77,7 @@ def test_transform_tables__with_header():
     ))
     tree = E.FORMEX(fmx_tbl)
     builder = StrBuilder()
-    parser = FormexParser(builder, formex_ns="")
+    parser = FormexParser(builder)
     parser.transform_tables(tree)
     str_table = tree.xpath("//table")[0].text
     # print("str_table:")

@@ -27,7 +27,7 @@ class TestCalsParser(unittest.TestCase):
         parser = CalsParser(self.builder)
         assert parser.builder is self.builder
 
-    def test_cals_ns(self):
+    def test_ns(self):
         parser = CalsParser(self.builder)
         assert parser.cals_ns is None
         parser = CalsParser(self.builder, cals_ns=CALS_NS)
