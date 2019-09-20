@@ -213,11 +213,11 @@ def test_get_frame_styles(frame, expected):
     ],
     # fmt: on
 )
-def test_parse_tbl_corpus(attrib, styles, nature):
+def test_parse_fmx_tbl_corpus(attrib, styles, nature):
     fmx_tbl = etree.Element("TBL", attrib=attrib)
     fmx_corpus = etree.SubElement(fmx_tbl, "CORPUS")
     parser = FormexParser(BaseBuilder())
-    state = parser.parse_corpus(fmx_corpus)
+    state = parser.parse_fmx_corpus(fmx_corpus)
     table = state.table
     assert table.styles == styles
     assert table.nature == nature
@@ -275,10 +275,10 @@ def test_parse_tbl_corpus(attrib, styles, nature):
     ]
     # fmt: on
 )
-def test_parse_corpus(attrib, styles):
+def test_parse_fmx_corpus(attrib, styles):
     fmx_corpus = etree.Element("CORPUS", attrib=attrib)
     parser = FormexParser(BaseBuilder())
-    state = parser.parse_corpus(fmx_corpus)
+    state = parser.parse_fmx_corpus(fmx_corpus)
     table = state.table
     assert table.styles == styles
 
@@ -300,14 +300,14 @@ def test_parse_corpus(attrib, styles):
         ({"rowsep": "1"}, {"border-bottom": BORDER_SOLID}, "body"),
     ],
 )
-def test_parse_row(attrib, styles, nature):
+def test_parse_fmx_row(attrib, styles, nature):
     E = ElementMaker()
     fmx_row = E.ROW(**attrib)
     parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
     state.row = state.table.rows[state.row_pos]
-    state = parser.parse_row(fmx_row)
+    state = parser.parse_fmx_row(fmx_row)
     row = state.row
     assert row.styles == styles
     assert row.nature == nature
@@ -324,7 +324,7 @@ def test_parse_row(attrib, styles, nature):
         ({"TYPE": "TOTAL"}, {"rowstyle": "ROW-TOTAL-level2"}, "body"),
     ],
 )
-def test_parse_row__in_blk_level2(attrib, styles, nature):
+def test_parse_fmx_row__in_blk_level2(attrib, styles, nature):
     E = ElementMaker()
     fmx_row = E.ROW(**attrib)
     E.BLK(E.BLK(fmx_row))
@@ -332,20 +332,20 @@ def test_parse_row__in_blk_level2(attrib, styles, nature):
     state = parser.setup_table()
     state.next_row()
     state.row = state.table.rows[state.row_pos]
-    state = parser.parse_row(fmx_row)
+    state = parser.parse_fmx_row(fmx_row)
     row = state.row
     assert row.styles == styles
     assert row.nature == nature
 
 
-def test_parse_row__ti_blk_level1():
+def test_parse_fmx_ti_blk__level1():
     fmx_blk = etree.Element("BLK")
     fmx_ti_blk = etree.XML("""<TI.BLK COL.START="1" COL.END="2"><P>paragraph</P></TI.BLK>""")
     fmx_blk.append(fmx_ti_blk)
     parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
-    state = parser.parse_ti_blk(fmx_ti_blk)
+    state = parser.parse_fmx_ti_blk(fmx_ti_blk)
     row = state.row
     assert row.styles == {"rowstyle": "TI.BLK-level1"}
     assert row.nature == "body"
@@ -358,7 +358,7 @@ def test_parse_row__ti_blk_level1():
     assert etree.tounicode(cell.content[0]) == "<P>paragraph</P>"
 
 
-def test_parse_row__ti_blk_level2():
+def test_parse_fmx_ti_blk__level2():
     fmx_blk = etree.Element("BLK")
     fmx_blk = etree.SubElement(fmx_blk, "BLK")
     fmx_ti_blk = etree.XML("""<TI.BLK><IE/></TI.BLK>""")
@@ -366,7 +366,7 @@ def test_parse_row__ti_blk_level2():
     parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
-    state = parser.parse_ti_blk(fmx_ti_blk)
+    state = parser.parse_fmx_ti_blk(fmx_ti_blk)
     row = state.row
     assert row.styles == {"rowstyle": "TI.BLK-level2"}
     assert row.nature == "body"
@@ -379,7 +379,7 @@ def test_parse_row__ti_blk_level2():
     assert cell.content == ""
 
 
-def test_parse_row__ti_blk_level2__with_namespace():
+def test_parse_fmx_ti_blk__level2__with_namespace():
     def fmx(name):
         return etree.QName(FORMEX_NS, name).text
 
@@ -395,7 +395,7 @@ def test_parse_row__ti_blk_level2__with_namespace():
     parser = FormexParser(BaseBuilder(), formex_ns=FORMEX_NS, cals_prefix=CALS_PREFIX, cals_ns=CALS_NS)
     state = parser.setup_table()
     state.next_row()
-    state = parser.parse_ti_blk(fmx_ti_blk)
+    state = parser.parse_fmx_ti_blk(fmx_ti_blk)
 
     row = state.row
     assert row.styles == {"rowstyle": "TI.BLK-level2"}
@@ -409,14 +409,14 @@ def test_parse_row__ti_blk_level2__with_namespace():
     assert cell.content == ""
 
 
-def test_parse_row__sti_blk_level1():
+def test_parse_fmx_sti_blk__level1():
     fmx_blk = etree.Element("BLK")
     fmx_sti_blk = etree.XML("""<STI.BLK COL.START="2" COL.END="2">text</STI.BLK>""")
     fmx_blk.append(fmx_sti_blk)
     parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
-    state = parser.parse_sti_blk(fmx_sti_blk)
+    state = parser.parse_fmx_sti_blk(fmx_sti_blk)
     row = state.row
     assert row.styles == {"rowstyle": "STI.BLK-level1"}
     assert row.nature == "body"
@@ -431,7 +431,7 @@ def test_parse_row__sti_blk_level1():
     assert cell2.content[0] == "text"
 
 
-def test_parse_gr_notes():
+def test_parse_fmx_gr_notes():
     fmx_gr_notes = etree.XML(
         """<GR.NOTES>
       <TITLE><TI><P>GR.NOTES Title</P></TI></TITLE>
@@ -478,14 +478,14 @@ def test_parse_gr_notes():
         ({"TYPE": "TOTAL"}, {}, "footer", (1, 1)),
     ],
 )
-def test_parse_cell(attrib, styles, nature, size):
+def test_parse_fmx_cell(attrib, styles, nature, size):
     E = ElementMaker()
     fmx_cell = E.CELL(**attrib)
     parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
     state.row = state.table.rows[state.row_pos]
-    parser.parse_cell(fmx_cell)
+    parser.parse_fmx_cell(fmx_cell)
     table = state.table
     cell = table[(1, 1)]
     assert cell.styles == styles
@@ -493,14 +493,14 @@ def test_parse_cell(attrib, styles, nature, size):
     assert cell.size == size
 
 
-def test_parse_cell__with_cals():
+def test_parse_fmx_cell__with_cals():
     E = ElementMaker()
     fmx_cell = E.CELL(colsep="1", rowsep="1", namest="c1", nameend="c3", bgcolor="#00007f", morerows="1")
     parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
     state.row = state.table.rows[state.row_pos]
-    parser.parse_cell(fmx_cell)
+    parser.parse_fmx_cell(fmx_cell)
     table = state.table
     cell = table[(1, 1)]
     assert cell.styles == {
@@ -512,14 +512,14 @@ def test_parse_cell__with_cals():
     assert cell.size == (3, 2)
 
 
-def test_parse_colspec():
+def test_parse_fmx_colspec():
     E = ElementMaker()
     cals_colspec = E.colspec(
         colnum="1", colname="c1", colwidth="70mm", colsep="0", rowsep="1", align="char", char=",", charoff="50"
     )
     parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
-    parser.parse_colspec(cals_colspec)
+    parser.parse_fmx_colspec(cals_colspec)
     table = state.table
     col = table.cols[1]
     assert col.styles == {'align': 'left', 'width': '70mm', 'border-bottom': 'solid 1pt black', 'border-right': 'none'}

@@ -194,11 +194,11 @@ class FormexParser(BaseParser):
                 # tags sorted by frequency:
                 if elem_tag == CELL:
                     state.next_col()
-                    self.parse_cell(elem)
+                    self.parse_fmx_cell(elem)
 
                 elif elem_tag == ROW:
                     state.next_row()
-                    self.parse_row(elem)
+                    self.parse_fmx_row(elem)
 
                 elif elem_tag == BLK:
                     # only a container
@@ -206,18 +206,18 @@ class FormexParser(BaseParser):
 
                 elif elem_tag == TI_BLK:
                     state.next_row()
-                    self.parse_ti_blk(elem)
+                    self.parse_fmx_ti_blk(elem)
 
                 elif elem_tag == STI_BLK:
                     state.next_row()
-                    self.parse_sti_blk(elem)
+                    self.parse_fmx_sti_blk(elem)
 
                 elif elem_tag == colspec:
                     state.next_col()
-                    self.parse_colspec(elem)
+                    self.parse_fmx_colspec(elem)
 
                 elif elem_tag == CORPUS:
-                    self.parse_corpus(elem)
+                    self.parse_fmx_corpus(elem)
 
                 elif elem_tag == MARGIN:
                     raise NotImplementedError("MARGIN is not supported yet")
@@ -249,7 +249,7 @@ class FormexParser(BaseParser):
         self._state.table = table
         return self._state
 
-    def parse_corpus(self, fmx_corpus):
+    def parse_fmx_corpus(self, fmx_corpus):
         fmx_tbl = fmx_corpus.getparent()
         styles, nature = self.parse_tbl_styles(fmx_tbl)
 
@@ -333,7 +333,7 @@ class FormexParser(BaseParser):
 
         return styles, nature
 
-    def parse_row(self, fmx_row):
+    def parse_fmx_row(self, fmx_row):
         """
         Parse a ``ROW`` element which contains ``CELL`` elements.
 
@@ -387,7 +387,7 @@ class FormexParser(BaseParser):
 
         return state  # mainly for unit test
 
-    def parse_ti_blk(self, fmx_ti_blk):
+    def parse_fmx_ti_blk(self, fmx_ti_blk):
         """
         Parse a ``TI.BLK`` element, considering it like a row of a single cell.
 
@@ -412,7 +412,7 @@ class FormexParser(BaseParser):
 
         return self._insert_blk_title_row(fmx_ti_blk, styles)
 
-    def parse_sti_blk(self, fmx_sti_blk):
+    def parse_fmx_sti_blk(self, fmx_sti_blk):
         """
         Parse a ``STI.BLK`` element, considering it like a row of a single cell.
 
@@ -512,7 +512,7 @@ class FormexParser(BaseParser):
             not self.formex_ns.uri and fmx_node.xpath("//IE")
         )
 
-    def parse_cell(self, fmx_cell):
+    def parse_fmx_cell(self, fmx_cell):
         """
         Parse a ``CELL`` element.
 
@@ -580,7 +580,7 @@ class FormexParser(BaseParser):
 
         return self._state  # mainly for unit test
 
-    def parse_colspec(self, cals_colspec):
+    def parse_fmx_colspec(self, cals_colspec):
         """
         Parse a CALS-like ``colspec`` element.
 
