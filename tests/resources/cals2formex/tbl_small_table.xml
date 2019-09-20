@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<GENERAL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="formex-05.59-20170418_jouve.xd" NNC="YES">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="C_2019000EN.01000101.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>000</NO.OJ>
+      <YEAR>2019</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20190912">20190912</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0001</NO.SEQ>
+    <PAGE.FIRST>1</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>1</PAGE.LAST>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+  </BIB.INSTANCE>
+  <CONTENTS>
+    <TBL COLS="2" NO.SEQ="0001">
+      <TITLE>
+        <TI>
+          <P>Table title</P>
+        </TI>
+      </TITLE>
+      <CORPUS xmlns:cals="https://jouve.com/schemas/opue/doj/formex-cals"
+              cals:frame="none" cals:colsep="0" cals:rowsep="0">
+        <cals:colspec cals:colname="c1"/>
+        <cals:colspec cals:colname="c2"/>
+        <ROW TYPE="HEADER">
+          <CELL COL="1">
+            <HT TYPE="BOLD">Header 1</HT>
+          </CELL>
+          <CELL COL="2">
+            <HT TYPE="BOLD">Header 2</HT>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">Cell A1</CELL>
+          <CELL COL="2">Cell B1</CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <P>Cell A2</P>
+          </CELL>
+          <CELL COL="2">
+            <P>Cell B2</P>
+          </CELL>
+        </ROW>
+      </CORPUS>
+    </TBL>
+  </CONTENTS>
+</GENERAL>

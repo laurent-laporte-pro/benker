@@ -8,7 +8,7 @@ import pytest
 import xmldiff.main
 from lxml import etree
 
-from benker.converters.formex2cals import convert_formex2cals
+from benker.converters.cals2formex import convert_cals2formex
 
 from tests.resources import RESOURCES_DIR
 
@@ -16,19 +16,20 @@ from tests.resources import RESOURCES_DIR
 @pytest.mark.parametrize(
     'input_name, expected_name',
     [
-        ("formex/tbl_small_table.xml", "formex2cals/tbl_small_table.xml"),
-        ("formex/tbl_sample.xml", "formex2cals/tbl_sample.xml"),
-        ("formex/tbl_sample_formex.xml", "formex2cals/tbl_sample_formex.xml")
+        ("cals/tbl_small_table.xml", "cals2formex/tbl_small_table.xml"),
+        ("cals/tbl_sample.xml", "cals2formex/tbl_sample.xml"),
+        ("cals/tbl_sample_formex.xml", "cals2formex/tbl_sample_formex.xml")
     ],
 )
-def test_convert_formex2cals(input_name, expected_name, tmpdir):
+def test_convert_cals2formex(input_name, expected_name, tmpdir):
     # type: (str, str, py.path.local) -> None
     src_xml = RESOURCES_DIR.join(input_name)  # type: py.path.local
     dst_xml = tmpdir.join(src_xml.basename)
-    convert_formex2cals(
+    convert_cals2formex(
         str(src_xml),
         str(dst_xml),
         width_unit='mm',
+        use_cals=True,
         cals_prefix="cals",
         cals_ns="https://jouve.com/schemas/opue/doj/formex-cals",
     )
@@ -38,10 +39,9 @@ def test_convert_formex2cals(input_name, expected_name, tmpdir):
     expected_xml = RESOURCES_DIR.join(expected_name)  # type: py.path.local
     if expected_xml.exists():
         expected_tree = etree.parse(str(expected_xml), parser=xml_parser)
-        NS = {"cals": "https://jouve.com/schemas/opue/doj/formex-cals"}
-        expected_elements = expected_tree.xpath("//cals:table", namespaces=NS)
+        expected_elements = expected_tree.xpath("//CORPUS")
         dst_tree = etree.parse(str(dst_xml), parser=xml_parser)
-        dst_elements = dst_tree.xpath("//cals:table", namespaces=NS)
+        dst_elements = dst_tree.xpath("//CORPUS")
         assert len(expected_elements) == len(dst_elements)
 
         for dst_elem, expected_elem in zip(dst_elements, expected_elements):

@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+Cet exemple factice de tableau contient quelques exemples de balises
+que l'on peut rencontrer dans un tableau Formex.
+
+*   un titre de tableau,
+*   des GR.SEQ,
+*   des notes de bas de page qui devront apparaître à la fin du tableau,
+*   un corpus:
+
+    -   avec une en-tête HEADER
+    -   une ligne d'ALIAS,
+    -   des lignes de tableau classiques,
+    -   des blocs de lignes de tableaux.
+-->
+<GENERAL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="formex-05.59-20170418_jouve.xd" NNC="YES">
+  <BIB.INSTANCE>
+    <DOCUMENT.REF FILE="C_2019000EN.01000101.doc.xml">
+      <COLL>C</COLL>
+      <NO.OJ>000</NO.OJ>
+      <YEAR>2019</YEAR>
+      <LG.OJ>EN</LG.OJ>
+      <PAGE.FIRST>1</PAGE.FIRST>
+      <PAGE.SEQ>1</PAGE.SEQ>
+      <VOLUME.REF>01</VOLUME.REF>
+    </DOCUMENT.REF>
+    <DATE ISO="20190912">20190912</DATE>
+    <LG.DOC>EN</LG.DOC>
+    <NO.SEQ>0001</NO.SEQ>
+    <PAGE.FIRST>1</PAGE.FIRST>
+    <PAGE.SEQ>1</PAGE.SEQ>
+    <PAGE.LAST>1</PAGE.LAST>
+    <PAGE.TOTAL>1</PAGE.TOTAL>
+  </BIB.INSTANCE>
+  <CONTENTS>
+    <TBL COLS="2" NO.SEQ="0001">
+      <TITLE>
+        <TI>
+          <P>Table title</P>
+        </TI>
+      </TITLE>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="BOLD">GR.SEQ Title</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <NP>
+          <NO.P>1</NO.P>
+          <TXT>text</TXT>
+        </NP>
+        <NP>
+          <NO.P>2</NO.P>
+          <TXT>text</TXT>
+        </NP>
+      </GR.SEQ>
+      <GR.SEQ LEVEL="1">
+        <TITLE>
+          <TI>
+            <P>
+              <HT TYPE="BOLD">GR.SEQ Title</HT>
+            </P>
+          </TI>
+        </TITLE>
+        <NP>
+          <NO.P>1</NO.P>
+          <TXT>text</TXT>
+        </NP>
+        <NP>
+          <NO.P>2</NO.P>
+          <TXT>text</TXT>
+        </NP>
+      </GR.SEQ>
+      <TBL xmlns:cals="https://jouve.com/schemas/opue/doj/formex-cals" NO.SEQ="0001.0001" COLS="2">
+        <CORPUS cals:frame="none" cals:colsep="0" cals:rowsep="0">
+          <cals:colspec cals:colname="c1"/>
+          <cals:colspec cals:colname="c2"/>
+          <ROW TYPE="HEADER">
+            <CELL COL="1">
+              <HT TYPE="BOLD">Header 1</HT>
+            </CELL>
+            <CELL COL="2">
+              <HT TYPE="BOLD">Header 2</HT>
+            </CELL>
+          </ROW>
+          <ROW TYPE="HEADER">
+            <CELL COL="1">(1)</CELL>
+            <CELL COL="2">(2)</CELL>
+          </ROW>
+          <ROW TYPE="TOTAL">
+            <CELL COL="1" COLSPAN="2" cals:namest="c1" cals:nameend="c2">
+              <TITLE>
+                <TI>
+                  <P>GR.NOTES Title</P>
+                </TI>
+              </TITLE>
+              <NOTE NOTE.ID="N0001">
+                <P>Table note</P>
+              </NOTE>
+            </CELL>
+          </ROW>
+          <ROW>
+            <CELL COL="1">Cell A1</CELL>
+            <CELL COL="2">Cell B1</CELL>
+          </ROW>
+          <ROW>
+            <CELL COL="1" COLSPAN="2" cals:namest="c1" cals:nameend="c2">
+              <P>
+                <HT TYPE="BOLD">TI.BLK title</HT>
+              </P>
+            </CELL>
+          </ROW>
+          <ROW>
+            <CELL COL="1">
+              <P>STI.BLK title</P>
+            </CELL>
+            <CELL COL="2">
+              <IE/>
+            </CELL>
+          </ROW>
+          <ROW>
+            <CELL COL="1" COLSPAN="2" cals:namest="c1" cals:nameend="c2">Cell A2-B2</CELL>
+          </ROW>
+          <ROW>
+            <CELL COL="1" ROWSPAN="2" cals:morerows="1">Cell A3-A4</CELL>
+            <CELL COL="2">Cell B3</CELL>
+          </ROW>
+          <ROW>
+            <CELL COL="2">Cell B4</CELL>
+          </ROW>
+          <ROW>
+            <CELL COL="1" COLSPAN="2" cals:namest="c1" cals:nameend="c2">
+              <P>
+                <HT TYPE="BOLD">TI.BLK title</HT>
+              </P>
+            </CELL>
+          </ROW>
+          <ROW>
+            <CELL COL="1">Cell A5</CELL>
+            <CELL COL="2">Cell B5</CELL>
+          </ROW>
+        </CORPUS>
+      </TBL>
+    </TBL>
+  </CONTENTS>
+</GENERAL>
