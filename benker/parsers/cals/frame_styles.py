@@ -18,6 +18,7 @@ def get_frame_styles(frame):
     if not frame:
         return styles
     top, bottom, left, right = {
+        "none": (False, False, False, False),
         "all": (True, True, True, True),
         "topbot": (True, True, False, False),
         "sides": (False, False, True, True),

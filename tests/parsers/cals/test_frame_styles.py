@@ -11,6 +11,15 @@ from benker.parsers.cals.frame_styles import get_frame_styles
     [
         (None, {}),
         (
+            "none",
+            {
+                "border-bottom": BORDER_NONE,
+                "border-left": BORDER_NONE,
+                "border-right": BORDER_NONE,
+                "border-top": BORDER_NONE,
+            },
+        ),
+        (
             "all",
             {
                 "border-bottom": BORDER_SOLID,
