@@ -22,7 +22,7 @@ import re
 from lxml import etree
 
 from benker.builders.base_builder import BaseBuilder
-from benker.common.namespace import Namespace
+from benker.builders.namespace import Namespace
 from benker.units import convert_value
 
 # noinspection PyProtectedMember
