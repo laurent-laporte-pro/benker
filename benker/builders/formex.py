@@ -501,11 +501,14 @@ class FormexBuilder(BaseBuilder):
         cell_elem = etree.SubElement(row_elem, u"CELL", attrib=attrs)
         text = text_type(cell)
         if text:
-            if isinstance(cell.content, type(u"")):
-                # mainly useful for unit test
-                cell_elem.text = cell.content
-            else:
-                cell_elem.extend(cell.content)
+            if cell.content is not None:
+                for node in cell.content:
+                    # noinspection PyProtectedMember
+                    if isinstance(node, ElementType):
+                        cell_elem.append(node)
+                    else:
+                        text = cell_elem.text or ""
+                        cell_elem.text = text + node
         else:
             # The IE element is used to explicitly indicate
             # that specific structures have an empty content.
