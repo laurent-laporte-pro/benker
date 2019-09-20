@@ -7,10 +7,9 @@ from lxml import etree
 from lxml.builder import ElementMaker
 
 from benker.builders.base_builder import BaseBuilder
-from benker.parsers.formex import BORDER_NONE
-from benker.parsers.formex import BORDER_SOLID
+from benker.parsers.cals.frame_styles import BORDER_NONE
+from benker.parsers.cals.frame_styles import BORDER_SOLID
 from benker.parsers.formex import FormexParser
-from benker.parsers.formex import get_frame_styles
 from benker.schemas import CALS_NS
 from benker.schemas import CALS_PREFIX
 from benker.schemas import FORMEX_NS
@@ -123,62 +122,6 @@ def test_transform_tables__with_namespace():
     |    A2                 |
     +-----------------------+""")
     # fmt: on
-
-
-@pytest.mark.parametrize(
-    "frame, expected",
-    [
-        (None, {}),
-        (
-            "all",
-            {
-                "border-bottom": BORDER_SOLID,
-                "border-left": BORDER_SOLID,
-                "border-right": BORDER_SOLID,
-                "border-top": BORDER_SOLID,
-            },
-        ),
-        (
-            "topbot",
-            {
-                "border-bottom": BORDER_SOLID,
-                "border-left": BORDER_NONE,
-                "border-right": BORDER_NONE,
-                "border-top": BORDER_SOLID,
-            },
-        ),
-        (
-            "sides",
-            {
-                "border-bottom": BORDER_NONE,
-                "border-left": BORDER_SOLID,
-                "border-right": BORDER_SOLID,
-                "border-top": BORDER_NONE,
-            },
-        ),
-        (
-            "top",
-            {
-                "border-bottom": BORDER_NONE,
-                "border-left": BORDER_NONE,
-                "border-right": BORDER_NONE,
-                "border-top": BORDER_SOLID,
-            },
-        ),
-        (
-            "bottom",
-            {
-                "border-bottom": BORDER_SOLID,
-                "border-left": BORDER_NONE,
-                "border-right": BORDER_NONE,
-                "border-top": BORDER_NONE,
-            },
-        ),
-    ],
-)
-def test_get_frame_styles(frame, expected):
-    actual = get_frame_styles(frame)
-    assert actual == expected
 
 
 @pytest.mark.parametrize(

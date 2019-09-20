@@ -52,6 +52,9 @@ Added
 * Add support for ``bgcolor`` (Table/Cell background color) in the Formex 4 builder
   (only with the *use_cals* option).
 
+* New parser: :class:`~benker.parsers.cals.CalsParser`: CALS tables parser.
+
+
 Fixed
 -----
 
