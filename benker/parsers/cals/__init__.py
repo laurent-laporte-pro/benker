@@ -234,8 +234,7 @@ class CalsParser(BaseParser):
         # -- attribute @cals:tabstyle
         tabstyle = cals_table.attrib.get(cals("tabstyle"))
         if tabstyle:
-            # overrides the calculated tabstyle (see @cals:CLASS)
-            nature = nature + "-" + tabstyle if nature else tabstyle
+            nature = tabstyle
 
         return self.setup_table(styles, nature)
 
@@ -261,7 +260,12 @@ class CalsParser(BaseParser):
         # -- attribute @cals:tgroupstyle
         tgroupstyle = cals_tgroup.attrib.get(cals("tgroupstyle"))
         if tgroupstyle:
-            nature = tgroupstyle
+            nature = self._state.table.nature
+            if nature:
+                parts = nature.split(" ")
+                nature = " ".join(parts[:-1] + [tgroupstyle])
+            else:
+                nature = tgroupstyle
 
         # -- Override the table defaults
         state = self._state
@@ -309,6 +313,11 @@ class CalsParser(BaseParser):
         rowsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
         if rowsep in rowsep_map:
             styles["border-bottom"] = rowsep_map[rowsep]
+
+        # -- attribute @cals:bgcolor
+        bgcolor = cals_row.attrib.get(cals("bgcolor"))
+        if bgcolor:
+            styles["background-color"] = bgcolor
 
         # -- attribute @cals:rowstyle (extension)
         rowstyle = cals_row.attrib.get(cals("rowstyle"))

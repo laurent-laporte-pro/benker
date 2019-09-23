@@ -50,6 +50,10 @@ ElementTreeType = etree._ElementTree
 #: Element Type
 ElementType = etree._Element
 
+# noinspection PyProtectedMember
+#: ProcessingInstructionType is an alias for type hints
+ProcessingInstructionType = etree._ProcessingInstruction  # pylint: disable=C0103,W0212
+
 text_type = type(u"")
 
 
@@ -58,6 +62,29 @@ def revision_mark(name, attrs):
     target = target.replace("<{0} ".format(name), "").replace("/>", "")
     rev_pi = etree.ProcessingInstruction(name, target)
     return rev_pi
+
+
+RowInfo = collections.namedtuple("RowInfo", "tag, type, level")
+
+
+def guess_row_info(rowstyle):
+    if rowstyle is None:
+        return RowInfo("ROW", None, 0)
+    mo = re.match(
+        r"""^
+        (ROW | TI\.BLK | STI\.BLK)
+        (?: - (ALIAS|HEADER|NORMAL|NOTCOL|TOTAL) )?
+        (?: - level(\d+) )?
+        $""",
+        rowstyle,
+        flags=re.VERBOSE,
+    )
+    if mo:
+        info_tag = mo.group(1)
+        info_type = mo.group(2)
+        info_level = int(mo.group(3) or "0")
+        return RowInfo(info_tag, info_type, info_level)
+    return RowInfo("ROW", None, 0)
 
 
 class FormexBuilder(BaseBuilder):
@@ -355,7 +382,7 @@ class FormexBuilder(BaseBuilder):
         """
         row_styles = row.styles
         attrs = {}
-        nature_types = {"header": u"HEADER", "footer": u"TOTAL"}
+        nature_types = {"header": u"HEADER", "footer": u"__GR.NOTES__"}
         if row.nature in nature_types:
             attrs["TYPE"] = nature_types[row.nature]
 
@@ -372,6 +399,13 @@ class FormexBuilder(BaseBuilder):
                     'baseline': 'bottom',
                 }[row_styles['valign']]
                 # fmt: on
+            row_rowsep = get_rowsep_attr(row_styles, "border-bottom")
+            if row_rowsep and row_rowsep != self._table_rowsep:
+                attrs[cals("rowsep")] = row_rowsep
+            if "rowstyle" in row_styles:
+                attrs[cals("rowstyle")] = row_styles["rowstyle"]
+            if "background-color" in row_styles:
+                attrs[cals("bgcolor")] = row_styles["background-color"]
 
         if "x-ins" in row_styles:
             # <?change-start change-id="ct140446841083680" type="row:insertion"
@@ -452,7 +486,7 @@ class FormexBuilder(BaseBuilder):
         cell_styles = cell.styles
         attrs = {"COL": str(cell.box.min.x)}
         if cell.nature and cell.nature != row.nature:
-            nature_types = {"header": u"HEADER", "body": u"NORMAL", "footer": u"TOTAL"}
+            nature_types = {"header": u"HEADER", "body": u"NORMAL", "footer": u"__GR.NOTES__"}
             attrs["TYPE"] = nature_types[cell.nature]
         if cell.width > 1:
             attrs[u"COLSPAN"] = str(cell.width)
@@ -517,26 +551,130 @@ class FormexBuilder(BaseBuilder):
     def finalize_tree(self, tree):
         """
         Finalize the resulting tree structure:
-        calculate the ``@NO.SEQ`` values: sequence number of each table.
+
+        - Calculate the ``@NO.SEQ`` values: sequence number of each table;
+        - Cleanup the ``TBL`` elements when they are direct children of another ``TBL``;
+        - Extract ``GR.NOTES`` from the table footers;
+        - Group ``ROW`` elements by ``BLK`` based on the ``@cals:rowstyle`` attribute (CALS extension).
 
         :type  tree: ElementTreeType
         :param tree: The resulting tree.
         """
-        root = tree.getroot()
-        context = iterwalk(root, events=("start",), tag=("TBL",))
+        fmx_root = tree.getroot()
+        self.update_no_seq(fmx_root)
+        self.cleanup_tbl_in_tbl(fmx_root)
+        self.extract_gr_notes(fmx_root)
+        self.insert_blk(fmx_root)
 
+    # noinspection PyMethodMayBeStatic
+    def update_no_seq(self, fmx_root):
+        """
+        Calculate the ``@NO.SEQ`` values: sequence number of each table.
+
+        :type  fmx_root: ElementType
+        :param fmx_root: The result tree which contains the ``TBL`` elements to update.
+        """
+        context = iterwalk(fmx_root, events=("start",), tag=("TBL",))
         stack = []
         for action, elem in context:  # type: str, ElementType
-            elem_tag = elem.tag
-            if elem_tag == "TBL":
-                elem_level = int(elem.xpath("count(ancestor-or-self::TBL)"))
-                curr_level = len(stack)
-                if curr_level < elem_level:
-                    stack.extend([0] * (elem_level - curr_level))
-                else:
-                    stack[:] = stack[:elem_level]
-                stack[elem_level - 1] += 1
-                no_seq = u".".join(u"{:04d}".format(value) for value in stack)
-                elem.attrib["NO.SEQ"] = no_seq
+            elem_level = int(elem.xpath("count(ancestor-or-self::TBL)"))
+            curr_level = len(stack)
+            if curr_level < elem_level:
+                stack.extend([0] * (elem_level - curr_level))
             else:
-                raise NotImplementedError(elem_tag)
+                stack[:] = stack[:elem_level]
+            stack[elem_level - 1] += 1
+            no_seq = u".".join(u"{:04d}".format(value) for value in stack)
+            elem.attrib["NO.SEQ"] = no_seq
+
+    # noinspection PyMethodMayBeStatic
+    def cleanup_tbl_in_tbl(self, fmx_root):
+        """
+        Cleanup the ``TBL`` elements when they are direct children of another ``TBL``
+
+        :type  fmx_root: ElementType
+        :param fmx_root: The result tree which contains the ``TBL`` elements to remove.
+        """
+        for fmx_tbl in fmx_root.xpath("//TBL"):  # type: ElementType
+            fmx_parent = fmx_tbl.getparent()
+            if fmx_parent is not None and fmx_parent.tag == "TBL":
+                # note that we cannot use etree.strip_tags() because a TBL may contains another TBL.
+                index = fmx_parent.index(fmx_tbl)
+                fmx_parent[index:index + 1] = fmx_tbl.getchildren()
+
+    # noinspection PyMethodMayBeStatic
+    def extract_gr_notes(self, fmx_root):
+        """
+        Extract ``GR.NOTES`` from the table footers.
+
+        :type  fmx_root: ElementType
+        :param fmx_root: The result tree with ``GR.NOTES``.
+        """
+        for fmx_row in fmx_root.xpath("//ROW[@TYPE = '__GR.NOTES__']"):  # type: ElementType
+            fmx_corpus = fmx_row.xpath("ancestor::CORPUS[1]")[0]  # type: ElementType
+            fmx_tbl = fmx_corpus.getparent()
+            attrib = {k: v for k, v in fmx_row.attrib.items() if k != "TYPE"}
+            fmx_gr_notes = etree.Element("GR.NOTES", attrib=attrib)
+            fmx_cell = fmx_row.xpath("CELL")[0]
+            fmx_gr_notes.text = fmx_cell.text
+            fmx_gr_notes.extend(fmx_cell.getchildren())
+            index = fmx_tbl.index(fmx_corpus)
+            fmx_tbl.insert(index, fmx_gr_notes)
+            fmx_row.getparent().remove(fmx_row)
+
+    def insert_blk(self, fmx_root):
+        """
+        Group ``ROW`` elements by ``BLK`` based on the ``@cals:rowstyle`` attribute (CALS extension).
+
+        :type  fmx_root: ElementType
+        :param fmx_root: The result tree which contains the ``CORPUS/ROW`` elements.
+        """
+        cals = self.get_cals_qname
+        for fmx_corpus in fmx_root.xpath("//CORPUS"):  # type: ElementType
+            stack = [fmx_corpus]
+            for fmx_row in fmx_corpus.getchildren():  # type: ElementType
+                if isinstance(fmx_row, ProcessingInstructionType):
+                    # handle PIs (e.g.: revision marks)
+                    fmx_top = stack[-1]
+                    fmx_top.append(fmx_row)
+                    continue
+                rowstyle = fmx_row.get(cals("rowstyle"))
+                row_info = guess_row_info(rowstyle)
+                while len(stack) < row_info.level + 1:
+                    fmx_top = stack[-1]
+                    fmx_blk = etree.SubElement(fmx_top, "BLK")
+                    stack.append(fmx_blk)
+                while len(stack) > row_info.level + 1:
+                    stack.pop()
+                fmx_top = stack[-1]
+                if row_info.tag == "ROW":
+                    if row_info.type is not None:
+                        fmx_row.set("TYPE", row_info.type)
+                        for fmx_cell in fmx_row.xpath("CELL"):
+                            fmx_cell.set("TYPE", row_info.type)
+                    fmx_top.append(fmx_row)
+                elif row_info.tag in {"TI.BLK", "STI.BLK"}:
+                    # get the COL.START/COL.END integer values (**required**)
+                    # find the first non-empty cell (usually this is the first one).
+                    for col_pos, fmx_cell in enumerate(fmx_row.xpath("CELL"), 1):
+                        if fmx_cell.xpath("self::CELL[string() != '' or count(IE) != 0]"):
+                            name_start = fmx_cell.attrib.get(cals("namest"))
+                            name_end = fmx_cell.attrib.get(cals("nameend"))
+                            if name_start and name_end:
+                                col_start = int(re.findall(r"\d+", name_start)[0])
+                                col_end = int(re.findall(r"\d+", name_end)[0])
+                            else:
+                                col_start = col_end = col_pos
+                            attrib = {"COL.START": text_type(col_start), "COL.END": text_type(col_end)}
+                            break
+                    else:
+                        # unlikely to go here
+                        fmx_cell = fmx_row.xpath("CELL")[0]
+                        attrib = {"COL.START": u"1", "COL.END": u"1"}
+                    attrib.update({k: v for k, v in fmx_row.attrib.items() if k != "TYPE"})
+                    fmx_title = etree.SubElement(fmx_top, row_info.tag, attrib=attrib)
+                    fmx_title.text = fmx_cell.text
+                    fmx_title.extend(fmx_cell.getchildren())
+                    fmx_corpus.remove(fmx_row)
+                else:
+                    raise NotImplementedError(row_info.tag)

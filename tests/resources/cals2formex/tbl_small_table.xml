@@ -26,15 +26,15 @@
           <P>Table title</P>
         </TI>
       </TITLE>
-      <CORPUS xmlns:cals="https://jouve.com/schemas/opue/doj/formex-cals"
-              cals:frame="none" cals:colsep="0" cals:rowsep="0">
+      <CORPUS xmlns:cals="https://jouve.com/schemas/opue/doj/formex-cals" cals:frame="none" cals:colsep="0"
+              cals:rowsep="0">
         <cals:colspec cals:colname="c1"/>
         <cals:colspec cals:colname="c2"/>
-        <ROW TYPE="HEADER">
-          <CELL COL="1">
+        <ROW TYPE="HEADER" cals:rowstyle="ROW-HEADER">
+          <CELL COL="1" TYPE="HEADER">
             <HT TYPE="BOLD">Header 1</HT>
           </CELL>
-          <CELL COL="2">
+          <CELL COL="2" TYPE="HEADER">
             <HT TYPE="BOLD">Header 2</HT>
           </CELL>
         </ROW>

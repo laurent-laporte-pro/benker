@@ -96,7 +96,7 @@ Cet exemple contient aussi des attributs et éléments CALS qui aident à la con
             </cals:row>
           </cals:thead>
           <cals:tfoot>
-            <cals:row>
+            <cals:row cals:bgcolor="green">
               <cals:entry cals:namest="c1" cals:nameend="c2">
                 <TITLE>
                   <TI>

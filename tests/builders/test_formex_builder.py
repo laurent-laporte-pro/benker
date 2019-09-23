@@ -25,7 +25,7 @@ P = E.P
         ({'height': 2}, {'COL': u"1", 'ROWSPAN': u"2"}),
         ({'nature': 'body'}, {'COL': u"1", 'TYPE': 'NORMAL'}),
         ({'nature': 'header'}, {'COL': u"1", 'TYPE': 'HEADER'}),
-        ({'nature': 'footer'}, {'COL': u"1", 'TYPE': 'TOTAL'}),
+        ({'nature': 'footer'}, {'COL': u"1", 'TYPE': '__GR.NOTES__'}),
     ],
 )
 def test_build_cell__body(kwargs, attrib):
@@ -53,7 +53,7 @@ def test_build_cell__body(kwargs, attrib):
     [
         ({'nature': 'body'}, {'COL': u"1", 'TYPE': 'NORMAL'}),
         ({'nature': 'header'}, {'COL': u"1"}),
-        ({'nature': 'footer'}, {'COL': u"1", 'TYPE': 'TOTAL'}),
+        ({'nature': 'footer'}, {'COL': u"1", 'TYPE': '__GR.NOTES__'}),
     ],
 )
 def test_build_cell__head(kwargs, attrib):

@@ -3,6 +3,7 @@ Tutorials
 
 .. toctree::
    :maxdepth: 2
+   :caption: Core modules:
 
    size.rst
    coord.rst
@@ -11,3 +12,9 @@ Tutorials
    cell.rst
    grid.rst
    table.rst
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Parsers
+
+   parsers.cals.rst

@@ -18,7 +18,7 @@ from tests.resources import RESOURCES_DIR
     [
         ("formex/tbl_small_table.xml", "formex2cals/tbl_small_table.xml"),
         ("formex/tbl_sample.xml", "formex2cals/tbl_sample.xml"),
-        ("formex/tbl_sample_formex.xml", "formex2cals/tbl_sample_formex.xml")
+        ("formex/tbl_sample_cals.xml", "formex2cals/tbl_sample_cals.xml")
     ],
 )
 def test_convert_formex2cals(input_name, expected_name, tmpdir):
