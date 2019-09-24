@@ -1,7 +1,7 @@
 .. _benker__parsers__formex:
 
-Formex 4 tables parser tutorial
-===============================
+Formex 4 tables parser
+======================
 
 Description
 -----------

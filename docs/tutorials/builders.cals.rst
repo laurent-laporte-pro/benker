@@ -1,2 +1,2 @@
-CALS tables builder tutorial
-============================
+CALS tables builder
+===================

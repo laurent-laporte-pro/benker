@@ -26,10 +26,10 @@ Changed
   - the function ``convert_ooxml2formex4`` is renamed ``convert_ooxml2formex``,
   - the class ``Formex4Parser`` is renamed ``FormexParser``,
 
-* Change in the class :class:`benker.table.Table`:
+* Change in the class :class:`~benker.table.Table`:
   add the method :meth:`~benker.table.Table.fill_missing` to fill the missing cells in a table.
 
-* Change in the class :class:`benker.builders.cals.CalsBuilder`:
+* Change in the class :class:`~benker.builders.cals.CalsBuilder`:
   Add support for the ``@cals:rowstyle`` attribute (extension).
   The ``@colnum`` and ``@align`` attributes are generated for the ``<colspec>`` element.
   The new options *cals_ns* and *cals_prefix* allow the used of namespaces in CALS.

@@ -1,7 +1,7 @@
 .. _benker__parsers__cals:
 
-CALS tables parser tutorial
-===========================
+CALS tables parser
+==================
 
 Description
 -----------

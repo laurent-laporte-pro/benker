@@ -1,2 +1,2 @@
-OOXML to CALS converter tutorial
-================================
+OOXML to CALS converter
+=======================

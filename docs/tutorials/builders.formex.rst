@@ -1,2 +1,2 @@
-Formex 4 tables builder tutorial
-================================
+Formex 4 tables builder
+=======================

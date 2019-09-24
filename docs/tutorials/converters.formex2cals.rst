@@ -1,2 +1,2 @@
-Formex 4 to CALS converter tutorial
-===================================
+Formex 4 to CALS converter
+==========================
