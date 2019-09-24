@@ -285,14 +285,21 @@ def test_parse_fmx_row__in_blk_level2(attrib, styles, nature):
 
 def test_parse_fmx_ti_blk__level1():
     fmx_blk = etree.Element("BLK")
-    fmx_ti_blk = etree.XML("""<TI.BLK COL.START="1" COL.END="2"><P>paragraph</P></TI.BLK>""")
+    fmx_ti_blk = etree.XML(
+        """<TI.BLK COL.START="1" COL.END="2" valign="top" rowsep="1" bgcolor="blue"><P>paragraph</P></TI.BLK>"""
+    )
     fmx_blk.append(fmx_ti_blk)
     parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
     state = parser.parse_fmx_ti_blk(fmx_ti_blk)
     row = state.row
-    assert row.styles == {"rowstyle": "TI.BLK-level1"}
+    assert row.styles == {
+        'background-color': 'blue',
+        'border-bottom': 'solid 1pt black',
+        'rowstyle': 'TI.BLK-level1',
+        'valign': 'top',
+    }
     assert row.nature == "body"
     table = state.table
     cell = table[(1, 1)]
@@ -356,14 +363,21 @@ def test_parse_fmx_ti_blk__level2__with_namespace():
 
 def test_parse_fmx_sti_blk__level1():
     fmx_blk = etree.Element("BLK")
-    fmx_sti_blk = etree.XML("""<STI.BLK COL.START="2" COL.END="2">text</STI.BLK>""")
+    fmx_sti_blk = etree.XML(
+        """<STI.BLK COL.START="2" COL.END="2" valign="top" rowsep="1" bgcolor="blue">text</STI.BLK>"""
+    )
     fmx_blk.append(fmx_sti_blk)
     parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
     state = parser.parse_fmx_sti_blk(fmx_sti_blk)
     row = state.row
-    assert row.styles == {"rowstyle": "STI.BLK-level1"}
+    assert row.styles == {
+        'background-color': 'blue',
+        'border-bottom': 'solid 1pt black',
+        'rowstyle': 'STI.BLK-level1',
+        'valign': 'top',
+    }
     assert row.nature == "body"
     table = state.table
     cell1 = table[(1, 1)]
@@ -378,7 +392,7 @@ def test_parse_fmx_sti_blk__level1():
 
 def test_parse_fmx_gr_notes():
     fmx_gr_notes = etree.XML(
-        """<GR.NOTES>
+        """<GR.NOTES valign="top" rowsep="1" bgcolor="blue">
       <TITLE><TI><P>GR.NOTES Title</P></TI></TITLE>
       <NOTE NOTE.ID="N0001"><P>Table note</P></NOTE>
     </GR.NOTES>"""
@@ -399,7 +413,7 @@ def test_parse_fmx_gr_notes():
     assert row.nature == "footer"
     # -- the cell is in the row 2
     cell = state.table[(1, 2)]
-    assert cell.styles == {}
+    assert cell.styles == {'background-color': 'blue', 'border-bottom': 'solid 1pt black', 'valign': 'top'}
     assert cell.nature == "footer"
     assert cell.width == 3
     assert cell.height == 1

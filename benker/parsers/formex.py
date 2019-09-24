@@ -315,31 +315,7 @@ class FormexParser(BaseParser):
         if row_styles:
             styles["rowstyle"] = "-".join(["ROW"] + row_styles)
 
-        # support for CALS-like elements and attributes
-        cals = self.get_cals_qname
-
-        # -- attribute @cals:valign (extension)
-        valign = fmx_row.attrib.get(cals("valign"))
-        valign_map = {'top': 'top', 'middle': 'middle', 'bottom': 'bottom'}
-        if valign in valign_map:
-            styles["valign"] = valign_map[valign]
-
-        # -- attribute @cals:rowsep
-        rowsep = fmx_row.attrib.get(cals("rowsep"))
-        rowsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
-        if rowsep in rowsep_map:
-            styles["border-bottom"] = rowsep_map[rowsep]
-
-        # -- attribute @cals:bgcolor
-        bgcolor = fmx_row.attrib.get(cals("bgcolor"))
-        if bgcolor:
-            styles["background-color"] = bgcolor
-
-        # -- attribute @cals:rowstyle (extension)
-        rowstyle = fmx_row.attrib.get(cals("rowstyle"))
-        if rowstyle:
-            # overrides the previously calculated @cals:rowstyle attribute
-            styles["rowstyle"] = rowstyle
+        styles.update(self.parse_cals_row_styles(fmx_row))
 
         # -- Create a ROW
         state = self._state
@@ -348,6 +324,36 @@ class FormexParser(BaseParser):
         state.row.styles = styles
 
         return state  # mainly for unit test
+
+    def parse_cals_row_styles(self, fmx_elem):
+        # support for CALS-like elements and attributes
+        cals = self.get_cals_qname
+        styles = {}
+
+        # -- attribute @cals:valign (extension)
+        valign = fmx_elem.attrib.get(cals("valign"))
+        valign_map = {'top': 'top', 'middle': 'middle', 'bottom': 'bottom'}
+        if valign in valign_map:
+            styles["valign"] = valign_map[valign]
+
+        # -- attribute @cals:rowsep
+        rowsep = fmx_elem.attrib.get(cals("rowsep"))
+        rowsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
+        if rowsep in rowsep_map:
+            styles["border-bottom"] = rowsep_map[rowsep]
+
+        # -- attribute @cals:bgcolor
+        bgcolor = fmx_elem.attrib.get(cals("bgcolor"))
+        if bgcolor:
+            styles["background-color"] = bgcolor
+
+        # -- attribute @cals:rowstyle (extension)
+        rowstyle = fmx_elem.attrib.get(cals("rowstyle"))
+        if rowstyle:
+            # overrides the previously calculated @cals:rowstyle attribute
+            styles["rowstyle"] = rowstyle
+
+        return styles
 
     def parse_fmx_ti_blk(self, fmx_ti_blk):
         """
@@ -371,6 +377,8 @@ class FormexParser(BaseParser):
         blk_count = self._count_blk(fmx_ti_blk)
         blk_level = "TI.BLK-level{count}".format(count=blk_count)
         styles["rowstyle"] = blk_level
+
+        styles.update(self.parse_cals_row_styles(fmx_ti_blk))
 
         return self._insert_blk_title_row(fmx_ti_blk, styles)
 
@@ -396,6 +404,8 @@ class FormexParser(BaseParser):
         blk_count = self._count_blk(fmx_sti_blk)
         blk_level = "STI.BLK-level{count}".format(count=blk_count)
         styles["rowstyle"] = blk_level
+
+        styles.update(self.parse_cals_row_styles(fmx_sti_blk))
 
         return self._insert_blk_title_row(fmx_sti_blk, styles)
 
@@ -426,13 +436,18 @@ class FormexParser(BaseParser):
         state.row = state.table.rows[state.row_pos]
         state.row.nature = "footer"
 
+        styles = self.parse_cals_row_styles(fmx_gr_notes)
+
         # -- Create a CELL
         if self.contains_ie(fmx_gr_notes):
             content = ""
         else:
             text = [fmx_gr_notes.text] if fmx_gr_notes.text else []
             content = text + fmx_gr_notes.getchildren()
-        state.row.insert_cell(content, width=state.table.bounding_box.width, height=1, nature=state.row.nature)
+
+        state.row.insert_cell(
+            content, styles=styles, nature=state.row.nature, width=state.table.bounding_box.width, height=1
+        )
 
         return state
 
