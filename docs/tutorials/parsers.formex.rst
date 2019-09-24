@@ -3,10 +3,6 @@
 Formex 4 tables parser tutorial
 ===============================
 
-.. testsetup:: parsers__formex
-
-    >>> from lxml import etree
-
 Description
 -----------
 
@@ -22,6 +18,7 @@ the :meth:`~benker.builders.base_builder.BaseBuilder.generate_table_tree` method
 
 .. doctest:: parsers__formex
 
+    >>> from lxml import etree
     >>> from benker.builders.base_builder import BaseBuilder
     >>> from benker.parsers.formex import FormexParser
 
@@ -38,7 +35,8 @@ And generate a :class:`~benker.table.Table` instance:
 
 .. doctest:: parsers__formex
 
-    >>> fmx_table = etree.parse("parsers.formex.sample1.xml")
+    >>> tree = etree.parse("docs/tutorials/parsers.formex.sample1.xml")
+    >>> fmx_table = tree.getroot()
     >>> table = parser.parse_table(fmx_table)
     >>> print(table)
     +-----------+-----------------------------------------------+-----------------------------------+-----------+
@@ -70,7 +68,8 @@ The :class:`~benker.parsers.formex.FormexParser` parser accept the following opt
     .. doctest:: parsers__formex
 
         >>> parser = FormexParser(builder, formex_ns="http://opoce")
-        >>> fmx_table = etree.parse("parsers.formex.sample2.xml")
+        >>> tree = etree.parse("docs/tutorials/parsers.formex.sample2.xml")
+        >>> fmx_table = tree.getroot()
         >>> table = parser.parse_table(fmx_table)
         >>> print(table)
         +-----------+-----------+
@@ -97,7 +96,8 @@ The :class:`~benker.parsers.formex.FormexParser` parser accept the following opt
     .. doctest:: parsers__formex
 
         >>> parser = FormexParser(builder, cals_ns="http://my.cals.ns")
-        >>> fmx_table = etree.parse("parsers.formex.sample3.xml")
+        >>> tree = etree.parse("docs/tutorials/parsers.formex.sample3.xml")
+        >>> fmx_table = tree.getroot()
         >>> table = parser.parse_table(fmx_table)
         >>> print(table)
         +-----------+-----------+

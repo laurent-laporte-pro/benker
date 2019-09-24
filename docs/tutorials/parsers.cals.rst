@@ -3,10 +3,6 @@
 CALS tables parser tutorial
 ===========================
 
-.. testsetup:: parsers__cals
-
-    >>> from lxml import etree
-
 Description
 -----------
 
@@ -23,6 +19,7 @@ the :meth:`~benker.builders.base_builder.BaseBuilder.generate_table_tree` method
 
 .. doctest:: parsers__cals
 
+    >>> from lxml import etree
     >>> from benker.builders.base_builder import BaseBuilder
     >>> from benker.parsers.cals import CalsParser
 
@@ -39,8 +36,8 @@ And generate a :class:`~benker.table.Table` instance:
 
 .. doctest:: parsers__cals
 
-    >>> cals_table = etree.parse("parsers.cals.sample1.xml")
-
+    >>> tree = etree.parse("docs/tutorials/parsers.cals.sample1.xml")
+    >>> cals_table = tree.getroot()
     >>> table = parser.parse_table(cals_table)
     >>> print(table)
     +-----------+-----------+-----------+
@@ -72,7 +69,8 @@ The :class:`~benker.parsers.cals.CalsParser` parser accept the following options
     .. doctest:: parsers__cals
 
         >>> parser = CalsParser(builder, cals_ns="http://my.cals.ns")
-        >>> cals_table = etree.parse("parsers.cals.sample2.xml")
+        >>> tree = etree.parse("docs/tutorials/parsers.cals.sample2.xml")
+        >>> cals_table = tree.getroot()
         >>> table = parser.parse_table(cals_table)
         >>> print(table)
         +-----------+-----------+-----------+
