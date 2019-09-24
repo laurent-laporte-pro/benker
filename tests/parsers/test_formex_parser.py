@@ -69,12 +69,14 @@ def test_transform_tables__no_namespace():
 
 def test_transform_tables__with_header():
     E = ElementMaker()
+    # fmt: off
     fmx_tbl = E.TBL(E.CORPUS(
         E.ROW(E.CELL("Header 1", TYPE="HEADER"), E.CELL("Header 2", TYPE="HEADER"), TYPE="HEADER"),
         E.ROW(E.CELL("A1"), E.CELL("B1")),
         E.ROW(E.CELL("A2"), E.CELL("B2")),
         E.ROW(E.CELL("A3"), E.CELL("B3")),
     ))
+    # fmt: on
     tree = E.FORMEX(fmx_tbl)
     builder = StrBuilder()
     parser = FormexParser(builder)
@@ -238,6 +240,9 @@ def test_parse_fmx_corpus(attrib, styles):
         ({"valign": "bottom"}, {"valign": "bottom"}, "body"),
         ({"rowsep": "0"}, {"border-bottom": BORDER_NONE}, "body"),
         ({"rowsep": "1"}, {"border-bottom": BORDER_SOLID}, "body"),
+        ({"bgcolor": "#FF8000"}, {"background-color": "#FF8000"}, "body"),
+        ({"rowstyle": "RowStyle"}, {"rowstyle": "RowStyle"}, "body"),
+        ({"TYPE": "ALIAS", "rowstyle": "RowStyle"}, {"rowstyle": "RowStyle"}, "header"),
     ],
 )
 def test_parse_fmx_row(attrib, styles, nature):
@@ -467,11 +472,13 @@ def test_parse_fmx_colspec():
 
 @pytest.mark.parametrize(
     "content, expected",
+    # fmt: off
     [
         ("<CELL>text</CELL>", False),
         ("<CELL><P>text</P></CELL>", False),
         ("<CELL><IE/></CELL>", True),
     ]
+    # fmt: on
 )
 def test_contains_ie(content, expected):
     fmx_node = etree.XML(content)
@@ -485,7 +492,7 @@ def test_contains_ie(content, expected):
         ('<CELL xmlns="http://opoce">text</CELL>', False),
         ('<CELL xmlns="http://opoce"><P>text</P></CELL>', False),
         ('<CELL xmlns="http://opoce"><IE/></CELL>', True),
-    ]
+    ],
 )
 def test_contains_ie__with_formex_ns(content, expected):
     fmx_node = etree.XML(content)
