@@ -495,7 +495,7 @@ class FormexParser(BaseParser):
 
         # -- attribute @fmx:TYPE
         row_nature = self._state.row.nature
-        type_map = {"ALIAS": "header", "HEADER": "header", "NORMAL": "body", "NOTCOL": "body", "TOTAL": "footer"}
+        type_map = {"ALIAS": "header", "HEADER": "header", "NORMAL": "body", "NOTCOL": "body", "TOTAL": "body"}
         cell_type = fmx_cell.attrib.get(fmx("TYPE"))
         cell_nature = type_map.get(cell_type)
         nature = cell_nature or row_nature

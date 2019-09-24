@@ -420,7 +420,7 @@ def test_parse_fmx_gr_notes():
         ({"TYPE": "HEADER"}, {}, "header", (1, 1)),
         ({"TYPE": "NORMAL"}, {}, "body", (1, 1)),
         ({"TYPE": "NOTCOL"}, {}, "body", (1, 1)),
-        ({"TYPE": "TOTAL"}, {}, "footer", (1, 1)),
+        ({"TYPE": "TOTAL"}, {}, "body", (1, 1)),
     ],
 )
 def test_parse_fmx_cell(attrib, styles, nature, size):
