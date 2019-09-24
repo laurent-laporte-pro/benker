@@ -440,7 +440,16 @@ def test_parse_fmx_cell(attrib, styles, nature, size):
 
 def test_parse_fmx_cell__with_cals():
     E = ElementMaker()
-    fmx_cell = E.CELL(colsep="1", rowsep="1", namest="c1", nameend="c3", bgcolor="#00007f", morerows="1")
+    fmx_cell = E.CELL(
+        colsep="1",
+        rowsep="1",
+        namest="c1",
+        nameend="c3",
+        bgcolor="#00007f",
+        morerows="1",
+        align="center",
+        valign="middle",
+    )
     parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     state.next_row()
@@ -449,7 +458,9 @@ def test_parse_fmx_cell__with_cals():
     table = state.table
     cell = table[(1, 1)]
     assert cell.styles == {
+        'align': 'center',
         'background-color': '#00007f',
+        'valign': 'middle',
         'x-cell-border-bottom': 'solid 1pt black',
         'x-cell-border-right': 'solid 1pt black',
     }

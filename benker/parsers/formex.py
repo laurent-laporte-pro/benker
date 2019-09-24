@@ -533,6 +533,21 @@ class FormexParser(BaseParser):
         if morerows:
             height = int(morerows) + 1
 
+        # -- attribute @cals:valign
+        valign = fmx_cell.attrib.get(cals("valign"))
+        valign_map = {'top': 'top', 'middle': 'middle', 'bottom': 'bottom'}
+        if valign in valign_map:
+            # overrides parent's value
+            styles["valign"] = valign_map[valign]
+
+        # -- attribute @cals:rowsep
+        align = fmx_cell.attrib.get(cals("align"))
+        align_map = {"left": "left", "right": "right", "center": "center", "justify": "justify", "char": "left"}
+        if align in align_map:
+            styles["align"] = align_map[align]
+
+        # todo: calculate the ``@rotate`` attribute.
+
         # -- Create a CELL
         if self.contains_ie(fmx_cell):
             content = ""
