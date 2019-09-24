@@ -1,0 +1,31 @@
+<table frame="all">
+  <tgroup cols="2" colsep="0" rowsep="1">
+    <colspec colnum="1" colname="c1" colwidth="50mm" align="left"/>
+    <colspec colnum="2" colname="c2" colwidth="20mm" align="right"/>
+    <colspec colnum="3" colname="c3" colwidth="20mm" align="char" char="." charoff="20"/>
+    <thead>
+      <row bgcolor="#90ee90">
+        <entry valign="top">Element</entry>
+        <entry valign="top">(Z)</entry>
+        <entry valign="top">(A)</entry>
+      </row>
+    </thead>
+    <tbody>
+      <row bgcolor="#cdcdcd">
+        <entry>Hydrogen</entry>
+        <entry>1</entry>
+        <entry>1.008</entry>
+      </row>
+      <row>
+        <entry>Helium</entry>
+        <entry>2</entry>
+        <entry>4.0026</entry>
+      </row>
+      <row bgcolor="#cdcdcd">
+        <entry>Lithium</entry>
+        <entry>3</entry>
+        <entry>6.94</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</table>

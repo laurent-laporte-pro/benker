@@ -1,4 +1,4 @@
-.. automodule:: benker.parsers.lxml_iterwalk
+.. automodule:: benker.parsers.cals.frame_styles
     :members:
     :undoc-members:
     :show-inheritance:

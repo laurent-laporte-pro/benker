@@ -1,0 +1,16 @@
+<TBL COLS="2" xmlns="http://opoce">
+  <CORPUS>
+    <ROW TYPE="HEADER">
+      <CELL COL="1">Région</CELL>
+      <CELL COL="2">Vin</CELL>
+    </ROW>
+    <ROW>
+      <CELL COL="1">Alsace</CELL>
+      <CELL COL="2">Gewurztraminer</CELL>
+    </ROW>
+    <ROW>
+      <CELL COL="1">Beaujolais</CELL>
+      <CELL COL="2">Brouilly</CELL>
+    </ROW>
+  </CORPUS>
+</TBL>

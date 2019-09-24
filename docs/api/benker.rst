@@ -40,6 +40,7 @@ API
    :maxdepth: 1
    :caption: Utilities:
 
+   benker.common
    benker.alphabet
    benker.drawing
    benker.units

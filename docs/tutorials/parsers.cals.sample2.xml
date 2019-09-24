@@ -1,0 +1,15 @@
+<table frame="box" xmlns="http://my.cals.ns">
+  <tgroup cols="2" colsep="0" rowsep="1">
+    <colspec colnum="1" colname="c1"/>
+    <colspec colnum="2" colname="c2"/>
+    <colspec colnum="3" colname="c3"/>
+    <thead>
+      <row><entry/><entry>k</entry><entry>unit</entry></row>
+    </thead>
+    <tbody>
+      <row><entry>Meter</entry><entry>km</entry><entry>m</entry></row>
+      <row><entry>Liter</entry><entry>KL</entry><entry>L</entry></row>
+      <row><entry>Gram</entry><entry>Kg</entry><entry>g</entry></row>
+    </tbody>
+  </tgroup>
+</table>

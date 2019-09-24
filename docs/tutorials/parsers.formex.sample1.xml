@@ -1,0 +1,45 @@
+<TBL COLS="9" NO.SEQ="0001" PAGE.SIZE="SINGLE.LANDSCAPE">
+  <CORPUS>
+    <ROW TYPE="HEADER">
+      <CELL COL="1"><IE/></CELL>
+      <CELL COL="2" COLSPAN="4">Identification des substances</CELL>
+      <CELL COL="6" COLSPAN="3">Conditions</CELL>
+      <CELL COL="9"><IE/></CELL>
+    </ROW>
+    <ROW TYPE="HEADER">
+      <CELL COL="1">Numéro d’ordre</CELL>
+      <CELL COL="2">Nom chimique/DCI/XAN</CELL>
+      <CELL COL="3">Dénomination commune du glossaire des ingrédients</CELL>
+      <CELL COL="4">Numéro CAS</CELL>
+      <CELL COL="5">Numéro CE</CELL>
+      <CELL COL="6">Type de produit, parties du corps</CELL>
+      <CELL COL="7">Concentration maximale dans les préparations prêtes
+        à l’emploi</CELL>
+      <CELL COL="8">Autres</CELL>
+      <CELL COL="9">Libellé des conditions d’emploi et des avertissements</CELL>
+    </ROW>
+    <ROW TYPE="ALIAS">
+      <CELL COL="1">a</CELL>
+      <CELL COL="2">b</CELL>
+      <CELL COL="3">c</CELL>
+      <CELL COL="4">d</CELL>
+      <CELL COL="5">e</CELL>
+      <CELL COL="6">f</CELL>
+      <CELL COL="7">g</CELL>
+      <CELL COL="8">h</CELL>
+      <CELL COL="9">i</CELL>
+    </ROW>
+    <ROW>
+      <CELL COL="1">31</CELL>
+      <CELL COL="2">3,3'-(1,4-phénylène)bis(5,6-diphényl-1,2,4-triazine)</CELL>
+      <CELL COL="3">phénylène bis-diphényltriazine</CELL>
+      <CELL COL="4">55514-22-2</CELL>
+      <CELL COL="5">700-823-1</CELL>
+      <CELL COL="6"><IE/></CELL>
+      <CELL COL="7">5 %</CELL>
+      <CELL COL="8">Ne pas utiliser dans des applications pouvant conduire à
+        l’exposition des poumons de l’utilisateur final par inhalation.</CELL>
+      <CELL COL="9"><IE/></CELL>
+    </ROW>
+  </CORPUS>
+</TBL>
