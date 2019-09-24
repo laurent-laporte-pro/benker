@@ -463,3 +463,31 @@ def test_parse_fmx_colspec():
     table = state.table
     col = table.cols[1]
     assert col.styles == {'align': 'left', 'width': '70mm', 'border-bottom': 'solid 1pt black', 'border-right': 'none'}
+
+
+@pytest.mark.parametrize(
+    "content, expected",
+    [
+        ("<CELL>text</CELL>", False),
+        ("<CELL><P>text</P></CELL>", False),
+        ("<CELL><IE/></CELL>", True),
+    ]
+)
+def test_contains_ie(content, expected):
+    fmx_node = etree.XML(content)
+    parser = FormexParser(BaseBuilder())
+    assert parser.contains_ie(fmx_node) is expected
+
+
+@pytest.mark.parametrize(
+    "content, expected",
+    [
+        ('<CELL xmlns="http://opoce">text</CELL>', False),
+        ('<CELL xmlns="http://opoce"><P>text</P></CELL>', False),
+        ('<CELL xmlns="http://opoce"><IE/></CELL>', True),
+    ]
+)
+def test_contains_ie__with_formex_ns(content, expected):
+    fmx_node = etree.XML(content)
+    parser = FormexParser(BaseBuilder(), formex_ns="http://opoce")
+    assert parser.contains_ie(fmx_node) is expected

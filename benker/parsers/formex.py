@@ -422,7 +422,7 @@ class FormexParser(BaseParser):
         state.row.nature = "footer"
 
         # -- Create a CELL
-        if self._contains_ie(fmx_gr_notes):
+        if self.contains_ie(fmx_gr_notes):
             content = ""
         else:
             text = [fmx_gr_notes.text] if fmx_gr_notes.text else []
@@ -455,7 +455,7 @@ class FormexParser(BaseParser):
             state.row.insert_cell(None, nature=state.row.nature)
 
         # -- Create a CELL
-        if self._contains_ie(fmx_blk_title):
+        if self.contains_ie(fmx_blk_title):
             content = ""
         else:
             text = [fmx_blk_title.text] if fmx_blk_title.text else []
@@ -464,9 +464,10 @@ class FormexParser(BaseParser):
 
         return state
 
-    def _contains_ie(self, fmx_node):
-        return (self.formex_ns and fmx_node.xpath("//fmx:IE", namespaces={"fmx": self.formex_ns})) or (
-            not self.formex_ns and fmx_node.xpath("//IE")
+    def contains_ie(self, fmx_node):
+        return bool(
+            (self.formex_ns and fmx_node.xpath("fmx:IE", namespaces={"fmx": self.formex_ns}))
+            or (not self.formex_ns and fmx_node.xpath("IE"))
         )
 
     def parse_fmx_cell(self, fmx_cell):
@@ -528,7 +529,7 @@ class FormexParser(BaseParser):
             height = int(morerows) + 1
 
         # -- Create a CELL
-        if self._contains_ie(fmx_cell):
+        if self.contains_ie(fmx_cell):
             content = ""
         else:
             text = [fmx_cell.text] if fmx_cell.text else []
