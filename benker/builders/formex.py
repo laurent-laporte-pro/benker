@@ -17,10 +17,10 @@ into Formex 4 tables using the Formex 4 schema (formex-05.59-20170418.xd).
 Specifications and examples:
 
 - The Formex 4 documentation and schema is available online in the Publication Office:
-  `Formex Version 4 <http://formex.publications.europa.eu/formex-4/formex-4.htm>`_.
+  `Formex Version 4 <https://publications.europa.eu/en/web/eu-vocabularies/formex>`_.
 
 - An example of Formex 4 table is available in the Schema documentation:
-  `TBL <http://formex.publications.europa.eu/formex-4/manual/manual.htm#TBL>`_
+  `TBL <https://publications.europa.eu/documents/3938058/5910419/formex_manual_on_screen_version.html/#TBL>`_
 
 .. versionchanged:: 0.5.0
    Refactoring (rename "Formex4" to "Formex"):
@@ -89,8 +89,8 @@ def guess_row_info(rowstyle):
 
 class FormexBuilder(BaseBuilder):
     """
-    Formex 4 builder used to convert tables into ``TBL`` elements
-    according to the `TBL Schema <http://formex.publications.europa.eu/formex-4/manual/manual.htm#TBL>`_
+    Formex 4 builder used to convert tables into ``TBL`` elements according to the
+    `TBL Schema <https://publications.europa.eu/documents/3938058/5910419/formex_manual_on_screen_version.html/#TBL>`_
     """
 
     # fmt: off
