@@ -185,31 +185,6 @@ class Cell(Styled):
             You can override this by using a *content_appender*, a two-arguments
             function which will perform the concatenation of the two contents.
 
-    :type styles: typing.Dict[str, str]
-    :ivar styles: user-defined cell styles: a dictionary of key-value pairs.
-        This values are useful to store some HTML-like styles (border-style,
-        border-width, border-color, vertical-align, text-align, etc.).
-        Of course, we are not tied to the HTML-like styles, you can use your own
-        list of styles.
-
-        .. note::
-
-            The style dictionary is always copied: in other words, key-value pairs
-            are copied but a shallow copy is done for the values (in general, it
-            is not a problem if you use non-mutable values like :class:`str`).
-
-    :type nature: str
-    :ivar nature: nature: a way to distinguish the body cells, from the header and the footer.
-        The default value is ``None``, but you can use "body", "header", "footer" or whatever
-        is suitable for your needs.
-
-        .. note::
-
-            In a :class:`~benker.grid.Grid`, the :ref:`merging <benker__grid__merging>`
-            of two natures is done by keeping the first nature and
-            dropping the second one. In other words, the resulting nature is
-            the group of the most top-left nature of the merged cells.
-
     .. versionchanged:: 0.4.2
        The default value of *nature* is ``None`` (instead of "body").
     """

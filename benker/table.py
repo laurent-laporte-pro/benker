@@ -460,35 +460,6 @@ class Table(Styled, MutableMapping):
         +-----------------------+-----------+-----------+
         |   beta                |           |           |
         +-----------------------+-----------+-----------+
-
-    :type styles: typing.Dict[str, str]
-    :ivar styles:
-        User-defined table styles: a dictionary of key-value pairs.
-        This values are useful to store some HTML-like styles (border-style,
-        border-width, border-color, vertical-align, text-align, etc.).
-        Of course, we are not tied to the HTML-like styles, you can use your own
-        list of styles.
-
-        .. note::
-
-            The style dictionary is always copied: in other words, key-value pairs
-            are copied but a shallow copy is done for the values (in general, it
-            is not a problem if you use non-mutable values like :class:`str`).
-
-    :type nature: str
-    :ivar nature:
-        A table can have a nature: a way to distinguish the body cells,
-        from the header and the footer. The default value is ``None``, but you can
-        use "body", "header", "footer" or whatever is suitable for your needs.
-        This kind of information is in general not stored in the styles,
-        even if it is similar.
-
-        .. note::
-
-            In a :class:`~benker.grid.Grid`, the :ref:`merging <benker__grid__merging>`
-            of two natures is done by keeping the first nature and
-            dropping the second one. In other words, the resulting nature is
-            the group of the most top-left nature of the merged cells.
     """
 
     rows = ViewsProperty(RowView)
