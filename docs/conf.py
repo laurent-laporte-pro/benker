@@ -21,7 +21,7 @@
 
 project = 'Benker'
 # noinspection PyShadowingBuiltins
-copyright = '2018, Laurent LAPORTE'
+copyright = '2018-2019, Laurent LAPORTE'
 author = 'Laurent LAPORTE'
 
 # The full version, including alpha/beta/rc tags
