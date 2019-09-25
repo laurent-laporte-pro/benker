@@ -38,9 +38,37 @@ def convert_ooxml2formex(src_xml, dst_xml, **options):
     :param str dst_xml:
         Destination path of the XML file to produce.
 
-    :param str options: Extra conversion options.
-        See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
-        to have a list of all possible options.
+    :param str options:
+        Dictionary of parsing/building options.
+
+        **Common parsing options:**
+
+        ``encoding`` (default: "utf-8"):
+            XML encoding of the destination file.
+
+        **OOXML parser options:**
+
+        ``styles_path`` (default: ``None``):
+            Path to the stylesheet to use to resole table styles.
+            In an uncompressed ``.docx`` tree structure, the stylesheet path
+            is ``word/styles.xml``.
+
+        **Formex 4 builder options:**
+
+        ``use_cals`` (default: ``False``):
+            Generate additional CALS-like elements and attributes
+            to simplify the layout of Formex document in typesetting systems.
+
+        ``cals_ns`` (default: "https://lib.benker.com/schemas/cals.xsd"):
+            Namespace to use for CALS-like elements and attributes (requires: ``use_cals``).
+            Set ``None`` (or "") if you don't want to use namespace.
+
+        ``cals_prefix`` (default: "cals"):
+            Namespace prefix to use for CALS-like elements and attributes (requires: ``use_cals``).
+
+        ``width_unit`` (default: "mm"):
+            Unit to use for column widths (requires: ``use_cals``).
+            Possible values are: 'cm', 'dm', 'ft', 'in', 'm', 'mm', 'pc', 'pt', 'px'.
     """
     converter = Ooxml2FormexConverter()
     converter.convert_file(src_xml, dst_xml, **options)

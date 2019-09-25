@@ -112,7 +112,7 @@ class FormexBuilder(BaseBuilder):
 
         :param str cals_ns:
             Namespace to use for CALS-like elements and attributes (requires: ``use_cals``).
-            Set "" (empty) if you don't want to use namespace.
+            Set ``None`` (or "") if you don't want to use namespace.
 
         :param str cals_prefix:
             Namespace prefix to use for CALS-like elements and attributes (requires: ``use_cals``).

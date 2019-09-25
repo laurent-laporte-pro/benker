@@ -26,7 +26,7 @@ the :meth:`~benker.builders.base_builder.BaseBuilder.generate_table_tree` method
     >>> builder = BaseBuilder()
     >>> parser = CalsParser(builder)
 
-For exemple, you can parse the following CALS table:
+For example, you can parse the following CALS table:
 
 .. literalinclude:: parsers.cals.sample1.xml
    :language: xml

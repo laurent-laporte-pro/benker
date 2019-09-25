@@ -16,6 +16,7 @@ Of course, you will have the opportunity to choose your conversion options accor
    converters.ooxml2formex
    converters.ooxml2cals
    converters.formex2cals
+   converters.cals2formex
 
 .. note:: future converters are coming.
 

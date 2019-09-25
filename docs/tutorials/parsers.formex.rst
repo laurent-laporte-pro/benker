@@ -25,7 +25,7 @@ the :meth:`~benker.builders.base_builder.BaseBuilder.generate_table_tree` method
     >>> builder = BaseBuilder()
     >>> parser = FormexParser(builder)
 
-For exemple, you can parse the following Formex 4 table:
+For example, you can parse the following Formex 4 table:
 
 .. literalinclude:: parsers.formex.sample1.xml
    :language: xml

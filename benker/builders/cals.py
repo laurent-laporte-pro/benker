@@ -88,11 +88,11 @@ class CalsBuilder(BaseBuilder):
         Initialize the builder.
 
         :param str cals_ns:
-            Namespace to use for CALS-like elements and attributes (requires: ``use_cals``).
-            Set "" (empty) if you don't want to use namespace.
+            Namespace to use for CALS-like elements and attributes to generate.
+            Set "" ``None`` (empty) if you don't want to use namespace.
 
         :param str cals_prefix:
-            Namespace prefix to use for CALS-like elements and attributes (requires: ``use_cals``).
+            Namespace prefix to use for CALS-like elements and attributes to generate.
 
         :param str width_unit:
             Unit to use for column widths.

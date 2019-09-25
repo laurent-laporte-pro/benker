@@ -1,25 +1,24 @@
-OOXML to Formex 4 converter
-===========================
+CALS to Formex 4 converter
+==========================
 
 Description
 -----------
 
-.. _Office Open XML File Formats: https://www.ecma-international.org/publications/standards/Ecma-376.htm
 .. _Formex 4 format: https://publications.europa.eu/en/web/eu-vocabularies/formex
+.. _CALS table format: https://www.oasis-open.org/specs/a502.htm
 
+The :func:`~benker.converters.cals2formex.convert_cals2formex` converter is a function designed to convert tables from an CALS document (which respects the schema defined in `CALS table format`_) in the `Formex 4 format`_.
 
-The :func:`~benker.converters.ooxml2formex.convert_ooxml2formex` converter is a function designed to convert tables from an Office Open XML (OOXML) document (which respects the schema defined in `Office Open XML File Formats`_) in the `Formex 4 format`_.
-
-The conversion is done in the source XML document by replacing the tables of the OOXML format with those transformed in the Formex format.
+The conversion is done in the source XML document by replacing the tables of the CALS format with those transformed in the Formex 4 format.
 In other words, the general structure of the source XML document is retained except for tables.
 
-The :class:`~benker.converters.ooxml2formex.Ooxml2FormexConverter` converter is composed of:
+The :class:`~benker.converters.cals2formex.Cals2FormexConverter` converter is composed of:
 
-*   a :class:`~benker.parsers.ooxml.OoxmlParser` parser that allows you to parse tables in OOXML format,
+*   a :class:`~benker.parsers.cals.CalsParser` parser that allows you to parse tables in CALS format,
 
-    The tutorial :ref:`benker__parsers__ooxml` describes the usage of this parser and gives some examples.
+    The tutorial :ref:`benker__parsers__cals` describes the usage of this parser and gives some examples.
 
-*   a :class:`~benker.builders.formex.FormexBuilder` builder that allows you to build tables in the Formex format.
+*   a :class:`~benker.builders.cals.FormexBuilder` builder that allows you to build tables in the Formex 4 format.
 
     The tutorial :ref:`benker__builders__formex` describes the usage of this builder and gives some examples.
 
@@ -33,12 +32,11 @@ The tables parsing and building can be parameterized using the options described
 ``encoding`` (default: "utf-8"):
     XML encoding of the destination file.
 
-**OOXML parser options:**
+**CALS parser options:**
 
-``styles_path`` (default: ``None``):
-    Path to the stylesheet to use to resole table styles.
-    In an uncompressed ``.docx`` tree structure, the stylesheet path
-    is ``word/styles.xml``.
+``cals_ns`` (default ``None``):
+    Namespace to use for CALS elements and attributes parsing.
+    Set ``None`` (or "") if you don't use namespace in your XML.
 
 **Formex 4 builder options:**
 
