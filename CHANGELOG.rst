@@ -33,6 +33,7 @@ Changed
   Add support for the ``@cals:rowstyle`` attribute (extension).
   The ``@colnum`` and ``@align`` attributes are generated for the ``<colspec>`` element.
   The new options *cals_ns* and *cals_prefix* allow the used of namespaces in CALS.
+  The option *tgroup_sorting* can be used to sort the ``thead``, ``tbody`` and ``tfoot`` elements.
 
 * Change in the method :class:`~benker.parsers.base_parser.BaseParser.parse_file`:
   Always generate the XML declaration in the destination file.

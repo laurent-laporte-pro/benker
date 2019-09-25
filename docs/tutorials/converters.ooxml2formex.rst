@@ -1,3 +1,15 @@
+.. _benker__converters__ooxml__formex:
+
+.. testsetup:: converter__ooxml__formex
+
+    import shutil
+    import tempfile
+    tmp_dir = tempfile.mkdtemp(prefix="benker.docs.tutorials.converters.ooxml2formex_")
+
+.. testcleanup:: converter__ooxml__formex
+
+    shutil.rmtree(tmp_dir)
+
 OOXML to Formex 4 converter
 ===========================
 
@@ -60,3 +72,96 @@ The tables parsing and building can be parameterized using the options described
 Examples of conversions
 -----------------------
 
+Converting a ``.docx`` document
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can use the :func:`~benker.converters.ooxml2formex.convert_ooxml2formex` converter
+to convert a Word document, for instance, we have the following annex:
+
+.. image:: /_static/converters.ooxml2formex.sample1.jpeg
+
+If you want to convert a ``.docx`` file, you need first to decompress it in a temporary directory
+in order to access the "word/document.xml" and "word/styles.xml" stored in the ``.docx`` package.
+
+To decompress the ``.docx`` package and convert the tables, you can do:
+
+.. doctest:: converter__ooxml__formex
+
+    >>> import os
+    >>> import zipfile
+
+    >>> from benker.converters.ooxml2formex import convert_ooxml2formex
+
+    >>> src_zip = "docs/_static/converters.ooxml2formex.sample1.docx"
+    >>> with zipfile.ZipFile(src_zip) as zf:
+    ...     zf.extractall(tmp_dir)
+
+    >>> src_xml = os.path.join(tmp_dir, "word/document.xml")
+    >>> styles_xml = os.path.join(tmp_dir, "word/styles.xml")
+
+    >>> dst_xml = os.path.join(tmp_dir, "converters.ooxml2formex.sample1.xml")
+    >>> options = {
+    ...     'encoding': 'utf-8',
+    ...     'styles_path': styles_xml,
+    ... }
+    >>> convert_ooxml2formex(src_xml, dst_xml, **options)
+
+The result is the "word/document.xml" document, but with tables replaced by the Formex ``TBL`` elements.
+
+Here is a sample of the result XML:
+
+.. literalinclude:: /_static/converters.ooxml2formex.sample1.xml
+   :language: xml
+   :encoding: utf-8
+   :lines: 1-84
+   :emphasize-lines: 29-
+
+Using CALS-like attributes and elements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Formex table format is good to structure tables. The logical structure is similar to the one used for HTML tables
+but without CSS.
+
+Some difficulties appears when you want to do the layout of Formex tables in typesetting systems:
+Formex tables doesn't have much layout information:
+
+*   no borders,
+*   no horizontal of vertical alignment of the text,
+*   no background color,
+*   no indication of the column width,
+*   etc.
+
+To solve that, it is possible to generate CALS-like attributes and elements in the Formex.
+Of course, we can use a namespace and a namespace prefix for the CALS attributes and elements.
+
+To convert the tables using CALS, you can do:
+
+.. doctest:: converter__ooxml__formex
+
+    >>> dst_xml = os.path.join(tmp_dir, "converters.ooxml2formex.sample2.xml")
+    >>> options = {
+    ...     'encoding': 'utf-8',
+    ...     'styles_path': styles_xml,
+    ...     'use_cals': True,
+    ...     'cals_ns': "http://cals",
+    ...     'cals_prefix': "cals",
+    ... }
+    >>> convert_ooxml2formex(src_xml, dst_xml, **options)
+
+The result is the "word/document.xml" document, but with tables replaced by the Formex ``TBL`` elements.
+
+Here is a sample of the result XML:
+
+.. literalinclude:: /_static/converters.ooxml2formex.sample2.xml
+   :language: xml
+   :encoding: utf-8
+   :lines: 9-55
+
+In the result, we can notice:
+
+*   the presence of the namespace ``xmlns:cals="http://cals"``.
+*   the additional attributes, like ``cals:frame="none"``, ``cals:colsep="0"``, ``cals:rowsep="0"``...
+*   the additional ``colspec`` elements: ``<cals:colspec cals:colname="c1" cals:colwidth="24.04mm"/>``.
+
+This kind of information is will be preserved if you use a Formex to CALS conversion
+(see the :ref:`benker__converters__formex__cals` tutorial).

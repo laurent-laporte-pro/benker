@@ -80,10 +80,15 @@ class CalsBuilder(BaseBuilder):
     CALS table builder.
     """
 
-    def __init__(self,
-                 cals_ns=None,
-                 cals_prefix=None,
-                 width_unit="mm", table_in_tgroup=False, **options):
+    def __init__(
+        self,
+        cals_ns=None,
+        cals_prefix=None,
+        width_unit="mm",
+        table_in_tgroup=False,
+        tgroup_sorting=None,
+        **options
+    ):
         """
         Initialize the builder.
 
@@ -103,12 +108,21 @@ class CalsBuilder(BaseBuilder):
             - ``False`` to put the properties in the ``<table>`` element,
             - ``True`` to put the properties in the ``<tgroup>`` element.
 
+        :type  tgroup_sorting: typing.List[str]
+        :param tgroup_sorting:
+            List used to sort (and group) the rows in a ``tgroup``.
+            The sorting is done according to the row natures
+            which is by default: ``["header", "footer", "body"]``
+            (this order match the CALS DTD defaults,
+            where the footer is between the header and the body.
+            To move the footer to the end, you can use ``["header", "body", "footer"]``.
+
         :param str options: Extra conversion options.
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
 
         .. versionchanged:: 0.5.0
-           Add the options *cals_ns* and *cals_prefix*.
+           Add the options *cals_ns*, *cals_prefix*, *tgroup_sorting*.
         """
         # Internal state of the table used during building
         self._table = None
@@ -119,6 +133,12 @@ class CalsBuilder(BaseBuilder):
         self.cals_ns = self._register_namespace(cals_prefix, cals_ns)
         self.width_unit = width_unit
         self.table_in_tgroup = table_in_tgroup
+        tgroup_sorting_default = ["header", "footer", "body"]
+        tgroup_sorting = tgroup_sorting or tgroup_sorting_default
+        self.tgroup_sorting = {nature: index for index, nature in enumerate(tgroup_sorting)}
+        missing = set(tgroup_sorting_default) - set(self.tgroup_sorting)
+        if missing:
+            raise ValueError("sort order not defined for {}".format(missing))
         super(CalsBuilder, self).__init__(**options)
 
     def _register_namespace(self, prefix, ns):
@@ -151,6 +171,12 @@ class CalsBuilder(BaseBuilder):
         """
         table_elem = self.build_table(table)
         return table_elem
+
+    def setup_table(self, table):
+        self._table = table
+        self._table_colsep = u"0"
+        self._table_rowsep = u"0"
+        return self._table  # mainly for unit tests
 
     def build_table(self, table):
         """
@@ -196,9 +222,7 @@ class CalsBuilder(BaseBuilder):
         .. versionchanged:: 0.5.0
            Add support for ``bgcolor``.
         """
-        self._table = table
-        self._table_colsep = u"0"
-        self._table_rowsep = u"0"
+        self.setup_table(table)
 
         # support for CALS namespace
         cals = self.cals_ns.get_qname
@@ -263,7 +287,7 @@ class CalsBuilder(BaseBuilder):
         # -- group rows by header/body/footer
         groups = [(k, list(g)) for k, g in itertools.groupby(table.rows, key=lambda r: r.nature)]
         # -- sort the groups in the order: header => footer => body
-        groups = sorted(groups, key=lambda item: {"header": 0, "footer": 1, "body": 2}[item[0]])
+        groups = sorted(groups, key=lambda item: self.tgroup_sorting[item[0]])
         group_tags = {"header": u"thead", "body": u"tbody", "footer": u"tfoot"}
         for nature, row_list in groups:
             nature_tag = group_tags[nature]

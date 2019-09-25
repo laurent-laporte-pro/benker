@@ -1,3 +1,5 @@
+.. _benker__converters__formex__cals:
+
 Formex 4 to CALS converter
 ==========================
 
@@ -63,6 +65,14 @@ The tables parsing and building can be parameterized using the options described
 
     -   ``True`` to insert the attributes ``@colsep``, ``@rowsep``,
         and ``@tgroupstyle`` in the ``<tgroup>`` element.
+
+``tgroup_sorting`` (default: ``["header", "footer", "body"]``):
+    List used to sort (and group) the rows in a ``tgroup``.
+    The sorting is done according to the row natures
+    which is by default: ``["header", "footer", "body"]``
+    (this order match the CALS DTD defaults,
+    where the footer is between the header and the body.
+    To move the footer to the end, you can use ``["header", "body", "footer"]``.
 
 Examples of conversions
 -----------------------

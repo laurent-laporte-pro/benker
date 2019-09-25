@@ -28,7 +28,7 @@ the :meth:`~benker.builders.base_builder.BaseBuilder.generate_table_tree` method
 
 For example, you can parse the following CALS table:
 
-.. literalinclude:: parsers.cals.sample1.xml
+.. literalinclude:: /_static/parsers.cals.sample1.xml
    :language: xml
    :encoding: utf-8
 
@@ -36,7 +36,7 @@ And generate a :class:`~benker.table.Table` instance:
 
 .. doctest:: parsers__cals
 
-    >>> tree = etree.parse("docs/tutorials/parsers.cals.sample1.xml")
+    >>> tree = etree.parse("docs/_static/parsers.cals.sample1.xml")
     >>> cals_table = tree.getroot()
     >>> table = parser.parse_table(cals_table)
     >>> print(table)
@@ -60,7 +60,7 @@ The :class:`~benker.parsers.cals.CalsParser` parser accept the following options
 
     For instance, if you have :
 
-    .. literalinclude:: parsers.cals.sample2.xml
+    .. literalinclude:: /_static/parsers.cals.sample2.xml
        :language: xml
        :encoding: utf-8
 
@@ -69,7 +69,7 @@ The :class:`~benker.parsers.cals.CalsParser` parser accept the following options
     .. doctest:: parsers__cals
 
         >>> parser = CalsParser(builder, cals_ns="http://my.cals.ns")
-        >>> tree = etree.parse("docs/tutorials/parsers.cals.sample2.xml")
+        >>> tree = etree.parse("docs/_static/parsers.cals.sample2.xml")
         >>> cals_table = tree.getroot()
         >>> table = parser.parse_table(cals_table)
         >>> print(table)

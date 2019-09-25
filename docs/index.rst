@@ -178,7 +178,7 @@ For example, to convert the tables of a ``.docx`` document to Formex4 format, yo
     import os
     import zipfile
 
-    from benker.converters.ooxml2formex4 import convert_ooxml2formex
+    from benker.converters.ooxml2formex import convert_ooxml2formex
 
     # - Unzip the ``.docx`` in a temporary directory
     src_zip = "/path/to/demo.docx"

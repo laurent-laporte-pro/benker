@@ -1,0 +1,380 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<w:document xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+            mc:Ignorable="w14 w15 w16se w16cid wp14">
+  <w:body>
+    <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+      <w:pPr>
+        <w:pStyle w:val="Titre1"/>
+        <w:jc w:val="center"/>
+      </w:pPr>
+      <w:r><w:t>ANNEX</w:t></w:r>
+    </w:p>
+    <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+      <w:pPr>
+        <w:pStyle w:val="Titre2"/>
+        <w:jc w:val="center"/>
+      </w:pPr>
+      <w:r><w:t>Annex 1</w:t></w:r>
+      <w:r><w:br/><w:t>Concessions granted by Switzerland</w:t></w:r>
+    </w:p>
+    <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+      <w:pPr>
+        <w:pStyle w:val="Corpsdetexte"/>
+      </w:pPr>
+      <w:r><w:t>The tariff concessions set out below are granted by Switzerland
+        for the following products originating in the European Union and are,
+        where applicable, subject to an annual quantity:</w:t></w:r>
+    </w:p>
+    <TBL NO.SEQ="0001" COLS="4">
+      <CORPUS>
+        <ROW TYPE="HEADER">
+          <CELL COL="1">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:keepNext/>
+                <w:jc w:val="center"/>
+                <w:rPr><w:b/><w:bCs/></w:rPr>
+              </w:pPr>
+              <w:r><w:rPr><w:b/><w:bCs/></w:rPr><w:t>Swiss tariff</w:t></w:r>
+              <w:r><w:rPr><w:b/><w:bCs/></w:rPr><w:br/></w:r>
+              <w:r><w:rPr><w:b/><w:bCs/></w:rPr><w:t>heading</w:t></w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="2">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:jc w:val="center"/>
+                <w:rPr><w:b/><w:bCs/></w:rPr>
+              </w:pPr>
+              <w:r><w:rPr><w:b/><w:bCs/></w:rPr><w:t>Description</w:t></w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="3">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:jc w:val="center"/>
+                <w:rPr><w:b/><w:bCs/></w:rPr>
+              </w:pPr>
+              <w:r><w:rPr><w:b/><w:bCs/></w:rPr><w:t>Customs duty</w:t></w:r>
+              <w:r><w:rPr><w:b/><w:bCs/></w:rPr><w:br/><w:t>applicable</w:t></w:r>
+              <w:r><w:rPr><w:b/><w:bCs/></w:rPr><w:br/><w:t>(CHF/100 kg</w:t></w:r>
+              <w:r><w:rPr><w:b/><w:bCs/></w:rPr><w:br/><w:t>gross weight)</w:t></w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="4">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:jc w:val="center"/>
+                <w:rPr><w:b/><w:bCs/></w:rPr>
+              </w:pPr>
+              <w:r><w:rPr><w:b/><w:bCs/></w:rPr><w:t>Annual</w:t></w:r>
+              <w:r><w:rPr><w:b/><w:bCs/></w:rPr><w:br/><w:t>quantity</w:t></w:r>
+              <w:r><w:rPr><w:b/><w:bCs/></w:rPr><w:br/><w:t>(tonnes net</w:t></w:r>
+              <w:r><w:rPr><w:b/><w:bCs/></w:rPr><w:br/><w:t>weight)</w:t></w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr><w:pStyle w:val="Corpsdetexte"/><w:keepNext/></w:pPr>
+              <w:r><w:t>0101 2991</w:t></w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="2">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr><w:pStyle w:val="Corpsdetexte"/></w:pPr>
+              <w:r><w:t>Live horses (excl. pure-bred horses for breeding and
+                horses for slaughter) (in number of head)</w:t></w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="3">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr><w:pStyle w:val="Corpsdetexte"/><w:jc w:val="right"/></w:pPr>
+              <w:r><w:t>0,00</w:t></w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="4">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr><w:pStyle w:val="Corpsdetexte"/><w:jc w:val="right"/></w:pPr>
+              <w:r><w:t>100 head</w:t></w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr><w:pStyle w:val="Corpsdetexte"/><w:keepNext/></w:pPr>
+              <w:r><w:t>0204 5010</w:t></w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="2">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr><w:pStyle w:val="Corpsdetexte"/></w:pPr>
+              <w:r><w:t>Goat meat, fresh, chilled or frozen</w:t></w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="3">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr><w:pStyle w:val="Corpsdetexte"/><w:jc w:val="right"/></w:pPr>
+              <w:r><w:t>40,00</w:t></w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="4">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr><w:pStyle w:val="Corpsdetexte"/><w:jc w:val="right"/></w:pPr>
+              <w:r><w:t>100</w:t></w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr><w:pStyle w:val="Corpsdetexte"/><w:keepNext/></w:pPr>
+              <w:r><w:t>0207 1481</w:t></w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="2">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+              </w:pPr>
+              <w:r>
+                <w:t>Breasts of fowls of domestic species, frozen</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="3">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:jc w:val="right"/>
+              </w:pPr>
+              <w:r>
+                <w:t>15,00</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="4">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:jc w:val="right"/>
+              </w:pPr>
+              <w:r>
+                <w:t>2 100</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:keepNext/>
+              </w:pPr>
+              <w:r>
+                <w:t>0207 1491</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="2">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+              </w:pPr>
+              <w:r>
+                <w:t>Cuts and edible offal of fowls of domestic species, including livers (excluding breasts), frozen
+                </w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="3">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:jc w:val="right"/>
+              </w:pPr>
+              <w:r>
+                <w:t>15,00</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="4">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:jc w:val="right"/>
+              </w:pPr>
+              <w:r>
+                <w:t>1 200</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:keepNext/>
+              </w:pPr>
+              <w:r>
+                <w:t>0207 2781</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="2">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+              </w:pPr>
+              <w:r>
+                <w:t xml:space="preserve">Breasts of </w:t>
+              </w:r>
+              <w:r>
+                <w:t>turkeys of domestic species, frozen</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="3">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:jc w:val="right"/>
+              </w:pPr>
+              <w:r>
+                <w:t>15,00</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="4">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:jc w:val="right"/>
+              </w:pPr>
+              <w:r>
+                <w:t>800</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:keepNext/>
+              </w:pPr>
+              <w:r>
+                <w:t>0207 2791</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="2">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+              </w:pPr>
+              <w:r>
+                <w:t>Cuts and edible offal of turkeys of domestic species, including livers (excluding breasts),
+                  frozen
+                </w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="3">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:jc w:val="right"/>
+              </w:pPr>
+              <w:r>
+                <w:t>15,00</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="4">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:jc w:val="right"/>
+              </w:pPr>
+              <w:r>
+                <w:t>600</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+              </w:pPr>
+              <w:r>
+                <w:t>0207 4210</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="2">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+              </w:pPr>
+              <w:r>
+                <w:t>Ducks of domestic species, not cut in pieces, frozen</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="3">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:jc w:val="right"/>
+              </w:pPr>
+              <w:r>
+                <w:t>15,00</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="4">
+            <w:p w:rsidR="001E0B3A" w:rsidRDefault="00883CDC">
+              <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:jc w:val="right"/>
+              </w:pPr>
+              <w:r>
+                <w:t>700</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+      </CORPUS>
+    </TBL>
+    <w:p w:rsidR="00883CDC" w:rsidRPr="00883CDC" w:rsidRDefault="00883CDC" w:rsidP="00883CDC">
+      <w:pPr>
+        <w:pStyle w:val="Corpsdetexte"/>
+      </w:pPr>
+      <w:bookmarkStart w:id="0" w:name="_GoBack"/>
+      <w:bookmarkEnd w:id="0"/>
+      <w:r>
+        <w:t>[…]</w:t>
+      </w:r>
+    </w:p>
+    <w:sectPr w:rsidR="00883CDC" w:rsidRPr="00883CDC">
+      <w:pgSz w:w="11906" w:h="16838"/>
+      <w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="0" w:footer="0" w:gutter="0"/>
+      <w:cols w:space="720"/>
+      <w:formProt w:val="0"/>
+      <w:docGrid w:linePitch="312" w:charSpace="-6145"/>
+    </w:sectPr>
+  </w:body>
+</w:document>

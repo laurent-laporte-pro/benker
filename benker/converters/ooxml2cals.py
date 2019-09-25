@@ -68,6 +68,17 @@ def convert_ooxml2cals(src_xml, dst_xml, **options):
 
             -   ``True`` to insert the attributes ``@colsep``, ``@rowsep``,
                 and ``@tgroupstyle`` in the ``<tgroup>`` element.
+
+        ``tgroup_sorting`` (default: ``["header", "footer", "body"]``):
+            List used to sort (and group) the rows in a ``tgroup``.
+            The sorting is done according to the row natures
+            which is by default: ``["header", "footer", "body"]``
+            (this order match the CALS DTD defaults,
+            where the footer is between the header and the body.
+            To move the footer to the end, you can use ``["header", "body", "footer"]``.
+
+    .. versionchanged:: 0.5.0
+       Add the options *cals_ns*, *cals_prefix*, *tgroup_sorting*.
     """
     converter = Ooxml2CalsConverter()
     converter.convert_file(src_xml, dst_xml, **options)

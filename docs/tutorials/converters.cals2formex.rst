@@ -1,3 +1,5 @@
+.. _benker__converters__cals__formex:
+
 CALS to Formex 4 converter
 ==========================
 

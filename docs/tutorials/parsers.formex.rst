@@ -27,7 +27,7 @@ the :meth:`~benker.builders.base_builder.BaseBuilder.generate_table_tree` method
 
 For example, you can parse the following Formex 4 table:
 
-.. literalinclude:: parsers.formex.sample1.xml
+.. literalinclude:: /_static/parsers.formex.sample1.xml
    :language: xml
    :encoding: utf-8
 
@@ -35,7 +35,7 @@ And generate a :class:`~benker.table.Table` instance:
 
 .. doctest:: parsers__formex
 
-    >>> tree = etree.parse("docs/tutorials/parsers.formex.sample1.xml")
+    >>> tree = etree.parse("docs/_static/parsers.formex.sample1.xml")
     >>> fmx_table = tree.getroot()
     >>> table = parser.parse_table(fmx_table)
     >>> print(table)
@@ -59,7 +59,7 @@ The :class:`~benker.parsers.formex.FormexParser` parser accept the following opt
 
     For instance, if you have :
 
-    .. literalinclude:: parsers.formex.sample2.xml
+    .. literalinclude:: /_static/parsers.formex.sample2.xml
        :language: xml
        :encoding: utf-8
 
@@ -68,7 +68,7 @@ The :class:`~benker.parsers.formex.FormexParser` parser accept the following opt
     .. doctest:: parsers__formex
 
         >>> parser = FormexParser(builder, formex_ns="http://opoce")
-        >>> tree = etree.parse("docs/tutorials/parsers.formex.sample2.xml")
+        >>> tree = etree.parse("docs/_static/parsers.formex.sample2.xml")
         >>> fmx_table = tree.getroot()
         >>> table = parser.parse_table(fmx_table)
         >>> print(table)
@@ -87,7 +87,7 @@ The :class:`~benker.parsers.formex.FormexParser` parser accept the following opt
 
     For instance, if you have :
 
-    .. literalinclude:: parsers.formex.sample3.xml
+    .. literalinclude:: /_static/parsers.formex.sample3.xml
        :language: xml
        :encoding: utf-8
 
@@ -96,7 +96,7 @@ The :class:`~benker.parsers.formex.FormexParser` parser accept the following opt
     .. doctest:: parsers__formex
 
         >>> parser = FormexParser(builder, cals_ns="http://my.cals.ns")
-        >>> tree = etree.parse("docs/tutorials/parsers.formex.sample3.xml")
+        >>> tree = etree.parse("docs/_static/parsers.formex.sample3.xml")
         >>> fmx_table = tree.getroot()
         >>> table = parser.parse_table(fmx_table)
         >>> print(table)
