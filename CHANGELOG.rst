@@ -16,6 +16,8 @@ Bug fix release
 Fixed
 -----
 
+* Documentation: add missing link to ``convert_cals2formex`` in the main page.
+
 
 v0.5.0 (2019-09-25)
 ===================

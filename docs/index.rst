@@ -128,7 +128,7 @@ The following table show you the available converters which groups parser and bu
      - *(unavailable)*
      - *(unavailable)*
      - –
-     - *(unavailable)*
+     - :func:`~benker.converters.cals2formex.convert_cals2formex`
 
    * - .. image:: /_static/puzzle-formex4-parser-40.png
           :scale: 60%
