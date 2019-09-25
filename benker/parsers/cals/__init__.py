@@ -206,13 +206,13 @@ class CalsParser(BaseParser):
         colsep = cals_table.attrib.get(cals("colsep"))
         colsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
         if colsep in colsep_map:
-            styles["x-entry-border-right"] = colsep_map[colsep]
+            styles["x-cell-border-right"] = colsep_map[colsep]
 
         # -- attribute @cals:rowsep
         rowsep = cals_table.attrib.get(cals("rowsep"))
         rowsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
         if rowsep in rowsep_map:
-            styles["x-entry-border-bottom"] = rowsep_map[rowsep]
+            styles["x-cell-border-bottom"] = rowsep_map[rowsep]
 
         # -- attribute @cals:orient
         orient = cals_table.attrib.get(cals("orient"))
@@ -249,13 +249,13 @@ class CalsParser(BaseParser):
         colsep = cals_tgroup.attrib.get(cals("colsep"))
         colsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
         if colsep in colsep_map:
-            styles["x-entry-border-right"] = colsep_map[colsep]
+            styles["x-cell-border-right"] = colsep_map[colsep]
 
         # -- attribute @cals:rowsep
         rowsep = cals_tgroup.attrib.get(cals("rowsep"))
         rowsep_map = {"0": BORDER_NONE, "1": BORDER_SOLID}
         if rowsep in rowsep_map:
-            styles["x-entry-border-bottom"] = rowsep_map[rowsep]
+            styles["x-cell-border-bottom"] = rowsep_map[rowsep]
 
         # -- attribute @cals:tgroupstyle
         tgroupstyle = cals_tgroup.attrib.get(cals("tgroupstyle"))

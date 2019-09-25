@@ -9,29 +9,46 @@ import xmldiff.main
 from lxml import etree
 
 from benker.converters.cals2formex import convert_cals2formex
-
 from tests.resources import RESOURCES_DIR
 
 
 @pytest.mark.parametrize(
-    'input_name, expected_name',
+    "input_name, expected_name, cals_prefix, cals_ns",
+    # fmt: off
     [
-        ("cals/tbl_small_table.xml", "cals2formex/tbl_small_table.xml"),
-        ("cals/tbl_sample.xml", "cals2formex/tbl_sample.xml"),
-        ("cals/tbl_sample_formex.xml", "cals2formex/tbl_sample_formex.xml")
+        (
+            "cals/tbl_small_table.xml",
+            "cals2formex/tbl_small_table.xml",
+            "cals",
+            "https://jouve.com/schemas/opue/doj/formex-cals",
+        ),
+        (
+            "cals/tbl_sample.xml",
+            "cals2formex/tbl_sample.xml",
+            "cals",
+            "https://jouve.com/schemas/opue/doj/formex-cals",
+        ),
+        (
+            "cals/tbl_sample_formex.xml",
+            "cals2formex/tbl_sample_formex.xml",
+            "cals",
+            "https://jouve.com/schemas/opue/doj/formex-cals",
+        ),
+        (
+            "cals/tbl_sample_cals2.xml",
+            "cals2formex/tbl_sample_cals2.xml",
+            None,
+            None,
+        ),
     ],
+    # fmt: on
 )
-def test_convert_cals2formex(input_name, expected_name, tmpdir):
-    # type: (str, str, py.path.local) -> None
+def test_convert_cals2formex(input_name, expected_name, cals_prefix, cals_ns, tmpdir):
+    # type: (str, str, str, str, py.path.local) -> None
     src_xml = RESOURCES_DIR.join(input_name)  # type: py.path.local
     dst_xml = tmpdir.join(src_xml.basename)
     convert_cals2formex(
-        str(src_xml),
-        str(dst_xml),
-        width_unit='mm',
-        use_cals=True,
-        cals_prefix="cals",
-        cals_ns="https://jouve.com/schemas/opue/doj/formex-cals",
+        str(src_xml), str(dst_xml), width_unit="mm", use_cals=True, cals_prefix=cals_prefix, cals_ns=cals_ns
     )
 
     # - Compare with expected

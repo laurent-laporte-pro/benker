@@ -129,10 +129,10 @@ def test_setup_table():
             },
             None,
         ),
-        ({"colsep": "0"}, {"x-entry-border-right": BORDER_NONE}, None),
-        ({"colsep": "1"}, {"x-entry-border-right": BORDER_SOLID}, None),
-        ({"rowsep": "0"}, {"x-entry-border-bottom": BORDER_NONE}, None),
-        ({"rowsep": "1"}, {"x-entry-border-bottom": BORDER_SOLID}, None),
+        ({"colsep": "0"}, {"x-cell-border-right": BORDER_NONE}, None),
+        ({"colsep": "1"}, {"x-cell-border-right": BORDER_SOLID}, None),
+        ({"rowsep": "0"}, {"x-cell-border-bottom": BORDER_NONE}, None),
+        ({"rowsep": "1"}, {"x-cell-border-bottom": BORDER_SOLID}, None),
         ({"orient": "land"}, {"x-sect-orient": "landscape"}, None),
         ({"orient": "port"}, {"x-sect-orient": "portrait"}, None),
         ({"pgwide": "0"}, {"x-sect-cols": "2"}, None),
@@ -172,10 +172,10 @@ def test_parse_cals_table(attrib, styles, nature):
 @pytest.mark.parametrize(
     "attrib, styles, nature",
     [
-        ({"colsep": "0"}, {"x-entry-border-right": BORDER_NONE}, None),
-        ({"colsep": "1"}, {"x-entry-border-right": BORDER_SOLID}, None),
-        ({"rowsep": "0"}, {"x-entry-border-bottom": BORDER_NONE}, None),
-        ({"rowsep": "1"}, {"x-entry-border-bottom": BORDER_SOLID}, None),
+        ({"colsep": "0"}, {"x-cell-border-right": BORDER_NONE}, None),
+        ({"colsep": "1"}, {"x-cell-border-right": BORDER_SOLID}, None),
+        ({"rowsep": "0"}, {"x-cell-border-bottom": BORDER_NONE}, None),
+        ({"rowsep": "1"}, {"x-cell-border-bottom": BORDER_SOLID}, None),
         ({"tgroupstyle": "BeautifulTable"}, {}, "BeautifulTable"),
     ],
 )
@@ -205,8 +205,8 @@ def test_parse_cals_tgroup__overrides_table():
     parser = CalsParser(BaseBuilder())
     parser.setup_table(
         {
-            "x-entry-border-right": BORDER_NONE,
-            "x-entry-border-bottom": BORDER_NONE,
+            "x-cell-border-right": BORDER_NONE,
+            "x-cell-border-bottom": BORDER_NONE,
             "x-sect-orient": "landscape",
             "x-sect-cols": "1",
             "background-color": "velvet",
@@ -218,8 +218,8 @@ def test_parse_cals_tgroup__overrides_table():
     state = parser.parse_cals_tgroup(cals_tgroup)
     table = state.table
     assert table.styles == {
-        "x-entry-border-right": BORDER_SOLID,
-        "x-entry-border-bottom": BORDER_SOLID,
+        "x-cell-border-right": BORDER_SOLID,
+        "x-cell-border-bottom": BORDER_SOLID,
         "x-sect-orient": "landscape",  # preserved
         "x-sect-cols": "1",  # preserved
         "background-color": "velvet",  # preserved

@@ -13,6 +13,7 @@ class BaseConverter(object):
     """
     Bas class of all converters.
     """
+
     parser_cls = BaseParser
     builder_cls = BaseBuilder
 
@@ -26,7 +27,7 @@ class BaseConverter(object):
         :param str dst_xml:
             Destination path of the XML file to produce.
 
-        :param str options:
+        :keywords options:
             Dictionary of parsing/building options.
 
             **Common parsing options:**

@@ -12,6 +12,7 @@ class Ooxml2CalsConverter(BaseConverter):
     """
     Office Open XML to CALS converter
     """
+
     parser_cls = OoxmlParser
     builder_cls = CalsBuilder
 
@@ -32,7 +33,7 @@ def convert_ooxml2cals(src_xml, dst_xml, **options):
     :param str dst_xml:
         Destination path of the XML file to produce.
 
-    :param str options:
+    :keywords options:
         Dictionary of parsing/building options.
 
         **Common parsing options:**

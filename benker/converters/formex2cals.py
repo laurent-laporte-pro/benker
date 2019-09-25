@@ -16,6 +16,7 @@ class Formex2CalsConverter(BaseConverter):
     """
     Formex 4 to CALS converter
     """
+
     parser_cls = FormexParser
     builder_cls = CalsBuilder
 
@@ -30,7 +31,7 @@ def convert_formex2cals(src_xml, dst_xml, **options):
     :param str dst_xml:
         Destination path of the XML file to produce.
 
-    :param str options:
+    :keywords options:
         Dictionary of parsing/building options.
 
         **Common parsing options:**

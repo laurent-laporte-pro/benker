@@ -51,7 +51,7 @@ class BaseParser(object):
         :param str encoding:
             XML encoding of the destination file (default: "utf-8").
 
-        :param str options: Extra conversion options.
+        :keywords options: Extra conversion options.
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
         """

@@ -1,23 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!--
-Cet exemple factice de tableau contient quelques exemples de balises
-que l'on peut rencontrer dans un tableau Formex.
-
-*   un titre de tableau,
-*   des GR.SEQ,
-*   des notes de bas de page qui devront apparaître à la fin du tableau,
-*   un corpus:
-
-    -   avec une en-tête HEADER
-    -   une ligne d'ALIAS,
-    -   des lignes de tableau classiques,
-    -   des blocs de lignes de tableaux.
-
-Cet exemple contient aussi des attributs et éléments CALS qui aident à la conversion Formex vers CALS.
--->
-<GENERAL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns:cals="https://jouve.com/schemas/opue/doj/formex-cals"
-         xsi:noNamespaceSchemaLocation="formex-05.59-20170418_jouve.xd" NNC="YES">
+<GENERAL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" NNC="YES"
+         xsi:noNamespaceSchemaLocation="formex-05.59-20170418_jouve.xd">
   <BIB.INSTANCE>
     <DOCUMENT.REF FILE="C_2019000EN.01000101.doc.xml">
       <COLL>C</COLL>
@@ -77,7 +60,7 @@ Cet exemple contient aussi des attributs et éléments CALS qui aident à la con
           <TXT>text</TXT>
         </NP>
       </GR.SEQ>
-      <GR.NOTES cals:bgcolor="green">
+      <GR.NOTES>
         <TITLE>
           <TI>
             <P>GR.NOTES Title</P>
@@ -87,10 +70,10 @@ Cet exemple contient aussi des attributs et éléments CALS qui aident à la con
           <P>Table note</P>
         </NOTE>
       </GR.NOTES>
-      <CORPUS cals:frame="all" cals:colsep="1" cals:rowsep="1" cals:tabstyle="Grilledutableau" cals:pgwide="1">
-        <cals:colspec cals:colname="c1" cals:colwidth="80.00mm"/>
-        <cals:colspec cals:colname="c2" cals:colwidth="60.00mm"/>
-        <ROW TYPE="HEADER" cals:rowstyle="ROW-HEADER">
+      <CORPUS colsep="1" frame="all" pgwide="1" rowsep="1" tabstyle="Grilledutableau">
+        <colspec colname="c1" colwidth="79.92mm"/>
+        <colspec colname="c2" colwidth="79.92mm"/>
+        <ROW TYPE="HEADER" rowstyle="ROW-HEADER">
           <CELL COL="1" TYPE="HEADER">
             <HT TYPE="BOLD">Header 1</HT>
           </CELL>
@@ -98,40 +81,40 @@ Cet exemple contient aussi des attributs et éléments CALS qui aident à la con
             <HT TYPE="BOLD">Header 2</HT>
           </CELL>
         </ROW>
-        <ROW TYPE="ALIAS" cals:rowstyle="ROW-ALIAS">
+        <ROW TYPE="ALIAS" rowstyle="ROW-ALIAS">
           <CELL COL="1" TYPE="ALIAS">(1)</CELL>
           <CELL COL="2" TYPE="ALIAS">(2)</CELL>
         </ROW>
-        <ROW cals:valign="middle" cals:rowsep="0">
+        <ROW>
           <CELL COL="1">Cell A1</CELL>
           <CELL COL="2">Cell B1</CELL>
         </ROW>
         <BLK>
-          <TI.BLK COL.START="1" COL.END="2" cals:rowstyle="TI.BLK-level1">
+          <TI.BLK COL.END="2" COL.START="1" rowstyle="TI.BLK-level1">
             <P>
               <HT TYPE="BOLD">TI.BLK title</HT>
             </P>
           </TI.BLK>
-          <STI.BLK COL.START="1" COL.END="1" cals:rowstyle="STI.BLK-level1">
+          <STI.BLK COL.END="1" COL.START="1" rowstyle="STI.BLK-level1">
             <P>STI.BLK title</P>
           </STI.BLK>
-          <ROW cals:rowstyle="ROW-level1">
-            <CELL COL="1" COLSPAN="2" cals:namest="c1" cals:nameend="c2">Cell A2-B2</CELL>
+          <ROW rowstyle="ROW-level1">
+            <CELL COL="1" COLSPAN="2" nameend="c2" namest="c1">Cell A2-B2</CELL>
           </ROW>
-          <ROW cals:rowstyle="ROW-level1">
-            <CELL COL="1" ROWSPAN="2" cals:morerows="1">Cell A3-A4</CELL>
+          <ROW rowstyle="ROW-level1">
+            <CELL COL="1" ROWSPAN="2" morerows="1">Cell A3-A4</CELL>
             <CELL COL="2">Cell B3</CELL>
           </ROW>
-          <ROW cals:rowstyle="ROW-level1">
+          <ROW rowstyle="ROW-level1">
             <CELL COL="2">Cell B4</CELL>
           </ROW>
           <BLK>
-            <TI.BLK COL.START="1" COL.END="2" cals:rowstyle="TI.BLK-level2">
+            <TI.BLK COL.END="2" COL.START="1" rowstyle="TI.BLK-level2">
               <P>
                 <HT TYPE="BOLD">TI.BLK title</HT>
               </P>
             </TI.BLK>
-            <ROW cals:rowstyle="ROW-TOTAL-level2" TYPE="TOTAL">
+            <ROW TYPE="TOTAL" rowstyle="ROW-TOTAL-level2">
               <CELL COL="1" TYPE="TOTAL">Cell A5</CELL>
               <CELL COL="2" TYPE="TOTAL">Cell B5</CELL>
             </ROW>

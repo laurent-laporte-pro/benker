@@ -17,6 +17,7 @@ class Namespace(collections.namedtuple("Namespace", "prefix, uri")):
 
     .. versionadded:: 0.5.0
     """
+
     def get_qname(self, name):
         """ get the qualified name """
         return QName(self.uri, name)

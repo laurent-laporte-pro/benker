@@ -162,6 +162,12 @@ class FormexBuilder(BaseBuilder):
         table_elem = self.build_tbl(table)
         return table_elem
 
+    def setup_table(self, table):
+        self._table = table
+        self._table_colsep = u"0"
+        self._table_rowsep = u"0"
+        return self._table  # mainly for unit tests
+
     def build_tbl(self, table):
         """
         Build the Formex 4 ``<TBL>`` element.
@@ -198,7 +204,7 @@ class FormexBuilder(BaseBuilder):
            Add support for CALS-like elements and attributes.
            Add support for ``bgcolor`` (Table background color).
         """
-        self._table = table
+        self.setup_table(table)
         table_styles = table.styles
         self._no_seq += 1
         attrs = {
