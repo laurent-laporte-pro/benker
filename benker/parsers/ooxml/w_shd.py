@@ -54,7 +54,5 @@ class Shd(object):
 
     @property
     def styles(self):
-        styles = {
-            "background-color": StHexColor(self.w_fill).style,
-        }
+        styles = {"background-color": StHexColor(self.w_fill).style}
         return {k: v for k, v in styles.items() if v is not None}

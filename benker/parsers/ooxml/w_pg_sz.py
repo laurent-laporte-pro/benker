@@ -39,8 +39,5 @@ class PgSz(object):
         h = StTwipsMeasure(self.w_h).style
         size = (w, h) if w is not None and h is not None else None
         orient = StPageOrientation(self.w_orient).style
-        styles = {
-            "x-sect-size": size,
-            "x-sect-orient": orient,
-        }
+        styles = {"x-sect-size": size, "x-sect-orient": orient}
         return {k: v for k, v in styles.items() if v is not None}
