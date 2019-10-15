@@ -45,17 +45,26 @@ class Formex4Builder(BaseBuilder):
     according to the `TBL Schema <http://formex.publications.europa.eu/formex-4/manual/manual.htm#TBL>`_
     """
 
-    def __init__(self, **options):
+    def __init__(self, detect_titles=False, **options):
         """
         Initialize the builder.
 
-        :param str options: Extra conversion options.
+        :param detect_titles:
+            If this option is enable, a title will be generated if the first row
+            contains an unique cell with centered text.
+
+        :keyword options: Extra conversion options.
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
+
+        .. versionchanged:: 0.4.3
+           Add the *detect_titles* option.
         """
         # Internal state of the table used during building
         self._table = None
         self._no_seq = 0
+        # options
+        self.detect_titles = detect_titles
         super(Formex4Builder, self).__init__(**options)
 
     def generate_table_tree(self, table):
@@ -135,17 +144,22 @@ class Formex4Builder(BaseBuilder):
 
         :type  table: benker.table.Table
         :param table: Table
+
+        .. versionchanged:: 0.4.3
+            If this option *detect_titles* is enable, a title will be generated
+            if the first row contains an unique cell with centered text.
         """
         # table_styles = table.styles
         attrs = {}  # no attribute
         rows = list(table.rows)
 
-        # Does the first row/cell contains a centered title?
-        first_cell = table[(1, 1)]
-        align = first_cell.styles.get('align')
-        if first_cell.width == table.bounding_box.width and align == "center":
-            # yes, we can generate the title
-            self.build_title(tbl_elem, rows.pop(0))
+        if self.detect_titles:
+            # Does the first row/cell contains a centered title?
+            first_cell = table[(1, 1)]
+            align = first_cell.styles.get('align')
+            if first_cell.width == table.bounding_box.width and align == "center":
+                # yes, we can generate the title
+                self.build_title(tbl_elem, rows.pop(0))
 
         corpus_elem = etree.SubElement(tbl_elem, u"CORPUS", attrib=attrs)
         for row in rows:
