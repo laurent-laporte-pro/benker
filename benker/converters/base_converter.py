@@ -26,7 +26,7 @@ class BaseConverter(object):
         :param str dst_xml:
             Destination path of the XML file to produce.
 
-        :param str options:
+        :keyword options:
             Dictionary of parsing/building options.
 
             **Common parsing options:**

@@ -810,7 +810,7 @@ class OoxmlParser(BaseParser):
             In an uncompressed ``.docx`` tree structure, the stylesheet path
             is ``word/styles.xml``.
 
-        :param str options: Extra conversion options.
+        :keyword options: Extra conversion options.
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
         """

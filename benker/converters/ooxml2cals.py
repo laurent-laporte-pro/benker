@@ -32,7 +32,7 @@ def convert_ooxml2cals(src_xml, dst_xml, **options):
     :param str dst_xml:
         Destination path of the XML file to produce.
 
-    :param str options: Extra conversion options.
+    :keyword options: Extra conversion options.
         See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
         to have a list of all possible options.
     """

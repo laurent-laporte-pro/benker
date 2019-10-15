@@ -87,7 +87,7 @@ class CalsBuilder(BaseBuilder):
             - ``False`` to put the properties in the ``<table>`` element,
             - ``True`` to put the properties in the ``<tgroup>`` element.
 
-        :param str options: Extra conversion options.
+        :keyword options: Extra conversion options.
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
         """
