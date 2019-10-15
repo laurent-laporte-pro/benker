@@ -23,6 +23,12 @@ Fixed
     if the first row contains an unique cell with centered text.
     The *detect_titles* options is disable by default.
 
+Other
+-----
+
+Change in the documentation: update the URL of the Formex documentation, use:
+`<https://publications.europa.eu/en/web/eu-vocabularies/formex/>`_.
+
 
 v0.4.2 (2019-06-06)
 ===================

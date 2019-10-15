@@ -17,10 +17,10 @@ into Formex4 tables using the Formex4 schema (formex-05.59-20170418.xd).
 Specifications and examples:
 
 - The Formex4 documentation and schema is available online in the Publication Office:
-  `Formex Version 4 <http://formex.publications.europa.eu/formex-4/formex-4.htm>`_.
+  `Formex Version 4 <https://publications.europa.eu/documents/3938058/5910419/formex_manual_on_screen_version.html>`_.
 
 - An example of Formex4 table is available in the Schema documentation:
-  `TBL <http://formex.publications.europa.eu/formex-4/manual/manual.htm#TBL>`_
+  `TBL <https://publications.europa.eu/documents/3938058/5910419/formex_manual_on_screen_version.html#TBL>`_
 
 """
 
@@ -41,8 +41,8 @@ def revision_mark(name, attrs):
 
 class Formex4Builder(BaseBuilder):
     """
-    Formex4 builder used to convert tables into ``TBL`` elements
-    according to the `TBL Schema <http://formex.publications.europa.eu/formex-4/manual/manual.htm#TBL>`_
+    Formex4 builder used to convert tables into ``TBL`` elements according to the
+    `TBL Schema <https://publications.europa.eu/documents/3938058/5910419/formex_manual_on_screen_version.html#TBL>`_
     """
 
     def __init__(self, detect_titles=False, **options):
