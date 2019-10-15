@@ -117,7 +117,7 @@ class CalsBuilder(BaseBuilder):
             where the footer is between the header and the body.
             To move the footer to the end, you can use ``["header", "body", "footer"]``.
 
-        :keywords options: Extra conversion options.
+        :keyword options: Extra conversion options.
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
 

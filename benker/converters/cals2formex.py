@@ -31,7 +31,7 @@ def convert_cals2formex(src_xml, dst_xml, **options):
     :param str dst_xml:
         Destination path of the XML file to produce.
 
-    :keywords options:
+    :keyword options:
         Dictionary of parsing/building options.
 
         **Common parsing options:**
