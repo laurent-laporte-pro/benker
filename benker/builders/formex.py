@@ -96,6 +96,7 @@ class FormexBuilder(BaseBuilder):
     # fmt: off
     def __init__(
         self,
+        detect_titles=False,
         use_cals=False,
         cals_ns=CALS_NS,
         cals_prefix=CALS_PREFIX,
@@ -105,6 +106,10 @@ class FormexBuilder(BaseBuilder):
         # fmt: on
         """
         Initialize the builder.
+
+        :param detect_titles:
+            If this option is enable, a title will be generated if the first row
+            contains an unique cell with centered text.
 
         :param bool use_cals:
             Generate additional CALS-like elements and attributes
@@ -124,6 +129,9 @@ class FormexBuilder(BaseBuilder):
         :keyword options: Extra conversion options.
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
+
+        .. versionchanged:: 0.5.1
+           Add the *detect_titles* option.
         """
         # Internal state of the table used during building
         self._table = None
@@ -134,6 +142,7 @@ class FormexBuilder(BaseBuilder):
         self._no_seq = 0
 
         # options
+        self.detect_titles = detect_titles
         self.use_cals = use_cals
         self.cals_ns = cals_ns
         self.cals_prefix = cals_prefix
@@ -239,17 +248,22 @@ class FormexBuilder(BaseBuilder):
 
         :type  table: benker.table.Table
         :param table: Table
+
+        .. versionchanged:: 0.5.1
+            If this option *detect_titles* is enable, a title will be generated
+            if the first row contains an unique cell with centered text.
         """
         table_styles = table.styles
         attrs = {}  # no attribute
         rows = list(table.rows)
 
-        # Does the first row/cell contains a centered title?
-        first_cell = table[(1, 1)]
-        align = first_cell.styles.get("align")
-        if first_cell.width == table.bounding_box.width and align == "center":
-            # yes, we can generate the title
-            self.build_title(tbl_elem, rows.pop(0))
+        if self.detect_titles:
+            # Does the first row/cell contains a centered title?
+            first_cell = table[(1, 1)]
+            align = first_cell.styles.get("align")
+            if first_cell.width == table.bounding_box.width and align == "center":
+                # yes, we can generate the title
+                self.build_title(tbl_elem, rows.pop(0))
 
         # support for CALS-like elements and attributes
         if self.use_cals:

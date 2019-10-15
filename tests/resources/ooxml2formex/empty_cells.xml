@@ -1,817 +1,815 @@
 <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
-    <w:body>
-        <TBL COLS="5" NO.SEQ="0001">
-            <TITLE>
-                <TI>
-                    <w:p w:rsidR="003B2159" w:rsidRPr="003B2159" w:rsidRDefault="003B2159" w:rsidP="009C18D3">
-                        <w:pPr>
-                            <w:pStyle w:val="Considrant"/>
-                            <w:numPr>
-                                <w:ilvl w:val="0"/>
-                                <w:numId w:val="0"/>
-                            </w:numPr>
-                            <w:ind w:left="709" w:hanging="709"/>
-                            <w:jc w:val="center"/>
-                            <w:rPr>
-                                <w:i/>
-                            </w:rPr>
-                        </w:pPr>
-                        <w:r w:rsidRPr="003B2159">
-                            <w:rPr>
-                                <w:i/>
-                            </w:rPr>
-                            <w:t>Tableau 3</w:t>
-                        </w:r>
-                    </w:p>
-                </TI>
-                <STI>
-                    <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="009C18D3">
-                        <w:pPr>
-                            <w:pStyle w:val="Considrant"/>
-                            <w:numPr>
-                                <w:ilvl w:val="0"/>
-                                <w:numId w:val="0"/>
-                            </w:numPr>
-                            <w:ind w:left="709" w:hanging="709"/>
-                            <w:jc w:val="center"/>
-                            <w:rPr>
-                                <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                <w:b/>
-                                <w:szCs w:val="22"/>
-                            </w:rPr>
-                        </w:pPr>
-                        <w:r w:rsidRPr="0071365C">
-                            <w:rPr>
-                                <w:b/>
-                            </w:rPr>
-                            <w:t>Production, capacités de production et utilisation des capacités</w:t>
-                        </w:r>
-                    </w:p>
-                </STI>
-            </TITLE>
-            <CORPUS>
-                <ROW>
-                    <CELL COL="1">
-                        <IE/>
-                    </CELL>
-                    <CELL COL="2">
-                        <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>2014</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="3">
-                        <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>2015</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="4">
-                        <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>2016</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="5">
-                        <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>PE</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                </ROW>
-                <ROW>
-                    <CELL COL="1">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>Volume de production (en unités)</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="2">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00413118" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>831 142</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="3">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00413118" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>976 859</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="4">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00413118" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>1 095 632</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="5">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00413118" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>1 066 470</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                </ROW>
-                <ROW>
-                    <CELL COL="1">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:i/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="003B2159">
-                                <w:rPr>
-                                    <w:i/>
-                                </w:rPr>
-                                <w:t>Indice</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="2">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:i/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="003B2159">
-                                <w:rPr>
-                                    <w:i/>
-                                </w:rPr>
-                                <w:t>100</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="3">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:i/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="003B2159">
-                                <w:rPr>
-                                    <w:i/>
-                                </w:rPr>
-                                <w:t>118</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="4">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:i/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="003B2159">
-                                <w:rPr>
-                                    <w:i/>
-                                </w:rPr>
-                                <w:t>132</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="5">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:i/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="003B2159">
-                                <w:rPr>
-                                    <w:i/>
-                                </w:rPr>
-                                <w:t>128</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                </ROW>
-                <ROW>
-                    <CELL COL="1">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>Capacités de production (en unités)</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="2">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00413118" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>1 110 641</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="3">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00413118" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>1 366 618</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="4">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00413118" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>1 661 587</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="5">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00413118" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>1 490 395</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                </ROW>
-                <ROW>
-                    <CELL COL="1">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:i/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="003B2159">
-                                <w:rPr>
-                                    <w:i/>
-                                </w:rPr>
-                                <w:t>Indice</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="2">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:i/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="003B2159">
-                                <w:rPr>
-                                    <w:i/>
-                                </w:rPr>
-                                <w:t>100</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="3">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:i/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="003B2159">
-                                <w:rPr>
-                                    <w:i/>
-                                </w:rPr>
-                                <w:t>123</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="4">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:i/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="003B2159">
-                                <w:rPr>
-                                    <w:i/>
-                                </w:rPr>
-                                <w:t>150</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="5">
-                        <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:i/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="003B2159">
-                                <w:rPr>
-                                    <w:i/>
-                                </w:rPr>
-                                <w:t>134</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                </ROW>
-                <ROW>
-                    <CELL COL="1">
-                        <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>Utilisation des capacités</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="2">
-                        <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>75 %</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="3">
-                        <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>71 %</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="4">
-                        <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>66 %</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="5">
-                        <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t>72 %</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                </ROW>
-                <ROW>
-                    <CELL COL="1">
-                        <w:p w:rsidR="00016C53" w:rsidRPr="003B2159" w:rsidRDefault="00016C53" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="003B2159">
-                                <w:t>Indice</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="2">
-                        <w:p w:rsidR="00016C53" w:rsidRPr="003B2159" w:rsidRDefault="00016C53" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="003B2159">
-                                <w:t>100</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="3">
-                        <w:p w:rsidR="00016C53" w:rsidRPr="003B2159" w:rsidRDefault="00016C53" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="003B2159">
-                                <w:t>95</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="4">
-                        <w:p w:rsidR="00016C53" w:rsidRPr="003B2159" w:rsidRDefault="00016C53" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="003B2159">
-                                <w:t>88</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                    <CELL COL="5">
-                        <w:p w:rsidR="00016C53" w:rsidRPr="003B2159" w:rsidRDefault="00016C53" w:rsidP="00016C53">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:r w:rsidRPr="003B2159">
-                                <w:t>96</w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                </ROW>
-                <ROW>
-                    <CELL COL="1" COLSPAN="5">
-                        <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00904F29">
-                            <w:pPr>
-                                <w:pStyle w:val="Considrant"/>
-                                <w:numPr>
-                                    <w:ilvl w:val="0"/>
-                                    <w:numId w:val="0"/>
-                                </w:numPr>
-                                <w:ind w:left="709" w:hanging="709"/>
-                                <w:jc w:val="center"/>
-                                <w:rPr>
-                                    <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
-                                    <w:szCs w:val="22"/>
-                                </w:rPr>
-                            </w:pPr>
-                            <w:proofErr w:type="gramStart"/>
-                            <w:r w:rsidRPr="003B2159">
-                                <w:t>Source:</w:t>
-                            </w:r>
-                            <w:proofErr w:type="gramEnd"/>
-                            <w:r w:rsidRPr="0071365C">
-                                <w:t xml:space="preserve"> CONEBI, producteurs de l’Union retenus dans l’échantillon, observations des parties intéressées. </w:t>
-                            </w:r>
-                        </w:p>
-                    </CELL>
-                </ROW>
-            </CORPUS>
-        </TBL>
-    </w:body>
+  <w:body>
+    <TBL NO.SEQ="0001" COLS="5">
+      <CORPUS>
+        <ROW>
+          <CELL COL="1" COLSPAN="5">
+            <w:p w:rsidR="003B2159" w:rsidRPr="003B2159" w:rsidRDefault="003B2159" w:rsidP="009C18D3">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:i/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="003B2159">
+                <w:rPr>
+                  <w:i/>
+                </w:rPr>
+                <w:t>Tableau 3</w:t>
+              </w:r>
+            </w:p>
+            <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="009C18D3">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:b/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:rPr>
+                  <w:b/>
+                </w:rPr>
+                <w:t>Production, capacités de production et utilisation des capacités</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <IE/>
+          </CELL>
+          <CELL COL="2">
+            <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>2014</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="3">
+            <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>2015</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="4">
+            <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>2016</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="5">
+            <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>PE</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>Volume de production (en unités)</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="2">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00413118" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>831 142</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="3">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00413118" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>976 859</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="4">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00413118" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>1 095 632</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="5">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00413118" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>1 066 470</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:i/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="003B2159">
+                <w:rPr>
+                  <w:i/>
+                </w:rPr>
+                <w:t>Indice</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="2">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:i/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="003B2159">
+                <w:rPr>
+                  <w:i/>
+                </w:rPr>
+                <w:t>100</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="3">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:i/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="003B2159">
+                <w:rPr>
+                  <w:i/>
+                </w:rPr>
+                <w:t>118</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="4">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:i/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="003B2159">
+                <w:rPr>
+                  <w:i/>
+                </w:rPr>
+                <w:t>132</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="5">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:i/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="003B2159">
+                <w:rPr>
+                  <w:i/>
+                </w:rPr>
+                <w:t>128</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>Capacités de production (en unités)</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="2">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00413118" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>1 110 641</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="3">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00413118" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>1 366 618</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="4">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00413118" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>1 661 587</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="5">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="0071365C" w:rsidRDefault="00413118" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>1 490 395</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:i/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="003B2159">
+                <w:rPr>
+                  <w:i/>
+                </w:rPr>
+                <w:t>Indice</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="2">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:i/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="003B2159">
+                <w:rPr>
+                  <w:i/>
+                </w:rPr>
+                <w:t>100</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="3">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:i/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="003B2159">
+                <w:rPr>
+                  <w:i/>
+                </w:rPr>
+                <w:t>123</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="4">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:i/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="003B2159">
+                <w:rPr>
+                  <w:i/>
+                </w:rPr>
+                <w:t>150</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="5">
+            <w:p w:rsidR="00D65D38" w:rsidRPr="003B2159" w:rsidRDefault="00D65D38" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:i/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="003B2159">
+                <w:rPr>
+                  <w:i/>
+                </w:rPr>
+                <w:t>134</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>Utilisation des capacités</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="2">
+            <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>75 %</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="3">
+            <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>71 %</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="4">
+            <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>66 %</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="5">
+            <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="0071365C">
+                <w:t>72 %</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <w:p w:rsidR="00016C53" w:rsidRPr="003B2159" w:rsidRDefault="00016C53" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="003B2159">
+                <w:t>Indice</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="2">
+            <w:p w:rsidR="00016C53" w:rsidRPr="003B2159" w:rsidRDefault="00016C53" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="003B2159">
+                <w:t>100</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="3">
+            <w:p w:rsidR="00016C53" w:rsidRPr="003B2159" w:rsidRDefault="00016C53" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="003B2159">
+                <w:t>95</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="4">
+            <w:p w:rsidR="00016C53" w:rsidRPr="003B2159" w:rsidRDefault="00016C53" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="003B2159">
+                <w:t>88</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+          <CELL COL="5">
+            <w:p w:rsidR="00016C53" w:rsidRPr="003B2159" w:rsidRDefault="00016C53" w:rsidP="00016C53">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:r w:rsidRPr="003B2159">
+                <w:t>96</w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1" COLSPAN="5">
+            <w:p w:rsidR="00016C53" w:rsidRPr="0071365C" w:rsidRDefault="00016C53" w:rsidP="00904F29">
+              <w:pPr>
+                <w:pStyle w:val="Considrant"/>
+                <w:numPr>
+                  <w:ilvl w:val="0"/>
+                  <w:numId w:val="0"/>
+                </w:numPr>
+                <w:ind w:left="709" w:hanging="709"/>
+                <w:jc w:val="center"/>
+                <w:rPr>
+                  <w:rFonts w:eastAsiaTheme="minorHAnsi"/>
+                  <w:szCs w:val="22"/>
+                </w:rPr>
+              </w:pPr>
+              <w:proofErr w:type="gramStart"/>
+              <w:r w:rsidRPr="003B2159">
+                <w:t>Source:</w:t>
+              </w:r>
+              <w:proofErr w:type="gramEnd"/>
+              <w:r w:rsidRPr="0071365C">
+                <w:t xml:space="preserve"> CONEBI, producteurs de l’Union retenus dans l’échantillon, observations des parties intéressées. </w:t>
+              </w:r>
+            </w:p>
+          </CELL>
+        </ROW>
+      </CORPUS>
+    </TBL>
+  </w:body>
 </w:document>

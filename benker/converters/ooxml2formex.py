@@ -56,6 +56,10 @@ def convert_ooxml2formex(src_xml, dst_xml, **options):
 
         **Formex 4 builder options:**
 
+        ``detect_titles`` (default: ``False``):
+            If this option is enable, a title will be generated if the first row
+            contains an unique cell with centered text.
+
         ``use_cals`` (default: ``False``):
             Generate additional CALS-like elements and attributes
             to simplify the layout of Formex document in typesetting systems.

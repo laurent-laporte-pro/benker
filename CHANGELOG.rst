@@ -18,6 +18,13 @@ Fixed
 
 * Documentation: add missing link to ``convert_cals2formex`` in the main page.
 
+* Fix `#5 <https://github.com/laurent-laporte-pro/benker/issues/5>`_: The title generation should be optional.
+
+  Change in the :class:`~benker.builders.formex4.Formex4Builder` class:
+  Add the *detect_titles* option: if this option is enable, a title will be generated
+  if the first row contains an unique cell with centered text.
+  The *detect_titles* options is disable by default.
+
 
 v0.5.0 (2019-09-25)
 ===================
@@ -92,6 +99,22 @@ Other
 * Change Tox configuration file to test the library on Python 3.8.
 
 * Change the Travis CI configuration to build on Python 3.7 and 3.8-dev.
+
+
+v0.4.3 (unreleased)
+===================
+
+Bug fix release
+
+Fixed
+-----
+
+* Fix `#5 <https://github.com/laurent-laporte-pro/benker/issues/5>`_: The title generation should be optional.
+
+  Change in the :class:`~benker.builders.formex4.Formex4Builder` class:
+  Add the *detect_titles* option: if this option is enable, a title will be generated
+  if the first row contains an unique cell with centered text.
+  The *detect_titles* options is disable by default.
 
 
 v0.4.2 (2019-06-06)

@@ -258,7 +258,7 @@ def test_build_tbl__with_title():
     table.rows[4].insert_cell([P(u"Japanese yen")])
     table.rows[4].insert_cell([P(u"121,05")])
 
-    builder = FormexBuilder()
+    builder = FormexBuilder(detect_titles=True)
     table_elem = builder.build_tbl(table)
 
     xml_parser = etree.XMLParser(remove_blank_text=True)
