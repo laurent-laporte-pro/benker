@@ -126,7 +126,7 @@ class FormexParser(BaseParser):
         TI_BLK = fmx("TI.BLK").text
         STI_BLK = fmx("STI.BLK").text
 
-        # -- CLAS-like elements
+        # -- CALS-like elements
         cals = self.get_cals_qname
 
         colspec = cals("colspec").text
