@@ -38,3 +38,6 @@ nosetests.xml
 # Unit test directory
 /target/
 /htmlcov/
+
+# JetBrains project files are not shared with other developers
+/.idea/
