@@ -31,7 +31,16 @@ Fixed
 * Fix `#6 <https://github.com/laurent-laporte-pro/benker/issues/6>`_: Formex 2 Cals conversion: missing ``entry/@valign``.
 
   Change in the :class:`~benker.parsers.formex.FormexParser` class:
-  The CALS-like attribute ``valign`` is converted into a ``vertical-align`` style (was ``valign``).
+  The "vertical-align" style is built from the ``@cals:valign`` attribute.
+
+  Change in the :class:`~benker.parsers.cals.CalsParser` class:
+  The "vertical-align" style is built from the ``@cals:valign`` attribute.
+
+  Change in the :class:`~benker.builders.formex.FormexBuilder` class:
+  The ``@cals:valign`` attribute is built from the "vertical-align" style.
+
+  Change in the :class:`~benker.builders.cals.CalsBuilder` class:
+  The ``@cals:valign`` attribute is built from the "vertical-align" style.
 
 
 v0.5.0 (2019-09-25)

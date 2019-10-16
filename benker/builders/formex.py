@@ -399,6 +399,9 @@ class FormexBuilder(BaseBuilder):
 
         .. versionchanged:: 0.5.0
            Add support for CALS-like elements and attributes.
+
+        .. versionchanged:: 0.5.1
+           The ``@cals:valign`` attribute is built from the "vertical-align" style.
         """
         row_styles = row.styles
         attrs = {}
@@ -409,7 +412,7 @@ class FormexBuilder(BaseBuilder):
         # support for CALS-like elements and attributes
         if self.use_cals:
             cals = self.get_cals_qname
-            if "valign" in row_styles:
+            if "vertical-align" in row_styles:
                 # same values as CSS/Properties/vertical-align
                 # fmt: off
                 attrs[cals('valign')] = {
@@ -417,7 +420,7 @@ class FormexBuilder(BaseBuilder):
                     'middle': 'middle',
                     'bottom': 'bottom',
                     'baseline': 'bottom',
-                }[row_styles['valign']]
+                }[row_styles['vertical-align']]
                 # fmt: on
             row_rowsep = get_rowsep_attr(row_styles, "border-bottom")
             if row_rowsep and row_rowsep != self._table_rowsep:

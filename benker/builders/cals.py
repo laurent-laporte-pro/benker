@@ -366,7 +366,7 @@ class CalsBuilder(BaseBuilder):
 
         CALS attributes:
 
-        -   ``@valign`` is built from the "valign" style.
+        -   ``@valign`` is built from the "vertical-align" style.
             Values can be "top", "middle", "bottom" (note: "baseline" is not supported).
             Default value is "bottom".
 
@@ -386,6 +386,9 @@ class CalsBuilder(BaseBuilder):
 
         .. versionadded:: 0.5.0
            Add support for the ``@cals:rowstyle`` attribute (extension).
+
+        .. versionchanged:: 0.5.1
+           The ``@cals:valign`` attribute is built from the "vertical-align" style.
         """
         # Possible attrs:
         # - Row height: min-height' or 'height'
@@ -396,7 +399,7 @@ class CalsBuilder(BaseBuilder):
         cals = self.cals_ns.get_qname
         row_styles = row.styles
         attrs = {}
-        if "valign" in row_styles:
+        if "vertical-align" in row_styles:
             # same values as CSS/Properties/vertical-align
             # fmt: off
             attrs[cals('valign')] = {
@@ -404,7 +407,7 @@ class CalsBuilder(BaseBuilder):
                 'middle': 'middle',
                 'bottom': 'bottom',
                 'baseline': 'bottom',
-            }[row_styles['valign']]
+            }[row_styles['vertical-align']]
             # fmt: on
 
         row_rowsep = get_rowsep_attr(row_styles, "border-bottom")
@@ -456,7 +459,7 @@ class CalsBuilder(BaseBuilder):
             Default value is "1" (displayed), so, it is better to always define it.
             This value is only set if different from the table ``@rowsep`` value.
 
-        -   ``@valign`` is built from the "valign" style.
+        -   ``@valign`` is built from the "vertical-align" style.
             Values can be "top", "middle", "bottom" (note: "baseline" is not supported).
             Default value is "bottom".
 

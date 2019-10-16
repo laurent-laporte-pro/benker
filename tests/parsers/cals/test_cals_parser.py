@@ -230,9 +230,9 @@ def test_parse_cals_tgroup__overrides_table():
 @pytest.mark.parametrize(
     "attrib, styles, nature",
     [
-        ({"valign": "top"}, {"valign": "top"}, None),
-        ({"valign": "middle"}, {"valign": "middle"}, None),
-        ({"valign": "bottom"}, {"valign": "bottom"}, None),
+        ({"valign": "top"}, {"vertical-align": "top"}, None),
+        ({"valign": "middle"}, {"vertical-align": "middle"}, None),
+        ({"valign": "bottom"}, {"vertical-align": "bottom"}, None),
         ({"rowsep": "0"}, {"border-bottom": BORDER_NONE}, None),
         ({"rowsep": "1"}, {"border-bottom": BORDER_SOLID}, None),
         ({"rowstyle": "RowStyle"}, {"rowstyle": "RowStyle"}, None),
@@ -283,7 +283,7 @@ def test_parse_cals_row__overrides_parent_valign():
     parser._state.next_row()
     state = parser.parse_cals_row(cals_row)
     row = state.table.rows[1]
-    assert row.styles["valign"] == "middle"
+    assert row.styles["vertical-align"] == "middle"
 
 
 @pytest.mark.parametrize(
@@ -298,9 +298,9 @@ def test_parse_cals_row__overrides_parent_valign():
         ({"nameend": "2"}, {}, None),
         ({"namest": "1", "nameend": "2"}, {}, None),
         ({"morerows": "2"}, {}, None),
-        ({"valign": "top"}, {"valign": "top"}, None),
-        ({"valign": "middle"}, {"valign": "middle"}, None),
-        ({"valign": "bottom"}, {"valign": "bottom"}, None),
+        ({"valign": "top"}, {"vertical-align": "top"}, None),
+        ({"valign": "middle"}, {"vertical-align": "middle"}, None),
+        ({"valign": "bottom"}, {"vertical-align": "bottom"}, None),
         ({"align": "left"}, {"align": "left"}, None),
         ({"align": "right"}, {"align": "right"}, None),
         ({"align": "center"}, {"align": "center"}, None),

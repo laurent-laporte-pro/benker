@@ -283,6 +283,9 @@ class CalsParser(BaseParser):
 
         :type  cals_row: ElementType
         :param cals_row: table row
+
+        .. versionchanged:: 0.5.1
+           The "vertical-align" style is built from the ``@cals:valign`` attribute.
         """
         cals = self.get_cals_qname
         styles = {}
@@ -299,14 +302,14 @@ class CalsParser(BaseParser):
             valign = cals_parent.attrib.get(cals("valign"))
             valign_map = {'top': 'top', 'middle': 'middle', 'bottom': 'bottom'}
             if valign in valign_map:
-                styles["valign"] = valign_map[valign]
+                styles["vertical-align"] = valign_map[valign]
 
         # -- attribute @cals:valign
         valign = cals_row.attrib.get(cals("valign"))
         valign_map = {'top': 'top', 'middle': 'middle', 'bottom': 'bottom'}
         if valign in valign_map:
             # overrides parent's value
-            styles["valign"] = valign_map[valign]
+            styles["vertical-align"] = valign_map[valign]
 
         # -- attribute @cals:rowsep
         rowsep = cals_row.attrib.get(cals("rowsep"))
@@ -339,6 +342,9 @@ class CalsParser(BaseParser):
 
         :type  cals_entry: ElementType
         :param cals_entry: table entry
+
+        .. versionchanged:: 0.5.1
+           The "vertical-align" style is built from the ``@cals:valign`` attribute.
         """
         cals = self.get_cals_qname
         styles = {}
@@ -377,7 +383,7 @@ class CalsParser(BaseParser):
         valign_map = {'top': 'top', 'middle': 'middle', 'bottom': 'bottom'}
         if valign in valign_map:
             # overrides parent's value
-            styles["valign"] = valign_map[valign]
+            styles["vertical-align"] = valign_map[valign]
 
         # -- attribute @cals:rowsep
         align = cals_entry.attrib.get(cals("align"))

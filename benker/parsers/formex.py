@@ -326,6 +326,16 @@ class FormexParser(BaseParser):
         return state  # mainly for unit test
 
     def parse_cals_row_styles(self, fmx_elem):
+        """
+        Parse the row styles
+
+        :type  fmx_elem: ElementType
+        :param fmx_elem: Formex element: ``ROW``, ``TI.BLK``, ``STI.BLK`` or ``GR.NOTES``.
+        :return: CSS-like styles
+
+        .. versionchanged:: 0.5.1
+           The "vertical-align" style is built from the ``@cals:valign`` attribute.
+        """
         # support for CALS-like elements and attributes
         cals = self.get_cals_qname
         styles = {}
