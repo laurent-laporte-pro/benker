@@ -287,10 +287,10 @@ class CalsBuilder(BaseBuilder):
         # -- group rows by header/body/footer
         groups = [(k, list(g)) for k, g in itertools.groupby(table.rows, key=lambda r: r.nature)]
         # -- sort the groups in the order: header => footer => body
-        groups = sorted(groups, key=lambda item: self.tgroup_sorting[item[0]])
+        groups = sorted(groups, key=lambda item: self.tgroup_sorting.get(item[0], self.tgroup_sorting["body"]))
         group_tags = {"header": u"thead", "body": u"tbody", "footer": u"tfoot"}
         for nature, row_list in groups:
-            nature_tag = group_tags[nature]
+            nature_tag = group_tags.get(nature, group_tags["body"])
             self.build_tbody(group_elem, row_list, nature_tag)
 
     # noinspection PyMethodMayBeStatic
