@@ -1,7 +1,11 @@
 # coding: utf-8
+from __future__ import print_function
+
+import sys
 import unittest
 
 import pytest
+import xmldiff.main
 from lxml import etree
 
 from benker.builders.cals import CalsBuilder
@@ -277,3 +281,80 @@ def test_build_tgroup__tgroup_sorting(tgroup_sorting, expected_tags):
     # -- check the tgroup children name and order
     actual_tags = [elem.tag for elem in table_elem.xpath("tgroup/*")]
     assert actual_tags == expected_tags
+
+
+def test_build_table():
+    # see: formex-4/samples/jo-compl-2002C_061/C_2002061EN.01000403.xml
+
+    table = Table(
+        styles={
+            "border-top": "solid",
+            "border-bottom": "solid",
+            "x-sect-orient": "landscape",
+            "x-sect-cols": "1",
+            "background-color": "yellow",
+            "width": "247",
+        }
+    )
+    table.rows[1].nature = "header"
+    table.rows[1].insert_cell(u"Expert group")
+    table.rows[1].insert_cell(u"First name and surname of the expert")
+    table.rows[2].insert_cell(u"Control of infectious diseases")
+    table.rows[2].insert_cell(u"Michael Angelo BORG")
+    table.rows[3].insert_cell(u"Information society", height=3)
+    table.rows[3].insert_cell(u"Tony HEY")
+    table.rows[4].insert_cell(u"José L. ENCARNAÇÃO")
+    table.rows[5].insert_cell(u"Berit SVENDSEN")
+    table.rows[6].insert_cell(u"Controlled thermonuclear fusion")
+    table.rows[6].insert_cell(u"Pekka PIRILÄ")
+
+    builder = CalsBuilder()
+    table_elem = builder.build_table(table)
+
+    xml_parser = etree.XMLParser(remove_blank_text=True)
+
+    # fmt: off
+    expected = etree.XML(u"""\
+    <table frame="topbot" colsep="0" rowsep="0" orient="land" pgwide="1" bgcolor="yellow" width="247.00mm">
+      <tgroup cols="2">
+        <colspec colnum="1" colname="c1"/>
+        <colspec colnum="2" colname="c2"/>
+        <thead>
+          <row>
+            <entry>Expert group</entry>
+            <entry>First name and surname of the expert</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>Control of infectious diseases</entry>
+            <entry>Michael Angelo BORG</entry>
+          </row>
+          <row>
+            <entry morerows="2">Information society</entry>
+            <entry>Tony HEY</entry>
+          </row>
+          <row>
+            <entry>José L. ENCARNAÇÃO</entry>
+          </row>
+          <row>
+            <entry>Berit SVENDSEN</entry>
+          </row>
+          <row>
+            <entry>Controlled thermonuclear fusion</entry>
+            <entry>Pekka PIRILÄ</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>""", parser=xml_parser)
+    # fmt: on
+
+    for elem in table_elem.xpath("//*"):
+        elem.text = elem.text or None
+    for elem in expected.xpath("//*"):
+        elem.text = elem.text or None
+
+    diff_list = xmldiff.main.diff_trees(table_elem, expected)
+    if diff_list:
+        print(etree.tounicode(table_elem, pretty_print=True, with_tail=False), file=sys.stderr)
+        assert diff_list == []

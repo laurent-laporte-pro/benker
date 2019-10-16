@@ -48,6 +48,11 @@ Fixed
   Change in the :class:`~benker.builders.cals.CalsBuilder` class:
   The ``@cals:valign`` attribute is built from the "vertical-align" style.
 
+* Fix `#7 <https://github.com/laurent-laporte-pro/benker/issues/7>`_: Formex 2 Cals conversion: missing ``table/@width``.
+
+  Change in the :class:`~benker.builders.cals.CalsBuilder` class:
+  Add support for the ``@width`` attribute (table width).
+
 
 v0.5.0 (2019-09-25)
 ===================

@@ -17,13 +17,13 @@ Specifications and examples:
 """
 import collections
 import itertools
-import re
 
 from lxml import etree
 
 from benker.builders.base_builder import BaseBuilder
 from benker.builders.namespace import Namespace
 from benker.units import convert_value
+from benker.units import parse_width
 
 # noinspection PyProtectedMember
 #: Element Type
@@ -200,6 +200,9 @@ class CalsBuilder(BaseBuilder):
 
         -   ``@bgcolor`` is built from the "background-color" style (HTML color).
 
+        -   ``@width`` is built from the "width" style (percentage or width with unit).
+            This attribute in an extension.
+
         .. note::
 
            ``@colsep``, ``@rowsep`` and ``@tabstyle`` attributes are generated only
@@ -220,7 +223,10 @@ class CalsBuilder(BaseBuilder):
         :return: The newly-created ``<table>`` element.
 
         .. versionchanged:: 0.5.0
-           Add support for ``bgcolor``.
+           Add support for the ``bgcolor`` attribute (background color).
+
+        .. versionchanged:: 0.5.1
+           Add support for the ``@width`` attribute (table width).
         """
         self.setup_table(table)
 
@@ -239,6 +245,11 @@ class CalsBuilder(BaseBuilder):
             attrs[cals("pgwide")] = "1" if table_styles["x-sect-cols"] == "1" else "0"
         if "background-color" in table_styles:
             attrs[cals("bgcolor")] = table_styles["background-color"]
+        if "width" in table_styles:
+            width, unit = parse_width(table_styles["width"])
+            value = convert_value(width, unit, self.width_unit)
+            attrs[cals("width")] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
+
         table_elem = etree.Element(cals(u"table"), attrib=attrs, nsmap=self.ns_map)
         self.build_tgroup(table_elem, table)
         return table_elem
@@ -330,9 +341,8 @@ class CalsBuilder(BaseBuilder):
 
         # -- @cals:colwidth
         if "width" in col_styles:
-            width = col_styles["width"]
-            width, unit = re.findall(r"([+-]?(?:[0-9]*[.])?[0-9]+)(\w+)", width)[0]
-            value = convert_value(float(width), unit, self.width_unit)
+            width, unit = parse_width(col_styles["width"])
+            value = convert_value(width, unit, self.width_unit)
             attrs[cals("colwidth")] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
 
         # -- @cals:align
