@@ -41,6 +41,7 @@ from benker.common.lxml_qname import QName
 from benker.schemas import CALS_NS
 from benker.schemas import CALS_PREFIX
 from benker.units import convert_value
+from benker.units import parse_width
 
 # noinspection PyProtectedMember
 #: ElementTree Type
@@ -252,6 +253,9 @@ class FormexBuilder(BaseBuilder):
         .. versionchanged:: 0.5.1
             If this option *detect_titles* is enable, a title will be generated
             if the first row contains an unique cell with centered text.
+
+        .. versionchanged:: 0.5.1
+           Add support for the ``@width`` CALS-like attribute (table width).
         """
         table_styles = table.styles
         attrs = {}  # no attribute
@@ -279,6 +283,10 @@ class FormexBuilder(BaseBuilder):
                 attrs[cals("pgwide")] = "1" if table_styles["x-sect-cols"] == "1" else "0"
             if "background-color" in table_styles:
                 attrs[cals("bgcolor")] = table_styles["background-color"]
+            if "width" in table_styles:
+                width, unit = parse_width(table_styles["width"])
+                value = convert_value(width, unit, self.width_unit)
+                attrs[cals("width")] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
 
         corpus_elem = etree.SubElement(tbl_elem, u"CORPUS", attrib=attrs)
 
@@ -360,9 +368,8 @@ class FormexBuilder(BaseBuilder):
         cals = self.get_cals_qname
         attrs = {cals("colname"): u"c{0}".format(col.col_pos)}
         if "width" in col_styles:
-            width = col_styles["width"]
-            width, unit = re.findall(r"([+-]?(?:[0-9]*[.])?[0-9]+)(\w+)", width)[0]
-            value = convert_value(float(width), unit, self.width_unit)
+            width, unit = parse_width(col_styles["width"])
+            value = convert_value(width, unit, self.width_unit)
             attrs[cals("colwidth")] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
         etree.SubElement(group_elem, cals("colspec"), attrib=attrs)
 

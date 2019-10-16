@@ -393,3 +393,64 @@ def test_build_tbl__empty_cell():
     cell_elem = table1_elem.xpath('//CELL')[0]
     assert len(cell_elem) == 1
     assert cell_elem[0].tag == 'IE'
+
+
+def test_build_tbl__use_cals():
+    # see: formex-4/samples/jo-compl-2002C_061/C_2002061EN.01000403.xml
+
+    table = Table(
+        styles={
+            "border-top": "solid",
+            "border-bottom": "solid",
+            "x-sect-orient": "landscape",
+            "x-sect-cols": "1",
+            "background-color": "blue",
+            "width": "180",
+        }
+    )
+    table.rows[1].nature = "header"
+    table.rows[1].insert_cell([P(u"Expert group")], styles={"align": "center"})
+    table.rows[1].insert_cell([P(u"First name and surname of the expert")], styles={"align": "center"})
+    table.rows[2].insert_cell([P(u"Control of infectious diseases")])
+    table.rows[2].insert_cell([P(u"Michael Angelo BORG")])
+
+    builder = FormexBuilder(use_cals=True, cals_ns=None)
+    table_elem = builder.build_tbl(table)
+
+    xml_parser = etree.XMLParser(remove_blank_text=True)
+
+    # fmt: off
+    expected = etree.XML(u"""\
+    <TBL NO.SEQ="0001" COLS="2" PAGE.SIZE="SINGLE.LANDSCAPE">
+      <CORPUS frame="topbot" colsep="0" rowsep="0" orient="land" pgwide="1" bgcolor="blue" width="180.00mm">
+        <colspec colname="c1"/>
+        <colspec colname="c2"/>
+        <ROW TYPE="HEADER">
+          <CELL COL="1" align="center">
+            <P>Expert group</P>
+          </CELL>
+          <CELL COL="2" align="center">
+            <P>First name and surname of the expert</P>
+          </CELL>
+        </ROW>
+        <ROW>
+          <CELL COL="1">
+            <P>Control of infectious diseases</P>
+          </CELL>
+          <CELL COL="2">
+            <P>Michael Angelo BORG</P>
+          </CELL>
+        </ROW>
+      </CORPUS>
+    </TBL>""", parser=xml_parser)
+    # fmt: on
+
+    for elem in table_elem.xpath("//*"):
+        elem.text = elem.text or None
+    for elem in expected.xpath("//*"):
+        elem.text = elem.text or None
+
+    diff_list = xmldiff.main.diff_trees(table_elem, expected)
+    if diff_list:
+        print(etree.tounicode(table_elem, pretty_print=True, with_tail=False), file=sys.stderr)
+        assert diff_list == []

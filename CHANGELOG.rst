@@ -53,6 +53,9 @@ Fixed
   Change in the :class:`~benker.builders.cals.CalsBuilder` class:
   Add support for the ``@width`` attribute (table width).
 
+  Change in the :class:`~benker.builders.formex.FormexBuilder` class:
+  Add support for the ``@width`` CALS-like attribute (table width).
+
 
 v0.5.0 (2019-09-25)
 ===================
