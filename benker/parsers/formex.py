@@ -334,7 +334,7 @@ class FormexParser(BaseParser):
         valign = fmx_elem.attrib.get(cals("valign"))
         valign_map = {'top': 'top', 'middle': 'middle', 'bottom': 'bottom'}
         if valign in valign_map:
-            styles["valign"] = valign_map[valign]
+            styles["vertical-align"] = valign_map[valign]
 
         # -- attribute @cals:rowsep
         rowsep = fmx_elem.attrib.get(cals("rowsep"))
@@ -553,7 +553,7 @@ class FormexParser(BaseParser):
         valign_map = {'top': 'top', 'middle': 'middle', 'bottom': 'bottom'}
         if valign in valign_map:
             # overrides parent's value
-            styles["valign"] = valign_map[valign]
+            styles["vertical-align"] = valign_map[valign]
 
         # -- attribute @cals:rowsep
         align = fmx_cell.attrib.get(cals("align"))

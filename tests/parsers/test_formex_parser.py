@@ -235,9 +235,9 @@ def test_parse_fmx_corpus(attrib, styles):
         ({"TYPE": "NOTCOL"}, {"rowstyle": "ROW-NOTCOL"}, "body"),
         ({"TYPE": "TOTAL"}, {"rowstyle": "ROW-TOTAL"}, "body"),
         ({"TYPE": "NORMAL", "rowstyle": "ROW-TOTAL"}, {"rowstyle": "ROW-TOTAL"}, "body"),
-        ({"valign": "top"}, {"valign": "top"}, "body"),
-        ({"valign": "middle"}, {"valign": "middle"}, "body"),
-        ({"valign": "bottom"}, {"valign": "bottom"}, "body"),
+        ({"valign": "top"}, {"vertical-align": "top"}, "body"),
+        ({"valign": "middle"}, {"vertical-align": "middle"}, "body"),
+        ({"valign": "bottom"}, {"vertical-align": "bottom"}, "body"),
         ({"rowsep": "0"}, {"border-bottom": BORDER_NONE}, "body"),
         ({"rowsep": "1"}, {"border-bottom": BORDER_SOLID}, "body"),
         ({"bgcolor": "#FF8000"}, {"background-color": "#FF8000"}, "body"),
@@ -298,7 +298,7 @@ def test_parse_fmx_ti_blk__level1():
         'background-color': 'blue',
         'border-bottom': 'solid 1pt black',
         'rowstyle': 'TI.BLK-level1',
-        'valign': 'top',
+        'vertical-align': 'top',
     }
     assert row.nature == "body"
     table = state.table
@@ -376,7 +376,7 @@ def test_parse_fmx_sti_blk__level1():
         'background-color': 'blue',
         'border-bottom': 'solid 1pt black',
         'rowstyle': 'STI.BLK-level1',
-        'valign': 'top',
+        'vertical-align': 'top',
     }
     assert row.nature == "body"
     table = state.table
@@ -413,7 +413,7 @@ def test_parse_fmx_gr_notes():
     assert row.nature == "footer"
     # -- the cell is in the row 2
     cell = state.table[(1, 2)]
-    assert cell.styles == {'background-color': 'blue', 'border-bottom': 'solid 1pt black', 'valign': 'top'}
+    assert cell.styles == {'background-color': 'blue', 'border-bottom': 'solid 1pt black', 'vertical-align': 'top'}
     assert cell.nature == "footer"
     assert cell.width == 3
     assert cell.height == 1
@@ -474,7 +474,7 @@ def test_parse_fmx_cell__with_cals():
     assert cell.styles == {
         'align': 'center',
         'background-color': '#00007f',
-        'valign': 'middle',
+        'vertical-align': 'middle',
         'x-cell-border-bottom': 'solid 1pt black',
         'x-cell-border-right': 'solid 1pt black',
     }

@@ -28,6 +28,11 @@ Fixed
 * Change in the :class:`~benker.builders.formex4.Formex4Builder` class:
   Allow empty strings for *cals_ns* and *cals_prefix* options.
 
+* Fix `#6 <https://github.com/laurent-laporte-pro/benker/issues/6>`_: Formex 2 Cals conversion: missing ``entry/@valign``.
+
+  Change in the :class:`~benker.parsers.formex.FormexParser` class:
+  The CALS-like attribute ``valign`` is converted into a ``vertical-align`` style (was ``valign``).
+
 
 v0.5.0 (2019-09-25)
 ===================
