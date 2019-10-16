@@ -25,6 +25,9 @@ Fixed
   if the first row contains an unique cell with centered text.
   The *detect_titles* options is disable by default.
 
+* Change in the :class:`~benker.builders.formex4.Formex4Builder` class:
+  Allow empty strings for *cals_ns* and *cals_prefix* options.
+
 
 v0.5.0 (2019-09-25)
 ===================

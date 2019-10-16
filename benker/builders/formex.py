@@ -115,11 +115,11 @@ class FormexBuilder(BaseBuilder):
             Generate additional CALS-like elements and attributes
             to simplify the layout of Formex document in typesetting systems.
 
-        :param str cals_ns:
+        :param str or None cals_ns:
             Namespace to use for CALS-like elements and attributes (requires: ``use_cals``).
             Set ``None`` (or "") if you don't want to use namespace.
 
-        :param str cals_prefix:
+        :param str or None cals_prefix:
             Namespace prefix to use for CALS-like elements and attributes (requires: ``use_cals``).
 
         :param str width_unit:
@@ -144,8 +144,8 @@ class FormexBuilder(BaseBuilder):
         # options
         self.detect_titles = detect_titles
         self.use_cals = use_cals
-        self.cals_ns = cals_ns
-        self.cals_prefix = cals_prefix
+        self.cals_ns = cals_ns or None
+        self.cals_prefix = cals_prefix or None
         self.width_unit = width_unit
 
         super(FormexBuilder, self).__init__(**options)
