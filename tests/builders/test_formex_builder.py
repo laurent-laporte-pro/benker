@@ -26,10 +26,41 @@ P = E.P
         ({'nature': 'body'}, {'COL': u"1", 'TYPE': 'NORMAL'}),
         ({'nature': 'header'}, {'COL': u"1", 'TYPE': 'HEADER'}),
         ({'nature': 'footer'}, {'COL': u"1", 'TYPE': '__GR.NOTES__'}),
+        ({'styles': {'vertical-align': "middle"}}, {'COL': u"1"}),
+        ({'styles': {'align': "center"}}, {'COL': u"1"}),
+        ({'styles': {'background-color': "yellow"}}, {'COL': u"1"}),
     ],
 )
 def test_build_cell__body(kwargs, attrib):
     builder = FormexBuilder()
+
+    p_elem = P(u"text")
+    cell_x1_y1 = Cell([p_elem], x=1, y=1, **kwargs)
+    table = Table([cell_x1_y1])
+    builder._table = table
+
+    # -- build the cell
+    row_elem = ROW()
+    row_y1 = next(iter(table.rows))
+    builder.build_cell(row_elem, cell_x1_y1, row_y1)
+
+    # -- check the '<CELL>' attributes
+    entry_elem = row_elem[0]  # type: etree._Element
+    assert entry_elem.tag == u"CELL"
+    assert entry_elem.attrib == attrib
+    assert entry_elem[0] == p_elem
+
+
+@pytest.mark.parametrize(
+    'kwargs, attrib',
+    [
+        ({'styles': {'vertical-align': "middle"}}, {'COL': u"1", 'valign': "middle"}),
+        ({'styles': {'align': "center"}}, {'COL': u"1", 'align': "center"}),
+        ({'styles': {'background-color': "yellow"}}, {'COL': u"1", 'bgcolor': "yellow"}),
+    ],
+)
+def test_build_cell__use_cals(kwargs, attrib):
+    builder = FormexBuilder(use_cals=True, cals_ns=None)
 
     p_elem = P(u"text")
     cell_x1_y1 = Cell([p_elem], x=1, y=1, **kwargs)
