@@ -13,6 +13,12 @@ v0.5.1 (unreleased)
 
 Bug fix release
 
+Changed
+-------
+
+Add the :func:`~benker.units.parse_width` function used to parse a width and return the value and its unit.
+
+
 Fixed
 -----
 
