@@ -7,7 +7,6 @@ Utility functions to convert values from one unit to another.
 """
 import re
 
-
 #: Usual units Lengths in meter
 UNITS = {
     'mm': 0.001,
