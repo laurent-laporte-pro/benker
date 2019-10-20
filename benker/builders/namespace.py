@@ -1,10 +1,7 @@
 # coding: utf-8
 """
-benker - namespace
-=========================
-
-:Created on: 2019-09-17
-:Author: Laurent LAPORTE <llaporte@jouve.com>
+Namespace
+=========
 """
 import collections
 
