@@ -6,7 +6,7 @@ Formex 4 to CALS converter
 Description
 -----------
 
-.. _Formex 4 format: https://publications.europa.eu/en/web/eu-vocabularies/formex
+.. _Formex 4 format: https://op.europa.eu/en/web/eu-vocabularies/formex
 .. _CALS table format: https://www.oasis-open.org/specs/a502.htm
 
 The :func:`~benker.converters.formex2cals.convert_formex2cals` converter is a function designed to convert tables from an Formex 4 document (which respects the schema defined in `Formex 4 format`_) in the `CALS table format`_.

@@ -54,7 +54,7 @@ The Benker library works on XML documents. Currently, it can handle:
        for documents which are published in the different series of the Official Journal of the European Union.
        Formex v4 is based on the international standard XML.
 
-       - Official web site: https://publications.europa.eu/en/web/eu-vocabularies/formex/
+       - Official web site: https://op.europa.eu/en/web/eu-vocabularies/formex/
 
      - .. image:: /_static/logo-publications-office.png
 

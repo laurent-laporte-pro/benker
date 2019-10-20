@@ -63,6 +63,12 @@ Fixed
   Add support for the ``@width`` CALS-like attribute (table width).
 
 
+Other
+-----
+
+* Change link to the Formex documentation to "https://op.europa.eu/en/web/eu-vocabularies/formex".
+
+
 v0.5.0 (2019-09-25)
 ===================
 

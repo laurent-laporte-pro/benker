@@ -17,7 +17,7 @@ Description
 -----------
 
 .. _Office Open XML File Formats: https://www.ecma-international.org/publications/standards/Ecma-376.htm
-.. _Formex 4 format: https://publications.europa.eu/en/web/eu-vocabularies/formex
+.. _Formex 4 format: https://op.europa.eu/en/web/eu-vocabularies/formex
 
 
 The :func:`~benker.converters.ooxml2formex.convert_ooxml2formex` converter is a function designed to convert tables from an Office Open XML (OOXML) document (which respects the schema defined in `Office Open XML File Formats`_) in the `Formex 4 format`_.

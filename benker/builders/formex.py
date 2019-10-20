@@ -17,7 +17,7 @@ into Formex 4 tables using the Formex 4 schema (formex-05.59-20170418.xd).
 Specifications and examples:
 
 - The Formex 4 documentation and schema is available online in the Publication Office:
-  `Formex Version 4 <https://publications.europa.eu/en/web/eu-vocabularies/formex>`_.
+  `Formex Version 4 <https://op.europa.eu/en/web/eu-vocabularies/formex>`_.
 
 - An example of Formex 4 table is available in the Schema documentation:
   `TBL <https://publications.europa.eu/documents/3938058/5910419/formex_manual_on_screen_version.html/#TBL>`_
