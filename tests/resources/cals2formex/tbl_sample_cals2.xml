@@ -73,7 +73,7 @@
       <CORPUS colsep="1" frame="all" pgwide="1" rowsep="1" tabstyle="Grilledutableau">
         <colspec colname="c1" colwidth="79.92mm"/>
         <colspec colname="c2" colwidth="79.92mm"/>
-        <ROW TYPE="HEADER" rowstyle="ROW-HEADER">
+        <ROW TYPE="HEADER">
           <CELL COL="1" TYPE="HEADER">
             <HT TYPE="BOLD">Header 1</HT>
           </CELL>
@@ -81,7 +81,7 @@
             <HT TYPE="BOLD">Header 2</HT>
           </CELL>
         </ROW>
-        <ROW TYPE="ALIAS" rowstyle="ROW-ALIAS">
+        <ROW TYPE="ALIAS">
           <CELL COL="1" TYPE="ALIAS">(1)</CELL>
           <CELL COL="2" TYPE="ALIAS">(2)</CELL>
         </ROW>
@@ -90,31 +90,31 @@
           <CELL COL="2">Cell B1</CELL>
         </ROW>
         <BLK>
-          <TI.BLK COL.END="2" COL.START="1" rowstyle="TI.BLK-level1">
+          <TI.BLK COL.END="2" COL.START="1">
             <P>
               <HT TYPE="BOLD">TI.BLK title</HT>
             </P>
           </TI.BLK>
-          <STI.BLK COL.END="1" COL.START="1" rowstyle="STI.BLK-level1">
+          <STI.BLK COL.END="1" COL.START="1">
             <P>STI.BLK title</P>
           </STI.BLK>
-          <ROW rowstyle="ROW-level1">
-            <CELL COL="1" COLSPAN="2" nameend="c2" namest="c1">Cell A2-B2</CELL>
+          <ROW>
+            <CELL COL="1" COLSPAN="2">Cell A2-B2</CELL>
           </ROW>
-          <ROW rowstyle="ROW-level1">
-            <CELL COL="1" ROWSPAN="2" morerows="1">Cell A3-A4</CELL>
+          <ROW>
+            <CELL COL="1" ROWSPAN="2">Cell A3-A4</CELL>
             <CELL COL="2">Cell B3</CELL>
           </ROW>
-          <ROW rowstyle="ROW-level1">
+          <ROW>
             <CELL COL="2">Cell B4</CELL>
           </ROW>
           <BLK>
-            <TI.BLK COL.END="2" COL.START="1" rowstyle="TI.BLK-level2">
+            <TI.BLK COL.END="2" COL.START="1">
               <P>
                 <HT TYPE="BOLD">TI.BLK title</HT>
               </P>
             </TI.BLK>
-            <ROW TYPE="TOTAL" rowstyle="ROW-TOTAL-level2">
+            <ROW TYPE="TOTAL">
               <CELL COL="1" TYPE="TOTAL">Cell A5</CELL>
               <CELL COL="2" TYPE="TOTAL">Cell B5</CELL>
             </ROW>

@@ -24,6 +24,12 @@ Fixed
 
 * Documentation: add missing link to ``convert_cals2formex`` in the main page.
 
+* Fix `#4 <https://github.com/laurent-laporte-pro/benker/issues/4>`_: Remove superfluous attributes in cals2formex.
+
+  Change in the :class:`~benker.builders.formex.FormexBuilder` class:
+  Add the :meth: `~benker.builders.formex.FormexBuilder.drop_superfluous_attrs` method:
+  drop superfluous CALS-like attributes at the end of the Formex building.
+
 * Fix `#5 <https://github.com/laurent-laporte-pro/benker/issues/5>`_: The title generation should be optional.
 
   Change in the :class:`~benker.builders.formex4.Formex4Builder` class:

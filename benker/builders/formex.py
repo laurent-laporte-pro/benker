@@ -160,6 +160,10 @@ class FormexBuilder(BaseBuilder):
     def get_cals_qname(self, name):
         return QName(self.cals_ns, name)
 
+    def get_formex_qname(self, name):
+        # note: in the future, we will use a Formex namespace
+        return QName(None, name)
+
     def generate_table_tree(self, table):
         """
         Build the XML table from the Table instance.
@@ -589,12 +593,16 @@ class FormexBuilder(BaseBuilder):
 
         :type  tree: ElementTreeType
         :param tree: The resulting tree.
+
+        .. versionchanged:: 0.5.1
+           Drop superfluous CALS-like attributes at the end of the Formex building.
         """
         fmx_root = tree.getroot()
         self.update_no_seq(fmx_root)
         self.cleanup_tbl_in_tbl(fmx_root)
         self.extract_gr_notes(fmx_root)
         self.insert_blk(fmx_root)
+        self.drop_superfluous_attrs(fmx_root)
 
     # noinspection PyMethodMayBeStatic
     def update_no_seq(self, fmx_root):
@@ -708,3 +716,32 @@ class FormexBuilder(BaseBuilder):
                     fmx_corpus.remove(fmx_row)
                 else:
                     raise NotImplementedError(row_info.tag)
+
+    def drop_superfluous_attrs(self, fmx_root):
+        """
+        Drop superfluous CALS-like attributes at the end of the Formex building.
+
+        - ``@cals:namest`` and ``@cals:nameend`` are defined by ``@COLSPAN``
+        - ``@cals:morerows`` is defined by ``@ROWSPAN``
+        - ``@cals:rowstyle`` is defined by ``ROW/@TYPE``, ``GR.NOTES``, ``TI.BLK`` or ``STI.BLK``.
+
+        :type  fmx_root: ElementType
+        :param fmx_root: Root element of the Formex file.
+
+        .. versionadded:: 0.5.1
+        """
+        cals = self.get_cals_qname
+        fmx = self.get_formex_qname
+        ROW = fmx("ROW").text
+        CELL = fmx("CELL").text
+        GR_NOTES = fmx("GR.NOTES").text
+        TI_BLK = fmx("TI.BLK").text
+        STI_BLK = fmx("STI.BLK").text
+        elements = {ROW, CELL, TI_BLK, STI_BLK, GR_NOTES}
+        for fmx_corpus in fmx_root.xpath("//TBL"):  # type: ElementType
+            context = iterwalk(fmx_corpus, events=("start",), tag=elements)
+            for action, elem in context:
+                elem.attrib.pop(cals("namest"), None)
+                elem.attrib.pop(cals("nameend"), None)
+                elem.attrib.pop(cals("morerows"), None)
+                elem.attrib.pop(cals("rowstyle"), None)

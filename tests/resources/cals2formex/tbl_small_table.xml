@@ -30,7 +30,7 @@
               cals:rowsep="0">
         <cals:colspec cals:colname="c1"/>
         <cals:colspec cals:colname="c2"/>
-        <ROW TYPE="HEADER" cals:rowstyle="ROW-HEADER">
+        <ROW TYPE="HEADER">
           <CELL COL="1" TYPE="HEADER">
             <HT TYPE="BOLD">Header 1</HT>
           </CELL>

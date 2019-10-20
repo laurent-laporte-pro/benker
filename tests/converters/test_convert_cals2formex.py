@@ -9,6 +9,7 @@ import xmldiff.main
 from lxml import etree
 
 from benker.converters.cals2formex import convert_cals2formex
+
 from tests.resources import RESOURCES_DIR
 
 
