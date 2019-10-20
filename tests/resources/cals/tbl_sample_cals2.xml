@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <GENERAL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" NNC="YES"
-         xsi:noNamespaceSchemaLocation="formex-05.59-20170418_jouve.xd">
+         xsi:noNamespaceSchemaLocation="formex-05.59-20170418_ext.xd">
   <BIB.INSTANCE>
     <DOCUMENT.REF FILE="C_2019000EN.01000101.doc.xml">
       <COLL>C</COLL>

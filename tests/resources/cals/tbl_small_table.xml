@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <GENERAL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="formex-05.59-20170418_jouve.xd" NNC="YES">
+         xsi:noNamespaceSchemaLocation="formex-05.59-20170418_ext.xd" NNC="YES">
   <BIB.INSTANCE>
     <DOCUMENT.REF FILE="C_2019000EN.01000101.doc.xml">
       <COLL>C</COLL>
@@ -26,7 +26,7 @@
           <P>Table title</P>
         </TI>
       </TITLE>
-      <cals:table xmlns:cals="https://jouve.com/schemas/opue/doj/formex-cals" cals:frame="none" cals:colsep="0"
+      <cals:table xmlns:cals="https://lib.benker.com/schemas/cals.xsd" cals:frame="none" cals:colsep="0"
                   cals:rowsep="0">
         <cals:tgroup cals:cols="2">
           <cals:colspec cals:colnum="1" cals:colname="c1"/>

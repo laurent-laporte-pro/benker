@@ -7,7 +7,7 @@ For instances:
 
 ```xml
 <GENERAL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="formex-05.59-20170418_jouve.xd"
+         xsi:noNamespaceSchemaLocation="formex-05.59-20170418_ext.xd"
          NNC="YES">
   <BIB.INSTANCE>[...]</BIB.INSTANCE>
   <CONTENTS>

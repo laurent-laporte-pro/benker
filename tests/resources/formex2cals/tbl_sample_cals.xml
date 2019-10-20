@@ -16,8 +16,8 @@ que l'on peut rencontrer dans un tableau Formex.
 Cet exemple contient aussi des attributs et éléments CALS qui aident à la conversion Formex vers CALS.
 -->
 <GENERAL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns:cals="https://jouve.com/schemas/opue/doj/formex-cals"
-         xsi:noNamespaceSchemaLocation="formex-05.59-20170418_jouve.xd" NNC="YES">
+         xmlns:cals="https://lib.benker.com/schemas/cals.xsd"
+         xsi:noNamespaceSchemaLocation="formex-05.59-20170418_ext.xd" NNC="YES">
   <BIB.INSTANCE>
     <DOCUMENT.REF FILE="C_2019000EN.01000101.doc.xml">
       <COLL>C</COLL>

@@ -30,7 +30,7 @@ def test_convert_formex2cals(input_name, expected_name, tmpdir):
         str(dst_xml),
         width_unit='mm',
         cals_prefix="cals",
-        cals_ns="https://jouve.com/schemas/opue/doj/formex-cals",
+        cals_ns="https://lib.benker.com/schemas/cals.xsd",
     )
 
     # - Compare with expected
@@ -38,7 +38,7 @@ def test_convert_formex2cals(input_name, expected_name, tmpdir):
     expected_xml = RESOURCES_DIR.join(expected_name)  # type: py.path.local
     if expected_xml.exists():
         expected_tree = etree.parse(str(expected_xml), parser=xml_parser)
-        NS = {"cals": "https://jouve.com/schemas/opue/doj/formex-cals"}
+        NS = {"cals": "https://lib.benker.com/schemas/cals.xsd"}
         expected_elements = expected_tree.xpath("//cals:table", namespaces=NS)
         dst_tree = etree.parse(str(dst_xml), parser=xml_parser)
         dst_elements = dst_tree.xpath("//cals:table", namespaces=NS)

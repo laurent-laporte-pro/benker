@@ -21,19 +21,19 @@ from tests.resources import RESOURCES_DIR
             "cals/tbl_small_table.xml",
             "cals2formex/tbl_small_table.xml",
             "cals",
-            "https://jouve.com/schemas/opue/doj/formex-cals",
+            "https://lib.benker.com/schemas/cals.xsd",
         ),
         (
             "cals/tbl_sample.xml",
             "cals2formex/tbl_sample.xml",
             "cals",
-            "https://jouve.com/schemas/opue/doj/formex-cals",
+            "https://lib.benker.com/schemas/cals.xsd",
         ),
         (
             "cals/tbl_sample_formex.xml",
             "cals2formex/tbl_sample_formex.xml",
             "cals",
-            "https://jouve.com/schemas/opue/doj/formex-cals",
+            "https://lib.benker.com/schemas/cals.xsd",
         ),
         (
             "cals/tbl_sample_cals2.xml",
