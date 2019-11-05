@@ -1,4 +1,4 @@
 CALS documents
 ==============
 
-This directory contains CALS documents with tables.
+This directory contains documents with CALS tables.
