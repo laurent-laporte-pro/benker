@@ -41,6 +41,12 @@ from tests.resources import RESOURCES_DIR
             None,
             None,
         ),
+        (
+            "cals/fix_9_lost_text_in_entries.xml",
+            "cals2formex/fix_9_lost_text_in_entries.xml",
+            None,
+            None,
+        ),
     ],
     # fmt: on
 )

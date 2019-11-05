@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TBL COLS="2" NO.SEQ="0001">
+<table>
+<tgroup cols="3">
+<colspec colname="c1" colnum="1"/>
+<colspec colname="c2" colnum="2"/>
+<colspec colname="c3" colnum="3"/>
+<tbody>
+<row rowsep="1">
+<entry><?A3B2 h 6?>Orthohantavirus (G)</entry>
+<entry>Orthohantavirus (G)</entry>
+<entry><HT TYPE="BOLD">Orthohantavirus (G)</HT></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</TBL>

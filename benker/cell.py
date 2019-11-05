@@ -107,6 +107,24 @@ binary_type = type(b"")
 string_types = text_type, binary_type
 
 
+def _safe_text(t):
+    if t is None:
+        return u""
+    elif isinstance(t, binary_type):
+        return t.decode('utf-8')
+    else:
+        return t
+
+
+def _get_node_text(node):
+    if isinstance(node.tag, string_types):
+        # etree._Element
+        return _safe_text(node.text) + u"".join(map(_get_node_text, node)) + _safe_text(node.tail)
+    else:
+        # etree._ProcessingInstruction or etree._Comment
+        return _safe_text(node.tail)
+
+
 def get_content_text(content):
     """
     Try hard to extract a good string representation of the cell content.
@@ -143,6 +161,9 @@ def get_content_text(content):
         - else: return a concatenation of the string representation of the content items.
 
     .. versionadded:: 0.4.1
+
+    .. versionchanged:: 0.5.1
+       Returns the XML Element text and tail text.
     """
     if content is None:
         return u""
@@ -155,15 +176,7 @@ def get_content_text(content):
     if isinstance(content, Sequence):
         return u"".join(get_content_text(node) for node in content)
     if hasattr(content, 'tag'):
-        tag = content.tag
-        if isinstance(tag, string_types):
-            # etree._Element
-            text = content.xpath('string()')
-            if isinstance(text, binary_type):
-                return text.decode('utf-8')  # PY2
-            return text
-        # etree._ProcessingInstruction or etree._Comment
-        return u""
+        return _get_node_text(content)
     return text_type(content)
 
 
