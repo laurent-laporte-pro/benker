@@ -188,6 +188,7 @@ class Cell(Styled):
     .. versionchanged:: 0.4.2
        The default value of *nature* is ``None`` (instead of "body").
     """
+
     __slots__ = ('content', '_box')
 
     def __init__(self, content, styles=None, nature=None, x=1, y=1, width=1, height=1):
@@ -223,14 +224,15 @@ class Cell(Styled):
 
     def __repr__(self):
         cls = self.__class__.__name__
-        return ("<{cls}({self.content!r}, "
-                "styles={self.styles!r}, "
-                "nature={self.nature!r}, "
-                "x={self.min.x!r}, "
-                "y={self.min.y!r}, "
-                "width={self.width!r}, "
-                "height={self.height!r})>"
-                .format(cls=cls, self=self))
+        return (
+            "<{cls}({self.content!r}, "
+            "styles={self.styles!r}, "
+            "nature={self.nature!r}, "
+            "x={self.min.x!r}, "
+            "y={self.min.y!r}, "
+            "width={self.width!r}, "
+            "height={self.height!r})>".format(cls=cls, self=self)
+        )
 
     @property
     def box(self):
@@ -288,13 +290,15 @@ class Cell(Styled):
         :return: a copy of this cell after transformation.
         """
         box = self.box.transform(coord=coord, size=size)
-        cell = Cell(self.content,
-                    styles=self.styles,
-                    nature=self.nature,
-                    x=box.min.x,
-                    y=box.min.y,
-                    width=box.width,
-                    height=box.height)
+        cell = Cell(
+            self.content,
+            styles=self.styles,
+            nature=self.nature,
+            x=box.min.x,
+            y=box.min.y,
+            width=box.width,
+            height=box.height,
+        )
         return cell
 
     def move_to(self, coord):
