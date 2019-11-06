@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <TBL COLS="2" NO.SEQ="0001">
 <CORPUS frame="none" colsep="0" rowsep="0">
-<colspec colname="c1"/>
-<colspec colname="c2"/>
-<colspec colname="c3"/>
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
 <ROW rowsep="1">
 <CELL COL="1"><?A3B2 h 6?>Orthohantavirus (G)</CELL>
 <CELL COL="2">Orthohantavirus (G)</CELL>

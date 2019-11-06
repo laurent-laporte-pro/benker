@@ -79,6 +79,11 @@ Fixed
   Change in the :class:`~benker.parsers.cals.CalsParser` class:
   Add the ``width_unit`` option, and add support for the ``@cals:width`` attribute (table width).
 
+* Fix `#12 <https://github.com/laurent-laporte-pro/benker/issues/12>`_: Cals 2 Formex conversion: missing ``colspec`` attributes.
+
+  Change in the :class:`~benker.builders.formex.FormexBuilder` class:
+  Add support for CALS-like attributes: ``@colnum`` and ``@align`` in the ``colspec`` element.
+
 
 Other
 -----

@@ -84,10 +84,9 @@ que l'on peut rencontrer dans un tableau Formex.
           <P>Table note</P>
         </NOTE>
       </GR.NOTES>
-      <CORPUS xmlns:cals="https://lib.benker.com/schemas/cals.xsd" cals:frame="none" cals:colsep="0"
-              cals:rowsep="0">
-        <cals:colspec cals:colname="c1"/>
-        <cals:colspec cals:colname="c2"/>
+      <CORPUS xmlns:cals="https://lib.benker.com/schemas/cals.xsd" cals:frame="none" cals:colsep="0" cals:rowsep="0">
+        <cals:colspec cals:colnum="1" cals:colname="c1"/>
+        <cals:colspec cals:colnum="2" cals:colname="c2"/>
         <ROW TYPE="HEADER">
           <CELL COL="1" TYPE="HEADER">
             <HT TYPE="BOLD">Header 1</HT>

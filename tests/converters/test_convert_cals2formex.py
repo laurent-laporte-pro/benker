@@ -53,6 +53,12 @@ from tests.resources import RESOURCES_DIR
             None,
             None,
         ),
+        (
+            "cals/fix_12_missing_colspec_attributes.xml",
+            "cals2formex/fix_12_missing_colspec_attributes.xml",
+            None,
+            None,
+        ),
     ],
     # fmt: on
 )

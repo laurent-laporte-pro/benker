@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TBL COLS="3" NO.SEQ="0001">
+<CORPUS frame="topbot" colsep="0" rowsep="0">
+<colspec colname="c1" colwidth="111.40mm" colsep="1"/>
+<colspec colname="c2" colwidth="22.00mm" colsep="1" align="center"/>
+<colspec colname="c3" colwidth="22.00mm" align="center"/>
+<ROW>
+<CELL COL="1">A1</CELL>
+<CELL COL="2">B1</CELL>
+<CELL COL="3">C1</CELL>
+</ROW>
+</CORPUS>
+</TBL>

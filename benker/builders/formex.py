@@ -367,15 +367,30 @@ class FormexBuilder(BaseBuilder):
 
         .. versionchanged:: 0.5.0
            Add support for CALS-like elements and attributes.
+
+        .. versionchanged:: 0.5.1
+           Add support for CALS-like attributes: ``@colnum`` and ``@align``.
         """
         col_styles = col.styles
         cals = self.get_cals_qname
-        attrs = {cals("colname"): u"c{0}".format(col.col_pos)}
+
+        # -- @cals:colnum
+        # -- @cals:colname
+        attrs = {cals(u"colnum"): u"{0}".format(col.col_pos), cals(u"colname"): u"c{0}".format(col.col_pos)}
+
+        # -- @cals:colwidth
         if "width" in col_styles:
             width, unit = parse_width(col_styles["width"])
             value = convert_value(width, unit, self.width_unit)
             attrs[cals("colwidth")] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
-        etree.SubElement(group_elem, cals("colspec"), attrib=attrs)
+
+        # -- @cals:align
+        align = col_styles.get("align")
+        align_map = {"left": "left", "right": "right", "center": "center", "justify": "justify"}
+        if align in align_map:
+            attrs[cals("align")] = align_map[align]
+
+        etree.SubElement(group_elem, cals(u"colspec"), attrib=attrs, nsmap=self.ns_map)
 
     def build_row(self, corpus_elem, row):
         """

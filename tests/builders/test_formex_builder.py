@@ -423,8 +423,8 @@ def test_build_tbl__use_cals():
     expected = etree.XML(u"""\
     <TBL NO.SEQ="0001" COLS="2" PAGE.SIZE="SINGLE.LANDSCAPE">
       <CORPUS frame="topbot" colsep="0" rowsep="0" orient="land" pgwide="1" bgcolor="blue" width="180.00mm">
-        <colspec colname="c1"/>
-        <colspec colname="c2"/>
+        <colspec colname="c1" colnum="1"/>
+        <colspec colname="c2" colnum="2"/>
         <ROW TYPE="HEADER">
           <CELL COL="1" align="center">
             <P>Expert group</P>

@@ -88,8 +88,8 @@ Cet exemple contient aussi des attributs et éléments CALS qui aident à la con
         </NOTE>
       </GR.NOTES>
       <CORPUS cals:frame="all" cals:colsep="1" cals:rowsep="1" cals:tabstyle="Grilledutableau" cals:pgwide="1">
-        <cals:colspec cals:colname="c1" cals:colwidth="80.00mm"/>
-        <cals:colspec cals:colname="c2" cals:colwidth="60.00mm"/>
+        <cals:colspec cals:colnum="1" cals:colname="c1" cals:colwidth="80.00mm" cals:align="left"/>
+        <cals:colspec cals:colnum="2" cals:colname="c2" cals:colwidth="60.00mm" cals:align="center"/>
         <ROW TYPE="HEADER">
           <CELL COL="1" TYPE="HEADER">
             <HT TYPE="BOLD">Header 1</HT>
