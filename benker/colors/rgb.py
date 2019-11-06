@@ -5,6 +5,7 @@ RGB Colors
 
 RGB/RGBA color parser, formatter and converter.
 """
+from __future__ import division
 
 import re
 
@@ -17,12 +18,12 @@ def parse_hex8(text, rgb_scale=255):
     mo = _match_hex8(text)
     if mo:
         r, g, b, a = mo.group("r", "g", "b", "a")
-        k = rgb_scale / 255.0
+        k = rgb_scale / 255
         r = int(r, 16) * k
         g = int(g, 16) * k
         b = int(b, 16) * k
         if a:
-            a = int(a, 16) / 255.0
+            a = int(a, 16) / 255
             return r, g, b, a
         else:
             return r, g, b, None
@@ -31,14 +32,14 @@ def parse_hex8(text, rgb_scale=255):
 
 
 def format_hex8(r, g, b, a=None, rgb_scale=255):
-    k = rgb_scale / 255.0
-    r = round(r / k)
-    g = round(g / k)
-    b = round(b / k)
+    k = rgb_scale / 255
+    r = int(round(r / k))
+    g = int(round(g / k))
+    b = int(round(b / k))
     if a is None:
         fmt = "#{r:02x}{g:02x}{b:02x}"
     else:
-        a = round(a * 255.0)
+        a = int(round(a * 255))
         fmt = "#{r:02x}{g:02x}{b:02x}{a:02x}"
     return fmt.format(r=r, g=g, b=b, a=a)
 
@@ -62,12 +63,12 @@ def parse_hex4(text, rgb_scale=255):
     mo = _match_hex4(text)
     if mo:
         r, g, b, a = mo.group("r", "g", "b", "a")
-        k = rgb_scale / 255.0
+        k = rgb_scale / 255
         r = int(r * 2, 16) * k
         g = int(g * 2, 16) * k
         b = int(b * 2, 16) * k
         if a:
-            a = int(a * 2, 16) / 255.0
+            a = int(a * 2, 16) / 255
             return r, g, b, a
         else:
             return r, g, b, None
@@ -76,14 +77,14 @@ def parse_hex4(text, rgb_scale=255):
 
 
 def format_hex4(r, g, b, a=None, rgb_scale=255):
-    k = rgb_scale / 255.0
-    r = round(r / k / 17)
-    g = round(g / k / 17)
-    b = round(b / k / 17)
+    k = rgb_scale / 255
+    r = int(round(r / k / 17))
+    g = int(round(g / k / 17))
+    b = int(round(b / k / 17))
     if a is None:
         fmt = "#{r:01x}{g:01x}{b:01x}"
     else:
-        a = round(a * 255.0 / 17)
+        a = int(round(a * 255 / 17))
         fmt = "#{r:01x}{g:01x}{b:01x}{a:01x}"
     return fmt.format(r=r, g=g, b=b, a=a)
 
@@ -106,7 +107,7 @@ _match_rgba = re.compile(r"^rgba?\(([^)]+)\)$", flags=re.I).match
 def _parse_num_value(value, rgb_scale):
     # type: (str, float) -> float
     if value.endswith("%"):
-        return float(value[:-1]) * rgb_scale / 100.0
+        return float(value[:-1]) * rgb_scale / 100
     else:
         return float(value)
 
@@ -124,7 +125,7 @@ def parse_rgba(text, rgb_scale=255):
         else:
             raise ValueError(text)
         try:
-            k = rgb_scale / 255.0
+            k = rgb_scale / 255
             r = _parse_num_value(r, 255) * k
             g = _parse_num_value(g, 255) * k
             b = _parse_num_value(b, 255) * k
@@ -140,7 +141,7 @@ def parse_rgba(text, rgb_scale=255):
 
 
 def format_rgba(r, g, b, a=None, rgb_scale=255):
-    k = rgb_scale / 255.0
+    k = rgb_scale / 255
     r = round(r / k)
     g = round(g / k)
     b = round(b / k)
@@ -152,12 +153,12 @@ def format_rgba(r, g, b, a=None, rgb_scale=255):
 
 
 def format_rgba_percent(r, g, b, a=None, rgb_scale=255):
-    r = round(r / rgb_scale * 100.0, 2)
-    g = round(g / rgb_scale * 100.0, 2)
-    b = round(b / rgb_scale * 100.0, 2)
+    r = round(r / rgb_scale * 100, 2)
+    g = round(g / rgb_scale * 100, 2)
+    b = round(b / rgb_scale * 100, 2)
     if a is None:
         fmt = "rgb({r:.5g}%, {g:.5g}%, {b:.5g}%)"
     else:
-        a = round(a * 100.0, 2)
+        a = round(a * 100, 2)
         fmt = "rgba({r:.5g}%, {g:.5g}%, {b:.5g}%, {a:.5g}%)"
     return fmt.format(r=r, g=g, b=b, a=a)
