@@ -55,9 +55,7 @@ def format_hex6_upper(r, g, b, a=None, scale=255):
     return format_hex8(r, g, b, a=a, scale=scale)[:8].upper()
 
 
-_match_hex4 = re.compile(
-    r"^#(?P<r>[0-9a-f])(?P<g>[0-9a-f])(?P<b>[0-9a-f])(?P<a>[0-9a-f])?$", flags=re.I
-).match
+_match_hex4 = re.compile(r"^#(?P<r>[0-9a-f])(?P<g>[0-9a-f])(?P<b>[0-9a-f])(?P<a>[0-9a-f])?$", flags=re.I).match
 
 
 def parse_hex4(text, scale=255):
