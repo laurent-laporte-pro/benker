@@ -1013,6 +1013,9 @@ class OoxmlParser(BaseParser):
 
         :type  w_tc: etree._Element
         :param w_tc: Table element.
+
+        .. versionchanged:: 0.5.1
+           XML indentation between cell paragraphs is ignored.
         """
         state = self._state
 
@@ -1106,4 +1109,7 @@ class OoxmlParser(BaseParser):
             # todo: calculate the ``@rotate`` attribute.
 
             content = w_tc.xpath('w:p | w:tbl', namespaces=NS)
+            # ignore the *tail* (if the XML is indented)
+            for node in content:
+                node.tail = None
             state.row.insert_cell(content, width=width, height=height, styles=styles)

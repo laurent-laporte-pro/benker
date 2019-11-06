@@ -62,6 +62,9 @@ Fixed
   Change in the :class:`~benker.builders.formex.FormexBuilder` class:
   Add support for the ``@width`` CALS-like attribute (table width).
 
+* Minor change in the :class:`~benker.parsers.ooxml.OoxmlParser` class:
+  XML indentation between cell paragraphs is ignored.
+
 
 Other
 -----
