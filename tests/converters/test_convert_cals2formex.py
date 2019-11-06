@@ -47,6 +47,12 @@ from tests.resources import RESOURCES_DIR
             None,
             None,
         ),
+        (
+            "cals/fix_11_corpus_width_missing.xml",
+            "cals2formex/fix_11_corpus_width_missing.xml",
+            None,
+            None,
+        ),
     ],
     # fmt: on
 )

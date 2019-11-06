@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TBL COLS="2" NO.SEQ="0001">
+<table frame="topbot" colsep="0" rowsep="0" width="162">
+<tgroup cols="2">
+<colspec colname="c1" colnum="1"/>
+<colspec colname="c2" colnum="2"/>
+<tbody>
+<row rowsep="1">
+<entry>A1</entry>
+<entry>B1</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</TBL>

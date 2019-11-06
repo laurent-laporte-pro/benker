@@ -62,6 +62,8 @@ from benker.parsers.cals.frame_styles import BORDER_NONE
 from benker.parsers.cals.frame_styles import BORDER_SOLID
 from benker.parsers.cals.frame_styles import get_frame_styles
 from benker.table import Table
+from benker.units import convert_value
+from benker.units import parse_width
 
 # noinspection PyProtectedMember
 #: Element Type
@@ -73,7 +75,7 @@ class CalsParser(BaseParser):
     CALS tables parser
     """
 
-    def __init__(self, builder, cals_ns=None, **options):
+    def __init__(self, builder, cals_ns=None, width_unit="mm", **options):
         """
         Construct a parser
 
@@ -85,11 +87,19 @@ class CalsParser(BaseParser):
             Namespace to use for CALS elements and attributes.
             Set ``None`` (or "") if you don't use namespace in your XML.
 
+        :param str width_unit:
+            Unit to use for table/column widths.
+            Possible values are: 'cm', 'dm', 'ft', 'in', 'm', 'mm', 'pc', 'pt', 'px'.
+
         :keyword str options: Extra conversion options.
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
+
+        .. versionchanged:: 0.5.1
+           Add the options *width_unit*.
         """
         self.cals_ns = cals_ns
+        self.width_unit = width_unit
         super(CalsParser, self).__init__(builder, **options)
 
     def get_cals_qname(self, name):
@@ -194,6 +204,17 @@ class CalsParser(BaseParser):
         return self._state
 
     def parse_cals_table(self, cals_table):
+        """
+        Parse a CALS ``table`` element.
+
+        :type  cals_table: ElementType
+        :param cals_table: CALS table Element.
+
+        :return: State of the parser (for debug purpose).
+
+        .. versionchanged:: 0.5.1
+           Add support for the ``@cals:width`` attribute (table width).
+        """
         cals = self.get_cals_qname
         styles = {}
         nature = None
@@ -235,6 +256,13 @@ class CalsParser(BaseParser):
         tabstyle = cals_table.attrib.get(cals("tabstyle"))
         if tabstyle:
             nature = tabstyle
+
+        # -- attribute @cals:tabstyle
+        width = cals_table.attrib.get(cals("width"))
+        if width:
+            width, unit = parse_width(width)
+            value = convert_value(width, unit, self.width_unit)
+            styles["width"] = u"{value:0.2f}{unit}".format(value=value, unit=self.width_unit)
 
         return self.setup_table(styles, nature)
 

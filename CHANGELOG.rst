@@ -74,6 +74,11 @@ Fixed
   Change in the :class:`~benker.builders.cals.CalsBuilder` and :class:`~benker.builders.formex.FormexBuilder` classes:
   Preserve processing instruction in cell content.
 
+* Fix `#11 <https://github.com/laurent-laporte-pro/benker/issues/11>`_: Cals 2 Formex conversion: missing ``CORPUS/@width``.
+
+  Change in the :class:`~benker.parsers.cals.CalsParser` class:
+  Add the ``width_unit`` option, and add support for the ``@cals:width`` attribute (table width).
+
 
 Other
 -----

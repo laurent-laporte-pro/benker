@@ -139,6 +139,7 @@ def test_setup_table():
         ({"pgwide": "1"}, {"x-sect-cols": "1"}, None),
         ({"bgcolor": "#00ff00"}, {"background-color": "#00ff00"}, None),
         ({"tabstyle": "BeautifulTable"}, {}, "BeautifulTable"),
+        ({"width": "162"}, {'width': '162.00mm'}, None),
     ],
 )
 def test_parse_cals_table(attrib, styles, nature):

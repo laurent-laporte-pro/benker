@@ -45,6 +45,10 @@ def convert_cals2formex(src_xml, dst_xml, **options):
             Namespace to use for CALS elements and attributes parsing.
             Set ``None`` (or "") if you don't use namespace in your XML.
 
+        ``width_unit`` (default: "mm"):
+            Unit to use for table/column widths.
+            Possible values are: 'cm', 'dm', 'ft', 'in', 'm', 'mm', 'pc', 'pt', 'px'.
+
         **Formex 4 builder options:**
 
         ``use_cals`` (default: ``False``):
@@ -59,7 +63,7 @@ def convert_cals2formex(src_xml, dst_xml, **options):
             Namespace prefix to use for CALS-like elements and attributes (requires: ``use_cals``).
 
         ``width_unit`` (default: "mm"):
-            Unit to use for column widths (requires: ``use_cals``).
+            Unit to use for table/column widths (requires: ``use_cals``).
             Possible values are: 'cm', 'dm', 'ft', 'in', 'm', 'mm', 'pc', 'pt', 'px'.
     """
     converter = Cals2FormexConverter()
