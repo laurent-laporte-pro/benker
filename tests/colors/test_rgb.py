@@ -1,4 +1,6 @@
 # coding: utf-8
+from __future__ import division
+
 import pytest
 
 from benker.colors.rgb import format_hex3
@@ -22,7 +24,7 @@ from benker.colors.rgb import parse_rgba
         ("#00000000", (0, 0, 0, 0)),
         ("#000000", (0, 0, 0, None)),
         ("#ffFFffFF", (0xFF, 0xFF, 0xFF, 1)),
-        ("#FF8040C0", (0xFF, 0x80, 0x40, 0xC0 / 255.0)),
+        ("#FF8040C0", (0xFF, 0x80, 0x40, 0xC0 / 255)),
     ],
 )
 def test_parse_hex8(text, expected):
@@ -36,7 +38,7 @@ def test_parse_hex8(text, expected):
         ("#00000000", (0, 0, 0, 0)),
         ("#000000", (0, 0, 0, None)),
         ("#ffFFffFF", (1, 1, 1, 1)),
-        ("#FF8040C0", (1, 0x80 / 255.0, 0x40 / 255.0, 0xC0 / 255.0)),
+        ("#FF8040C0", (1, 0x80 / 255, 0x40 / 255, 0xC0 / 255)),
     ],
 )
 def test_parse_hex8__scale1(text, expected):
@@ -88,7 +90,7 @@ def test_format_hex8(rgba, expected):
         ((0, 0, 0, 0), "#00000000"),
         ((0, 0, 0, None), "#000000"),
         ((1, 1, 1, 1), "#ffffffff"),
-        ((1, 0x80 / 255.0, 0x40 / 255.0, 0xC0 / 255.0), "#ff8040c0"),
+        ((1, 0x80 / 255, 0x40 / 255, 0xC0 / 255), "#ff8040c0"),
     ],
 )
 def test_format_hex8__scale1(rgba, expected):
@@ -101,8 +103,8 @@ def test_format_hex8__scale1(rgba, expected):
     [
         ("#0000", (0, 0, 0, 0)),
         ("#000", (0, 0, 0, None)),
-        ("#fFfF", (0xFF, 0xFF, 0xFF, 0xFF / 255.0)),
-        ("#F84C", (0xFF, 0x88, 0x44, 0xCC / 255.0)),
+        ("#fFfF", (0xFF, 0xFF, 0xFF, 0xFF / 255)),
+        ("#F84C", (0xFF, 0x88, 0x44, 0xCC / 255)),
     ],
 )
 def test_parse_hex4(text, expected):
@@ -115,8 +117,8 @@ def test_parse_hex4(text, expected):
     [
         ("#0000", (0, 0, 0, 0)),
         ("#000", (0, 0, 0, None)),
-        ("#fFfF", (0xFF / 255.0, 0xFF / 255.0, 0xFF / 255.0, 0xFF / 255.0)),
-        ("#F84C", (0xFF / 255.0, 0x88 / 255.0, 0x44 / 255.0, 0xCC / 255.0)),
+        ("#fFfF", (0xFF / 255, 0xFF / 255, 0xFF / 255, 0xFF / 255)),
+        ("#F84C", (0xFF / 255, 0x88 / 255, 0x44 / 255, 0xCC / 255)),
     ],
 )
 def test_parse_hex4__scale1(text, expected):
@@ -129,8 +131,8 @@ def test_parse_hex4__scale1(text, expected):
     [
         ("#0000", (0, 0, 0, 0)),
         ("#000", (0, 0, 0, None)),
-        ("#fFfF", (0xFF / 255.0, 0xFF / 255.0, 0xFF / 255.0, 0xFF / 255.0)),
-        ("#F84C", (0xFF / 255.0, 0x88 / 255.0, 0x44 / 255.0, 0xCC / 255.0)),
+        ("#fFfF", (0xFF / 255, 0xFF / 255, 0xFF / 255, 0xFF / 255)),
+        ("#F84C", (0xFF / 255, 0x88 / 255, 0x44 / 255, 0xCC / 255)),
     ],
 )
 def test_parse_hex4__scale1(text, expected):
@@ -169,7 +171,7 @@ def test_format_hex4(rgba, expected):
         ((0, 0, 0, 0), "#0000"),
         ((0, 0, 0, None), "#000"),
         ((1, 1, 1, 1), "#ffff"),
-        ((1, 0x88 / 255.0, 0x44 / 255.0, 0xCC / 255.0), "#f84c"),
+        ((1, 0x88 / 255, 0x44 / 255, 0xCC / 255), "#f84c"),
     ],
 )
 def test_format_hex4__scale1(rgba, expected):
@@ -198,7 +200,7 @@ def test_parse_rgba(text, expected):
         ("rgba(0,0,0,0)", (0, 0, 0, 0)),
         ("rgb(0,0,0)", (0, 0, 0, None)),
         ("rgba(255, 255, 255, 1)", (1, 1, 1, 1)),
-        ("rgba(255, 128, 64, 0.75)", (1, 128 / 255.0, 64 / 255, 0.75)),
+        ("rgba(255, 128, 64, 0.75)", (1, 128 / 255, 64 / 255, 0.75)),
         ("rgba(100%, 50%, 25%, 75%)", (1, 0.5, 0.25, 0.75)),
     ],
 )
@@ -229,7 +231,7 @@ def test_format_rgba(rgba, expected):
         ((0, 0, 0, 0), "rgba(0, 0, 0, 0)"),
         ((1, 1, 1, 1), "rgba(255, 255, 255, 1)"),
         ((1, 0.5, 0.25, 0.75), "rgba(255, 128, 64, 0.75)"),
-        ((123 / 255.0, 234 / 255.0, 17 / 255.0, 1 / 3.0), "rgba(123, 234, 17, 0.333333)"),
+        ((123 / 255, 234 / 255, 17 / 255, 1 / 3), "rgba(123, 234, 17, 0.333333)"),
     ],
 )
 def test_format_rgba__scale1(rgba, expected):
@@ -244,7 +246,7 @@ def test_format_rgba__scale1(rgba, expected):
         ((0, 0, 0, 0), "rgba(0%, 0%, 0%, 0%)"),
         ((255, 255, 255, 1), "rgba(100%, 100%, 100%, 100%)"),
         ((255, 127.5, 63.75, 0.75), "rgba(100%, 50%, 25%, 75%)"),
-        ((123, 234, 17, 1 / 3.0), "rgba(48.24%, 91.76%, 6.67%, 33.33%)"),
+        ((123, 234, 17, 1 / 3), "rgba(48.24%, 91.76%, 6.67%, 33.33%)"),
     ],
 )
 def test_format_rgba_percent(rgba, expected):
