@@ -482,17 +482,33 @@ def test_parse_fmx_cell__with_cals():
     assert cell.size == (3, 2)
 
 
-def test_parse_fmx_colspec():
-    E = ElementMaker()
-    cals_colspec = E.colspec(
-        colnum="1", colname="c1", colwidth="70mm", colsep="0", rowsep="1", align="char", char=",", charoff="50"
-    )
+@pytest.mark.parametrize(
+    "attrib, styles, nature",
+    [
+        ({"colnum": "2"}, {}, None),
+        ({"colsep": "0"}, {"border-right": BORDER_NONE}, None),
+        ({"colsep": "1"}, {"border-right": BORDER_SOLID}, None),
+        ({"rowsep": "0"}, {"border-bottom": BORDER_NONE}, None),
+        ({"rowsep": "1"}, {"border-bottom": BORDER_SOLID}, None),
+        ({"colwidth": "5mm"}, {"width": "5mm"}, None),
+        ({"align": "left"}, {"align": "left"}, None),
+        ({"align": "right"}, {"align": "right"}, None),
+        ({"align": "center"}, {"align": "center"}, None),
+        ({"align": "justify"}, {"align": "justify"}, None),
+        ({"align": "char"}, {"align": "left"}, None),
+    ],
+)
+def test_parse_fmx_colspec(attrib, styles, nature):
+    cals_colspec = etree.Element("colspec", attrib=attrib)
     parser = FormexParser(BaseBuilder())
-    state = parser.setup_table()
-    parser.parse_fmx_colspec(cals_colspec)
-    table = state.table
-    col = table.cols[1]
-    assert col.styles == {'align': 'left', 'width': '70mm', 'border-bottom': 'solid 1pt black', 'border-right': 'none'}
+    parser.setup_table()
+    state = parser._state
+    state.next_col()
+    state = parser.parse_fmx_colspec(cals_colspec)
+    col_pos = int(attrib.get("colnum", 1))
+    col = state.table.cols[col_pos]
+    assert col.styles == styles
+    assert col.nature == nature
 
 
 @pytest.mark.parametrize(
