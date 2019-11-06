@@ -65,6 +65,15 @@ Fixed
 * Minor change in the :class:`~benker.parsers.ooxml.OoxmlParser` class:
   XML indentation between cell paragraphs is ignored.
 
+* Fix `#9 <https://github.com/laurent-laporte-pro/benker/issues/9>`_: Cals 2 Formex conversion:
+  Text and PIs lost in entries.
+
+  Add the :meth:`~benker.builders.base_builder.BaseBuilder.append_cell_elements` method:
+  Append XML elements, PIs or texts to a cell element.
+
+  Change in the :class:`~benker.builders.cals.CalsBuilder` and :class:`~benker.builders.formex.FormexBuilder` classes:
+  Preserve processing instruction in cell content.
+
 
 Other
 -----

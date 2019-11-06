@@ -516,6 +516,9 @@ class FormexBuilder(BaseBuilder):
         .. versionchanged:: 0.5.0
            Add support for CALS-like elements and attributes.
            Add support for ``bgcolor`` (Table background color).
+
+        .. versionchanged:: 0.5.1
+           Preserve processing instruction in cell content.
         """
         cell_styles = cell.styles
         attrs = {"COL": str(cell.box.min.x)}
@@ -567,19 +570,11 @@ class FormexBuilder(BaseBuilder):
                 attrs[cals("bgcolor")] = cell_styles["background-color"]
 
         cell_elem = etree.SubElement(row_elem, u"CELL", attrib=attrs)
-        text = text_type(cell)
-        if text:
-            if cell.content is not None:
-                for node in cell.content:
-                    # noinspection PyProtectedMember
-                    if isinstance(node, ElementType):
-                        cell_elem.append(node)
-                    else:
-                        text = cell_elem.text or ""
-                        cell_elem.text = text + node
-        else:
+        self.append_cell_elements(cell_elem, cell.content)
+        if not text_type(cell):
             # The IE element is used to explicitly indicate
             # that specific structures have an empty content.
+            etree.strip_tags(cell_elem, "*")
             etree.SubElement(cell_elem, u"IE")
 
     def finalize_tree(self, tree):
@@ -714,7 +709,7 @@ class FormexBuilder(BaseBuilder):
                     fmx_title.text = fmx_cell.text
                     fmx_title.extend(fmx_cell.getchildren())
                     fmx_corpus.remove(fmx_row)
-                else:
+                else:  # pragma: no cover
                     raise NotImplementedError(row_info.tag)
 
     def drop_superfluous_attrs(self, fmx_root):

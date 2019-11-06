@@ -492,6 +492,9 @@ class CalsBuilder(BaseBuilder):
 
         .. versionchanged:: 0.5.0
            Add support for ``bgcolor``.
+
+        .. versionchanged:: 0.5.1
+           Preserve processing instruction in cell content.
         """
         # support for CALS namespace
         cals = self.cals_ns.get_qname
@@ -536,11 +539,4 @@ class CalsBuilder(BaseBuilder):
             attrs[cals("bgcolor")] = cell_styles["background-color"]
 
         entry_elem = etree.SubElement(row_elem, cals(u"entry"), attrib=attrs, nsmap=self.ns_map)
-        if cell.content is not None:
-            for node in cell.content:
-                # noinspection PyProtectedMember
-                if isinstance(node, ElementType):
-                    entry_elem.append(node)
-                else:
-                    text = entry_elem.text or ""
-                    entry_elem.text = text + node
+        self.append_cell_elements(entry_elem, cell.content)
