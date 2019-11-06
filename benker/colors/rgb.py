@@ -102,3 +102,52 @@ def format_hex3_upper(r, g, b, a=None, scale=255):
     return format_hex4(r, g, b, a=a, scale=scale)[:4].upper()
 
 
+_match_rgba = re.compile(r"^rgba?\(([^)]+)\)$", flags=re.I).match
+
+
+def _parse_num_value(value, scale):
+    # type: (str, float) -> float
+    if value.endswith("%"):
+        return float(value[:-1]) * scale / 100.0
+    else:
+        return float(value)
+
+
+def parse_rgba(text, scale=255):
+    mo = _match_rgba(text)
+    if mo:
+        text = mo.group(1).strip()
+        values = re.split(r"\s*,\s*", text)
+        if len(values) == 4:
+            r, g, b, a = values
+        elif len(values) == 3:
+            r, g, b = values
+            a = None
+        else:
+            raise ValueError(text)
+        try:
+            k = scale / 255.0
+            r = _parse_num_value(r, 255) * k
+            g = _parse_num_value(g, 255) * k
+            b = _parse_num_value(b, 255) * k
+            if a:
+                a = _parse_num_value(a, 1)
+                return r, g, b, a
+            else:
+                return r, g, b, None
+        except ValueError:
+            raise ValueError(text)
+    else:
+        raise ValueError(text)
+
+
+def format_rgba(r, g, b, a=None, scale=255):
+    k = scale / 255.0
+    r = round(r / k)
+    g = round(g / k)
+    b = round(b / k)
+    if a is None:
+        fmt = "rgb({r:g}, {g:g}, {b:g})"
+    else:
+        fmt = "rgba({r:g}, {g:g}, {b:g}, {a:g})"
+    return fmt.format(r=r, g=g, b=b, a=a)
