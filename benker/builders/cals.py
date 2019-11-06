@@ -100,7 +100,7 @@ class CalsBuilder(BaseBuilder):
             Namespace prefix to use for CALS-like elements and attributes to generate.
 
         :param str width_unit:
-            Unit to use for column widths.
+            Unit to use for table/column widths.
             Possible values are: 'cm', 'dm', 'ft', 'in', 'm', 'mm', 'pc', 'pt', 'px'.
 
         :param bool table_in_tgroup:
