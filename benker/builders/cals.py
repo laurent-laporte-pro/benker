@@ -319,8 +319,13 @@ class CalsBuilder(BaseBuilder):
             The unit is defined by the *width_unit* options.
 
         -   ``@align`` horizontal alignment of table entry content.
-            The value can be "left", "right", "center", or "justify"
-            (the value "char" is not supported).
+            Possible values are: "left", "right", "center", "justify" ("char" is not supported).
+
+        -   ``@colsep`` column separators (vertical ruling).
+            Possible values are "0" or "1".
+
+        -   ``@colsep`` row separators (horizontal ruling).
+            Possible values are "0" or "1".
 
         :type  group_elem: ElementType
         :param group_elem: Parent element: ``<tgroup>``.
@@ -330,6 +335,9 @@ class CalsBuilder(BaseBuilder):
 
         .. versionchanged:: 0.5.0
            The ``@colnum`` and ``@align`` attributes are generated.
+
+        .. versionchanged:: 0.5.1
+           The ``@colsep`` and ``@rowsep`` attributes are generated.
         """
         # support for CALS namespace
         cals = self.cals_ns.get_qname
@@ -350,6 +358,14 @@ class CalsBuilder(BaseBuilder):
         align_map = {"left": "left", "right": "right", "center": "center", "justify": "justify"}
         if align in align_map:
             attrs[cals("align")] = align_map[align]
+
+        cell_colsep = get_colsep_attr(col_styles, "border-right")
+        if cell_colsep and cell_colsep != self._table_colsep:
+            attrs[cals("colsep")] = cell_colsep
+
+        cell_rowsep = get_rowsep_attr(col_styles, "border-bottom")
+        if cell_rowsep and cell_rowsep != self._table_rowsep:
+            attrs[cals("rowsep")] = cell_rowsep
 
         etree.SubElement(group_elem, cals(u"colspec"), attrib=attrs, nsmap=self.ns_map)
 

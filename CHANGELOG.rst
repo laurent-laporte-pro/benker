@@ -82,7 +82,11 @@ Fixed
 * Fix `#12 <https://github.com/laurent-laporte-pro/benker/issues/12>`_: Cals 2 Formex conversion: missing ``colspec`` attributes.
 
   Change in the :class:`~benker.builders.formex.FormexBuilder` class:
-  Add support for CALS-like attributes: ``@colnum`` and ``@align`` in the ``colspec`` element.
+  Add support for CALS-like attributes: ``@colnum``, ``@align``, ``@colsep``, and ``@rowsep``
+  in the ``colspec`` element.
+
+  Change in the :class:`~benker.builders.cals.CalsBuilder` class:
+  The ``@colsep`` and ``@rowsep`` attributes are generated.
 
 
 Other

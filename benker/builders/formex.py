@@ -348,10 +348,21 @@ class FormexBuilder(BaseBuilder):
 
         CALS attributes:
 
+        -   ``@colnum`` is the column number.
+
         -   ``@colname`` is the column name. Its format is "c{col_pos}".
 
         -   ``@colwidth`` width of the column (with its unit).
             The unit is defined by the *width_unit* options.
+
+        -   ``@align`` horizontal alignment of table entry content.
+            Possible values are: "left", "right", "center", "justify" ("char" is not supported).
+
+        -   ``@colsep`` column separators (vertical ruling).
+            Possible values are "0" or "1".
+
+        -   ``@colsep`` row separators (horizontal ruling).
+            Possible values are "0" or "1".
 
         .. note::
 
@@ -369,7 +380,7 @@ class FormexBuilder(BaseBuilder):
            Add support for CALS-like elements and attributes.
 
         .. versionchanged:: 0.5.1
-           Add support for CALS-like attributes: ``@colnum`` and ``@align``.
+           Add support for CALS-like attributes: ``@colnum``, ``@align``, ``@colsep``, and ``@rowsep``.
         """
         col_styles = col.styles
         cals = self.get_cals_qname
@@ -389,6 +400,14 @@ class FormexBuilder(BaseBuilder):
         align_map = {"left": "left", "right": "right", "center": "center", "justify": "justify"}
         if align in align_map:
             attrs[cals("align")] = align_map[align]
+
+        cell_colsep = get_colsep_attr(col_styles, "border-right")
+        if cell_colsep and cell_colsep != self._table_colsep:
+            attrs[cals("colsep")] = cell_colsep
+
+        cell_rowsep = get_rowsep_attr(col_styles, "border-bottom")
+        if cell_rowsep and cell_rowsep != self._table_rowsep:
+            attrs[cals("rowsep")] = cell_rowsep
 
         etree.SubElement(group_elem, cals(u"colspec"), attrib=attrs, nsmap=self.ns_map)
 
