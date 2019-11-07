@@ -45,7 +45,7 @@ def test_parse_hsla(text, expected):
     ],
 )
 def test_parse_hsla__scale1(text, expected):
-    h, s, l, a = parse_hsla(text, hsl_scale=1)
+    h, s, l, a = parse_hsla(text, hue_scale=1)
     if expected[3] is None:
         assert (h, s, l) == pytest.approx(expected[:3])
         assert a is None
@@ -77,7 +77,7 @@ def test_format_hsla(hsla, expected):
     ],
 )
 def test_format_hsla__scale1(hsla, expected):
-    text = format_hsla(*hsla, hsl_scale=1)
+    text = format_hsla(*hsla, hue_scale=1)
     assert text == expected
 
 

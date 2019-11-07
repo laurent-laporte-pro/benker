@@ -11,7 +11,6 @@ from __future__ import division
 import colorsys
 import re
 
-
 RGB_SCALE = 255
 CMYK_SCALE = 100
 HSL_SCALE = 360
@@ -288,6 +287,7 @@ class RGBColor(object):
     >>> RGBColor.from_string("LightYellow")
     RGBColor(255, 255, 224)
     """
+
     __slots__ = ("r", "g", "b", "a", "name")
 
     def __init__(self, r, g, b, a=None, name=None):
@@ -319,7 +319,7 @@ class RGBColor(object):
 
     def to_hsla(self, ndigits=2):
         # fixme
-        h,l,s = colorsys.rgb_to_hls(self.r, self.g, self.b)
+        h, l, s = colorsys.rgb_to_hls(self.r, self.g, self.b)
         a, name = self.a, self.name
         if name:
             return name

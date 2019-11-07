@@ -5,7 +5,7 @@ import re
 
 import pytest
 
-from benker.colors.css import CSS_COLOR_NAMES
+from benker.colors.const import CSS_COLOR_NAMES
 from benker.colors.css import css_name_to_rgba
 from benker.colors.css import parse_css_name
 
