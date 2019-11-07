@@ -16,6 +16,7 @@ from benker.colors.rgb import format_rgba_percent
 from benker.colors.rgb import parse_hex4
 from benker.colors.rgb import parse_hex8
 from benker.colors.rgb import parse_rgba
+from benker.colors.rgb import rgba_to_hsla
 
 
 @pytest.mark.parametrize(
@@ -252,3 +253,19 @@ def test_format_rgba__scale1(rgba, expected):
 def test_format_rgba_percent(rgba, expected):
     text = format_rgba_percent(*rgba)
     assert text == expected
+
+
+@pytest.mark.parametrize(
+    "rgb, expected",
+    [
+        ((255, 0, 0), (0, 1, 0.5)),  # red
+        ((0, 255, 0), (120, 1, 0.5)),  # lime
+        ((0, 127.5, 0), (120, 1, 0.25)),  # dark green
+        ((127.5, 255, 127.5), (120, 1, 0.75)),  # light green
+        ((143.4375, 239.0625, 143.4375), (120, 0.75, 0.75)),  # pastel green
+    ],
+)
+def test_rgba_to_hsla(rgb, expected):
+    h, s, l, a = rgba_to_hsla(*rgb)
+    assert (h, s, l) == pytest.approx(expected)
+    assert a is None

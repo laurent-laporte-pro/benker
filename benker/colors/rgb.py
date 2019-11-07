@@ -7,6 +7,7 @@ RGB/RGBA color parser, formatter and converter.
 """
 from __future__ import division
 
+import colorsys
 import re
 
 _match_hex8 = re.compile(
@@ -162,3 +163,12 @@ def format_rgba_percent(r, g, b, a=None, rgb_scale=255):
         a = round(a * 100, 2)
         fmt = "rgba({r:.5g}%, {g:.5g}%, {b:.5g}%, {a:.5g}%)"
     return fmt.format(r=r, g=g, b=b, a=a)
+
+
+def rgba_to_hsla(r, g, b, a=None, rgb_scale=255, hsl_scale=360):
+    r = r / rgb_scale
+    g = g / rgb_scale
+    b = b / rgb_scale
+    h, l, s = colorsys.rgb_to_hls(r, g, b)
+    h *= hsl_scale
+    return h, s, l, a
