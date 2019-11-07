@@ -6,6 +6,7 @@ import re
 import pytest
 
 from benker.colors.const import CSS_COLOR_NAMES
+from benker.colors.css import css_name_to_hsla
 from benker.colors.css import css_name_to_rgba
 from benker.colors.css import parse_css_name
 
@@ -40,3 +41,22 @@ def test_css_name_to_rgba(text, rgb):
         assert round(g, 3) == round(rgb[1] * p, 3)
         assert round(b, 3) == round(rgb[2] * p, 3)
         assert a is None
+
+
+@pytest.mark.parametrize(
+    "text, hsl",
+    [
+        ("red", (0, 1, 0.5)),
+        ("yellow", (60, 1, 0.5)),
+        ("lime", (120, 1, 0.5)),
+        ("cyan", (180, 1, 0.5)),
+        ("blue", (240, 1, 0.5)),
+        ("magenta", (300, 1, 0.5)),
+        ("white", (0, 0, 1)),
+        ("black", (0, 0, 0)),
+    ],
+)
+def test_css_name_to_hsla(text, hsl):
+    h, s, l, a = css_name_to_hsla(text)
+    assert (h, s, l) == hsl
+    assert a is None

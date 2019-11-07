@@ -7,8 +7,9 @@ from __future__ import print_function
 
 import re
 
-from benker.colors.const import CSS_COLOR_NAMES
+from benker.colors.const import CSS_COLOR_NAMES, HUE_SCALE
 from benker.colors.const import RGB_SCALE
+from benker.colors.rgb import rgba_to_hsla
 
 _COLOR_NAME_REGEX = "|".join(sorted(CSS_COLOR_NAMES, key=lambda n: -len(n)))
 
@@ -39,3 +40,13 @@ def css_name_to_rgba(text, rgb_scale=RGB_SCALE):
     g = g * k * percent
     b = b * k * percent
     return r, g, b, None
+
+
+def css_name_to_hsla(text, hue_scale=HUE_SCALE):
+    color_name, percent = parse_css_name(text)
+    r, g, b = CSS_COLOR_NAMES[color_name.lower()]
+    h, s, l, a = rgba_to_hsla(r, g, b, hue_scale=hue_scale)
+    h *= percent
+    s *= percent
+    l *= percent
+    return h, s, l, a
