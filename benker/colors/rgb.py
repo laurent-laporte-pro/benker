@@ -10,6 +10,7 @@ from __future__ import division
 import colorsys
 import re
 
+from benker.colors.const import CMYK_SCALE
 from benker.colors.const import HUE_SCALE
 from benker.colors.const import RGB_SCALE
 from benker.colors.misc import parse_num_value
@@ -23,10 +24,10 @@ def parse_hex8(text, rgb_scale=RGB_SCALE):
     mo = _match_hex8(text)
     if mo:
         r, g, b, a = mo.group("r", "g", "b", "a")
-        k = rgb_scale / RGB_SCALE
-        r = int(r, 16) * k
-        g = int(g, 16) * k
-        b = int(b, 16) * k
+        z = rgb_scale / RGB_SCALE
+        r = int(r, 16) * z
+        g = int(g, 16) * z
+        b = int(b, 16) * z
         if a:
             a = int(a, 16) / RGB_SCALE
             return r, g, b, a
@@ -37,10 +38,10 @@ def parse_hex8(text, rgb_scale=RGB_SCALE):
 
 
 def format_hex8(r, g, b, a=None, rgb_scale=RGB_SCALE):
-    k = rgb_scale / RGB_SCALE
-    r = int(round(r / k))
-    g = int(round(g / k))
-    b = int(round(b / k))
+    z = rgb_scale / RGB_SCALE
+    r = int(round(r / z))
+    g = int(round(g / z))
+    b = int(round(b / z))
     if a is None:
         fmt = "#{r:02x}{g:02x}{b:02x}"
     else:
@@ -68,10 +69,10 @@ def parse_hex4(text, rgb_scale=RGB_SCALE):
     mo = _match_hex4(text)
     if mo:
         r, g, b, a = mo.group("r", "g", "b", "a")
-        k = rgb_scale / RGB_SCALE
-        r = int(r * 2, 16) * k
-        g = int(g * 2, 16) * k
-        b = int(b * 2, 16) * k
+        z = rgb_scale / RGB_SCALE
+        r = int(r * 2, 16) * z
+        g = int(g * 2, 16) * z
+        b = int(b * 2, 16) * z
         if a:
             a = int(a * 2, 16) / RGB_SCALE
             return r, g, b, a
@@ -82,10 +83,10 @@ def parse_hex4(text, rgb_scale=RGB_SCALE):
 
 
 def format_hex4(r, g, b, a=None, rgb_scale=RGB_SCALE):
-    k = rgb_scale / RGB_SCALE
-    r = int(round(r / k / 17))
-    g = int(round(g / k / 17))
-    b = int(round(b / k / 17))
+    z = rgb_scale / RGB_SCALE
+    r = int(round(r / z / 17))
+    g = int(round(g / z / 17))
+    b = int(round(b / z / 17))
     if a is None:
         fmt = "#{r:01x}{g:01x}{b:01x}"
     else:
@@ -112,8 +113,8 @@ _match_rgba = re.compile(r"^rgba?\(([^)]+)\)$", flags=re.I).match
 def parse_rgba(text, rgb_scale=RGB_SCALE):
     mo = _match_rgba(text)
     if mo:
-        text = mo.group(1).strip()
-        values = re.split(r"\s*,\s*", text)
+        coord = mo.group(1).strip()
+        values = re.split(r"\s*,\s*", coord)
         if len(values) == 4:
             r, g, b, a = values
         elif len(values) == 3:
@@ -122,10 +123,10 @@ def parse_rgba(text, rgb_scale=RGB_SCALE):
         else:
             raise ValueError(text)
         try:
-            k = rgb_scale / RGB_SCALE
-            r = parse_num_value(r, RGB_SCALE) * k
-            g = parse_num_value(g, RGB_SCALE) * k
-            b = parse_num_value(b, RGB_SCALE) * k
+            z = rgb_scale / RGB_SCALE
+            r = parse_num_value(r, RGB_SCALE) * z
+            g = parse_num_value(g, RGB_SCALE) * z
+            b = parse_num_value(b, RGB_SCALE) * z
             if a:
                 a = parse_num_value(a, 1)
                 return r, g, b, a
@@ -138,10 +139,10 @@ def parse_rgba(text, rgb_scale=RGB_SCALE):
 
 
 def format_rgba(r, g, b, a=None, rgb_scale=RGB_SCALE):
-    k = rgb_scale / RGB_SCALE
-    r = round(r / k)
-    g = round(g / k)
-    b = round(b / k)
+    z = rgb_scale / RGB_SCALE
+    r = round(r / z)
+    g = round(g / z)
+    b = round(b / z)
     if a is None:
         fmt = "rgb({r:g}, {g:g}, {b:g})"
     else:
@@ -162,9 +163,26 @@ def format_rgba_percent(r, g, b, a=None, rgb_scale=RGB_SCALE):
 
 
 def rgba_to_hsla(r, g, b, a=None, rgb_scale=RGB_SCALE, hue_scale=HUE_SCALE):
-    r = r / rgb_scale
-    g = g / rgb_scale
-    b = b / rgb_scale
-    h, l, s = colorsys.rgb_to_hls(r, g, b)
-    h *= hue_scale
-    return h, s, l, a
+    h, l, s = colorsys.rgb_to_hls(r / rgb_scale, g / rgb_scale, b / rgb_scale)
+    return h * hue_scale, s, l, a
+
+
+def rgba_to_cmyka(r, g, b, a=None, rgb_scale=RGB_SCALE, cmyk_scale=CMYK_SCALE):
+    if (r, g, b) == (0, 0, 0):
+        # black
+        return 0, 0, 0, cmyk_scale
+
+    # rgb [0, rgb_scale] -> cmy [0,1]
+    c = 1 - r / rgb_scale
+    m = 1 - g / rgb_scale
+    y = 1 - b / rgb_scale
+
+    # extract out k [0, 1]
+    min_cmy = min(c, m, y)
+    c = (c - min_cmy) / (1 - min_cmy)
+    m = (m - min_cmy) / (1 - min_cmy)
+    y = (y - min_cmy) / (1 - min_cmy)
+    k = min_cmy
+
+    # rescale to the range [0, cmyk_scale]
+    return c * cmyk_scale, m * cmyk_scale, y * cmyk_scale, k * cmyk_scale

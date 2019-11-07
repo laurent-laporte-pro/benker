@@ -10,9 +10,11 @@ from __future__ import division
 import colorsys
 import re
 
+from benker.colors.const import CMYK_SCALE
 from benker.colors.const import HUE_SCALE
 from benker.colors.const import RGB_SCALE
 from benker.colors.misc import parse_num_value
+from benker.colors.rgb import rgba_to_cmyka
 
 _match_hsla = re.compile(r"^hsla?\(([^)]+)\)$", flags=re.I).match
 
@@ -20,8 +22,8 @@ _match_hsla = re.compile(r"^hsla?\(([^)]+)\)$", flags=re.I).match
 def parse_hsla(text, hue_scale=HUE_SCALE):
     mo = _match_hsla(text)
     if mo:
-        text = mo.group(1).strip()
-        values = re.split(r"\s*,\s*", text)
+        coord = mo.group(1).strip()
+        values = re.split(r"\s*,\s*", coord)
         if len(values) == 4:
             h, s, l, a = values
         elif len(values) == 3:
@@ -30,8 +32,8 @@ def parse_hsla(text, hue_scale=HUE_SCALE):
         else:
             raise ValueError(text)
         try:
-            k = hue_scale / HUE_SCALE
-            h = parse_num_value(h, HUE_SCALE) * k
+            z = hue_scale / HUE_SCALE
+            h = parse_num_value(h, HUE_SCALE) * z
             s = parse_num_value(s, 1)
             l = parse_num_value(l, 1)
             if a:
@@ -46,8 +48,8 @@ def parse_hsla(text, hue_scale=HUE_SCALE):
 
 
 def format_hsla(h, s, l, a=None, hue_scale=HUE_SCALE):
-    k = hue_scale / HUE_SCALE
-    h = round(h / k)
+    z = hue_scale / HUE_SCALE
+    h = round(h / z)
     s = round(s, 2)
     l = round(l, 2)
     if a is None:
@@ -71,9 +73,10 @@ def format_hsla_percent(h, s, l, a=None, hue_scale=HUE_SCALE):
 
 
 def hsla_to_rgba(h, s, l, a=None, hue_scale=HUE_SCALE, rgb_scale=RGB_SCALE):
-    h = h / hue_scale
-    r, g, b = colorsys.hls_to_rgb(h, l, s)
-    r = r * rgb_scale
-    g = g * rgb_scale
-    b = b * rgb_scale
-    return r, g, b, a
+    r, g, b = colorsys.hls_to_rgb(h / hue_scale, l, s)
+    return r * rgb_scale, g * rgb_scale, b * rgb_scale, a
+
+
+def hsla_to_cmyka(h, s, l, a=None, hue_scale=HUE_SCALE, cmyk_scale=CMYK_SCALE):
+    r, g, b = colorsys.hls_to_rgb(h / hue_scale, l, s)
+    return rgba_to_cmyka(r, g, b, a, cmyk_scale=cmyk_scale)
