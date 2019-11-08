@@ -420,8 +420,8 @@ def test_parse_fmx_gr_notes():
     assert cell.width == 3
     assert cell.height == 1
     content = [node for node in cell.content if isinstance(node, etree._Element)]
-    assert etree.canonicalize(content[0]) == "<TITLE><TI><P>GR.NOTES Title</P></TI></TITLE>"
-    assert etree.canonicalize(content[1]) == '<NOTE NOTE.ID="N0001"><P>Table note</P></NOTE>'
+    assert etree.tounicode(content[0], with_tail=False) == "<TITLE><TI><P>GR.NOTES Title</P></TI></TITLE>"
+    assert etree.tounicode(content[1], with_tail=False) == '<NOTE NOTE.ID="N0001"><P>Table note</P></NOTE>'
 
 
 def test_parse_fmx_gr_notes__embed_gr_notes():
@@ -455,7 +455,7 @@ def test_parse_fmx_gr_notes__embed_gr_notes():
     assert cell.width == 3
     assert cell.height == 1
     content = [node for node in cell.content if isinstance(node, etree._Element)]
-    assert etree.canonicalize(content[0]) == etree.canonicalize(fmx_gr_notes)
+    assert etree.tounicode(content[0]) == etree.tounicode(fmx_gr_notes)
 
 
 @pytest.mark.parametrize(

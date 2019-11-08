@@ -49,6 +49,9 @@ def convert_formex2cals(src_xml, dst_xml, **options):
             Namespace to use for CALS-like elements and attributes parsing.
             Set ``None`` (or "") if you don't use namespace.
 
+        ``embed_gr_notes`` (default ``False``):
+            If ``True``, Embed the ``GR.NOTES`` in a row/cell, else only copy the content (not the ``GR.NOTES`` tag).
+
         **CALS builder options:**
 
         ``cals_ns`` (default: ``None``):

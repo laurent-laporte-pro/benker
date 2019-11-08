@@ -14,15 +14,17 @@ from tests.resources import RESOURCES_DIR
 
 
 @pytest.mark.parametrize(
-    'input_name, expected_name',
+    'input_name, expected_name, embed_gr_notes',
     [
-        ("formex/tbl_small_table.xml", "formex2cals/tbl_small_table.xml"),
-        ("formex/tbl_sample.xml", "formex2cals/tbl_sample.xml"),
-        ("formex/tbl_sample_cals.xml", "formex2cals/tbl_sample_cals.xml")
+        ("formex/tbl_small_table.xml", "formex2cals/tbl_small_table.xml", False),
+        ("formex/tbl_sample.xml", "formex2cals/tbl_sample.xml", False),
+        ("formex/tbl_sample_cals.xml", "formex2cals/tbl_sample_cals.xml", False),
+        ("formex/tbl_sample.xml", "formex2cals/tbl_sample.embedded.xml", True),
+        ("formex/tbl_sample_cals.xml", "formex2cals/tbl_sample_cals.embedded.xml", True),
     ],
 )
-def test_convert_formex2cals(input_name, expected_name, tmpdir):
-    # type: (str, str, py.path.local) -> None
+def test_convert_formex2cals(input_name, expected_name, embed_gr_notes, tmpdir):
+    # type: (str, str, bool, py.path.local) -> None
     src_xml = RESOURCES_DIR.join(input_name)  # type: py.path.local
     dst_xml = tmpdir.join(src_xml.basename)
     convert_formex2cals(
@@ -31,6 +33,7 @@ def test_convert_formex2cals(input_name, expected_name, tmpdir):
         width_unit='mm',
         cals_prefix="cals",
         cals_ns="https://lib.benker.com/schemas/cals.xsd",
+        embed_gr_notes=embed_gr_notes,
     )
 
     # - Compare with expected
