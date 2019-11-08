@@ -669,25 +669,59 @@ class FormexBuilder(BaseBuilder):
                 index = fmx_parent.index(fmx_tbl)
                 fmx_parent[index:index + 1] = fmx_tbl.getchildren()
 
-    # noinspection PyMethodMayBeStatic
+    # noinspection PyPep8Naming
     def extract_gr_notes(self, fmx_root):
         """
         Extract ``GR.NOTES`` from the table footers.
 
+        This function moves or creates a ``GR.NOTES`` just before the ``CORPUS``.
+
         :type  fmx_root: ElementType
         :param fmx_root: The result tree with ``GR.NOTES``.
+
+        .. versionchanged:: 0.5.1
+           If the ROW contains a GR.NOTES, we move it before the CORPUS, else we create it.
         """
-        for fmx_row in fmx_root.xpath("//ROW[@TYPE = '__GR.NOTES__']"):  # type: ElementType
-            fmx_corpus = fmx_row.xpath("ancestor::CORPUS[1]")[0]  # type: ElementType
-            fmx_tbl = fmx_corpus.getparent()
-            attrib = {k: v for k, v in fmx_row.attrib.items() if k != "TYPE"}
-            fmx_gr_notes = etree.Element("GR.NOTES", attrib=attrib)
-            fmx_cell = fmx_row.xpath("CELL")[0]
-            fmx_gr_notes.text = fmx_cell.text
-            fmx_gr_notes.extend(fmx_cell.getchildren())
-            index = fmx_tbl.index(fmx_corpus)
-            fmx_tbl.insert(index, fmx_gr_notes)
-            fmx_row.getparent().remove(fmx_row)
+        fmx = self.get_formex_qname
+        TBL = fmx("TBL").text
+        CORPUS = fmx("CORPUS").text
+        ROW = fmx("ROW").text
+        CELL = fmx("CELL").text
+        GR_NOTES = fmx("GR.NOTES").text
+        TYPE = fmx("TYPE").text
+
+        for fmx_row in fmx_root.iter(ROW):
+            row_type = fmx_row.attrib.pop(TYPE, None)
+            if row_type and row_type == '__GR.NOTES__':
+                # Get the CORPUS index: the GR.NOTES will be inserted just before the CORPUS
+                fmx_tbl = next(fmx_row.iterancestors(TBL))
+                index = fmx_tbl.index(fmx_tbl.find(CORPUS))
+
+                # Find the first CELL of the ROW (there is only one CELL)
+                fmx_cell = fmx_row.find(CELL)
+                cell_text = fmx_cell.text or ""
+
+                fmx_gr_notes = next(fmx_cell.iterchildren(GR_NOTES), None)
+                if fmx_gr_notes is None:
+                    # insert a new GR.NOTES
+                    fmx_gr_notes = etree.Element(GR_NOTES)
+                    fmx_gr_notes.text = cell_text
+                    fmx_gr_notes.extend(fmx_cell[:])
+                    fmx_tbl.insert(index, fmx_gr_notes)
+                else:
+                    # moves the GR.NOTES (and the potential processing instructions)
+                    fmx_tbl[index:index] = fmx_cell[:]
+                    if index == 0:
+                        fmx_tbl.text = (fmx_tbl.text or "") + cell_text
+                    else:
+                        prev_node = fmx_tbl[index-1]
+                        prev_node.tail = (prev_node.tail or "") + cell_text
+
+                # Add the CALS-like attributes
+                fmx_gr_notes.attrib.update((k, v) for k, v in fmx_row.attrib.items() if k not in fmx_gr_notes.attrib)
+
+                # drop the ROW
+                fmx_row.getparent().remove(fmx_row)
 
     def insert_blk(self, fmx_root):
         """

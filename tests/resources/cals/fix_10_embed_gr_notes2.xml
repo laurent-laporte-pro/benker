@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TBL COLS="2" NO.SEQ="0001">
+  <TITLE>
+    <TI>
+      <P>Table title</P>
+    </TI>
+  </TITLE>
+  <table>
+    <tgroup cols="2">
+      <colspec colname="c1" colnum="1"/>
+      <colspec colname="c2" colnum="2"/>
+      <tbody>
+        <row rowsep="1">
+          <entry>A1</entry>
+          <entry>B1</entry>
+          <entry>C1</entry>
+        </row>
+      </tbody>
+      <tfoot>
+        <row colspan="3" bgcolor="green">
+          <entry>
+            <?show horizontal-line?>
+            <GR.NOTES>
+              <TITLE>
+                <TI>
+                  <P>GR.NOTES Title</P>
+                </TI>
+              </TITLE>
+              <NOTE NOTE.ID="N0001">
+                <P>Table note</P>
+              </NOTE>
+            </GR.NOTES>
+            <?show horizontal-line?>
+          </entry>
+        </row>
+      </tfoot>
+    </tgroup>
+  </table>
+</TBL>

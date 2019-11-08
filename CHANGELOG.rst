@@ -74,6 +74,12 @@ Fixed
   Change in the :class:`~benker.builders.cals.CalsBuilder` and :class:`~benker.builders.formex.FormexBuilder` classes:
   Preserve processing instruction in cell content.
 
+* Fix `#10 <https://github.com/laurent-laporte-pro/benker/issues/10>`_: Formex 2 Cals conversion: ``GR.NOTES`` should be preserved.
+
+  Change in the :class:`~benker.builders.formex.FormexBuilder` class:
+  During ``GR.NOTES`` extraction, existing ``GR.NOTES`` are moved before the ``CORPUS``
+  (or created if missing).
+
 * Fix `#11 <https://github.com/laurent-laporte-pro/benker/issues/11>`_: Cals 2 Formex conversion: missing ``CORPUS/@width``.
 
   Change in the :class:`~benker.parsers.cals.CalsParser` class:

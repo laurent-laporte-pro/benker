@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TBL COLS="2" NO.SEQ="0001">
+  <TITLE>
+    <TI>
+      <P>Table title</P>
+    </TI>
+  </TITLE>
+  <?show horizontal-line?>
+  <GR.NOTES bgcolor="green">
+    <TITLE>
+      <TI>
+        <P>GR.NOTES Title</P>
+      </TI>
+    </TITLE>
+    <NOTE NOTE.ID="N0001">
+      <P>Table note</P>
+    </NOTE>
+  </GR.NOTES>
+  <?show horizontal-line?>
+  <CORPUS frame="none" colsep="0" rowsep="0">
+    <colspec colnum="1" colname="c1"/>
+    <colspec colnum="2" colname="c2"/>
+    <colspec colnum="3" colname="c3"/>
+    <ROW rowsep="1">
+      <CELL COL="1">A1</CELL>
+      <CELL COL="2">B1</CELL>
+      <CELL COL="3">C1</CELL>
+    </ROW>
+  </CORPUS>
+</TBL>

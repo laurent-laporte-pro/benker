@@ -59,6 +59,18 @@ from tests.resources import RESOURCES_DIR
             None,
             None,
         ),
+        (
+            "cals/fix_10_embed_gr_notes1.xml",
+            "cals2formex/fix_10_embed_gr_notes1.xml",
+            None,
+            None,
+        ),
+        (
+            "cals/fix_10_embed_gr_notes2.xml",
+            "cals2formex/fix_10_embed_gr_notes2.xml",
+            None,
+            None,
+        ),
     ],
     # fmt: on
 )
@@ -75,9 +87,9 @@ def test_convert_cals2formex(input_name, expected_name, cals_prefix, cals_ns, tm
     expected_xml = RESOURCES_DIR.join(expected_name)  # type: py.path.local
     if expected_xml.exists():
         expected_tree = etree.parse(str(expected_xml), parser=xml_parser)
-        expected_elements = expected_tree.xpath("//CORPUS")
+        expected_elements = expected_tree.xpath("//TBL")
         dst_tree = etree.parse(str(dst_xml), parser=xml_parser)
-        dst_elements = dst_tree.xpath("//CORPUS")
+        dst_elements = dst_tree.xpath("//TBL")
         assert len(expected_elements) == len(dst_elements)
 
         for dst_elem, expected_elem in zip(dst_elements, expected_elements):
