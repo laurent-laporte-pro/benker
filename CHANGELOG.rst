@@ -76,6 +76,9 @@ Fixed
 
 * Fix `#10 <https://github.com/laurent-laporte-pro/benker/issues/10>`_: Formex 2 Cals conversion: ``GR.NOTES`` should be preserved.
 
+  Change in :class:`~benker.parsers.formex.FormexParser` class:
+  ``GR.NOTES`` elements can be embedded if the *embed_gr_notes* options is ``True``.
+
   Change in the :class:`~benker.builders.formex.FormexBuilder` class:
   During ``GR.NOTES`` extraction, existing ``GR.NOTES`` are moved before the ``CORPUS``
   (or created if missing).

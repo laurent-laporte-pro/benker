@@ -391,12 +391,14 @@ def test_parse_fmx_sti_blk__level1():
 
 
 def test_parse_fmx_gr_notes():
-    fmx_gr_notes = etree.XML(
-        """<GR.NOTES valign="top" rowsep="1" bgcolor="blue">
+    # fmt: off
+    fmx_gr_notes = etree.XML("""\
+    <GR.NOTES valign="top" rowsep="1" bgcolor="blue">
       <TITLE><TI><P>GR.NOTES Title</P></TI></TITLE>
       <NOTE NOTE.ID="N0001"><P>Table note</P></NOTE>
-    </GR.NOTES>"""
-    )
+    </GR.NOTES>""")
+    # fmt: on
+
     parser = FormexParser(BaseBuilder())
     state = parser.setup_table()
     # -- insert at least one ROW for testing
@@ -418,8 +420,42 @@ def test_parse_fmx_gr_notes():
     assert cell.width == 3
     assert cell.height == 1
     content = [node for node in cell.content if isinstance(node, etree._Element)]
-    assert etree.tounicode(content[0], with_tail=False) == "<TITLE><TI><P>GR.NOTES Title</P></TI></TITLE>"
-    assert etree.tounicode(content[1], with_tail=False) == '<NOTE NOTE.ID="N0001"><P>Table note</P></NOTE>'
+    assert etree.canonicalize(content[0]) == "<TITLE><TI><P>GR.NOTES Title</P></TI></TITLE>"
+    assert etree.canonicalize(content[1]) == '<NOTE NOTE.ID="N0001"><P>Table note</P></NOTE>'
+
+
+def test_parse_fmx_gr_notes__embed_gr_notes():
+    # fmt: off
+    gr_notes = """\
+    <GR.NOTES valign="top" rowsep="1" bgcolor="blue">
+      <TITLE><TI><P>GR.NOTES Title</P></TI></TITLE>
+      <NOTE NOTE.ID="N0001"><P>Table note</P></NOTE>
+    </GR.NOTES>"""
+    fmx_gr_notes = etree.XML(gr_notes)
+    # fmt: on
+
+    parser = FormexParser(BaseBuilder(), embed_gr_notes=True)
+    state = parser.setup_table()
+    # -- insert at least one ROW for testing
+    state.next_row()
+    state.row = state.table.rows[state.row_pos]
+    state.row.insert_cell("text1")
+    state.row.insert_cell("text2")
+    state.row.insert_cell("text3")
+    # -- then add the footer
+    state.next_row()
+    state = parser.parse_gr_notes(fmx_gr_notes)
+    row = state.row
+    assert row.styles == {}
+    assert row.nature == "footer"
+    # -- the cell is in the row 2
+    cell = state.table[(1, 2)]
+    assert cell.styles == {'background-color': 'blue', 'border-bottom': 'solid 1pt black', 'vertical-align': 'top'}
+    assert cell.nature == "footer"
+    assert cell.width == 3
+    assert cell.height == 1
+    content = [node for node in cell.content if isinstance(node, etree._Element)]
+    assert etree.canonicalize(content[0]) == etree.canonicalize(fmx_gr_notes)
 
 
 @pytest.mark.parametrize(

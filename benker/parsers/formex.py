@@ -57,7 +57,7 @@ class FormexParser(BaseParser):
     Formex 4 tables parser
     """
 
-    def __init__(self, builder, formex_ns=None, cals_ns=None, **options):
+    def __init__(self, builder, formex_ns=None, cals_ns=None, embed_gr_notes=False, **options):
         """
         Construct a parser
 
@@ -73,12 +73,16 @@ class FormexParser(BaseParser):
             Namespace to use for CALS-like elements and attributes.
             Set ``None`` (or "") if you don't use namespace.
 
+        :param bool embed_gr_notes:
+            If ``True``, Embed the ``GR.NOTES`` in a row/cell, else only copy the content (not the ``GR.NOTES`` tag).
+
         :keyword str options: Extra conversion options.
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
         """
         self.formex_ns = formex_ns
         self.cals_ns = cals_ns
+        self.embed_gr_notes = embed_gr_notes
         super(FormexParser, self).__init__(builder, **options)
 
     def get_formex_qname(self, name):
@@ -440,6 +444,9 @@ class FormexParser(BaseParser):
 
         :type  fmx_gr_notes: ElementType
         :param fmx_gr_notes: group of notes called in the table (``GR.NOTES``)
+
+        .. versionchanged:: 0.5.1
+           ``GR.NOTES`` elements can be embedded if the *embed_gr_notes* options is ``True``.
         """
         # -- Create a ROW
         state = self._state
@@ -449,7 +456,9 @@ class FormexParser(BaseParser):
         styles = self.parse_cals_row_styles(fmx_gr_notes)
 
         # -- Create a CELL
-        if self.contains_ie(fmx_gr_notes):
+        if self.embed_gr_notes:
+            content = [fmx_gr_notes]
+        elif self.contains_ie(fmx_gr_notes):
             content = ""
         else:
             text = [fmx_gr_notes.text] if fmx_gr_notes.text else []
