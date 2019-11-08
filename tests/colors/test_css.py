@@ -6,6 +6,7 @@ import re
 import pytest
 
 from benker.colors.const import CSS_COLOR_NAMES
+from benker.colors.css import css_name_to_cmyk
 from benker.colors.css import css_name_to_hsl
 from benker.colors.css import css_name_to_rgb
 from benker.colors.css import parse_css_name
@@ -63,3 +64,21 @@ def test_css_name_to_rgb(text, rgb):
 def test_css_name_to_hsl(text, hsl):
     h, s, l = css_name_to_hsl(text)
     assert (h, s, l) == hsl
+
+
+@pytest.mark.parametrize(
+    "text, cmyk",
+    [
+        ("red", (0, 100, 100, 0)),
+        ("yellow", (0, 0, 100, 0)),
+        ("lime", (100, 0, 100, 0)),
+        ("cyan", (100, 0, 0, 0)),
+        ("blue", (100, 100, 0, 0)),
+        ("magenta", (0, 100, 0, 0)),
+        ("white", (0, 0, 0, 0)),
+        ("black", (0, 0, 0, 100)),
+    ],
+)
+def test_css_name_to_cmyk(text, cmyk):
+    c, m, y, k = css_name_to_cmyk(text)
+    assert (c, m, y, k) == cmyk
