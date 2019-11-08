@@ -61,6 +61,11 @@ def format_cmyka(c, m, y, k, a=None, cmyk_scale=CMYK_SCALE):
     return fmt.format(c=c, m=m, y=y, k=k, a=a)
 
 
+# noinspection PyUnusedLocal
+def format_cmyk(c, m, y, k, a=None, cmyk_scale=CMYK_SCALE):
+    return format_cmyka(c, m, y, k, a=None, cmyk_scale=cmyk_scale)
+
+
 def format_cmyka_percent(c, m, y, k, a=None, cmyk_scale=CMYK_SCALE):
     c = round(c / cmyk_scale * 100, 2)
     m = round(m / cmyk_scale * 100, 2)
@@ -72,6 +77,29 @@ def format_cmyka_percent(c, m, y, k, a=None, cmyk_scale=CMYK_SCALE):
         a = round(a * 100, 2)
         fmt = "cmyka({c:.5g}%, {m:.5g}%, {y:.5g}%, {k:.5g}%, {a:.5g}%)"
     return fmt.format(c=c, m=m, y=y, k=k, a=a)
+
+
+# noinspection PyUnusedLocal
+def format_cmyk_percent(c, m, y, k, a=None, cmyk_scale=CMYK_SCALE):
+    return format_cmyka_percent(c, m, y, k, a=None, cmyk_scale=cmyk_scale)
+
+
+def format_cmyka_coord(c, m, y, k, a=None, cmyk_scale=CMYK_SCALE):
+    c = round(c / cmyk_scale * 100, 2)
+    m = round(m / cmyk_scale * 100, 2)
+    y = round(y / cmyk_scale * 100, 2)
+    k = round(k / cmyk_scale * 100, 2)
+    if a is None:
+        fmt = "{{{c:.5g}, {m:.5g}, {y:.5g}, {k:.5g}}}"
+    else:
+        a = round(a * 100, 2)
+        fmt = "{{{c:.5g}, {m:.5g}, {y:.5g}, {k:.5g}, {a:.5g}}}"
+    return fmt.format(c=c, m=m, y=y, k=k, a=a)
+
+
+# noinspection PyUnusedLocal
+def format_cmyk_coord(c, m, y, k, a=None, cmyk_scale=CMYK_SCALE):
+    return format_cmyka_coord(c, m, y, k, a=None, cmyk_scale=cmyk_scale)
 
 
 def cmyk_to_rgb(c, m, y, k, cmyk_scale=CMYK_SCALE, rgb_scale=RGB_SCALE):

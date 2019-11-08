@@ -13,6 +13,8 @@ from benker.colors.rgb import format_hex6
 from benker.colors.rgb import format_hex6_upper
 from benker.colors.rgb import format_hex8
 from benker.colors.rgb import format_hex8_upper
+from benker.colors.rgb import format_rgb
+from benker.colors.rgb import format_rgb_percent
 from benker.colors.rgb import format_rgba
 from benker.colors.rgb import format_rgba_percent
 from benker.colors.rgb import parse_hex4
@@ -237,6 +239,20 @@ def test_format_rgba(rgba, expected):
     "rgba, expected",
     [
         ((0, 0, 0, None), "rgb(0, 0, 0)"),
+        ((0, 0, 0, 0), "rgb(0, 0, 0)"),
+        ((255, 255, 255, 1), "rgb(255, 255, 255)"),
+        ((255, 127.5, 63.75, 0.75), "rgb(255, 128, 64)"),
+    ],
+)
+def test_format_rgb(rgba, expected):
+    text = format_rgb(*rgba)
+    assert text == expected
+
+
+@pytest.mark.parametrize(
+    "rgba, expected",
+    [
+        ((0, 0, 0, None), "rgb(0, 0, 0)"),
         ((0, 0, 0, 0), "rgba(0, 0, 0, 0)"),
         ((1, 1, 1, 1), "rgba(255, 255, 255, 1)"),
         ((1, 0.5, 0.25, 0.75), "rgba(255, 128, 64, 0.75)"),
@@ -260,6 +276,21 @@ def test_format_rgba__scale1(rgba, expected):
 )
 def test_format_rgba_percent(rgba, expected):
     text = format_rgba_percent(*rgba)
+    assert text == expected
+
+
+@pytest.mark.parametrize(
+    "rgba, expected",
+    [
+        ((0, 0, 0, None), "rgb(0%, 0%, 0%)"),
+        ((0, 0, 0, 0), "rgb(0%, 0%, 0%)"),
+        ((255, 255, 255, 1), "rgb(100%, 100%, 100%)"),
+        ((255, 127.5, 63.75, 0.75), "rgb(100%, 50%, 25%)"),
+        ((123, 234, 17, 1 / 3), "rgb(48.24%, 91.76%, 6.67%)"),
+    ],
+)
+def test_format_rgb_percent(rgba, expected):
+    text = format_rgb_percent(*rgba)
     assert text == expected
 
 

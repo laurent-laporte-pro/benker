@@ -5,6 +5,8 @@ import re
 
 import pytest
 
+from benker.colors.hsl import format_hsl
+from benker.colors.hsl import format_hsl_percent
 from benker.colors.hsl import format_hsla
 from benker.colors.hsl import format_hsla_percent
 from benker.colors.hsl import hsl_to_rgb
@@ -79,6 +81,20 @@ def test_format_hsla(hsla, expected):
     "hsla, expected",
     [
         ((0, 0, 0, None), "hsl(0, 0, 0)"),
+        ((0, 0, 0, 0), "hsl(0, 0, 0)"),
+        ((120, 1, 1, 1), "hsl(120, 1, 1)"),
+        ((120, 0.5, 0.25, 0.75), "hsl(120, 0.5, 0.25)"),
+    ],
+)
+def test_format_hsl(hsla, expected):
+    text = format_hsl(*hsla)
+    assert text == expected
+
+
+@pytest.mark.parametrize(
+    "hsla, expected",
+    [
+        ((0, 0, 0, None), "hsl(0, 0, 0)"),
         ((0, 0, 0, 0), "hsla(0, 0, 0, 0)"),
         ((1 / 3, 1, 1, 1), "hsla(120, 1, 1, 1)"),
         ((1 / 3, 0.5, 0.25, 0.75), "hsla(120, 0.5, 0.25, 0.75)"),
@@ -100,6 +116,20 @@ def test_format_hsla__scale1(hsla, expected):
 )
 def test_format_hsla_percent(hsla, expected):
     text = format_hsla_percent(*hsla)
+    assert text == expected
+
+
+@pytest.mark.parametrize(
+    "hsla, expected",
+    [
+        ((0, 0, 0, None), "hsl(0%, 0%, 0%)"),
+        ((0, 0, 0, 0), "hsl(0%, 0%, 0%)"),
+        ((120, 1, 1, 1), "hsl(33.33%, 100%, 100%)"),
+        ((120, 0.5, 0.25, 0.75), "hsl(33.33%, 50%, 25%)"),
+    ],
+)
+def test_format_hsl_percent(hsla, expected):
+    text = format_hsl_percent(*hsla)
     assert text == expected
 
 

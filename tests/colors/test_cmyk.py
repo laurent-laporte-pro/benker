@@ -6,7 +6,11 @@ import re
 import pytest
 
 from benker.colors.cmyk import cmyk_to_rgb
+from benker.colors.cmyk import format_cmyk
+from benker.colors.cmyk import format_cmyk_coord
+from benker.colors.cmyk import format_cmyk_percent
 from benker.colors.cmyk import format_cmyka
+from benker.colors.cmyk import format_cmyka_coord
 from benker.colors.cmyk import format_cmyka_percent
 from benker.colors.cmyk import parse_cmyka
 
@@ -68,6 +72,19 @@ def test_format_cmyka(cmyka, expected):
     "cmyka, expected",
     [
         ((0, 0, 0, 0, None), "cmyk(0, 0, 0, 0)"),
+        ((0, 0, 0, 0, 0), "cmyk(0, 0, 0, 0)"),
+        ((100, 75, 50, 25, 1 / 3), "cmyk(100, 75, 50, 25)"),
+    ],
+)
+def test_format_cmyk(cmyka, expected):
+    text = format_cmyk(*cmyka)
+    assert text == expected
+
+
+@pytest.mark.parametrize(
+    "cmyka, expected",
+    [
+        ((0, 0, 0, 0, None), "cmyk(0, 0, 0, 0)"),
         ((0, 0, 0, 0, 0), "cmyka(0, 0, 0, 0, 0)"),
         ((1, 0.75, 0.50, 0.25, 1 / 3), "cmyka(100, 75, 50, 25, 0.33)"),
     ],
@@ -87,6 +104,45 @@ def test_format_cmyka__scale1(cmyka, expected):
 )
 def test_format_cmyka_percent(cmyka, expected):
     text = format_cmyka_percent(*cmyka)
+    assert text == expected
+
+
+@pytest.mark.parametrize(
+    "cmyka, expected",
+    [
+        ((0, 0, 0, 0, None), "cmyk(0%, 0%, 0%, 0%)"),
+        ((0, 0, 0, 0, 0), "cmyk(0%, 0%, 0%, 0%)"),
+        ((100, 75, 50, 25, 1 / 3), "cmyk(100%, 75%, 50%, 25%)"),
+    ],
+)
+def test_format_cmyk_percent(cmyka, expected):
+    text = format_cmyk_percent(*cmyka)
+    assert text == expected
+
+
+@pytest.mark.parametrize(
+    "cmyka, expected",
+    [
+        ((0, 0, 0, 0, None), "{0, 0, 0, 0}"),
+        ((0, 0, 0, 0, 0), "{0, 0, 0, 0, 0}"),
+        ((100, 75, 50, 25, 1 / 3), "{100, 75, 50, 25, 33.33}"),
+    ],
+)
+def test_format_cmyka_coord(cmyka, expected):
+    text = format_cmyka_coord(*cmyka)
+    assert text == expected
+
+
+@pytest.mark.parametrize(
+    "cmyka, expected",
+    [
+        ((0, 0, 0, 0, None), "{0, 0, 0, 0}"),
+        ((0, 0, 0, 0, 0), "{0, 0, 0, 0}"),
+        ((100, 75, 50, 25, 1 / 3), "{100, 75, 50, 25}"),
+    ],
+)
+def test_format_cmyk_coord(cmyka, expected):
+    text = format_cmyk_coord(*cmyka)
     assert text == expected
 
 

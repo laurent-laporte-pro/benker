@@ -54,12 +54,14 @@ def format_hex8_upper(r, g, b, a=None, rgb_scale=RGB_SCALE):
     return format_hex8(r, g, b, a=a, rgb_scale=rgb_scale).upper()
 
 
+# noinspection PyUnusedLocal
 def format_hex6(r, g, b, a=None, rgb_scale=RGB_SCALE):
-    return format_hex8(r, g, b, a=a, rgb_scale=rgb_scale)[:7]
+    return format_hex8(r, g, b, a=None, rgb_scale=rgb_scale)
 
 
+# noinspection PyUnusedLocal
 def format_hex6_upper(r, g, b, a=None, rgb_scale=RGB_SCALE):
-    return format_hex8(r, g, b, a=a, rgb_scale=rgb_scale)[:7].upper()
+    return format_hex8(r, g, b, a=None, rgb_scale=rgb_scale).upper()
 
 
 _match_hex4 = re.compile(r"^#(?P<r>[0-9a-f])(?P<g>[0-9a-f])(?P<b>[0-9a-f])(?P<a>[0-9a-f])?$", flags=re.I).match
@@ -99,12 +101,14 @@ def format_hex4_upper(r, g, b, a=None, rgb_scale=RGB_SCALE):
     return format_hex4(r, g, b, a=a, rgb_scale=rgb_scale).upper()
 
 
+# noinspection PyUnusedLocal
 def format_hex3(r, g, b, a=None, rgb_scale=RGB_SCALE):
-    return format_hex4(r, g, b, a=a, rgb_scale=rgb_scale)[:4]
+    return format_hex4(r, g, b, a=None, rgb_scale=rgb_scale)
 
 
+# noinspection PyUnusedLocal
 def format_hex3_upper(r, g, b, a=None, rgb_scale=RGB_SCALE):
-    return format_hex4(r, g, b, a=a, rgb_scale=rgb_scale)[:4].upper()
+    return format_hex4(r, g, b, a=None, rgb_scale=rgb_scale).upper()
 
 
 _match_rgba = re.compile(r"^rgba?\(([^)]+)\)$", flags=re.I).match
@@ -150,6 +154,11 @@ def format_rgba(r, g, b, a=None, rgb_scale=RGB_SCALE):
     return fmt.format(r=r, g=g, b=b, a=a)
 
 
+# noinspection PyUnusedLocal
+def format_rgb(r, g, b, a=None, rgb_scale=RGB_SCALE):
+    return format_rgba(r, g, b, a=None, rgb_scale=rgb_scale)
+
+
 def format_rgba_percent(r, g, b, a=None, rgb_scale=RGB_SCALE):
     r = round(r / rgb_scale * 100, 2)
     g = round(g / rgb_scale * 100, 2)
@@ -160,6 +169,11 @@ def format_rgba_percent(r, g, b, a=None, rgb_scale=RGB_SCALE):
         a = round(a * 100, 2)
         fmt = "rgba({r:.5g}%, {g:.5g}%, {b:.5g}%, {a:.5g}%)"
     return fmt.format(r=r, g=g, b=b, a=a)
+
+
+# noinspection PyUnusedLocal
+def format_rgb_percent(r, g, b, a=None, rgb_scale=RGB_SCALE):
+    return format_rgba_percent(r, g, b, a=None, rgb_scale=rgb_scale)
 
 
 def rgb_to_hsl(r, g, b, rgb_scale=RGB_SCALE, hue_scale=HUE_SCALE):

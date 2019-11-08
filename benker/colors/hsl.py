@@ -60,6 +60,11 @@ def format_hsla(h, s, l, a=None, hue_scale=HUE_SCALE):
     return fmt.format(h=h, s=s, l=l, a=a)
 
 
+# noinspection PyUnusedLocal
+def format_hsl(h, s, l, a=None, hue_scale=HUE_SCALE):
+    return format_hsla(h, s, l, a=None, hue_scale=hue_scale)
+
+
 def format_hsla_percent(h, s, l, a=None, hue_scale=HUE_SCALE):
     h = round(h / hue_scale * 100, 2)
     s = round(s * 100, 2)
@@ -70,6 +75,11 @@ def format_hsla_percent(h, s, l, a=None, hue_scale=HUE_SCALE):
         a = round(a * 100, 2)
         fmt = "hsla({h:.5g}%, {s:.5g}%, {l:.5g}%, {a:.5g}%)"
     return fmt.format(h=h, s=s, l=l, a=a)
+
+
+# noinspection PyUnusedLocal
+def format_hsl_percent(h, s, l, a=None, hue_scale=HUE_SCALE):
+    return format_hsla_percent(h, s, l, a=None, hue_scale=hue_scale)
 
 
 def hsl_to_rgb(h, s, l, hue_scale=HUE_SCALE, rgb_scale=RGB_SCALE):
