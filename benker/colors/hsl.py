@@ -14,7 +14,7 @@ from benker.colors.const import CMYK_SCALE
 from benker.colors.const import HUE_SCALE
 from benker.colors.const import RGB_SCALE
 from benker.colors.misc import parse_num_value
-from benker.colors.rgb import rgba_to_cmyka
+from benker.colors.rgb import rgb_to_cmyk
 
 _match_hsla = re.compile(r"^hsla?\(([^)]+)\)$", flags=re.I).match
 
@@ -72,11 +72,11 @@ def format_hsla_percent(h, s, l, a=None, hue_scale=HUE_SCALE):
     return fmt.format(h=h, s=s, l=l, a=a)
 
 
-def hsla_to_rgba(h, s, l, a=None, hue_scale=HUE_SCALE, rgb_scale=RGB_SCALE):
+def hsl_to_rgb(h, s, l, hue_scale=HUE_SCALE, rgb_scale=RGB_SCALE):
     r, g, b = colorsys.hls_to_rgb(h / hue_scale, l, s)
-    return r * rgb_scale, g * rgb_scale, b * rgb_scale, a
+    return r * rgb_scale, g * rgb_scale, b * rgb_scale
 
 
-def hsla_to_cmyka(h, s, l, a=None, hue_scale=HUE_SCALE, cmyk_scale=CMYK_SCALE):
+def hsl_to_cmyk(h, s, l, hue_scale=HUE_SCALE, cmyk_scale=CMYK_SCALE):
     r, g, b = colorsys.hls_to_rgb(h / hue_scale, l, s)
-    return rgba_to_cmyka(r, g, b, a, cmyk_scale=cmyk_scale)
+    return rgb_to_cmyk(r, g, b, cmyk_scale=cmyk_scale)

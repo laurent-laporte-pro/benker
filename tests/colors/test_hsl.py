@@ -1,11 +1,13 @@
 # coding: utf-8
 from __future__ import division
 
+import re
+
 import pytest
 
 from benker.colors.hsl import format_hsla
 from benker.colors.hsl import format_hsla_percent
-from benker.colors.hsl import hsla_to_rgba
+from benker.colors.hsl import hsl_to_rgb
 from benker.colors.hsl import parse_hsla
 
 
@@ -27,6 +29,12 @@ from benker.colors.hsl import parse_hsla
 def test_parse_hsla(text, expected):
     h, s, l, a = parse_hsla(text)
     assert (h, s, l, a) == expected
+
+
+@pytest.mark.parametrize("text", ["hsl(100, 0)", "hsl(100%)", "hls(100, 0, 0)"])
+def test_parse_hsla__raises(text):
+    with pytest.raises(ValueError, match=re.escape(text)):
+        parse_hsla(text)
 
 
 @pytest.mark.parametrize(
@@ -105,7 +113,6 @@ def test_format_hsla_percent(hsla, expected):
         ((120, 0.75, 0.75), (143.4375, 239.0625, 143.4375)),  # pastel green
     ],
 )
-def test_hsla_to_rgba(hsl, expected):
-    r, g, b, a = hsla_to_rgba(*hsl)
+def test_hsl_to_rgb(hsl, expected):
+    r, g, b = hsl_to_rgb(*hsl)
     assert (r, g, b) == pytest.approx(expected)
-    assert a is None

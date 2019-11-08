@@ -5,7 +5,7 @@ import re
 
 import pytest
 
-from benker.colors.cmyk import cmyka_to_rgba
+from benker.colors.cmyk import cmyk_to_rgb
 from benker.colors.cmyk import format_cmyka
 from benker.colors.cmyk import format_cmyka_percent
 from benker.colors.cmyk import parse_cmyka
@@ -101,7 +101,6 @@ def test_format_cmyka_percent(cmyka, expected):
         ((50, 50, 50, 50), (63.75, 63.75, 63.75)),
     ],
 )
-def test_cmyka_to_rgba(cmyk, expected):
-    r, g, b, a = cmyka_to_rgba(*cmyk)
+def test_cmyk_to_rgb(cmyk, expected):
+    r, g, b = cmyk_to_rgb(*cmyk)
     assert (r, g, b) == pytest.approx(expected)
-    assert a is None

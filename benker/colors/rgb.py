@@ -162,12 +162,12 @@ def format_rgba_percent(r, g, b, a=None, rgb_scale=RGB_SCALE):
     return fmt.format(r=r, g=g, b=b, a=a)
 
 
-def rgba_to_hsla(r, g, b, a=None, rgb_scale=RGB_SCALE, hue_scale=HUE_SCALE):
+def rgb_to_hsl(r, g, b, rgb_scale=RGB_SCALE, hue_scale=HUE_SCALE):
     h, l, s = colorsys.rgb_to_hls(r / rgb_scale, g / rgb_scale, b / rgb_scale)
-    return h * hue_scale, s, l, a
+    return h * hue_scale, s, l
 
 
-def rgba_to_cmyka(r, g, b, a=None, rgb_scale=RGB_SCALE, cmyk_scale=CMYK_SCALE):
+def rgb_to_cmyk(r, g, b, rgb_scale=RGB_SCALE, cmyk_scale=CMYK_SCALE):
     if (r, g, b) == (0, 0, 0):
         # black
         return 0, 0, 0, cmyk_scale
