@@ -5,34 +5,34 @@ environment:
   matrix:
     # Python **2.6** and **3.3** are no more supported
     - PYTHON: "C:\\Python27"
-      TOX_ENV: "py27"
+      TOX_ENV: "py27-lxml3,py27-lxml4"
 
     - PYTHON: "C:\\Python27-x64"
-      TOX_ENV: "py27"
+      TOX_ENV: "py27-lxml3,py27-lxml4"
 
     - PYTHON: "C:\\Python34"
-      TOX_ENV: "py34"
+      TOX_ENV: "py34-lxml3,py34-lxml43"
 
     - PYTHON: "C:\\Python34-x64"
-      TOX_ENV: "py34"
+      TOX_ENV: "py34-lxml3,py34-lxml43"
 
     - PYTHON: "C:\\Python35"
-      TOX_ENV: "py35"
+      TOX_ENV: "py35-lxml3,py35-lxml4"
 
     - PYTHON: "C:\\Python35-x64"
-      TOX_ENV: "py35"
+      TOX_ENV: "py35-lxml3,py35-lxml4"
 
     - PYTHON: "C:\\Python36"
-      TOX_ENV: "py36"
+      TOX_ENV: "clean,check,py36-lxml3,py36-lxml4,report,docs"
 
     - PYTHON: "C:\\Python36-x64"
-      TOX_ENV: "py36"
+      TOX_ENV: "clean,check,py36-lxml3,py36-lxml4,report,docs"
 
     - PYTHON: "C:\\Python37"
-      TOX_ENV: "py37"
+      TOX_ENV: "py37-lxml4"
 
     - PYTHON: "C:\\Python37-x64"
-      TOX_ENV: "py37"
+      TOX_ENV: "py37-lxml4"
 
 init:
   - set PATH=%PYTHON%;%PYTHON%\Scripts;C:\MinGW\msys\1.0\bin;%PATH%
