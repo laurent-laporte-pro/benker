@@ -14,7 +14,7 @@ environment:
       TOX_ENV: "py34-lxml3,py34-lxml43"
 
     - PYTHON: "C:\\Python34-x64"
-      TOX_ENV: "py34-lxml3,py34-lxml43"
+      TOX_ENV: "py34-lxml3,py34-lxml433"
 
     - PYTHON: "C:\\Python35"
       TOX_ENV: "py35-lxml3,py35-lxml4"

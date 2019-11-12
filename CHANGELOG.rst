@@ -107,6 +107,9 @@ Other
 
 * Change link to the Formex documentation to "https://op.europa.eu/en/web/eu-vocabularies/formex".
 
+* Change Tox & AppVeyor configuration to use lxml v4.3.3 on Windows (for Python 3.4),
+  because lxml v4.3.5 is not available for this platform.
+
 
 v0.5.0 (2019-09-25)
 ===================
