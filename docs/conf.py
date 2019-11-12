@@ -25,7 +25,7 @@ copyright = '2018-2019, Laurent LAPORTE'
 author = 'Laurent LAPORTE'
 
 # The full version, including alpha/beta/rc tags
-release = "0.5.1"
+release = "0.5.2"
 # The short X.Y version
 version = '.'.join(release.split('.')[:2])
 
