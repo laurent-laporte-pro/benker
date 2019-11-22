@@ -12,6 +12,11 @@ v0.5.2 (unreleased)
 
 Bug fix release
 
+Fixed
+-----
+
+* Documentation: improve API documentation for CALS table builder.
+
 
 v0.5.1 (2019-11-12)
 ===================

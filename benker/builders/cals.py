@@ -184,6 +184,9 @@ class CalsBuilder(BaseBuilder):
 
         CALS attributes:
 
+        -   ``@frame`` is built from the "border-top", "border-right", "border-bottom", "border-left" styles.
+            Default value is "none" (no frame).
+
         -   ``@colsep`` is built from the "x-cell-border-right" style.
             Default value is "0" (not displayed).
 
@@ -395,6 +398,11 @@ class CalsBuilder(BaseBuilder):
         -   ``@valign`` is built from the "vertical-align" style.
             Values can be "top", "middle", "bottom" (note: "baseline" is not supported).
             Default value is "bottom".
+
+        -   ``@colsep`` row separators (horizontal ruling).
+            Possible values are "0" or "1".
+
+        -   ``@rowstyle`` row style (extension).
 
         .. note::
 
