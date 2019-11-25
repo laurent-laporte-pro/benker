@@ -23,6 +23,8 @@ Fixed
   If the ``CELL/@TYPE`` and the ``ROW/@TYPE`` are different, we add a specific "cellstyle" style.
   This style will keep the ``CELL/@TYPE`` value.
 
+* Fix in ``calstblx.xsd``: change the definition of ``tgroup``: ``tfoot`` may be placed after ``tbody`` (extension).
+
 
 v0.5.1 (2019-11-12)
 ===================

@@ -18,7 +18,7 @@
     The "yesorno" type is used to type various attributes used in this
     table module.  Here is a sample declaration:
 
-    <xsd:simpleType name='yesorno' type="xsd:NMTOKEN"/>
+    <xsd:simpleType name="yesorno" type="xsd:NMTOKEN"/>
 
     The "bodyatt" attribute group should declare additional attributes
     that are to be declared on the table element.  Here is a simplified
@@ -66,57 +66,57 @@
   <!-- The tbl.*.att attribute groups are mostly null here, but simplify
        the addition of attributes to the various table elements.      -->
 
-  <xsd:attributeGroup name='tbl.table.att'>
+  <xsd:attributeGroup name="tbl.table.att">
     <xsd:attribute name="pgwide" type="yesorno"/>
-    <xsd:attribute name="tabstyle" type='xsd:string'/>
+    <xsd:attribute name="tabstyle" type="xsd:string"/>
     <xsd:attribute name="tocentry" type="yesorno"/>
     <xsd:attribute name="shortentry" type="yesorno"/>
     <xsd:attribute name="orient">
       <xsd:simpleType>
-        <xsd:restriction base='xsd:string'>
-          <xsd:enumeration value='port'/>
-          <xsd:enumeration value='land'/>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="port"/>
+          <xsd:enumeration value="land"/>
         </xsd:restriction>
       </xsd:simpleType>
     </xsd:attribute>
   </xsd:attributeGroup>
-  <xsd:attributeGroup name='tbl.tgroup.att'>
-    <xsd:attribute name="tgroupstyle" type='xsd:string'/>
+  <xsd:attributeGroup name="tbl.tgroup.att">
+    <xsd:attribute name="tgroupstyle" type="xsd:string"/>
   </xsd:attributeGroup>
-  <xsd:attributeGroup name='tbl.colspec.att'/>
-  <xsd:attributeGroup name='tbl.spanspec.att'/>
-  <xsd:attributeGroup name='tbl.thead.att'/>
-  <xsd:attributeGroup name='tbl.tfoot.att'/>
-  <xsd:attributeGroup name='tbl.tbody.att'/>
-  <xsd:attributeGroup name='tbl.row.att'/>
-  <xsd:attributeGroup name='tbl.entrytbl.att'/>
-  <xsd:attributeGroup name='tbl.entry.att'/>
+  <xsd:attributeGroup name="tbl.colspec.att"/>
+  <xsd:attributeGroup name="tbl.spanspec.att"/>
+  <xsd:attributeGroup name="tbl.thead.att"/>
+  <xsd:attributeGroup name="tbl.tfoot.att"/>
+  <xsd:attributeGroup name="tbl.tbody.att"/>
+  <xsd:attributeGroup name="tbl.row.att"/>
+  <xsd:attributeGroup name="tbl.entrytbl.att"/>
+  <xsd:attributeGroup name="tbl.entry.att"/>
 
   <!-- We define attribute groups for horizontal and vertical alignment -->
 
-  <xsd:attributeGroup name='tbl.align.attrib'>
+  <xsd:attributeGroup name="tbl.align.attrib">
     <xsd:attribute name="align">
       <xsd:simpleType>
-        <xsd:restriction base='xsd:string'>
-          <xsd:enumeration value='left'/>
-          <xsd:enumeration value='right'/>
-          <xsd:enumeration value='center'/>
-          <xsd:enumeration value='justify'/>
-          <xsd:enumeration value='char'/>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="left"/>
+          <xsd:enumeration value="right"/>
+          <xsd:enumeration value="center"/>
+          <xsd:enumeration value="justify"/>
+          <xsd:enumeration value="char"/>
         </xsd:restriction>
       </xsd:simpleType>
     </xsd:attribute>
-    <xsd:attribute name='char' type='xsd:string'/>
-    <xsd:attribute name='charoff' type='xsd:NMTOKEN'/>
+    <xsd:attribute name="char" type="xsd:string"/>
+    <xsd:attribute name="charoff" type="xsd:NMTOKEN"/>
   </xsd:attributeGroup>
 
-  <xsd:attributeGroup name='tbl.valign.attrib'>
+  <xsd:attributeGroup name="tbl.valign.attrib">
     <xsd:attribute name="valign">
       <xsd:simpleType>
-        <xsd:restriction base='xsd:string'>
-          <xsd:enumeration value='top'/>
-          <xsd:enumeration value='middle'/>
-          <xsd:enumeration value='bottom'/>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="top"/>
+          <xsd:enumeration value="middle"/>
+          <xsd:enumeration value="bottom"/>
         </xsd:restriction>
       </xsd:simpleType>
     </xsd:attribute>
@@ -138,175 +138,177 @@
       <xsd:group ref="tbl.table-titles.mdl"/>
       <xsd:element ref="tgroup" maxOccurs="unbounded"/>
     </xsd:sequence>
-    <xsd:attribute name='frame'>
+    <xsd:attribute name="frame">
       <xsd:simpleType>
-        <xsd:restriction base='xsd:string'>
-          <xsd:enumeration value='top'/>
-          <xsd:enumeration value='bottom'/>
-          <xsd:enumeration value='topbot'/>
-          <xsd:enumeration value='all'/>
-          <xsd:enumeration value='sides'/>
-          <xsd:enumeration value='none'/>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="top"/>
+          <xsd:enumeration value="bottom"/>
+          <xsd:enumeration value="topbot"/>
+          <xsd:enumeration value="all"/>
+          <xsd:enumeration value="sides"/>
+          <xsd:enumeration value="none"/>
         </xsd:restriction>
       </xsd:simpleType>
     </xsd:attribute>
-    <xsd:attribute name='colsep' type='yesorno'/>
-    <xsd:attribute name='rowsep' type='yesorno'/>
-    <xsd:attributeGroup ref='tbl.table.att'/>
-    <xsd:attributeGroup ref='bodyatt'/>
-    <xsd:attributeGroup ref='secur'/>
+    <xsd:attribute name="colsep" type="yesorno"/>
+    <xsd:attribute name="rowsep" type="yesorno"/>
+    <xsd:attributeGroup ref="tbl.table.att"/>
+    <xsd:attributeGroup ref="bodyatt"/>
+    <xsd:attributeGroup ref="secur"/>
   </xsd:complexType>
 
   <xsd:element name="table" type="table-element.type"/>
 
   <!-- ***** tgroup element declaration ***** -->
 
-  <xsd:element name='tgroup'>
+  <xsd:element name="tgroup">
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element ref='colspec' minOccurs='0' maxOccurs='unbounded'/>
-        <xsd:element ref='spanspec' minOccurs='0' maxOccurs='unbounded'/>
-        <xsd:element ref='thead' minOccurs='0' maxOccurs='1'/>
-        <xsd:element ref='tfoot' minOccurs='0' maxOccurs='1'/>
-        <xsd:element ref='tbody'/>
+        <xsd:element ref="colspec" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element ref="spanspec" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element ref="thead" minOccurs="0" maxOccurs="1"/>
+        <xsd:element ref="tfoot" minOccurs="0" maxOccurs="1"/>
+        <xsd:element ref="tbody"/>
+        <!-- ``tfoot`` may be placed after ``tbody`` (extension). -->
+        <xsd:element ref="tfoot" minOccurs="0" maxOccurs="1"/>
       </xsd:sequence>
-      <xsd:attribute name='cols' type='xsd:integer' use='required'/>
-      <xsd:attribute name='colsep' type='yesorno'/>
-      <xsd:attribute name='rowsep' type='yesorno'/>
-      <xsd:attributeGroup ref='tbl.align.attrib'/>
-      <xsd:attributeGroup ref='tbl.tgroup.att'/>
-      <xsd:attributeGroup ref='secur'/>
+      <xsd:attribute name="cols" type="xsd:integer" use="required"/>
+      <xsd:attribute name="colsep" type="yesorno"/>
+      <xsd:attribute name="rowsep" type="yesorno"/>
+      <xsd:attributeGroup ref="tbl.align.attrib"/>
+      <xsd:attributeGroup ref="tbl.tgroup.att"/>
+      <xsd:attributeGroup ref="secur"/>
     </xsd:complexType>
   </xsd:element>
 
   <!-- ***** colspec element declaration ***** -->
 
-  <xsd:element name='colspec'>
+  <xsd:element name="colspec">
     <xsd:complexType>
       <!-- EMPTY -->
-      <xsd:attribute name='colnum' type='xsd:integer'/>
-      <xsd:attribute name='colname' type='xsd:NMTOKEN'/>
-      <xsd:attribute name='colwidth' type='xsd:string'/>
-      <xsd:attribute name='colsep' type='yesorno'/>
-      <xsd:attribute name='rowsep' type='yesorno'/>
-      <xsd:attributeGroup ref='tbl.align.attrib'/>
-      <xsd:attributeGroup ref='tbl.colspec.att'/>
+      <xsd:attribute name="colnum" type="xsd:integer"/>
+      <xsd:attribute name="colname" type="xsd:NMTOKEN"/>
+      <xsd:attribute name="colwidth" type="xsd:string"/>
+      <xsd:attribute name="colsep" type="yesorno"/>
+      <xsd:attribute name="rowsep" type="yesorno"/>
+      <xsd:attributeGroup ref="tbl.align.attrib"/>
+      <xsd:attributeGroup ref="tbl.colspec.att"/>
     </xsd:complexType>
   </xsd:element>
 
   <!-- ***** spanspec element declaration ***** -->
 
-  <xsd:element name='spanspec'>
+  <xsd:element name="spanspec">
     <xsd:complexType>
       <!-- EMPTY -->
-      <xsd:attribute name='namest' type='xsd:NMTOKEN' use="required"/>
-      <xsd:attribute name='nameend' type='xsd:NMTOKEN' use="required"/>
-      <xsd:attribute name='spanname' type='xsd:NMTOKEN' use="required"/>
-      <xsd:attribute name='colsep' type='yesorno'/>
-      <xsd:attribute name='rowsep' type='yesorno'/>
-      <xsd:attributeGroup ref='tbl.align.attrib'/>
-      <xsd:attributeGroup ref='tbl.spanspec.att'/>
+      <xsd:attribute name="namest" type="xsd:NMTOKEN" use="required"/>
+      <xsd:attribute name="nameend" type="xsd:NMTOKEN" use="required"/>
+      <xsd:attribute name="spanname" type="xsd:NMTOKEN" use="required"/>
+      <xsd:attribute name="colsep" type="yesorno"/>
+      <xsd:attribute name="rowsep" type="yesorno"/>
+      <xsd:attributeGroup ref="tbl.align.attrib"/>
+      <xsd:attributeGroup ref="tbl.spanspec.att"/>
     </xsd:complexType>
   </xsd:element>
 
   <!-- ***** thead element declaration ***** -->
 
-  <xsd:element name='thead'>
+  <xsd:element name="thead">
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element ref='colspec' minOccurs='0' maxOccurs='unbounded'/>
-        <xsd:element ref='row' minOccurs='1' maxOccurs='unbounded'/>
+        <xsd:element ref="colspec" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element ref="row" minOccurs="1" maxOccurs="unbounded"/>
       </xsd:sequence>
-      <xsd:attributeGroup ref='tbl.valign.attrib'/>
-      <xsd:attributeGroup ref='tbl.thead.att'/>
-      <xsd:attributeGroup ref='secur'/>
+      <xsd:attributeGroup ref="tbl.valign.attrib"/>
+      <xsd:attributeGroup ref="tbl.thead.att"/>
+      <xsd:attributeGroup ref="secur"/>
     </xsd:complexType>
   </xsd:element>
 
   <!-- ***** tfoot element declaration ***** -->
 
-  <xsd:element name='tfoot'>
+  <xsd:element name="tfoot">
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element ref='colspec' minOccurs='0' maxOccurs='unbounded'/>
-        <xsd:element ref='row' minOccurs='1' maxOccurs='unbounded'/>
+        <xsd:element ref="colspec" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element ref="row" minOccurs="1" maxOccurs="unbounded"/>
       </xsd:sequence>
-      <xsd:attributeGroup ref='tbl.valign.attrib'/>
-      <xsd:attributeGroup ref='tbl.tfoot.att'/>
-      <xsd:attributeGroup ref='secur'/>
+      <xsd:attributeGroup ref="tbl.valign.attrib"/>
+      <xsd:attributeGroup ref="tbl.tfoot.att"/>
+      <xsd:attributeGroup ref="secur"/>
     </xsd:complexType>
   </xsd:element>
 
   <!-- ***** tbody element declaration ***** -->
 
-  <xsd:element name='tbody'>
+  <xsd:element name="tbody">
     <xsd:complexType>
       <xsd:choice>
-        <xsd:element ref='row' minOccurs='1' maxOccurs='unbounded'/>
+        <xsd:element ref="row" minOccurs="1" maxOccurs="unbounded"/>
       </xsd:choice>
-      <xsd:attributeGroup ref='tbl.valign.attrib'/>
-      <xsd:attributeGroup ref='tbl.tbody.att'/>
-      <xsd:attributeGroup ref='secur'/>
+      <xsd:attributeGroup ref="tbl.valign.attrib"/>
+      <xsd:attributeGroup ref="tbl.tbody.att"/>
+      <xsd:attributeGroup ref="secur"/>
     </xsd:complexType>
   </xsd:element>
 
   <!-- ***** row element declaration ***** -->
 
-  <xsd:element name='row'>
+  <xsd:element name="row">
     <xsd:complexType>
-      <xsd:choice minOccurs='1' maxOccurs='unbounded'>
-        <xsd:element ref='entry'/>
-        <xsd:element ref='entrytbl'/>
+      <xsd:choice minOccurs="1" maxOccurs="unbounded">
+        <xsd:element ref="entry"/>
+        <xsd:element ref="entrytbl"/>
       </xsd:choice>
-      <xsd:attribute name='rowsep' type='yesorno'/>
-      <xsd:attributeGroup ref='tbl.valign.attrib'/>
-      <xsd:attributeGroup ref='tbl.row.att'/>
-      <xsd:attributeGroup ref='secur'/>
+      <xsd:attribute name="rowsep" type="yesorno"/>
+      <xsd:attributeGroup ref="tbl.valign.attrib"/>
+      <xsd:attributeGroup ref="tbl.row.att"/>
+      <xsd:attributeGroup ref="secur"/>
     </xsd:complexType>
   </xsd:element>
 
   <!-- ***** entry element declaration ***** -->
 
-  <xsd:element name='entrytbl'>
+  <xsd:element name="entrytbl">
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element ref='colspec' minOccurs='0' maxOccurs='unbounded'/>
-        <xsd:element ref='spanspec' minOccurs='0' maxOccurs='unbounded'/>
-        <xsd:element ref='thead' minOccurs='0' maxOccurs='1'/>
-        <xsd:element ref='tbody'/>
+        <xsd:element ref="colspec" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element ref="spanspec" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element ref="thead" minOccurs="0" maxOccurs="1"/>
+        <xsd:element ref="tbody"/>
       </xsd:sequence>
-      <xsd:attribute name='cols' type='xsd:integer' use='required'/>
-      <xsd:attribute name='colname' type='xsd:NMTOKEN'/>
-      <xsd:attribute name='namest' type='xsd:NMTOKEN'/>
-      <xsd:attribute name='nameend' type='xsd:NMTOKEN'/>
-      <xsd:attribute name='spanname' type='xsd:NMTOKEN'/>
-      <xsd:attribute name='colsep' type='yesorno'/>
-      <xsd:attribute name='rowsep' type='yesorno'/>
-      <xsd:attributeGroup ref='tbl.align.attrib'/>
-      <xsd:attributeGroup ref='tbl.entrytbl.att'/>
-      <xsd:attributeGroup ref='secur'/>
+      <xsd:attribute name="cols" type="xsd:integer" use="required"/>
+      <xsd:attribute name="colname" type="xsd:NMTOKEN"/>
+      <xsd:attribute name="namest" type="xsd:NMTOKEN"/>
+      <xsd:attribute name="nameend" type="xsd:NMTOKEN"/>
+      <xsd:attribute name="spanname" type="xsd:NMTOKEN"/>
+      <xsd:attribute name="colsep" type="yesorno"/>
+      <xsd:attribute name="rowsep" type="yesorno"/>
+      <xsd:attributeGroup ref="tbl.align.attrib"/>
+      <xsd:attributeGroup ref="tbl.entrytbl.att"/>
+      <xsd:attributeGroup ref="secur"/>
     </xsd:complexType>
   </xsd:element>
 
   <!-- ***** entry element declaration ***** -->
 
-  <xsd:element name='entry'>
+  <xsd:element name="entry">
     <xsd:complexType mixed="true">
       <xsd:choice minOccurs="0" maxOccurs="unbounded">
         <xsd:group ref="paracon"/>
       </xsd:choice>
-      <xsd:attribute name='colname' type='xsd:NMTOKEN'/>
-      <xsd:attribute name='namest' type='xsd:NMTOKEN'/>
-      <xsd:attribute name='nameend' type='xsd:NMTOKEN'/>
-      <xsd:attribute name='spanname' type='xsd:NMTOKEN'/>
-      <xsd:attribute name='morerows' type='xsd:integer'/>
-      <xsd:attribute name='colsep' type='yesorno'/>
-      <xsd:attribute name='rowsep' type='yesorno'/>
-      <xsd:attributeGroup ref='tbl.align.attrib'/>
-      <xsd:attributeGroup ref='tbl.valign.attrib'/>
-      <xsd:attribute name='rotate' type='yesorno'/>
-      <xsd:attributeGroup ref='tbl.entry.att'/>
-      <xsd:attributeGroup ref='secur'/>
+      <xsd:attribute name="colname" type="xsd:NMTOKEN"/>
+      <xsd:attribute name="namest" type="xsd:NMTOKEN"/>
+      <xsd:attribute name="nameend" type="xsd:NMTOKEN"/>
+      <xsd:attribute name="spanname" type="xsd:NMTOKEN"/>
+      <xsd:attribute name="morerows" type="xsd:integer"/>
+      <xsd:attribute name="colsep" type="yesorno"/>
+      <xsd:attribute name="rowsep" type="yesorno"/>
+      <xsd:attributeGroup ref="tbl.align.attrib"/>
+      <xsd:attributeGroup ref="tbl.valign.attrib"/>
+      <xsd:attribute name="rotate" type="yesorno"/>
+      <xsd:attributeGroup ref="tbl.entry.att"/>
+      <xsd:attributeGroup ref="secur"/>
     </xsd:complexType>
   </xsd:element>
 
