@@ -72,10 +72,12 @@ TEST_DATA__WITH_SEP = [
         id="no_style"),
 
     pytest.param(
-        {'border-top': 'double 1.0pt #FFFFFF',
-         'border-right': 'dotted 2.0pt #FF0000',
-         'border-bottom': 'dashed 3.0pt #00FF00',
-         'border-left': 'outset 4.0pt #0000FF'},
+        {
+            'border-top': 'double 1.0pt #FFFFFF',
+            'border-right': 'dotted 2.0pt #FF0000',
+            'border-bottom': 'dashed 3.0pt #00FF00',
+            'border-left': 'outset 4.0pt #0000FF',
+        },
         {'colsep': '1', 'rowsep': '1'},
         id="style_border-all"),
 
@@ -139,10 +141,12 @@ TEST_DATA__WITHOUT_SEP = [
         id="no_style"),
 
     pytest.param(
-        {'border-top': 'double 1.0pt #FFFFFF',
+        {
+            'border-top': 'double 1.0pt #FFFFFF',
             'border-right': 'dotted 2.0pt #FF0000',
             'border-bottom': 'dashed 3.0pt #00FF00',
-         'border-left': 'outset 4.0pt #0000FF'},
+            'border-left': 'outset 4.0pt #0000FF',
+        },
         {'colsep': '1', 'rowsep': '1'},
         id="style_border-all"),
 
