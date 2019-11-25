@@ -373,6 +373,12 @@ class CalsParser(BaseParser):
 
         .. versionchanged:: 0.5.1
            The "vertical-align" style is built from the ``@cals:valign`` attribute.
+
+        .. versionchanged:: 0.5.2
+           Add support for the ``@cals:cellstyle`` attribute (extension).
+           This attribute is required for two-way conversion of Formex tables to CALS and vice versa.
+           If the ``CELL/@TYPE`` and the ``ROW/@TYPE`` are different, we add a specific "cellstyle" style.
+           This style will keep the ``CELL/@TYPE`` value.
         """
         cals = self.get_cals_qname
         styles = {}
@@ -418,6 +424,11 @@ class CalsParser(BaseParser):
         align_map = {"left": "left", "right": "right", "center": "center", "justify": "justify", "char": "left"}
         if align in align_map:
             styles["align"] = align_map[align]
+
+        # -- attribute @cals:bgcolor
+        cellstyle = cals_entry.attrib.get(cals("cellstyle"))
+        if cellstyle:
+            styles["cellstyle"] = cellstyle
 
         # todo: calculate the ``@rotate`` attribute.
 

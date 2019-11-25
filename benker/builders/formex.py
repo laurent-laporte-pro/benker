@@ -553,6 +553,12 @@ class FormexBuilder(BaseBuilder):
 
         .. versionchanged:: 0.5.1
            Preserve processing instruction in cell content.
+
+        .. versionchanged:: 0.5.2
+           Add support for the ``@cals:cellstyle`` attribute (extension).
+           This attribute is required for two-way conversion of Formex tables to CALS and vice versa.
+           If the ``CELL/@TYPE`` and the ``ROW/@TYPE`` are different, we add a specific "cellstyle" style.
+           This style will keep the ``CELL/@TYPE`` value.
         """
         cell_styles = cell.styles
         attrs = {"COL": str(cell.box.min.x)}
@@ -589,12 +595,14 @@ class FormexBuilder(BaseBuilder):
                 }[cell_styles['vertical-align']]
             if 'align' in cell_styles:
                 # same values as CSS/Properties/text-align
+            # fmt: off
                 attrs[cals('align')] = {
                     'left': u'left',
                     'center': u'center',
                     'right': u'right',
                     'justify': u'justify',
                 }[cell_styles['align']]
+            # fmt: on
             if cell.width > 1:
                 attrs[cals("namest")] = u"c{0}".format(cell.box.min.x)
                 attrs[cals("nameend")] = u"c{0}".format(cell.box.max.x)
@@ -602,6 +610,10 @@ class FormexBuilder(BaseBuilder):
                 attrs[cals("morerows")] = str(cell.height - 1)
             if "background-color" in cell_styles:
                 attrs[cals("bgcolor")] = cell_styles["background-color"]
+            # -- attribute @cals:cellstyle (extension)
+            if "cellstyle" in cell_styles:
+                # override the value set by the *nature*
+                attrs["TYPE"] = cell_styles["cellstyle"]
 
         cell_elem = etree.SubElement(row_elem, u"CELL", attrib=attrs)
         self.append_cell_elements(cell_elem, cell.content)

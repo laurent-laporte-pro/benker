@@ -466,11 +466,11 @@ def test_parse_fmx_gr_notes__embed_gr_notes():
         ({"COLSPAN": "2"}, {}, None, (2, 1)),
         ({"ROWSPAN": "1"}, {}, None, (1, 1)),
         ({"ROWSPAN": "2"}, {}, None, (1, 2)),
-        ({"TYPE": "ALIAS"}, {}, "header", (1, 1)),
-        ({"TYPE": "HEADER"}, {}, "header", (1, 1)),
+        ({"TYPE": "ALIAS"}, {"cellstyle": "ALIAS"}, "header", (1, 1)),
+        ({"TYPE": "HEADER"}, {"cellstyle": "HEADER"}, "header", (1, 1)),
         ({"TYPE": "NORMAL"}, {}, "body", (1, 1)),
-        ({"TYPE": "NOTCOL"}, {}, "body", (1, 1)),
-        ({"TYPE": "TOTAL"}, {}, "body", (1, 1)),
+        ({"TYPE": "NOTCOL"}, {"cellstyle": "NOTCOL"}, "body", (1, 1)),
+        ({"TYPE": "TOTAL"}, {"cellstyle": "TOTAL"}, "body", (1, 1)),
     ],
 )
 def test_parse_fmx_cell(attrib, styles, nature, size):

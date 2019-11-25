@@ -81,13 +81,7 @@ class CalsBuilder(BaseBuilder):
     """
 
     def __init__(
-        self,
-        cals_ns=None,
-        cals_prefix=None,
-        width_unit="mm",
-        table_in_tgroup=False,
-        tgroup_sorting=None,
-        **options
+        self, cals_ns=None, cals_prefix=None, width_unit="mm", table_in_tgroup=False, tgroup_sorting=None, **options
     ):
         """
         Initialize the builder.
@@ -508,6 +502,8 @@ class CalsBuilder(BaseBuilder):
 
         -   ``@bgcolor`` is built from the "background-color" style (HTML color).
 
+        -   ``@cellstyle`` stores the ``CELL/@TYPE`` value of a Formex file.
+
         :type  row_elem: ElementType
         :param row_elem: Parent element: ``<row>``.
 
@@ -519,6 +515,12 @@ class CalsBuilder(BaseBuilder):
 
         .. versionchanged:: 0.5.1
            Preserve processing instruction in cell content.
+
+        .. versionchanged:: 0.5.2
+           Add support for the ``@cals:cellstyle`` attribute (extension).
+           This attribute is required for two-way conversion of Formex tables to CALS and vice versa.
+           If the ``CELL/@TYPE`` and the ``ROW/@TYPE`` are different, we add a specific "cellstyle" style.
+           This style will keep the ``CELL/@TYPE`` value.
         """
         # support for CALS namespace
         cals = self.cals_ns.get_qname
@@ -555,12 +557,15 @@ class CalsBuilder(BaseBuilder):
             }[cell_styles['align']]
             # fmt: on
         if cell.width > 1:
-            attrs[cals(u"namest")] = u"c{0}".format(cell.box.min.x)
-            attrs[cals(u"nameend")] = u"c{0}".format(cell.box.max.x)
+            attrs[cals("namest")] = u"c{0}".format(cell.box.min.x)
+            attrs[cals("nameend")] = u"c{0}".format(cell.box.max.x)
         if cell.height > 1:
-            attrs[cals(u"morerows")] = str(cell.height - 1)
+            attrs[cals("morerows")] = str(cell.height - 1)
         if "background-color" in cell_styles:
             attrs[cals("bgcolor")] = cell_styles["background-color"]
+        # -- attribute @cals:cellstyle (extension)
+        if "cellstyle" in cell_styles:
+            attrs[cals("cellstyle")] = cell_styles["cellstyle"]
 
         entry_elem = etree.SubElement(row_elem, cals(u"entry"), attrib=attrs, nsmap=self.ns_map)
         self.append_cell_elements(entry_elem, cell.content)

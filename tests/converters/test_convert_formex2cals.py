@@ -21,6 +21,7 @@ from tests.resources import RESOURCES_DIR
         ("formex/tbl_sample_cals.xml", "formex2cals/tbl_sample_cals.xml", False),
         ("formex/tbl_sample.xml", "formex2cals/tbl_sample.embedded.xml", True),
         ("formex/tbl_sample_cals.xml", "formex2cals/tbl_sample_cals.embedded.xml", True),
+        ("formex/tbl_col_type_header.xml", "formex2cals/tbl_col_type_header.xml", False),
     ],
 )
 def test_convert_formex2cals(input_name, expected_name, embed_gr_notes, tmpdir):

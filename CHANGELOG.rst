@@ -17,6 +17,12 @@ Fixed
 
 * Documentation: improve API documentation for CALS table builder.
 
+* Change in the Formex/CALS builders and parsers:
+  Add support for the ``@cals:cellstyle`` attribute (extension).
+  This attribute is required for two-way conversion of Formex tables to CALS and vice versa.
+  If the ``CELL/@TYPE`` and the ``ROW/@TYPE`` are different, we add a specific "cellstyle" style.
+  This style will keep the ``CELL/@TYPE`` value.
+
 
 v0.5.1 (2019-11-12)
 ===================

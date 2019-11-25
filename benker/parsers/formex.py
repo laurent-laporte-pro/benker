@@ -515,6 +515,12 @@ class FormexParser(BaseParser):
 
         :type  fmx_cell: ElementType
         :param fmx_cell: table cell
+
+        .. versionchanged:: 0.5.2
+           Add support for the ``@cals:cellstyle`` attribute (extension).
+           This attribute is required for two-way conversion of Formex tables to CALS and vice versa.
+           If the ``CELL/@TYPE`` and the ``ROW/@TYPE`` are different, we add a specific "cellstyle" style.
+           This style will keep the ``CELL/@TYPE`` value.
         """
         fmx = self.get_formex_qname
         styles = {}
@@ -533,6 +539,12 @@ class FormexParser(BaseParser):
         cell_type = fmx_cell.attrib.get(fmx("TYPE"))
         cell_nature = type_map.get(cell_type)
         nature = cell_nature or row_nature
+
+        # add the "cellstyle" if necessary
+        fmx_row = fmx_cell.getparent()
+        row_type = None if fmx_row is None else fmx_row.attrib.get(fmx("TYPE"))
+        if (cell_type or "NORMAL") != (row_type or "NORMAL"):
+            styles["cellstyle"] = cell_type
 
         # support for CALS-like elements and attributes
         cals = self.get_cals_qname

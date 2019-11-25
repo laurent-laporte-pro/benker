@@ -71,6 +71,12 @@ from tests.resources import RESOURCES_DIR
             None,
             None,
         ),
+        (
+            "cals/tbl_col_type_header.xml",
+            "cals2formex/tbl_col_type_header.xml",
+            None,
+            None,
+        ),
     ],
     # fmt: on
 )
