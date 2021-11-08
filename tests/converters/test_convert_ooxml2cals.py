@@ -37,16 +37,19 @@ def test_convert_ooxml2cals__demo(tmpdir):
     CalsComparator().compare_files(str(dst_xml), str(expected_xml))
 
 
-@pytest.mark.parametrize('input_name, expected_name',
-                         [
-                             ("ooxml/misc_tables.xml", "ooxml2cals/misc_tables.xml"),
-                             ("ooxml/alignements.xml", "ooxml2cals/alignements.xml"),
-                             ("ooxml/alignements2.xml", "ooxml2cals/alignements2.xml"),
-                             ("ooxml/simple_merge.xml", "ooxml2cals/simple_merge.xml"),
-                             ("ooxml/table_in_table.xml", "ooxml2cals/table_in_table.xml"),
-                             ("ooxml/Lorem Ipsum.xml", "ooxml2cals/Lorem Ipsum.xml"),
-                             ("ooxml/Revision marks.xml", "ooxml2cals/Revision marks.xml"),
-                         ])
+@pytest.mark.parametrize(
+    'input_name, expected_name',
+    [
+        ("ooxml/misc_tables.xml", "ooxml2cals/misc_tables.xml"),
+        ("ooxml/alignements.xml", "ooxml2cals/alignements.xml"),
+        ("ooxml/alignements2.xml", "ooxml2cals/alignements2.xml"),
+        ("ooxml/simple_merge.xml", "ooxml2cals/simple_merge.xml"),
+        ("ooxml/table_in_table.xml", "ooxml2cals/table_in_table.xml"),
+        ("ooxml/Lorem Ipsum.xml", "ooxml2cals/Lorem Ipsum.xml"),
+        ("ooxml/Revision marks.xml", "ooxml2cals/Revision marks.xml"),
+        ("ooxml/demo_images.xml", "ooxml2cals/demo_images.xml"),
+    ],
+)
 def test_convert_ooxml2cals(input_name, expected_name, tmpdir):
     # type: (str, str, py.path.local) -> None
     src_xml = RESOURCES_DIR.join(input_name)  # type: py.path.local

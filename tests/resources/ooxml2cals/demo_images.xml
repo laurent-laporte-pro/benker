@@ -1,0 +1,431 @@
+<w:document xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="w14 wp14">
+    <w:body>
+        <w:p>
+            <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:bidi w:val="0"/>
+                <w:spacing w:lineRule="auto" w:line="276" w:before="0" w:after="140"/>
+                <w:jc w:val="left"/>
+                <w:rPr/>
+            </w:pPr>
+            <w:r>
+                <w:rPr/>
+                <w:t>Exemple de tableau dont les cellules contiennent des images :</w:t>
+            </w:r>
+        </w:p>
+        <table colsep="0" frame="none" pgwide="1" rowsep="0"><tgroup cols="2"><colspec colname="c1" colwidth="154.30pt"/><colspec colname="c2" colwidth="129.15pt"/><thead><row><entry align="center" rowsep="1" valign="middle"><w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Corpsdetexte"/>
+                            <w:bidi w:val="0"/>
+                            <w:spacing w:before="0" w:after="140"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:b/>
+                                <w:b/>
+                                <w:bCs/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr>
+                                <w:b/>
+                                <w:bCs/>
+                            </w:rPr>
+                            <w:t>Animal</w:t>
+                        </w:r>
+                    </w:p>
+                </entry><entry align="center" rowsep="1"><w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Corpsdetexte"/>
+                            <w:bidi w:val="0"/>
+                            <w:spacing w:before="0" w:after="140"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:b/>
+                                <w:b/>
+                                <w:bCs/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr>
+                                <w:b/>
+                                <w:bCs/>
+                            </w:rPr>
+                            <w:t>Image</w:t>
+                        </w:r>
+                    </w:p>
+                </entry></row></thead><tbody><row><entry align="center" rowsep="1"><w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Corpsdetexte"/>
+                            <w:bidi w:val="0"/>
+                            <w:spacing w:before="0" w:after="140"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr/>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr/>
+                            <w:t>Cerf</w:t>
+                        </w:r>
+                    </w:p>
+                </entry><entry align="center" rowsep="1"><w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Corpsdetexte"/>
+                            <w:bidi w:val="0"/>
+                            <w:spacing w:before="0" w:after="140"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr/>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr/>
+                            <w:drawing>
+                                <wp:inline distT="0" distB="0" distL="0" distR="0">
+                                    <wp:extent cx="1080135" cy="1080135"/>
+                                    <wp:effectExtent l="0" t="0" r="0" b="0"/>
+                                    <wp:docPr id="1" name="Image1" descr=""/>
+                                    <wp:cNvGraphicFramePr>
+                                        <a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
+                                    </wp:cNvGraphicFramePr>
+                                    <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                                        <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                                            <pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                                                <pic:nvPicPr>
+                                                    <pic:cNvPr id="1" name="Image1" descr=""/>
+                                                    <pic:cNvPicPr>
+                                                        <a:picLocks noChangeAspect="1" noChangeArrowheads="1"/>
+                                                    </pic:cNvPicPr>
+                                                </pic:nvPicPr>
+                                                <pic:blipFill>
+                                                    <a:blip r:embed="rId2"/>
+                                                    <a:stretch>
+                                                        <a:fillRect/>
+                                                    </a:stretch>
+                                                </pic:blipFill>
+                                                <pic:spPr bwMode="auto">
+                                                    <a:xfrm>
+                                                        <a:off x="0" y="0"/>
+                                                        <a:ext cx="1080135" cy="1080135"/>
+                                                    </a:xfrm>
+                                                    <a:prstGeom prst="rect">
+                                                        <a:avLst/>
+                                                    </a:prstGeom>
+                                                </pic:spPr>
+                                            </pic:pic>
+                                        </a:graphicData>
+                                    </a:graphic>
+                                </wp:inline>
+                            </w:drawing>
+                        </w:r>
+                    </w:p>
+                </entry></row><row><entry align="center" rowsep="1"><w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Corpsdetexte"/>
+                            <w:bidi w:val="0"/>
+                            <w:spacing w:before="0" w:after="140"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr/>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr/>
+                            <w:t>Panda</w:t>
+                        </w:r>
+                    </w:p>
+                </entry><entry align="center" rowsep="1"><w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Corpsdetexte"/>
+                            <w:bidi w:val="0"/>
+                            <w:spacing w:before="0" w:after="140"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr/>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr/>
+                            <w:drawing>
+                                <wp:inline distT="0" distB="0" distL="0" distR="0">
+                                    <wp:extent cx="1080135" cy="1080135"/>
+                                    <wp:effectExtent l="0" t="0" r="0" b="0"/>
+                                    <wp:docPr id="2" name="Image2" descr=""/>
+                                    <wp:cNvGraphicFramePr>
+                                        <a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
+                                    </wp:cNvGraphicFramePr>
+                                    <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                                        <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                                            <pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                                                <pic:nvPicPr>
+                                                    <pic:cNvPr id="2" name="Image2" descr=""/>
+                                                    <pic:cNvPicPr>
+                                                        <a:picLocks noChangeAspect="1" noChangeArrowheads="1"/>
+                                                    </pic:cNvPicPr>
+                                                </pic:nvPicPr>
+                                                <pic:blipFill>
+                                                    <a:blip r:embed="rId3"/>
+                                                    <a:stretch>
+                                                        <a:fillRect/>
+                                                    </a:stretch>
+                                                </pic:blipFill>
+                                                <pic:spPr bwMode="auto">
+                                                    <a:xfrm>
+                                                        <a:off x="0" y="0"/>
+                                                        <a:ext cx="1080135" cy="1080135"/>
+                                                    </a:xfrm>
+                                                    <a:prstGeom prst="rect">
+                                                        <a:avLst/>
+                                                    </a:prstGeom>
+                                                </pic:spPr>
+                                            </pic:pic>
+                                        </a:graphicData>
+                                    </a:graphic>
+                                </wp:inline>
+                            </w:drawing>
+                        </w:r>
+                    </w:p>
+                </entry></row><row><entry align="center" rowsep="1"><w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Corpsdetexte"/>
+                            <w:bidi w:val="0"/>
+                            <w:spacing w:before="0" w:after="140"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr/>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr/>
+                            <w:t>Ours</w:t>
+                        </w:r>
+                    </w:p>
+                </entry><entry align="center" rowsep="1"><w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Corpsdetexte"/>
+                            <w:bidi w:val="0"/>
+                            <w:spacing w:before="0" w:after="140"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr/>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr/>
+                            <w:drawing>
+                                <wp:inline distT="0" distB="0" distL="0" distR="0">
+                                    <wp:extent cx="1080135" cy="1080135"/>
+                                    <wp:effectExtent l="0" t="0" r="0" b="0"/>
+                                    <wp:docPr id="3" name="Image3" descr=""/>
+                                    <wp:cNvGraphicFramePr>
+                                        <a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
+                                    </wp:cNvGraphicFramePr>
+                                    <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                                        <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                                            <pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                                                <pic:nvPicPr>
+                                                    <pic:cNvPr id="3" name="Image3" descr=""/>
+                                                    <pic:cNvPicPr>
+                                                        <a:picLocks noChangeAspect="1" noChangeArrowheads="1"/>
+                                                    </pic:cNvPicPr>
+                                                </pic:nvPicPr>
+                                                <pic:blipFill>
+                                                    <a:blip r:embed="rId4"/>
+                                                    <a:stretch>
+                                                        <a:fillRect/>
+                                                    </a:stretch>
+                                                </pic:blipFill>
+                                                <pic:spPr bwMode="auto">
+                                                    <a:xfrm>
+                                                        <a:off x="0" y="0"/>
+                                                        <a:ext cx="1080135" cy="1080135"/>
+                                                    </a:xfrm>
+                                                    <a:prstGeom prst="rect">
+                                                        <a:avLst/>
+                                                    </a:prstGeom>
+                                                </pic:spPr>
+                                            </pic:pic>
+                                        </a:graphicData>
+                                    </a:graphic>
+                                </wp:inline>
+                            </w:drawing>
+                        </w:r>
+                    </w:p>
+                </entry></row><row><entry align="center" rowsep="1"><w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Corpsdetexte"/>
+                            <w:bidi w:val="0"/>
+                            <w:spacing w:before="0" w:after="140"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr/>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr/>
+                            <w:t>Insectes</w:t>
+                        </w:r>
+                    </w:p>
+                </entry><entry align="center" rowsep="1"><w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Corpsdetexte"/>
+                            <w:bidi w:val="0"/>
+                            <w:spacing w:before="0" w:after="140"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr/>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr/>
+                            <w:drawing>
+                                <wp:inline distT="0" distB="0" distL="0" distR="0">
+                                    <wp:extent cx="1080135" cy="1080135"/>
+                                    <wp:effectExtent l="0" t="0" r="0" b="0"/>
+                                    <wp:docPr id="4" name="Image6" descr=""/>
+                                    <wp:cNvGraphicFramePr>
+                                        <a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
+                                    </wp:cNvGraphicFramePr>
+                                    <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                                        <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                                            <pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                                                <pic:nvPicPr>
+                                                    <pic:cNvPr id="4" name="Image6" descr=""/>
+                                                    <pic:cNvPicPr>
+                                                        <a:picLocks noChangeAspect="1" noChangeArrowheads="1"/>
+                                                    </pic:cNvPicPr>
+                                                </pic:nvPicPr>
+                                                <pic:blipFill>
+                                                    <a:blip r:embed="rId5"/>
+                                                    <a:stretch>
+                                                        <a:fillRect/>
+                                                    </a:stretch>
+                                                </pic:blipFill>
+                                                <pic:spPr bwMode="auto">
+                                                    <a:xfrm>
+                                                        <a:off x="0" y="0"/>
+                                                        <a:ext cx="1080135" cy="1080135"/>
+                                                    </a:xfrm>
+                                                    <a:prstGeom prst="rect">
+                                                        <a:avLst/>
+                                                    </a:prstGeom>
+                                                </pic:spPr>
+                                            </pic:pic>
+                                        </a:graphicData>
+                                    </a:graphic>
+                                </wp:inline>
+                            </w:drawing>
+                        </w:r>
+                        <w:r>
+                            <w:rPr/>
+                            <w:drawing>
+                                <wp:inline distT="0" distB="0" distL="0" distR="0">
+                                    <wp:extent cx="1080135" cy="1080135"/>
+                                    <wp:effectExtent l="0" t="0" r="0" b="0"/>
+                                    <wp:docPr id="5" name="Image4" descr=""/>
+                                    <wp:cNvGraphicFramePr>
+                                        <a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
+                                    </wp:cNvGraphicFramePr>
+                                    <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                                        <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                                            <pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                                                <pic:nvPicPr>
+                                                    <pic:cNvPr id="5" name="Image4" descr=""/>
+                                                    <pic:cNvPicPr>
+                                                        <a:picLocks noChangeAspect="1" noChangeArrowheads="1"/>
+                                                    </pic:cNvPicPr>
+                                                </pic:nvPicPr>
+                                                <pic:blipFill>
+                                                    <a:blip r:embed="rId6"/>
+                                                    <a:stretch>
+                                                        <a:fillRect/>
+                                                    </a:stretch>
+                                                </pic:blipFill>
+                                                <pic:spPr bwMode="auto">
+                                                    <a:xfrm>
+                                                        <a:off x="0" y="0"/>
+                                                        <a:ext cx="1080135" cy="1080135"/>
+                                                    </a:xfrm>
+                                                    <a:prstGeom prst="rect">
+                                                        <a:avLst/>
+                                                    </a:prstGeom>
+                                                </pic:spPr>
+                                            </pic:pic>
+                                        </a:graphicData>
+                                    </a:graphic>
+                                </wp:inline>
+                            </w:drawing>
+                        </w:r>
+                        <w:r>
+                            <w:rPr/>
+                            <w:drawing>
+                                <wp:inline distT="0" distB="0" distL="0" distR="0">
+                                    <wp:extent cx="1080135" cy="1080135"/>
+                                    <wp:effectExtent l="0" t="0" r="0" b="0"/>
+                                    <wp:docPr id="6" name="Image5" descr=""/>
+                                    <wp:cNvGraphicFramePr>
+                                        <a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
+                                    </wp:cNvGraphicFramePr>
+                                    <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                                        <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                                            <pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                                                <pic:nvPicPr>
+                                                    <pic:cNvPr id="6" name="Image5" descr=""/>
+                                                    <pic:cNvPicPr>
+                                                        <a:picLocks noChangeAspect="1" noChangeArrowheads="1"/>
+                                                    </pic:cNvPicPr>
+                                                </pic:nvPicPr>
+                                                <pic:blipFill>
+                                                    <a:blip r:embed="rId7"/>
+                                                    <a:stretch>
+                                                        <a:fillRect/>
+                                                    </a:stretch>
+                                                </pic:blipFill>
+                                                <pic:spPr bwMode="auto">
+                                                    <a:xfrm>
+                                                        <a:off x="0" y="0"/>
+                                                        <a:ext cx="1080135" cy="1080135"/>
+                                                    </a:xfrm>
+                                                    <a:prstGeom prst="rect">
+                                                        <a:avLst/>
+                                                    </a:prstGeom>
+                                                </pic:spPr>
+                                            </pic:pic>
+                                        </a:graphicData>
+                                    </a:graphic>
+                                </wp:inline>
+                            </w:drawing>
+                        </w:r>
+                    </w:p>
+                </entry></row><row><entry align="center"><w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Corpsdetexte"/>
+                            <w:bidi w:val="0"/>
+                            <w:spacing w:before="0" w:after="140"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr/>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr/>
+                            <w:t>Lion</w:t>
+                        </w:r>
+                    </w:p>
+                </entry><entry align="center"><w:p>
+                        <w:pPr>
+                            <w:pStyle w:val="Corpsdetexte"/>
+                            <w:bidi w:val="0"/>
+                            <w:spacing w:before="0" w:after="140"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr/>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr/>
+                        </w:r>
+                    </w:p>
+                </entry></row></tbody></tgroup></table>
+        <w:p>
+            <w:pPr>
+                <w:pStyle w:val="Corpsdetexte"/>
+                <w:bidi w:val="0"/>
+                <w:spacing w:lineRule="auto" w:line="276" w:before="0" w:after="140"/>
+                <w:jc w:val="left"/>
+                <w:rPr/>
+            </w:pPr>
+            <w:r>
+                <w:rPr/>
+            </w:r>
+        </w:p>
+        <w:sectPr>
+            <w:type w:val="nextPage"/>
+            <w:pgSz w:w="11906" w:h="16838"/>
+            <w:pgMar w:left="1134" w:right="1134" w:gutter="0" w:header="0" w:top="1134" w:footer="0" w:bottom="1134"/>
+            <w:pgNumType w:fmt="decimal"/>
+            <w:formProt w:val="false"/>
+            <w:textDirection w:val="lrTb"/>
+        </w:sectPr>
+    </w:body>
+</w:document>
