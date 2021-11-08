@@ -18,6 +18,7 @@ class BaseParser(object):
         """
         Parsing state for the converter (internal usage).
 
+        .. versionadded:: 0.4.4
         .. versionadded:: 0.5.0
         """
 

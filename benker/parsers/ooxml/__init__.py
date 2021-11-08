@@ -786,7 +786,6 @@ class OoxmlParser(BaseParser):
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
         """
-        self._state = self._State()
         self._w_styles = None
         self.styles_path = styles_path
         super(OoxmlParser, self).__init__(builder, **options)
