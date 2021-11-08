@@ -34,6 +34,7 @@ value_of = functools.partial(base_value_of, namespaces=NS)
 #: See w:ST_Border: http://www.datypic.com/sc/ooxml/t-w_ST_Border.html
 #: See CSS styles: https://www.w3.org/wiki/CSS/Properties/border-top-style
 _BORDER_STYLE_MAPPING = {
+    # fmt: off
     # No Border
     'nil': 'none',
 
@@ -606,6 +607,7 @@ _BORDER_STYLE_MAPPING = {
 
     # Zigzag stitch
     'zigZagStitch': 'w-zig-zag-stitch',
+    # fmt: on
 }
 
 
@@ -671,8 +673,7 @@ def _border_properties_to_styles(properties):
     #   Use the border size, the default color, without effect (blur...)
     has_shadow = any(prop.get('shadow') for style, prop in properties)
     if has_shadow:
-        shadow = ["{0}pt".format(prop['sz'] if prop.get('shadow') else "0pt")
-                  for style, prop in properties]
+        shadow = ["{0}pt".format(prop['sz'] if prop.get('shadow') else "0pt") for style, prop in properties]
         styles['box-shadow'] = " ".join(shadow)
 
     return styles
@@ -770,7 +771,7 @@ def _get_style_borders(w_styles, style_id):
 
 class OoxmlParser(BaseParser):
     """
-    Office Open XML to CALS tables parsers.
+    Office Open XML parser.
     """
 
     class _State(object):
@@ -810,7 +811,7 @@ class OoxmlParser(BaseParser):
             In an uncompressed ``.docx`` tree structure, the stylesheet path
             is ``word/styles.xml``.
 
-        :keyword options: Extra conversion options.
+        :param str options: Extra conversion options.
             See :meth:`~benker.converters.base_converter.BaseConverter.convert_file`
             to have a list of all possible options.
         """
@@ -1091,10 +1092,14 @@ class OoxmlParser(BaseParser):
                 w_v_align = value_of(w_tc, "w:tcPr/w:vAlign/@w:val", default=u"top")
                 # CSS/Properties/vertical-align
                 # valid values: http://www.datypic.com/sc/ooxml/t-w_ST_VerticalJc.html
-                v_align = {"top": u"top",
-                           "center": u"middle",
-                           "bottom": u"bottom",
-                           "both": u"w-both"}[w_v_align]
+                # fmt: off
+                v_align = {
+                    "top": u"top",
+                    "center": u"middle",
+                    "bottom": u"bottom",
+                    "both": u"w-both",
+                }[w_v_align]
+                # fmt: on
                 styles["vertical-align"] = v_align
 
             # -- Horizontal alignment
@@ -1111,18 +1116,19 @@ class OoxmlParser(BaseParser):
             if w_jc is not None:
                 # CSS/Properties/text-align
                 # valid values: http://www.datypic.com/sc/ooxml/t-w_ST_Jc.html
-                align = {"start": u"left",
-                         "end": u"right",
-                         "left": u"left",
-                         "right": u"right",
-                         "center": u"center",
-                         "both": u"justify",
-                         "distribute": u"justify",
-                         # "mediumKashida": None,
-                         # "numTab": None,
-                         # "lowKashida": None,
-                         # "thaiDistribute": None
-                         }[w_jc]
+                align = {
+                    "start": u"left",
+                    "end": u"right",
+                    "left": u"left",
+                    "right": u"right",
+                    "center": u"center",
+                    "both": u"justify",
+                    "distribute": u"justify",
+                    # "mediumKashida": None,
+                    # "numTab": None,
+                    # "lowKashida": None,
+                    # "thaiDistribute": None
+                }[w_jc]
                 styles["align"] = align
 
             # -- Borders

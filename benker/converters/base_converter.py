@@ -13,6 +13,7 @@ class BaseConverter(object):
     """
     Bas class of all converters.
     """
+
     parser_cls = BaseParser
     builder_cls = BaseBuilder
 

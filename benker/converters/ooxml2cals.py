@@ -12,6 +12,7 @@ class Ooxml2CalsConverter(BaseConverter):
     """
     Office Open XML to CALS converter
     """
+
     parser_cls = OoxmlParser
     builder_cls = CalsBuilder
 
