@@ -28,6 +28,7 @@ from benker.table import Table
 #: See CSS styles: https://www.w3.org/wiki/CSS/Properties/border-top-style
 # fmt: off
 _BORDER_STYLE_MAPPING = {
+    # fmt: off
     # No Border
     'nil': 'none',
 
@@ -600,6 +601,7 @@ _BORDER_STYLE_MAPPING = {
 
     # Zigzag stitch
     'zigZagStitch': 'w-zig-zag-stitch',
+    # fmt: on
 }
 # fmt: on
 
