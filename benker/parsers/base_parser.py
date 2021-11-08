@@ -13,6 +13,32 @@ class BaseParser(object):
     Abstract base class of the parsers classes.
     """
 
+    class _State(object):
+        """
+        Parsing state for the converter (internal usage).
+
+        .. versionadded:: 0.4.4
+        """
+
+        def __init__(self):
+            self.col_pos = 0
+            self.col = None
+            self.row_pos = 0
+            self.row = None
+            self.table = None
+
+        reset = __init__
+
+        def next_col(self):
+            self.col_pos += 1
+            self.col = None
+
+        def next_row(self):
+            self.col_pos = 0
+            self.col = None
+            self.row_pos += 1
+            self.row = None
+
     def __init__(self, builder, encoding="utf-8", **options):
         """
         Construct a base builder.
@@ -31,8 +57,19 @@ class BaseParser(object):
         self.builder = builder
         self.encoding = encoding
         self.options = options
+        self._state = self._State()
 
     def parse_file(self, src_xml, dst_xml):
+        """
+        Parse and convert the tables from one format to another.
+
+        :param str src_xml:
+            Source path of the XML file to convert.
+
+        :param str dst_xml:
+            Destination path of the XML file to produce.
+        """
+
         tree = etree.parse(src_xml)
         self.transform_tables(tree)
         self.builder.finalize_tree(tree)
