@@ -53,6 +53,7 @@ def test_convert_ooxml2formex__demo(tmpdir):
         ("ooxml/table_in_table.xml", "ooxml2formex/table_in_table.xml"),
         ("ooxml/Revision marks.xml", "ooxml2formex/Revision marks.xml"),
         ("ooxml/empty_cells.xml", "ooxml2formex/empty_cells.xml"),
+        ("ooxml/demo_images.xml", "ooxml2formex/demo_images.xml"),
     ],
 )
 def test_convert_ooxml2formex(input_name, expected_name, tmpdir):

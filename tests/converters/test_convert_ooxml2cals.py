@@ -44,6 +44,7 @@ def test_convert_ooxml2cals__demo(tmpdir):
         ("ooxml/table_in_table.xml", "ooxml2cals/table_in_table.xml"),
         ("ooxml/Lorem Ipsum.xml", "ooxml2cals/Lorem Ipsum.xml"),
         ("ooxml/Revision marks.xml", "ooxml2cals/Revision marks.xml"),
+        ("ooxml/demo_images.xml", "ooxml2cals/demo_images.xml"),
     ],
 )
 def test_convert_ooxml2cals(input_name, expected_name, tmpdir):
