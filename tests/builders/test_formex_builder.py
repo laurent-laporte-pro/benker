@@ -279,7 +279,7 @@ def test_build_tbl__with_title():
     table = Table()
     table.rows[1].insert_cell([P(u"1 euro =")], width=3, styles={"align": "center"})
     table.rows[2].nature = "header"
-    table.rows[2].insert_cell([P()])
+    table.rows[2].insert_cell([P()], styles={"x-cell-empty": "true"})
     table.rows[2].insert_cell([P(u"Currency")])
     table.rows[2].insert_cell([P(u"Exchange rate")])
     table.rows[3].insert_cell([P(u"USD")])

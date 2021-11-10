@@ -224,6 +224,8 @@ ooxml2formex4 conversion – Loss of image calls in table conversion.
 
 * Modification of the OOXML parser to improve empty cells detection for Formex4 conversion (``<IE/>`` tags management).
 
+* Modification of the Formex4 builder to better deal with empty cells (management of ``<IE/>`` tags).
+
 
 v0.4.3 (2019-10-15)
 ===================

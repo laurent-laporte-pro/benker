@@ -1115,6 +1115,10 @@ class OoxmlParser(BaseParser):
 
             content = w_tc.xpath('w:p | w:tbl', namespaces=NS)
 
+            # ignore the *tail* (if the XML is indented)
+            for node in content:
+                node.tail = None
+
             # The detection of empty cells (without text or image) is used when converting
             # to the Formex4 format in order to insert an empty tag ``<IE/>``.
             # see: https://github.com/laurent-laporte-pro/benker/issues/13
@@ -1126,7 +1130,4 @@ class OoxmlParser(BaseParser):
                 # The cell has no text or image.
                 styles["x-cell-empty"] = "true"
 
-            # ignore the *tail* (if the XML is indented)
-            for node in content:
-                node.tail = None
             state.row.insert_cell(content, width=width, height=height, styles=styles)

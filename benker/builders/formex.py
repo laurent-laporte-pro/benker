@@ -321,11 +321,20 @@ class FormexBuilder(BaseBuilder):
 
         :type  row: benker.table.RowView
         :param row: The row which contains the title.
+
+        .. versionchanged:: 0.4.4
+           Modification of the Formex4 builder to better deal with empty cells (management of ``<IE/>`` tags).
         """
         title_elem = etree.SubElement(tbl_elem, u"TITLE")
         for cell in row.owned_cells:
-            text = text_type(cell)
-            if text:
+            # When a cell is empty, we need to insert the ``<IE/>`` tag.
+            is_empty_cell = cell.styles.get("x-cell-empty", "false") == "true"
+            # We can also have an empty content if a short row is completed by empty cells.
+            if is_empty_cell or cell.content is None or cell.content == "":
+                # assert cell.content in {None, "", []}
+                ti_elem = etree.SubElement(title_elem, u"TI")
+                etree.SubElement(ti_elem, u"IE")
+            else:
                 if isinstance(cell.content, type(u"")):
                     # mainly useful for unit test
                     ti_elem = etree.SubElement(title_elem, u"TI")
@@ -337,10 +346,6 @@ class FormexBuilder(BaseBuilder):
                     ti_elem.append(paragraphs[0])
                     sti_elem = etree.SubElement(title_elem, u"STI")
                     sti_elem.extend(paragraphs[1:])
-            else:
-                # assert cell.content in {None, "", []}
-                ti_elem = etree.SubElement(title_elem, u"TI")
-                etree.SubElement(ti_elem, u"IE")
 
     def build_colspec(self, group_elem, col):
         """
@@ -547,6 +552,9 @@ class FormexBuilder(BaseBuilder):
         :type  row: benker.table.RowView
         :param row: The parent row.
 
+        .. versionchanged:: 0.4.4
+           Modification of the Formex4 builder to better deal with empty cells (management of ``<IE/>`` tags).
+
         .. versionchanged:: 0.5.0
            Add support for CALS-like elements and attributes.
            Add support for ``bgcolor`` (Table background color).
@@ -616,12 +624,17 @@ class FormexBuilder(BaseBuilder):
                 attrs["TYPE"] = cell_styles["cellstyle"]
 
         cell_elem = etree.SubElement(row_elem, u"CELL", attrib=attrs)
-        self.append_cell_elements(cell_elem, cell.content)
-        if not text_type(cell):
+
+        # When a cell is empty, we need to insert the ``<IE/>`` tag.
+        is_empty_cell = cell.styles.get("x-cell-empty", "false") == "true"
+        # We can also have an empty content if a short row is completed by empty cells.
+        if is_empty_cell or cell.content is None or cell.content == "":
             # The IE element is used to explicitly indicate
             # that specific structures have an empty content.
             etree.strip_tags(cell_elem, "*")
             etree.SubElement(cell_elem, u"IE")
+        else:
+            self.append_cell_elements(cell_elem, cell.content)
 
     def finalize_tree(self, tree):
         """

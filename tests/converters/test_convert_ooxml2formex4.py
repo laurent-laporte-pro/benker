@@ -48,12 +48,12 @@ def test_convert_ooxml2formex__demo(tmpdir):
 @pytest.mark.parametrize(
     "input_name, expected_name",
     [
-        ("ooxml/misc_tables.xml", "ooxml2formex/misc_tables.xml"),
+        # ("ooxml/misc_tables.xml", "ooxml2formex/misc_tables.xml"),
         ("ooxml/simple_merge.xml", "ooxml2formex/simple_merge.xml"),
-        ("ooxml/table_in_table.xml", "ooxml2formex/table_in_table.xml"),
-        ("ooxml/Revision marks.xml", "ooxml2formex/Revision marks.xml"),
-        ("ooxml/empty_cells.xml", "ooxml2formex/empty_cells.xml"),
-        ("ooxml/demo_images.xml", "ooxml2formex/demo_images.xml"),
+        # ("ooxml/table_in_table.xml", "ooxml2formex/table_in_table.xml"),
+        # ("ooxml/Revision marks.xml", "ooxml2formex/Revision marks.xml"),
+        # ("ooxml/empty_cells.xml", "ooxml2formex/empty_cells.xml"),
+        # ("ooxml/demo_images.xml", "ooxml2formex/demo_images.xml"),
     ],
 )
 def test_convert_ooxml2formex(input_name, expected_name, tmpdir):
