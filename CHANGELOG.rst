@@ -16,6 +16,11 @@ Bug fix release
 Fixed
 -----
 
+Fix `#13 <https://github.com/laurent-laporte-pro/benker/issues/13>`_:
+ooxml2formex4 conversion – Loss of image calls in table conversion.
+
+* Modification of the OOXML parser to improve empty cells detection for Formex4 conversion (``<IE/>`` tags management).
+
 
 v0.4.3 (2019-10-15)
 ===================
