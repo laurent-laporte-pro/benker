@@ -25,12 +25,12 @@ Bug fix release
 Fixed
 -----
 
-`#5 <https://github.com/laurent-laporte-pro/benker/issues/5>`_: The title generation should be optional.
+Fix `#5 <https://github.com/laurent-laporte-pro/benker/issues/5>`_: The title generation should be optional.
 
-  * Change in the :class:`~benker.builders.formex4.Formex4Builder` class:
-    Add the *detect_titles* option: if this option is enable, a title will be generated
-    if the first row contains an unique cell with centered text.
-    The *detect_titles* options is disable by default.
+* Change in the :class:`~benker.builders.formex4.Formex4Builder` class:
+  Add the *detect_titles* option: if this option is enable, a title will be generated
+  if the first row contains an unique cell with centered text.
+  The *detect_titles* options is disable by default.
 
 Other
 -----
@@ -47,13 +47,13 @@ Bug fix release
 Fixed
 -----
 
-`#1 <https://github.com/laurent-laporte-pro/benker/issues/1>`_: Cell nature should inherit row nature by default.
+Fix `#1 <https://github.com/laurent-laporte-pro/benker/issues/1>`_: Cell nature should inherit row nature by default.
 
-  * Change in the class :class:`~benker.styled.Styled`:
-    The default value of the *nature* parameter is ``None`` (instead of "body").
+* Change in the class :class:`~benker.styled.Styled`:
+  The default value of the *nature* parameter is ``None`` (instead of "body").
 
-  * Change in the methods :meth:`~benker.table.RowView.insert_cell` and :meth:`~benker.table.ColView.insert_cell`
-    The *nature* of a cell is inherited from its parent's row (or column).
+* Change in the methods :meth:`~benker.table.RowView.insert_cell` and :meth:`~benker.table.ColView.insert_cell`
+  The *nature* of a cell is inherited from its parent's row (or column).
 
 Other
 -----
