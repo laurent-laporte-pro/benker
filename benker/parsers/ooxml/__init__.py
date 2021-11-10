@@ -15,6 +15,7 @@ import collections
 from lxml import etree
 
 from benker.box import Box
+from benker.cell import get_content_text
 from benker.common.lxml_iterwalk import iterwalk
 from benker.parsers.base_parser import BaseParser
 from benker.parsers.ooxml.namespaces import NS
@@ -1015,6 +1016,9 @@ class OoxmlParser(BaseParser):
         :type  w_tc: etree._Element
         :param w_tc: Table element.
 
+        .. versionchanged:: 0.4.4
+           Improved empty cells detection for Formex4 conversion (``<IE/>`` tag management).
+
         .. versionchanged:: 0.5.1
            XML indentation between cell paragraphs is ignored.
         """
@@ -1110,6 +1114,18 @@ class OoxmlParser(BaseParser):
             # todo: calculate the ``@rotate`` attribute.
 
             content = w_tc.xpath('w:p | w:tbl', namespaces=NS)
+
+            # The detection of empty cells (without text or image) is used when converting
+            # to the Formex4 format in order to insert an empty tag ``<IE/>``.
+            # see: https://github.com/laurent-laporte-pro/benker/issues/13
+            if (
+                not get_content_text(content)
+                and not w_tc.xpath("count(.//w:drawing)", namespaces=NS)
+                and not w_tc.xpath("count(.//w:pict)", namespaces=NS)
+            ):
+                # The cell has no text or image.
+                styles["x-cell-empty"] = "true"
+
             # ignore the *tail* (if the XML is indented)
             for node in content:
                 node.tail = None

@@ -211,7 +211,7 @@ Other
 * Change the Travis CI configuration to build on Python 3.7 and 3.8-dev.
 
 
-v0.4.3 (unreleased)
+v0.4.4 (unreleased)
 ===================
 
 Bug fix release
@@ -219,12 +219,32 @@ Bug fix release
 Fixed
 -----
 
-* Fix `#5 <https://github.com/laurent-laporte-pro/benker/issues/5>`_: The title generation should be optional.
+Fix `#13 <https://github.com/laurent-laporte-pro/benker/issues/13>`_:
+ooxml2formex4 conversion – Loss of image calls in table conversion.
 
-  Change in the :class:`~benker.builders.formex4.Formex4Builder` class:
+* Modification of the OOXML parser to improve empty cells detection for Formex4 conversion (``<IE/>`` tags management).
+
+
+v0.4.3 (2019-10-15)
+===================
+
+Bug fix release
+
+Fixed
+-----
+
+Fix `#5 <https://github.com/laurent-laporte-pro/benker/issues/5>`_: The title generation should be optional.
+
+* Change in the :class:`~benker.builders.formex4.Formex4Builder` class:
   Add the *detect_titles* option: if this option is enable, a title will be generated
   if the first row contains an unique cell with centered text.
   The *detect_titles* options is disable by default.
+
+Other
+-----
+
+Change in the documentation: update the URL of the Formex documentation, use:
+`<https://publications.europa.eu/en/web/eu-vocabularies/formex/>`_.
 
 
 v0.4.2 (2019-06-06)
@@ -262,7 +282,7 @@ Fixed
 * Change in the parser :class:`~benker.parsers.ooxml.OoxmlParser`:
   fix the 'x-sect-cols' value extraction when the ``w:sectPr`` is missing (use "1" by default).
 
-* Fix the Formex 4 builder :class:`~benker.builders.formex.FormexBuilder`:
+* Fix the Formex4 builder :class:`~benker.builders.formex4.Formex4Builder`:
   Generate a ``<IE/>`` element if the cell content (the string representation) is empty.
 
 
@@ -274,11 +294,11 @@ Feature release
 Added
 -----
 
-* New converter: :func:`~benker.converters.ooxml2formex.convert_ooxml2formex`:
-  Convert Office Open XML (OOXML) tables to Formex 4 tables.
+* New converter: :func:`~benker.converters.ooxml2formex4.convert_ooxml2formex4`:
+  Convert Office Open XML (OOXML) tables to Formex4 tables.
 
-* New builder: :class:`~benker.builders.formex.FormexBuilder`:
-  Formex 4 builder used to convert tables into ``TBL`` elements.
+* New builder: :class:`~benker.builders.formex4.Formex4Builder`:
+  Formex4 builder used to convert tables into ``TBL`` elements.
 
 * Change in the parser :class:`~benker.parsers.ooxml.OoxmlParser`:
 

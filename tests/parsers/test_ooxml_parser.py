@@ -7,6 +7,7 @@ from benker.parsers.ooxml import OoxmlParser
 from benker.table import Table
 
 TEST_DATA = [
+    # -------------
     # without style
     # -------------
     pytest.param(
@@ -27,6 +28,7 @@ TEST_DATA = [
         {},
         id="style_is_empty",
     ),
+    # -------
     # Borders
     # -------
     pytest.param(
@@ -82,9 +84,14 @@ TEST_DATA = [
             </w:tcPr>
             <w:p w:rsidR="00EF2ECA" w:rsidRDefault="00EF2ECA"/>
         </w:tc>""",
-        {"border-collapse": "collapse", "x-border-tl2br": "solid 0.5pt", "x-border-tr2bl": "solid 0.5pt"},
+        {
+            "border-collapse": "collapse",
+            "x-border-tl2br": "solid 0.5pt",
+            "x-border-tr2bl": "solid 0.5pt",
+        },
         id="style_border-tl2br-tr2bl",
     ),
+    # ------------------------
     # align and vertical-align
     # ------------------------
     pytest.param(
@@ -152,4 +159,7 @@ def test_parse_tc(w_tc_content, expected):
     # -- check the styles
     table = state.table
     cell = table[(1, 1)]
-    assert expected == cell.styles
+
+    # Ignore cell styles extensions (like 'x-cell-empty').
+    actual = {k: v for k, v in cell.styles.items() if not k.startswith("x-cell-")}
+    assert expected == actual
