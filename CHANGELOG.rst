@@ -211,7 +211,7 @@ Other
 * Change the Travis CI configuration to build on Python 3.7 and 3.8-dev.
 
 
-v0.4.4 (unreleased)
+v0.4.4 (2021-11-10)
 ===================
 
 Bug fix release

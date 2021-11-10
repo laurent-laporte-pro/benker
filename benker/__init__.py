@@ -2,4 +2,5 @@
 
 __version__ = "0.5.3"
 __author__ = "Laurent LAPORTE <laurent.laporte.pro@gmail.com>"
-__all__ = []
+__date__ = "unreleased"
+__credit__ = "(c) 2018-2021 Laurent LAPORTE"
