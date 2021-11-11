@@ -91,8 +91,6 @@ The following table shows the compatibility between different combinations of Py
 +-----------+------+------+------+------+------+------+------+------+
 | **3.9**   |  ✖️  |  ✖️  |  ✖️  |  ✖️  |  ✔️  |  ✔️  |  ✔️  |  ✔️  |
 +-----------+------+------+------+------+------+------+------+------+
-| **3.10**  |  ✖️  |  ✖️  |  ✖️  |  ✖️  |  ✔️  |  ✔️  |  ✔️  |  ✔️  |
-+-----------+------+------+------+------+------+------+------+------+
 
 - ✔️ lxml is available for this version and unit tests succeed.
 - ! installation succeed using "attrs < 21.1".
