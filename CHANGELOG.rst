@@ -16,6 +16,12 @@ Fixed
 -----
 
 
+Other
+-----
+
+Change in the documentation: add the missing documentation for the :mod:`benker.schemas` module.
+
+
 v0.5.3 (2021-11-11)
 ===================
 

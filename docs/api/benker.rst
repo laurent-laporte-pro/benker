@@ -44,3 +44,4 @@ API
    benker.alphabet
    benker.drawing
    benker.units
+   benker.schemas
