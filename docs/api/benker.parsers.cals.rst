@@ -1,6 +1,3 @@
-benker.parsers.cals package
-===========================
-
 .. automodule:: benker.parsers.cals
     :members:
     :undoc-members:

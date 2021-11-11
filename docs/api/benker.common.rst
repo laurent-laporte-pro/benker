@@ -1,6 +1,3 @@
-benker.common package
-=====================
-
 .. automodule:: benker.common
     :members:
     :undoc-members:
