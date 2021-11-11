@@ -87,8 +87,10 @@ html_theme_options = {
     "logo": "benker-logo-sidebar.png",
     "github_user": "laurent-laporte-pro",
     "github_repo": "benker",
-    "description": "Easily convert your CALS, HTML, Formex4, Office Open XML (docx) tables from one format to another.",
-    "fixed_sidebar": True,
+    "description": (
+        "Easily convert your CALS, HTML, Formex4, Office Open XML (docx) tables from one format to another."
+    ),
+    "fixed_sidebar": False,
     "page_width": 1024,
 }
 
