@@ -320,7 +320,9 @@ def test_parse_cals_entry(attrib, styles, nature):
     state.next_col()
     state = parser.parse_cals_entry(cals_entry)
     cell = state.table[(1, 1)]
-    assert cell.styles == styles
+    # Ignore cell styles extensions (like 'x-cell-empty').
+    actual = {k: v for k, v in cell.styles.items() if not k.startswith("x-cell-")}
+    assert actual == styles
     assert cell.nature == nature
 
     # --with default namespaces
@@ -334,7 +336,9 @@ def test_parse_cals_entry(attrib, styles, nature):
     state.next_col()
     state = parser.parse_cals_entry(cals_entry)
     cell = state.table[(1, 1)]
-    assert cell.styles == styles
+    # Ignore cell styles extensions (like 'x-cell-empty').
+    actual = {k: v for k, v in cell.styles.items() if not k.startswith("x-cell-")}
+    assert actual == styles
     assert cell.nature == nature
 
 

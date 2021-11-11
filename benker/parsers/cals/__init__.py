@@ -379,10 +379,12 @@ class CalsParser(BaseParser):
            This attribute is required for two-way conversion of Formex tables to CALS and vice versa.
            If the ``CELL/@TYPE`` and the ``ROW/@TYPE`` are different, we add a specific "cellstyle" style.
            This style will keep the ``CELL/@TYPE`` value.
+
+        .. versionchanged:: 0.5.3
+           Improved empty cells detection for Formex4 conversion (``<IE/>`` tag management).
         """
         cals = self.get_cals_qname
         styles = {}
-        nature = self._state.row.nature
 
         # -- attribute @cals:colsep
         colsep = cals_entry.attrib.get(cals("colsep"))
@@ -435,6 +437,18 @@ class CalsParser(BaseParser):
         # -- Create a entry
         text = [cals_entry.text] if cals_entry.text else []
         content = text + cals_entry.getchildren()
+
+        # The detection of empty cells is used when converting
+        # to the Formex4 format in order to insert an empty tag ``<IE/>``.
+        # see: https://github.com/laurent-laporte-pro/benker/issues/13
+        #
+        # When parsing a CALS table, we will consider a cell to be empty when it contains no text
+        # or child tag. As we do not know the elements contained in an ``<entry>`` element,
+        # we cannot know precisely if it is an empty content or not (eg. empty paragraph or BR).
+        if not content:
+            styles["x-cell-empty"] = "true"
+
+        nature = self._state.row.nature
         self._state.row.insert_cell(content, width=width, height=height, styles=styles, nature=nature)
 
         return self._state  # mainly for unit test

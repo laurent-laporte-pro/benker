@@ -12,6 +12,10 @@ v0.5.3 (unreleased)
 
 Bug fix release
 
+Fixed
+-----
+
+* Change in the CALS parser: improved empty cells detection for Formex4 conversion (``<IE/>`` tag management).
 
 
 v0.5.2 (2019-11-25)
