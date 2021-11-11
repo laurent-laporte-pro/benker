@@ -7,13 +7,20 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_
 and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
-v0.5.3 (unreleased)
+v0.5.3 (2021-11-11)
 ===================
 
 Bug fix release
 
 Fixed
 -----
+
+Fix `#13 <https://github.com/laurent-laporte-pro/benker/issues/13>`_:
+ooxml2formex4 conversion – Loss of image calls in table conversion.
+
+* Modification of the OOXML parser to improve empty cells detection for Formex4 conversion (``<IE/>`` tags management).
+
+* Modification of the Formex4 builder to better deal with empty cells (management of ``<IE/>`` tags).
 
 * Change in the CALS parser: improved empty cells detection for Formex4 conversion (``<IE/>`` tag management).
 
