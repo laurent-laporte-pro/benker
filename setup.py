@@ -22,8 +22,6 @@ dev_require = [
     "Tox",
     "isort",
     "check-manifest",
-    "sphinx < 2",
-    'requests[security] ; python_version < "3"',
 ]
 
 extras_require = {"test": test_require, "dev": dev_require}
