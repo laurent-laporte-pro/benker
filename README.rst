@@ -10,7 +10,7 @@ Benker
     :target: https://pypi.org/project/Benker/
     :alt: Latest PyPI version
 
-.. image:: https://app.travis-ci.com/laurent-laporte-pro/benker.png
+.. image:: https://api.travis-ci.com/laurent-laporte-pro/benker.svg?branch=0.4
    :target: https://app.travis-ci.com/laurent-laporte-pro/benker
    :alt: Latest Travis CI build status
 
