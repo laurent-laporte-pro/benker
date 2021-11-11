@@ -234,7 +234,7 @@ Other
 Other
 -----
 
-Change in the documentation: fix a broken link in the documentation.
+Change in the documentation: fix a broken and redirected links in the documentation.
 
 
 v0.4.4 (2021-11-10)
@@ -272,7 +272,7 @@ Other
 -----
 
 Change in the documentation: update the URL of the Formex documentation, use:
-`<https://publications.europa.eu/en/web/eu-vocabularies/formex/>`_.
+`<https://op.europa.eu/en/web/eu-vocabularies/formex/>`_.
 
 
 v0.4.2 (2019-06-06)

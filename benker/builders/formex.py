@@ -20,7 +20,7 @@ Specifications and examples:
   `Formex Version 4 <https://op.europa.eu/en/web/eu-vocabularies/formex>`_.
 
 - An example of Formex 4 table is available in the Schema documentation:
-  `TBL <https://publications.europa.eu/documents/3938058/5910419/formex_manual_on_screen_version.html/#TBL>`_
+  `TBL <https://op.europa.eu/documents/3938058/5910419/formex_manual_on_screen_version.html/#TBL>`_
 
 .. versionchanged:: 0.5.0
    Refactoring (rename "Formex4" to "Formex"):
@@ -91,7 +91,7 @@ def guess_row_info(rowstyle):
 class FormexBuilder(BaseBuilder):
     """
     Formex 4 builder used to convert tables into ``TBL`` elements according to the
-    `TBL Schema <https://publications.europa.eu/documents/3938058/5910419/formex_manual_on_screen_version.html/#TBL>`_
+    `TBL Schema <https://op.europa.eu/documents/3938058/5910419/formex_manual_on_screen_version.html/#TBL>`_
     """
 
     # fmt: off

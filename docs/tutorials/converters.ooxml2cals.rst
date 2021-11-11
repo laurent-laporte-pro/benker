@@ -6,7 +6,7 @@ OOXML to CALS converter
 Description
 -----------
 
-.. _Office Open XML File Formats: https://www.ecma-international.org/publications/standards/Ecma-376.htm
+.. _Office Open XML File Formats: https://www.ecma-international.org/publications-and-standards/standards/ecma-376/
 .. _CALS table format: https://www.oasis-open.org/specs/a502.htm
 
 

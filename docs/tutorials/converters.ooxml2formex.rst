@@ -16,7 +16,7 @@ OOXML to Formex 4 converter
 Description
 -----------
 
-.. _Office Open XML File Formats: https://www.ecma-international.org/publications/standards/Ecma-376.htm
+.. _Office Open XML File Formats: https://www.ecma-international.org/publications-and-standards/standards/ecma-376/
 .. _Formex 4 format: https://op.europa.eu/en/web/eu-vocabularies/formex
 
 
