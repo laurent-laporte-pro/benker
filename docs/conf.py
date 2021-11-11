@@ -194,4 +194,4 @@ intersphinx_mapping = {"https://docs.python.org/": None}
 
 
 def setup(app):
-    app.add_stylesheet("_static/custom.css")
+    app.add_css_file("_static/custom.css")
