@@ -87,8 +87,10 @@ html_theme_options = {
     "logo": "benker-logo-sidebar.png",
     "github_user": "laurent-laporte-pro",
     "github_repo": "benker",
-    "description": "Organize your data in a spatial grid system for CALS, HTML, Formex4, Office Open XML tables conversion",
-    "fixed_sidebar": True,
+    "description": (
+        "Organize your data in a spatial grid system for CALS, HTML, Formex4, Office Open XML tables conversion"
+    ),
+    "fixed_sidebar": False,
     "page_width": 1024,
 }
 
