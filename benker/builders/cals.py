@@ -207,7 +207,7 @@ class CalsBuilder(BaseBuilder):
 
         .. attention::
 
-           According to the `CALS specification <https://www.oasis-open.org/specs/tm9502.html#c37ab3>`_,
+           According to the `CALS specification <https://www.oasis-open.org/specs/a502.htm>`_,
            the default value for ``@colsep`` and ``@rowsep`` should be "1".
            But, having this value as a default is really problematic for conversions:
            most of nowadays formats, like Office Open XML and CSS, consider that the default
