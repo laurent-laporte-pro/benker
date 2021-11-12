@@ -36,7 +36,7 @@ def test_qname__uri_tag():
 
 def test_qname__none_tag():
     qname = etree.QName(None, "tag")
-    if LXML_VERSION >= (4, 0):
+    if LXML_VERSION >= (4, 2):
         assert qname.localname == "tag"
         assert qname.namespace is None
         assert qname.text == "tag"

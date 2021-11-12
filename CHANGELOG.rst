@@ -15,6 +15,8 @@ Bug fix release
 Fixed
 -----
 
+We use an alternative implementation of ``QName`` for lxml versions v4.2 and earlier (rather than v4.0).
+
 
 Other
 -----

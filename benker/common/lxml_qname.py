@@ -3,13 +3,13 @@
 lxml - QName
 ============
 
-Python alternative to :class:`lxml.etree.QName` for lxml < 4
+Python alternative to :class:`lxml.etree.QName` for lxml < 4.2
 
 .. versionadded:: 0.5.0
 """
 from lxml import etree
 
-if etree.LXML_VERSION >= (4,):
+if etree.LXML_VERSION >= (4, 2):
     QName = etree.QName
 
 else:
