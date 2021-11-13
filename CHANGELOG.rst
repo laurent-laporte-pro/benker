@@ -15,7 +15,8 @@ Bug fix release
 Fixed
 -----
 
-We use an alternative implementation of ``QName`` for lxml versions v4.2 and earlier (rather than v4.0).
+Use an alternative implementation of :class:`~benker.common.lxml_qname.QName`
+for lxml versions v4.2 and earlier (rather than v4.0).
 
 
 Other
@@ -27,6 +28,7 @@ Change in the documentation:
 * Add the missing documentation for the :mod:`benker.schemas` module.
 * Correct the TOC in the API documentation.
 * Remove 3.10 from the dependency matrix (not yet validated).
+* Improve the layout of the API documentation.
 
 
 v0.5.3 (2021-11-11)

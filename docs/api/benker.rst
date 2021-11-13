@@ -16,9 +16,11 @@ API
     :undoc-members:
     :show-inheritance:
 
+Core modules
+------------
+
 .. toctree::
    :maxdepth: 1
-   :caption: Core modules:
 
    benker.size
    benker.coord
@@ -28,13 +30,32 @@ API
    benker.grid
    benker.table
 
+Parsers
+-------
+
 .. toctree::
    :maxdepth: 1
-   :caption: Parsers, builders and converters:
 
    benker.parsers
+
+Builders
+--------
+
+.. toctree::
+   :maxdepth: 1
+
    benker.builders
+
+Converters
+----------
+
+.. toctree::
+   :maxdepth: 1
+
    benker.converters
+
+Utilities
+---------
 
 .. toctree::
    :maxdepth: 1
