@@ -21,7 +21,12 @@ We use an alternative implementation of ``QName`` for lxml versions v4.2 and ear
 Other
 -----
 
-Change in the documentation: add the missing documentation for the :mod:`benker.schemas` module.
+Change in the documentation:
+
+* Fix a broken and redirected links in the documentation.
+* Add the missing documentation for the :mod:`benker.schemas` module.
+* Correct the TOC in the API documentation.
+* Remove 3.10 from the dependency matrix (not yet validated).
 
 
 v0.5.3 (2021-11-11)
@@ -238,11 +243,7 @@ Other
 
 * Change the Travis CI configuration to build on Python 3.7 and 3.8-dev.
 
-
-Other
------
-
-Change in the documentation: fix a broken and redirected links in the documentation.
+* Change in the documentation: fix a broken and redirected links in the documentation.
 
 
 v0.4.4 (2021-11-10)
