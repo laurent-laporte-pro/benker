@@ -2,5 +2,5 @@
 
 __version__ = "0.5.4"
 __author__ = "Laurent LAPORTE <laurent.laporte.pro@gmail.com>"
-__date__ = "unreleased"
+__date__ = "2021-11-13"
 __credit__ = "(c) 2018-2021 Laurent LAPORTE"
